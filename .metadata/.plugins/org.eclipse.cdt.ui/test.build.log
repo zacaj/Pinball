@@ -1,0 +1,12 @@
+16:34:32 **** Incremental Build of configuration Debug for project test ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu90 -DUSE_STM32F3_DISCOVERY -DHSE_VALUE=8000000 -DSTM32F30X -DUSE_STDPERIPH_DRIVER -I../src -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\Libraries\STM32F30x_StdPeriph_Driver\inc -I../Utilities/STM32F3_Discovery -O0 -ffunction-sections -fdata-sections -g -Wall -o src\main.o ..\src\main.c 
+..\src\main.c: In function 'main':
+..\src\main.c:174:25: error: 'RCC_AHBPeriph_GPIODA' undeclared (first use in this function)
+..\src\main.c:174:25: note: each undeclared identifier is reported only once for each function it appears in
+..\src\main.c:220:7: error: redeclaration of 'i' with no linkage
+..\src\main.c:184:7: note: previous declaration of 'i' was here
+..\src\main.c:221:7: warning: unused variable 'on' [-Wunused-variable]
+
+16:34:32 Build Finished (took 125ms)
+

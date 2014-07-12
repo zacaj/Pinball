@@ -1,0 +1,4 @@
+D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
+D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.csgp_1.0.5.201402181534\CSHOME
+D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ARMTools
+C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm

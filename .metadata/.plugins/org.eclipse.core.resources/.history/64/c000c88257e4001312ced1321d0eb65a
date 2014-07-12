@@ -1,0 +1,146 @@
+/**
+*****************************************************************************
+**
+**  File        : main.c
+**
+**  Abstract    : main function.
+**
+**  Functions   : main
+**
+**  Environment : Atollic TrueSTUDIO(R)
+**
+**  Distribution: The file is distributed “as is,” without any warranty
+**                of any kind.
+**
+**  (c)Copyright Atollic AB.
+**  You may use this file as-is or modify it according to the needs of your
+**  project. This file may only be built (assembled or compiled and linked)
+**  using the Atollic TrueSTUDIO(R) product. The use of this file together
+**  with other tools than Atollic TrueSTUDIO(R) is not permitted.
+**
+*****************************************************************************
+*/
+
+/* Includes */
+#include <stddef.h>
+#include "stm32f30x.h"
+#include "stm32f30x_conf.h"
+#include <stdio.h>
+/* Private typedef */
+
+/* Private define  */
+
+/* Private macro */
+
+/* Private variables */
+
+/* Private function prototypes */
+
+/* Private functions */
+
+/* Global variables */
+uint32_t timerFlag=0;
+
+
+/**
+**===========================================================================
+**
+**  Abstract: main program
+**
+**===========================================================================
+*/
+int main(void)
+{
+  uint32_t ii;
+
+  /* TODO - Add your application code here */
+  /* Example use SysTick timer and read System core clock */
+  SysTick_Config(72000);  /* 1 ms if clock frequency 72 MHz */
+
+  SystemCoreClockUpdate();
+  ii = SystemCoreClock;   /* This is a way to read the System core clock */
+  
+  /* Example update ii when timerFlag has been set by SysTick interrupt */
+  ii = 0;
+  while (1)
+  {
+    if (1==timerFlag)
+    {
+      timerFlag = 0;
+      ii++;
+    }
+
+  }
+  /*
+   * void STM_EVAL_PBInit(Button_TypeDef Button, ButtonMode_TypeDef Button_Mode);
+uint32_t STM_EVAL_PBGetState(Button_TypeDef Button);
+   */
+  /* Program will never run to this line */
+  return 0;
+}
+
+#ifdef  USE_FULL_ASSERT
+
+/**
+  * @brief  Reports the name of the source file and the source line number
+  *   where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t* file, uint32_t line)
+{
+  /* User can add his own implementation to report the file name and line number,
+     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+
+  /* Infinite loop */
+  while (1)
+  {
+  }
+}
+#endif
+
+/*
+ * Minimal __assert_func used by the assert() macro
+ * */
+void __assert_func(const char *file, int line, const char *func, const char *failedexpr)
+{
+  while(1)
+  {}
+}
+
+/*
+ * Minimal __assert() uses __assert__func()
+ * */
+void __assert(const char *file, int line, const char *failedexpr)
+{
+   __assert_func (file, line, NULL, failedexpr);
+}
+
+#ifdef USE_SEE
+#ifndef USE_DEFAULT_TIMEOUT_CALLBACK
+/**
+  * @brief  Basic management of the timeout situation.
+  * @param  None.
+  * @retval sEE_FAIL.
+  */
+uint32_t sEE_TIMEOUT_UserCallback(void)
+{
+  /* Return with error code */
+  return sEE_FAIL;
+}
+#endif
+#endif /* USE_SEE */
+
+
+/**
+  * @brief  Basic management of the timeout situation.
+  * @param  None.
+  * @retval sEE_FAIL.
+  */
+void EVAL_AUDIO_TransferComplete_CallBack(uint32_t pBuffer, uint32_t Size)
+
+{
+  /* TODO, implement your code here */
+  return;
+}
