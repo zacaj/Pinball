@@ -154,20 +154,18 @@ IOPin pins[8]={
 uint32_t msTicks = 0,msElapsed=0;                                       /* Variable to store millisecond ticks */
 
 uint32_t ii;
-//1,8,2,7,3,4,6,15,16,17
-//return 1 to disable timer, 0 to repeat
 
-uint32_t disableLight()
+//return 1 to disable timer, 0 to repeat
+uint32_t disableLight(void *d)
 {
-	GPIO_WriteBit(pins[ii].GPIOx,pins[ii].pin,0);
-	STM_EVAL_LEDToggle(LED3+ii);
+	GPIO_WriteBit(pins[(int)d].GPIOx,pins[(int)d].pin,0);
+	STM_EVAL_LEDOff(LED3+(int)d);
 	return 1;
 }
 
 int main(void)
 {
 
-  /* TODO - Add your application code here */
   STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
   /* Example use SysTick timer and read System core clock */
   SysTick_Config(72000);  /* 1 ms if clock frequency 72 MHz */
@@ -178,25 +176,16 @@ int main(void)
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF, ENABLE);
  // initIO(GPIOA,makeOutInit(GPIO_Pin_0,GPIO_OType_PP,GPIO_Speed_Level_3));
-  //initIO(GPIOF,makeOutInit(GPIO_Pin_0,GPIO_OType_PP,GPIO_Speed_Level_3));
-  //initIO(GPIOD,makeOutInit(GPIO_Pin_0,GPIO_OType_PP,GPIO_Speed_Level_3));
-  //initIO(GPIOE,makeOutInit(GPIO_Pin_7,GPIO_OType_PP,GPIO_Speed_Level_3));
   int i;
   for(i=0;i<8;i++)
 	  initIO(pins[i].GPIOx,makeOutInit(pins[i].pin,GPIO_OType_PP,GPIO_Speed_Level_3));
   //initIO(GPIOA,makeInInit(GPIO_Pin_1,GPIO_PuPd_DOWN));
   initTimers();
-  timerFuncs[5]=disableLight;
-
-
-  setTimer(5,90);
 
   SystemCoreClockUpdate();
   for(i=0;i<8;i++)
 	  STM_EVAL_LEDInit(LED3+i);
-  //ii = SystemCoreClock;   /* This is a way to read the System core clock */
-  /* Example update ii when timerFlag has been set by SysTick interrupt */
-  ii = 0;
+  ii = 7;
   int on=0;
   while (1)
   {
@@ -208,38 +197,9 @@ int main(void)
     		ii=0;
     	STM_EVAL_LEDOn(LED3+ii);
 		GPIO_WriteBit(pins[ii].GPIOx,pins[ii].pin,1);
-		startTimer(5);
+		callFuncIn(disableLight,1000,ii);
     }
-   /* if(GPIO_ReadInputDataBit(pins[i].GPIOx,pins[i].pin))
-    	STM_EVAL_LEDOn(LED4);
-    else
-    	STM_EVAL_LEDOff(LED4);*/
-   /* if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
-    {
-    	buttonState=STM_EVAL_PBGetState(BUTTON_USER);
-    	if(buttonState)
-    	{
-			i++;
-			/*if(i==18)
-				i=0;
-			//STM_EVAL_LEDToggle(LED3);
-			printf("%i\n",i);
-			initIO(pins[i].GPIOx,makeOutInit(pins[i].pin,GPIO_OType_PP,GPIO_Speed_Level_3));
-			//GPIO_WriteBit(GPIOF,GPIO_Pin_0,buttonState);
-			//GPIO_WriteBit(GPIOF,GPIO_Pin_1,buttonState);*/
-			/*STM_EVAL_LEDToggle(LED3);
-			GPIO_WriteBit(GPIOE,GPIO_Pin_7,1);
-			GPIO_WriteBit(GPIOD,GPIO_Pin_0,1);
-			TIM_SetCounter(TIM7,0);
-			TIM_Cmd(TIM7, ENABLE);
-		    TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
-    	}
-    }*/
   }
-  /*
-   * void STM_EVAL_PBInit(Button_TypeDef Button, ButtonMode_TypeDef Button_Mode);
-uint32_t STM_EVAL_PBGetState(Button_TypeDef Button);
-   */
   /* Program will never run to this line */
   return 0;
 }

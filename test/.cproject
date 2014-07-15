@@ -49,6 +49,10 @@
 								<option id="com.atollic.truestudio.common_options.target.endianess.1399943152" name="Endianess" superClass="com.atollic.truestudio.common_options.target.endianess"/>
 								<option id="com.atollic.truestudio.gcc.optimization.prep_garbage.1590665572" name="Prepare dead code removal " superClass="com.atollic.truestudio.gcc.optimization.prep_garbage" value="true" valueType="boolean"/>
 								<option id="com.atollic.truestudio.gcc.optimization.prep_data.1438809195" name="Prepare dead data removal" superClass="com.atollic.truestudio.gcc.optimization.prep_data" value="true" valueType="boolean"/>
+								<option id="com.atollic.truestudio.gcc.cstandard.1875492290" superClass="com.atollic.truestudio.gcc.cstandard" value="com.atollic.truestudio.gcc.cstandard.gnu1x" valueType="enumerated"/>
+								<option id="com.atollic.truestudio.gcc.warnings.extra.1229581261" superClass="com.atollic.truestudio.gcc.warnings.extra" value="true" valueType="boolean"/>
+								<option id="com.atollic.truestudio.gcc.warnings.missing_include_dirs.27754600" superClass="com.atollic.truestudio.gcc.warnings.missing_include_dirs" value="true" valueType="boolean"/>
+								<option id="com.atollic.truestudio.gcc.warnings.w_switch_enum.1564074489" superClass="com.atollic.truestudio.gcc.warnings.w_switch_enum" value="true" valueType="boolean"/>
 								<inputType id="com.atollic.truestudio.gcc.input.1760619309" superClass="com.atollic.truestudio.gcc.input"/>
 							</tool>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.ld.3887161" name="C Linker" superClass="com.atollic.truestudio.exe.debug.toolchain.ld">
@@ -102,9 +106,6 @@
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.secoutput.2103921452" name="Other" superClass="com.atollic.truestudio.exe.debug.toolchain.secoutput"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="com.atollic.truestudio.exe.debug.1820161994.1252803550" name="main - LED inp q.c" rcbsApplicability="disable" resourcePath="src/main - LED inp q.c" toolsToInvoke="com.atollic.truestudio.exe.debug.toolchain.gcc.27971991.1374366965">
-						<tool id="com.atollic.truestudio.exe.debug.toolchain.gcc.27971991.1374366965" name="C Compiler" superClass="com.atollic.truestudio.exe.debug.toolchain.gcc.27971991"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Libraries"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Utilities"/>

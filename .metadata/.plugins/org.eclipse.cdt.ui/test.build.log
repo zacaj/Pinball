@@ -1,18 +1,27 @@
-20:14:35 **** Incremental Build of configuration Debug for project test ****
+16:53:13 **** Incremental Build of configuration Debug for project test ****
 Info: Internal Builder is used for build
-arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu90 -DUSE_STM32F3_DISCOVERY -DHSE_VALUE=8000000 -DSTM32F30X -DUSE_STDPERIPH_DRIVER -I../src -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\Libraries\STM32F30x_StdPeriph_Driver\inc -I../Utilities/STM32F3_Discovery -O0 -ffunction-sections -fdata-sections -g -Wall -o src\timer.o ..\src\timer.c 
-arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu90 -DUSE_STM32F3_DISCOVERY -DHSE_VALUE=8000000 -DSTM32F30X -DUSE_STDPERIPH_DRIVER -I../src -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\Libraries\STM32F30x_StdPeriph_Driver\inc -I../Utilities/STM32F3_Discovery -O0 -ffunction-sections -fdata-sections -g -Wall -o src\main.o ..\src\main.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu1x -DUSE_STM32F3_DISCOVERY -DHSE_VALUE=8000000 -DSTM32F30X -DUSE_STDPERIPH_DRIVER -I../src -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\Libraries\STM32F30x_StdPeriph_Driver\inc -I../Utilities/STM32F3_Discovery -O0 -ffunction-sections -fdata-sections -g -Wall -Wextra -Wmissing-include-dirs -Wswitch-enum -o src\main.o ..\src\main.c 
 ..\src\main.c: In function 'main':
-..\src\main.c:223:4: warning: "/*" within comment [-Wcomment]
-..\src\main.c:200:7: warning: unused variable 'on' [-Wunused-variable]
+..\src\main.c:200:3: warning: passing argument 3 of 'callFuncIn' makes pointer from integer without a cast [enabled by default]
+In file included from ..\src\main.c:31:0:
+..\src\timer.h:14:9: note: expected 'void *' but argument is of type 'uint32_t'
+..\src\main.c:189:7: warning: unused variable 'on' [-Wunused-variable]
+..\src\main.c: In function '__assert_func':
+..\src\main.c:267:32: warning: unused parameter 'file' [-Wunused-parameter]
+..\src\main.c:267:42: warning: unused parameter 'line' [-Wunused-parameter]
+..\src\main.c:267:60: warning: unused parameter 'func' [-Wunused-parameter]
+..\src\main.c:267:78: warning: unused parameter 'failedexpr' [-Wunused-parameter]
+..\src\main.c: In function 'EVAL_AUDIO_TransferComplete_CallBack':
+..\src\main.c:302:52: warning: unused parameter 'pBuffer' [-Wunused-parameter]
+..\src\main.c:302:70: warning: unused parameter 'Size' [-Wunused-parameter]
 arm-atollic-eabi-gcc src\tiny_printf.o src\timer.o src\system_stm32f30x.o src\stm32f30x_it.o src\startup_stm32f30x.o src\main.o Utilities\STM32F3_Discovery\stm32f3_discovery_lsm303dlhc.o Utilities\STM32F3_Discovery\stm32f3_discovery_l3gd20.o Utilities\STM32F3_Discovery\stm32f3_discovery.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_wwdg.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_usart.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_tim.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_syscfg.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_spi.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rtc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rcc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_pwr.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_opamp.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_misc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_iwdg.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_i2c.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_gpio.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_flash.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_exti.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_dma.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_dbgmcu.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_dac.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_crc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_comp.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_can.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_adc.o -o test.elf -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T..\stm32f30_flash.ld -Wl,--start-group -lc_s -lm -Wl,--end-group -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=test.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x1000 
 D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\jre\bin\java -jar D:\programs\TrueSTUDIO for ARM Lite 5.0.0\Tools\arm-atollic-reports.jar sizeinfo test.elf 
 Generate build reports...
 Print size information
    text	   data	    bss	    dec	    hex	filename
-   8172	    172	    600	   8944	   22f0	test.elf
+   7712	    172	    692	   8576	   2180	test.elf
 Print size information done
 Generate build reports done
 
-20:14:36 Build Finished (took 757ms)
+16:53:13 Build Finished (took 491ms)
 

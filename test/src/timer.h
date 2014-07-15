@@ -11,4 +11,5 @@ void stopTimer(uint32_t n);
 
 void initTimers();
 
+uint8_t callFuncIn(uint32_t (*func)(), uint32_t ms,void *data);
 #endif
