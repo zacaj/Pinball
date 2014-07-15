@@ -28,6 +28,7 @@
 #include "stm32f30x_conf.h"
 #include "stm32f3_discovery.h"
 #include <stdio.h>
+#include "timer.h"
 /* Private typedef */
 
 /* Private define  */
@@ -153,15 +154,14 @@ IOPin pins[8]={
 uint32_t msTicks = 0,msElapsed=0;                                       /* Variable to store millisecond ticks */
 
 uint32_t ii;
-void TIM7_IRQHandler(void)
+//1,8,2,7,3,4,6,15,16,17
+//return 1 to disable timer, 0 to repeat
+
+uint32_t disableLight()
 {
-	if (TIM_GetITStatus(TIM7, TIM_IT_Update) != RESET)
-	{
-		GPIO_WriteBit(pins[ii].GPIOx,pins[ii].pin,0);
-		TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
-		STM_EVAL_LEDToggle(LED3);
-		TIM_Cmd(TIM7, DISABLE);
-	}
+	GPIO_WriteBit(pins[ii].GPIOx,pins[ii].pin,0);
+	STM_EVAL_LEDToggle(LED3+ii);
+	return 1;
 }
 
 int main(void)
@@ -171,7 +171,7 @@ int main(void)
   STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
   /* Example use SysTick timer and read System core clock */
   SysTick_Config(72000);  /* 1 ms if clock frequency 72 MHz */
-  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIODA, ENABLE);
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
@@ -185,43 +185,22 @@ int main(void)
   for(i=0;i<8;i++)
 	  initIO(pins[i].GPIOx,makeOutInit(pins[i].pin,GPIO_OType_PP,GPIO_Speed_Level_3));
   //initIO(GPIOA,makeInInit(GPIO_Pin_1,GPIO_PuPd_DOWN));
+  initTimers();
+  timerFuncs[5]=disableLight;
 
-  {
-	  	NVIC_InitTypeDef NVIC_InitStructure;
-		/* Enable the TIM2 gloabal Interrupt */
-		NVIC_InitStructure.NVIC_IRQChannel = TIM7_IRQn;
-		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-		NVIC_Init(&NVIC_InitStructure);
 
-		/* TIM2 clock enable */
-		TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
-		/* Time base configuration */
-		TIM_TimeBaseStructure.TIM_Period = 2*(80*(1)) - 1;  // 1 MHz down to 1 KHz (1 ms)
-		TIM_TimeBaseStructure.TIM_Prescaler = 36000 - 1; // 24 MHz Clock down to 1 MHz (adjust per your clock)
-		TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-		TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-		TIM_TimeBaseInit(TIM7, &TIM_TimeBaseStructure);
-		/* TIM IT enable */
-		TIM_ITConfig(TIM7, TIM_IT_Update, ENABLE);
-		//1,8,2,7,3,4,6,15,16,17
-		/* TIM2 enable counter */
-  }
-
+  setTimer(5,90);
 
   SystemCoreClockUpdate();
   for(i=0;i<8;i++)
 	  STM_EVAL_LEDInit(LED3+i);
-  ii = SystemCoreClock;   /* This is a way to read the System core clock */
+  //ii = SystemCoreClock;   /* This is a way to read the System core clock */
   /* Example update ii when timerFlag has been set by SysTick interrupt */
   ii = 0;
-  int i=6;
   int on=0;
   while (1)
   {
-    if (msTicks>300)
+    if (msTicks>500)
     {
     	msTicks=0;
     	ii++;
@@ -229,15 +208,13 @@ int main(void)
     		ii=0;
     	STM_EVAL_LEDOn(LED3+ii);
 		GPIO_WriteBit(pins[ii].GPIOx,pins[ii].pin,1);
-		TIM_SetCounter(TIM7,0);
-		TIM_Cmd(TIM7, ENABLE);
-		TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
+		startTimer(5);
     }
    /* if(GPIO_ReadInputDataBit(pins[i].GPIOx,pins[i].pin))
     	STM_EVAL_LEDOn(LED4);
     else
     	STM_EVAL_LEDOff(LED4);*/
-    if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
+   /* if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
     {
     	buttonState=STM_EVAL_PBGetState(BUTTON_USER);
     	if(buttonState)
@@ -250,14 +227,14 @@ int main(void)
 			initIO(pins[i].GPIOx,makeOutInit(pins[i].pin,GPIO_OType_PP,GPIO_Speed_Level_3));
 			//GPIO_WriteBit(GPIOF,GPIO_Pin_0,buttonState);
 			//GPIO_WriteBit(GPIOF,GPIO_Pin_1,buttonState);*/
-			STM_EVAL_LEDToggle(LED3);
+			/*STM_EVAL_LEDToggle(LED3);
 			GPIO_WriteBit(GPIOE,GPIO_Pin_7,1);
 			GPIO_WriteBit(GPIOD,GPIO_Pin_0,1);
 			TIM_SetCounter(TIM7,0);
 			TIM_Cmd(TIM7, ENABLE);
 		    TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
     	}
-    }
+    }*/
   }
   /*
    * void STM_EVAL_PBInit(Button_TypeDef Button, ButtonMode_TypeDef Button_Mode);

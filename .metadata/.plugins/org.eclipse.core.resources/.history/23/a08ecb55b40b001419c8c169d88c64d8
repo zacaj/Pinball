@@ -1,0 +1,21 @@
+#ifndef TIMER_H
+#define TIMER_H
+
+#endif
+
+void startTimer(uint32_t n);
+void setTimer(uint32_t n,uint32_t ms)
+{
+	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+	/* Time base configuration */
+	TIM_TimeBaseStructure.TIM_Period = 2*(ms*(1)) - 1;  // 1 MHz down to 1 KHz (1 ms)
+	TIM_TimeBaseStructure.TIM_Prescaler = 36000 - 1; // 24 MHz Clock down to 1 MHz (adjust per your clock)
+	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInit(timerIds[n], &TIM_TimeBaseStructure);
+}
+
+void stopTimer(uint32_t n)
+{
+	TIM_Cmd(timerIds[n], DISABLE);
+}

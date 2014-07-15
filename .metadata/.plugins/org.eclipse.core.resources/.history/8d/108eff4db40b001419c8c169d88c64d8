@@ -1,0 +1,6 @@
+#ifndef TIMER_H
+#define TIMER_H
+
+#endif
+
+void startTimer(uint32_t n);

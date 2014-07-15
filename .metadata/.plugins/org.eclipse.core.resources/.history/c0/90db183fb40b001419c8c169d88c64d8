@@ -1,0 +1,11 @@
+#ifndef TIMER_H
+#define TIMER_H
+
+#endif
+
+void startTimer(uint32_t n)
+{
+	TIM_SetCounter(timerIds[n], 0);
+	TIM_Cmd(timerIds[n], ENABLE);
+	TIM_ClearITPendingBit(timerIds[n], TIM_IT_Update);
+}

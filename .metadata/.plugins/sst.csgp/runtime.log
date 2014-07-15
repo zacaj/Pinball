@@ -58,3 +58,13 @@ GUI is waiting for subprocess to be done...
 Execution done. EXIT CODE = 0
   Logging finished.  ## CURRENT TIME  : [7/12, 2014   9:59  16.962]
 ------------------------------------
+
+------------------------------------
+  Logging start.  ## CURRENT TIME  : [7/13, 2014   17:1  52.578]  ## COMMAND LINE  : 
+cmd /C "gen_csini.exe"
+------------------------------------
+[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
+GUI is waiting for subprocess to be done...
+Execution done. EXIT CODE = 0
+  Logging finished.  ## CURRENT TIME  : [7/13, 2014   17:1  54.534]
+------------------------------------

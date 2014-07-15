@@ -29,6 +29,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f30x_it.h"
+#include "stm32f3_discovery.h"
 /* Updated by Atollic - See SysTick_Handler() */
 /* #include "main.h" */
 extern uint32_t timerFlag;
@@ -55,6 +56,8 @@ extern uint32_t timerFlag;
   */
 void NMI_Handler(void)
 {
+	printf("nmi");
+	STM_EVAL_LEDOn(LED4);
 }
 
 /**
@@ -64,6 +67,7 @@ void NMI_Handler(void)
   */
 void HardFault_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
   /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
   {
@@ -77,6 +81,7 @@ void HardFault_Handler(void)
   */
 void MemManage_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
   /* Go to infinite loop when Memory Manage exception occurs */
   while (1)
   {
@@ -90,6 +95,7 @@ void MemManage_Handler(void)
   */
 void BusFault_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
   /* Go to infinite loop when Bus Fault exception occurs */
   while (1)
   {
@@ -103,6 +109,7 @@ void BusFault_Handler(void)
   */
 void UsageFault_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
   /* Go to infinite loop when Usage Fault exception occurs */
   while (1)
   {
@@ -116,6 +123,8 @@ void UsageFault_Handler(void)
   */
 void SVC_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
+	printf("SVC");
 }
 
 /**
@@ -125,6 +134,8 @@ void SVC_Handler(void)
   */
 void DebugMon_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
+	printf("debugmon");
 }
 
 /**
@@ -134,6 +145,8 @@ void DebugMon_Handler(void)
   */
 void PendSV_Handler(void)
 {
+	STM_EVAL_LEDOn(LED4);
+	printf("pendsv");
 }
 
 /**

@@ -1,0 +1,11 @@
+#ifndef TIMER_H
+#define TIMER_H
+
+#endif
+
+void startTimer(uint32_t n);
+void setTimer(uint32_t n, uint32_t ms);
+
+void stopTimer(uint32_t n);
+
+void initTimers();
