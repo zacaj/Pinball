@@ -108,33 +108,32 @@ uint32_t disableLight(void *d)
 int main(void)
 {
 
-  STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
-  /* Example use SysTick timer and read System core clock */
-  SysTick_Config(72000);  /* 1 ms if clock frequency 72 MHz */
-  initTimers();
-  initIOs();
-  int i;
-  for(i=0;i<8;i++)
-	  initOutput(pins[i]);
+	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
+	/* Example use SysTick timer and read System core clock */
+	SysTick_Config(72000);  /* 1 ms if clock frequency 72 MHz */
+	initTimers();
+	initIOs();
+	int i;
+	for(i=0;i<8;i++)
+		initOutput(pins[i]);
 
-  SystemCoreClockUpdate();
-  for(i=0;i<8;i++)
-	  STM_EVAL_LEDInit(LED3+i);
-  ii = 7;
-  int on=0;
-  while (1)
-  {
-    if (msTicks>500)
-    {
-    	msTicks=0;
-    	ii++;
-    	if(ii>=8)
-    		ii=0;
-    	STM_EVAL_LEDOn(LED3+ii);
-		setOut(pins[ii],1);
-		callFuncIn(disableLight,1000,ii);
-    }
-  }
-  /* Program will never run to this line */
-  return 0;
+	SystemCoreClockUpdate();
+	for(i=0;i<8;i++)
+		STM_EVAL_LEDInit(LED3+i);
+	ii = 0;
+	while (1)
+	{
+		if (msTicks>500)
+		{
+			msTicks=0;
+			ii++;
+			if(ii>=8)
+				ii=0;
+			STM_EVAL_LEDOn(LED3+ii);
+			setOut(pins[ii],1);
+			callFuncIn(disableLight,1000,ii);
+		}
+		updateIOs();
+	}
+	return 0;
 }

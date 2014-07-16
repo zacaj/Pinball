@@ -1,0 +1,105 @@
+/*
+ * io.c
+ *
+ *  Created on: Jul 16, 2014
+ *      Author: zacaj
+ */
+
+
+#include <stddef.h>
+#include "stm32f30x.h"
+#include "stm32f30x_gpio.h"
+#include "stm32f30x_conf.h"
+#include "stm32f3_discovery.h"
+#include <stdio.h>
+#include "io.h"
+
+uint8_t mInputState[4];
+uint8_t mLEDState[6];
+uint8_t LED_Dirty=0;
+
+void initInput(IOPin pin, GPIOPuPd_TypeDef def)
+{
+	if((int)pin.bank<11)
+		return;
+	GPIO_InitTypeDef init;
+	init.GPIO_Mode = GPIO_Mode_IN;
+	init.GPIO_OType = GPIO_OType_PP;
+	init.GPIO_Pin = pin.pin;
+	init.GPIO_PuPd = def;
+
+	GPIO_Init(pin.bank, &init);
+}
+
+void initOutput(IOPin pin)
+{
+	if((int)pin.bank<11)
+		return;
+	GPIO_InitTypeDef init;
+	init.GPIO_Mode = GPIO_Mode_OUT;
+	init.GPIO_OType = GPIO_OType_PP;
+	init.GPIO_Pin = pin.pin;
+	init.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	init.GPIO_Speed = GPIO_Speed_Level_3;
+	GPIO_Init(pin.bank, &init);
+}
+
+void setOut(IOPin pin, uint32_t value)
+{
+	if((int)pin.bank<11)
+	{
+		if((int)pin.bank>=5 && (int)pin.bank<=10)
+		{
+			if(value)
+				mLEDState[(int)pin.bank-5]|=1<<pin.pin;
+			else
+				mLEDState[(int)pin.bank-5]&= ~(1 << pin.pin);
+		}
+	}
+
+	GPIO_WriteBit(pin.bank, pin.pin, value);
+}
+
+uint8_t getIn(IOPin pin)
+{
+	if((int)pin.bank<11)
+	{
+		if((int)pin.bank>=1 && (int)pin.bank<=4)
+			return (mInputState[i-1]&(1<<pin.pin))?1:0;
+		return 0;
+	}
+	return GPIO_ReadInputDataBit(pin.bank, pin.pin);
+}
+
+void initIOs()
+{
+	for(int i=0;i<4;i++)
+		//for(int j=0;j<16;j++)
+			mInputState[i]=0;
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOD, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF, ENABLE);
+}
+
+void updateIOs()
+{
+	return 0;
+	for(int i=0;i<4;i++)
+	{
+		uint8_t in=0;
+		setOut(MULTI_IN_LATCH[i],0);
+		int i;
+		for(i=0;i<8;i++)
+		{
+			setOut(MULTI_IN_CLOCK[i],0);
+			in<<=1;
+			in|=getIn(MULTI_IN_DATA[i]);
+			setOut(MULTI_IN_CLOCK[i],1);
+		}
+		setOut(MULTI_IN_LATCH[i],1);
+		mInputState[i]=in;
+	}
+}
