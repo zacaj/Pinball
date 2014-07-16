@@ -2173,3 +2173,18 @@ java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCannot inse
 !ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-07-15 16:43:32.968
 !MESSAGE Error in initializing ST-Link device.
 Reason: (-1) Failed to connect to device. Please check power and cabling to target.
+
+!ENTRY org.eclipse.cdt.ui 4 0 2014-07-15 17:14:41.350
+!MESSAGE Cannot work without definition
+
+!ENTRY org.eclipse.cdt.ui 4 0 2014-07-15 17:16:35.575
+!MESSAGE One-definition-rule broken
+
+!ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 10:57:38.590
+!MESSAGE Cannot work without definition
+
+!ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 11:10:04.621
+!MESSAGE Multiple declarations would result in ambiguous results
+
+!ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 11:10:06.478
+!MESSAGE Multiple declarations would result in ambiguous results

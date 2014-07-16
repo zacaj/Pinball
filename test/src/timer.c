@@ -18,6 +18,7 @@ uint32_t (*timerFuncs[11])();
 uint8_t active[10];
 void *timerData[10];
 uint32_t setting[10];
+uint32_t msTicks = 0,msElapsed=0;
 
 TIM_TypeDef* timerIds[]={
 		  TIM1,
@@ -159,4 +160,18 @@ uint8_t callFuncIn(uint32_t (*func)(), uint32_t ms,void *data)
 		return 1;
 	}
 	return 0;
+}
+
+void callFuncIn_s(uint32_t (*func)(), uint32_t ms, void* data)
+{
+	if(!callFuncIn(func,ms,data))
+	{
+		wait(ms);
+		func(data);
+	}
+}
+void wait(uint32_t ms)
+{
+	uint32_t start=msElapsed;
+	while(msElapsed<start+ms);
 }
