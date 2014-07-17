@@ -2455,39 +2455,39 @@ LOAD d:/programs/atollic/truestudio for arm lite 5.0.0/armtools/bin/../lib/gcc/a
                 0x000006bb       0x24 d:/programs/atollic/truestudio for arm lite 5.0.0/armtools/bin/../lib/gcc/arm-atollic-eabi/4.7.3/armv7e-m/fpu/crtn.o
 OUTPUT(test.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x7ce2
+.debug_info     0x00000000     0x7ccf
  .debug_info    0x00000000      0xcc2 src\tiny_printf.o
  .debug_info    0x00000cc2      0x9f6 src\timer.o
  .debug_info    0x000016b8      0x4dd src\system_stm32f30x.o
  .debug_info    0x00001b95      0x2b0 src\stm32f30x_it.o
  .debug_info    0x00001e45       0x62 src\startup_stm32f30x.o
  .debug_info    0x00001ea7      0x386 src\sound.o
- .debug_info    0x0000222d      0x937 src\main.o
- .debug_info    0x00002b64      0x5a0 src\io.o
- .debug_info    0x00003104      0x88f Utilities\STM32F3_Discovery\stm32f3_discovery.o
- .debug_info    0x00003993     0x2404 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_tim.o
- .debug_info    0x00005d97      0x3fd Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_syscfg.o
- .debug_info    0x00006194      0xb85 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rcc.o
- .debug_info    0x00006d19      0x596 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_misc.o
- .debug_info    0x000072af      0x63f Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_gpio.o
- .debug_info    0x000078ee      0x3f4 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_exti.o
+ .debug_info    0x0000222d      0x924 src\main.o
+ .debug_info    0x00002b51      0x5a0 src\io.o
+ .debug_info    0x000030f1      0x88f Utilities\STM32F3_Discovery\stm32f3_discovery.o
+ .debug_info    0x00003980     0x2404 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_tim.o
+ .debug_info    0x00005d84      0x3fd Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_syscfg.o
+ .debug_info    0x00006181      0xb85 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rcc.o
+ .debug_info    0x00006d06      0x596 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_misc.o
+ .debug_info    0x0000729c      0x63f Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_gpio.o
+ .debug_info    0x000078db      0x3f4 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_exti.o
 
-.debug_abbrev   0x00000000     0x1639
+.debug_abbrev   0x00000000     0x1621
  .debug_abbrev  0x00000000      0x23b src\tiny_printf.o
  .debug_abbrev  0x0000023b      0x1e0 src\timer.o
  .debug_abbrev  0x0000041b      0x149 src\system_stm32f30x.o
  .debug_abbrev  0x00000564       0xf2 src\stm32f30x_it.o
  .debug_abbrev  0x00000656       0x12 src\startup_stm32f30x.o
  .debug_abbrev  0x00000668      0x183 src\sound.o
- .debug_abbrev  0x000007eb      0x1dc src\main.o
- .debug_abbrev  0x000009c7      0x1b3 src\io.o
- .debug_abbrev  0x00000b7a      0x187 Utilities\STM32F3_Discovery\stm32f3_discovery.o
- .debug_abbrev  0x00000d01      0x18b Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_tim.o
- .debug_abbrev  0x00000e8c      0x185 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_syscfg.o
- .debug_abbrev  0x00001011      0x1e7 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rcc.o
- .debug_abbrev  0x000011f8      0x12b Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_misc.o
- .debug_abbrev  0x00001323      0x198 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_gpio.o
- .debug_abbrev  0x000014bb      0x17e Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_exti.o
+ .debug_abbrev  0x000007eb      0x1c4 src\main.o
+ .debug_abbrev  0x000009af      0x1b3 src\io.o
+ .debug_abbrev  0x00000b62      0x187 Utilities\STM32F3_Discovery\stm32f3_discovery.o
+ .debug_abbrev  0x00000ce9      0x18b Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_tim.o
+ .debug_abbrev  0x00000e74      0x185 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_syscfg.o
+ .debug_abbrev  0x00000ff9      0x1e7 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rcc.o
+ .debug_abbrev  0x000011e0      0x12b Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_misc.o
+ .debug_abbrev  0x0000130b      0x198 Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_gpio.o
+ .debug_abbrev  0x000014a3      0x17e Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_exti.o
 
 .debug_loc      0x00000000     0x37cc
  .debug_loc     0x00000000      0x220 src\tiny_printf.o
@@ -2583,7 +2583,7 @@ OUTPUT(test.elf elf32-littlearm)
  .debug_str     0x00000f7d       0xcd src\sound.o
                                 0x22d (size before relaxing)
  .debug_str     0x0000104a       0xed src\main.o
-                                0x7a2 (size before relaxing)
+                                0x798 (size before relaxing)
  .debug_str     0x00001137      0x1ce src\io.o
                                 0x3cf (size before relaxing)
  .debug_str     0x00001305      0x24e Utilities\STM32F3_Discovery\stm32f3_discovery.o

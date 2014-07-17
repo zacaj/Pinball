@@ -31,7 +31,7 @@
 #include <math.h>
 #include "timer.h"
 #include "io.h"
-#include "audio.h"
+#include "sound.h"
 /* Private typedef */
 
 /* Private define  */
