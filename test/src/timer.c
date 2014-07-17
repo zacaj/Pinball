@@ -21,8 +21,8 @@ uint32_t setting[10];
 uint32_t msTicks = 0,msElapsed=0;
 
 TIM_TypeDef* timerIds[]={
-		  TIM1,
 		  TIM2,
+		  TIM1,
 		  TIM3,
 		  TIM4,
 		  TIM6,
@@ -157,7 +157,7 @@ void initTimers()
 
 uint8_t callFuncIn(uint32_t (*func)(), uint32_t ms,void *data)
 {
-	int i = 5;
+	int i = 1;
 	for (; i < 10; i++)
 		if (!active[i])
 			break;
@@ -182,7 +182,7 @@ void callFuncIn_s(uint32_t (*func)(), uint32_t ms, void* data)
 }
 uint8_t callFuncInCustom(uint32_t (*func)(), uint32_t prescalar, uint32_t period,void *data)
 {
-	int i = 5;
+	int i = 1;
 	for (; i < 10; i++)
 		if (!active[i])
 			break;
