@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
-<instance id="com.atollic.truestudio.exe.debug.1820161994;com.atollic.truestudio.exe.debug.1820161994.;com.atollic.truestudio.exe.debug.toolchain.gcc.27971991;com.atollic.truestudio.gcc.input.1760619309">
+<instance id="com.atollic.truestudio.exe.debug.1518366166;com.atollic.truestudio.exe.debug.1518366166.;com.atollic.truestudio.exe.debug.toolchain.gcc.1836874447;com.atollic.truestudio.gcc.input.850396938">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="d:\programs\atollic\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/include"/>
-<includePath path="d:\programs\atollic\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/include-fixed"/>
-<includePath path="d:\programs\atollic\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/../../../../arm-atollic-eabi/include"/>
+<includePath path="d:\programs\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/include"/>
+<includePath path="d:\programs\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/include-fixed"/>
+<includePath path="d:\programs\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/../../../../arm-atollic-eabi/include"/>
 <definedSymbol symbol="__STDC__=1"/>
 <definedSymbol symbol="__STDC_HOSTED__=1"/>
 <definedSymbol symbol="__GNUC__=4"/>
@@ -308,48 +308,33 @@
 <definedSymbol symbol="__GNUC_GNU_INLINE__=1"/>
 <definedSymbol symbol="__NO_INLINE__=1"/>
 <definedSymbol symbol="__CHAR_UNSIGNED__=1"/>
-<definedSymbol symbol="__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1=1"/>
-<definedSymbol symbol="__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2=1"/>
-<definedSymbol symbol="__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4=1"/>
-<definedSymbol symbol="__GCC_ATOMIC_BOOL_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_CHAR_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_CHAR16_T_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_CHAR32_T_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_WCHAR_T_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_SHORT_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_INT_LOCK_FREE=2"/>
-<definedSymbol symbol="__GCC_ATOMIC_LONG_LOCK_FREE=2"/>
+<definedSymbol symbol="__GCC_ATOMIC_BOOL_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_CHAR_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_CHAR16_T_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_CHAR32_T_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_WCHAR_T_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_SHORT_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_INT_LOCK_FREE=1"/>
+<definedSymbol symbol="__GCC_ATOMIC_LONG_LOCK_FREE=1"/>
 <definedSymbol symbol="__GCC_ATOMIC_LLONG_LOCK_FREE=1"/>
 <definedSymbol symbol="__GCC_ATOMIC_TEST_AND_SET_TRUEVAL=1"/>
-<definedSymbol symbol="__GCC_ATOMIC_POINTER_LOCK_FREE=2"/>
+<definedSymbol symbol="__GCC_ATOMIC_POINTER_LOCK_FREE=1"/>
 <definedSymbol symbol="__PRAGMA_REDEFINE_EXTNAME=1"/>
 <definedSymbol symbol="__SIZEOF_WCHAR_T__=4"/>
 <definedSymbol symbol="__SIZEOF_WINT_T__=4"/>
 <definedSymbol symbol="__SIZEOF_PTRDIFF_T__=4"/>
-<definedSymbol symbol="__ARM_FEATURE_DSP=1"/>
-<definedSymbol symbol="__ARM_FEATURE_UNALIGNED=1"/>
 <definedSymbol symbol="__arm__=1"/>
 <definedSymbol symbol="__APCS_32__=1"/>
-<definedSymbol symbol="__thumb__=1"/>
-<definedSymbol symbol="__thumb2__=1"/>
 <definedSymbol symbol="__ARMEL__=1"/>
-<definedSymbol symbol="__THUMBEL__=1"/>
+<definedSymbol symbol="__SOFTFP__=1"/>
 <definedSymbol symbol="__VFP_FP__=1"/>
 <definedSymbol symbol="__THUMB_INTERWORK__=1"/>
-<definedSymbol symbol="__ARM_ARCH_7EM__=1"/>
-<definedSymbol symbol="__ARM_PCS_VFP=1"/>
+<definedSymbol symbol="__ARM_ARCH_4T__=1"/>
+<definedSymbol symbol="__ARM_PCS=1"/>
 <definedSymbol symbol="__ARM_EABI__=1"/>
-<definedSymbol symbol="__ARM_ARCH_EXT_IDIV__=1"/>
 <definedSymbol symbol="__GXX_TYPEINFO_EQUALITY_INLINE=0"/>
 <definedSymbol symbol="__ELF__=1"/>
 <definedSymbol symbol="__USES_INITFINI__=1"/>
-</collector>
-</instance>
-<instance id="com.atollic.truestudio.configuration.release.518222463;com.atollic.truestudio.configuration.release.518222463.;com.atollic.truestudio.exe.release.toolchain.gcc.801846386;com.atollic.truestudio.gcc.input.1410837634">
-<collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-<includePath path="d:\programs\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/include"/>
-<includePath path="d:\programs\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/include-fixed"/>
-<includePath path="d:\programs\truestudio for arm lite 5.0.0\armtools\bin\../lib/gcc/arm-atollic-eabi/4.7.3/../../../../arm-atollic-eabi/include"/>
 </collector>
 </instance>
 </scannerInfo>

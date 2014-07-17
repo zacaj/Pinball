@@ -1,17 +1,20 @@
-11:59:04 **** Incremental Build of configuration Debug for project test ****
+18:37:13 **** Incremental Build of configuration Debug for project test ****
 Info: Internal Builder is used for build
-arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu1x -DUSE_STM32F3_DISCOVERY -DHSE_VALUE=8000000 -DSTM32F30X -DUSE_STDPERIPH_DRIVER -I../src -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\Libraries\STM32F30x_StdPeriph_Driver\inc -I../Utilities/STM32F3_Discovery -O0 -ffunction-sections -fdata-sections -g -Wall -Wextra -Wmissing-include-dirs -Wswitch-enum -o src\io.o ..\src\io.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu1x -DUSE_STM32F3_DISCOVERY -DHSE_VALUE=8000000 -DSTM32F30X -DUSE_STDPERIPH_DRIVER -I../src -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\Libraries\STM32F30x_StdPeriph_Driver\inc -I../Utilities/STM32F3_Discovery -O0 -ffunction-sections -fdata-sections -g -Wall -Wextra -Wmissing-include-dirs -Wswitch-enum -o src\main.o ..\src\main.c 
+..\src\main.c: In function 'audio':
+..\src\main.c:111:22: warning: unused parameter 'data' [-Wunused-parameter]
+..\src\main.c: In function 'main':
+..\src\main.c:158:4: warning: passing argument 3 of 'callFuncIn' makes pointer from integer without a cast [enabled by default]
+In file included from ..\src\main.c:31:0:
+..\src\timer.h:15:9: note: expected 'void *' but argument is of type 'uint32_t'
 arm-atollic-eabi-gcc src\tiny_printf.o src\timer.o src\system_stm32f30x.o src\stm32f30x_it.o src\startup_stm32f30x.o src\main.o src\io.o Utilities\STM32F3_Discovery\stm32f3_discovery_lsm303dlhc.o Utilities\STM32F3_Discovery\stm32f3_discovery_l3gd20.o Utilities\STM32F3_Discovery\stm32f3_discovery.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_wwdg.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_usart.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_tim.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_syscfg.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_spi.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rtc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_rcc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_pwr.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_opamp.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_misc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_iwdg.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_i2c.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_gpio.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_flash.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_exti.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_dma.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_dbgmcu.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_dac.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_crc.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_comp.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_can.o Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_adc.o -o test.elf -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T..\stm32f30_flash.ld -Wl,--start-group -lc_s -lm -Wl,--end-group -static -Wl,-cref,-u,Reset_Handler -Wl,-Map=test.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x1000 
-src\io.o:(.rodata.MULTI_IN_LATCH+0x0): multiple definition of `MULTI_IN_LATCH'
-src\main.o:(.rodata.MULTI_IN_LATCH+0x0): first defined here
-src\io.o:(.rodata.MULTI_IN_CLOCK+0x0): multiple definition of `MULTI_IN_CLOCK'
-src\main.o:(.rodata.MULTI_IN_CLOCK+0x0): first defined here
-src\io.o:(.rodata.MULTI_IN_DATA+0x0): multiple definition of `MULTI_IN_DATA'
-src\main.o:(.rodata.MULTI_IN_DATA+0x0): first defined here
-src\io.o:(.rodata.LED_LATCH+0x0): multiple definition of `LED_LATCH'
-src\main.o:(.rodata.LED_LATCH+0x0): first defined here
-src\io.o:(.rodata.LED_DATA+0x0): multiple definition of `LED_DATA'
-src\main.o:(.rodata.LED_DATA+0x0): first defined here
-src\io.o:(.rodata.LED_CLOCK+0x0): multiple definition of `LED_CLOCK'
-src\main.o:(.rodata.LED_CLOCK+0x0): first defined here
-collect2.exe: error: ld returned 1 exit status
+D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\jre\bin\java -jar D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\Tools\arm-atollic-reports.jar sizeinfo test.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+   8224	    172	    704	   9100	   238c	test.elf
+Print size information done
+Generate build reports done
+Info: Nothing to build for test
+Info: Nothing to build for test
+Info: Nothing to build for test

@@ -2188,3 +2188,442 @@ Reason: (-1) Failed to connect to device. Please check power and cabling to targ
 
 !ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 11:10:06.478
 !MESSAGE Multiple declarations would result in ambiguous results
+
+!ENTRY TrueSTUDIO 4 0 2014-07-16 17:12:41.869
+!MESSAGE ST-Link GDB server failed to start (exit code = -6).
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-07-16 17:12:41.884
+!MESSAGE Error in initializing ST-Link device.
+Reason: (-6) ST-Link firmware upgrade required.
+Please upgrade the ST-Link firmware using the upgrade tool. Reconnect ST-LINK and click OK
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 17:13:24.472
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@1fcc3ab): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-continue
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 17:13:24.472
+!MESSAGE Failed to execute MI command:
+-exec-continue
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+!STACK 0
+java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.393
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.396
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.399
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.640
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.643
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.645
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY org.eclipse.cdt.core 1 0 2014-07-16 17:16:19.009
+!MESSAGE Indexed 'SysTick' (29 sources, 72 headers) in 1.68 sec: 6,744 declarations; 24,024 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 17:17:20.171
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@1117578): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 17:17:20.171
+!MESSAGE Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+!STACK 0
+java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 17:17:21.266
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@f5c76a): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 17:17:21.266
+!MESSAGE Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+!STACK 0
+java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
+!SESSION 2014-07-16 18:19:00.693 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\temp\stmf3\workspace
+
+!ENTRY TrueSTUDIO 4 0 2014-07-16 18:19:02.349
+!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
+
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:19:03.621
+!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:19:03.622
+!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:20:11.211
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:20:11.219
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:20:11.223
+!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.054
+!MESSAGE sst.gp.core earlyStartup()
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.057
+!MESSAGE Register ResourceChangeListener to current workspace
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.060
+!MESSAGE Register WorkspaceSelectionListener to current workspace
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.077
+!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.079
+!MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.082
+!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.085
+!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.087
+!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.102
+!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.112
+!MESSAGE iconv is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.116
+!MESSAGE est is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.119
+!MESSAGE libiconv-2 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.121
+!MESSAGE libintl-2 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.126
+!MESSAGE xerces-c_2_7 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.129
+!MESSAGE RIMXJNI is loaded.
+
+!ENTRY sst.csgp 1 0 2014-07-16 18:20:13.168
+!MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.tm 1 0 2014-07-16 18:20:13.174
+!MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
+
+!ENTRY sst.tm 1 0 2014-07-16 18:20:13.178
+!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
+
+!ENTRY sst.tm 1 0 2014-07-16 18:20:15.242
+!MESSAGE 
+
+
+---------------------------------------------------
+2014/07/16 18:20:15
+---------------------------------------------------
+
+
+!ENTRY org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for ALT+CTRL+I:
+Binding(ALT+CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
+		Open an include browser on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ce59c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
+		Open an include browser on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ce59c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for ALT+SHIFT+R:
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13692b2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13692b2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
+		Open an element in an Editor,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d8fd5b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
+		Open an element in an Editor,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d8fd5b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for F4:
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e19dce,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e19dce,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for CTRL+G:
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f7d62,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f7d62,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.text.goto.line,Go to Line,
+		Go to a specified line of text,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@40bf85,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,user)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for CTRL+SHIFT+G:
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ddd7c4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ddd7c4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for ALT+CTRL+H:
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
+		Open the call hierarchy for the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@80c1d3,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
+		Open the call hierarchy for the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@80c1d3,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
+!MESSAGE A conflict occurred for CTRL+SHIFT+H:
+Binding(CTRL+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@135341d,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@135341d,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 18:37:29.581
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@5cbc82): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-continue
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 18:37:29.581
+!MESSAGE Failed to execute MI command:
+-exec-continue
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+!STACK 0
+java.lang.Exception: Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
+!SESSION 2014-07-16 18:43:12.568 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\temp\stmf3\workspace
+
+!ENTRY TrueSTUDIO 4 0 2014-07-16 18:43:14.203
+!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
+
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:43:15.473
+!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:43:15.476
+!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.240
+!MESSAGE sst.gp.core earlyStartup()
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.247
+!MESSAGE Register ResourceChangeListener to current workspace
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.254
+!MESSAGE Register WorkspaceSelectionListener to current workspace
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.272
+!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.276
+!MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.279
+!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.282
+!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.285
+!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.289
+!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.292
+!MESSAGE iconv is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.295
+!MESSAGE est is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.298
+!MESSAGE libiconv-2 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.302
+!MESSAGE libintl-2 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.308
+!MESSAGE xerces-c_2_7 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.311
+!MESSAGE RIMXJNI is loaded.
+
+!ENTRY sst.csgp 1 0 2014-07-16 18:43:26.347
+!MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.tm 1 0 2014-07-16 18:43:26.351
+!MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
+
+!ENTRY sst.tm 1 0 2014-07-16 18:43:26.356
+!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
+
+!ENTRY sst.tm 1 0 2014-07-16 18:43:28.522
+!MESSAGE 
+
+
+---------------------------------------------------
+2014/07/16 18:43:28
+---------------------------------------------------
+
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:45:06.994
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:45:06.998
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:45:07.001
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY org.eclipse.cdt.core 1 0 2014-07-16 18:45:08.145
+!MESSAGE Indexed 'Demo' (1 sources, 35 headers) in 0.84 sec: 1,568 declarations; 1,915 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.core.resources 4 1 2014-07-16 20:08:07.980
+!MESSAGE Problems occurred while refreshing local changes
+!SUBENTRY 1 org.eclipse.core.resources 4 1 2014-07-16 20:08:07.980
+!MESSAGE Problems occurred while refreshing local changes
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:923)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:904)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1699)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:167)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: The project description file (.project) for 'Demo' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2014-07-16 20:08:07.980
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+!SUBENTRY 3 org.eclipse.core.resources 4 567 2014-07-16 20:08:07.980
+!MESSAGE The project description file (.project) for 'Demo' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
