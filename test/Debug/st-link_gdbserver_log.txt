@@ -1,748 +1,757 @@
-[1.815]  STM32_AppReset():  Enter STM32_AppReset() function 
-[1.928]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
-[1.931]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
-[1.932]  STM32_AppReset():  XPSR = 0x41000000
-[1.932]  STM32_InitDevice():  ST_LINK Major version =2 Jtag version =20
-[1.932]  STM32_InitDevice():  ST_LINK VID=1155 PID=14152
-[1.932]  STM32_InitDevice():  ST_LINK device status: HALT_MODE
-[1.938]  stm32_reset_hw_wtchpt_module():  Hardware watchpoint supported by the target 
-[1.943]  create_stm32_flash_device():  FuncEntry
-[1.943]  create_stm32_flash_device():  STM32 device: id =10036422 
-[1.944]  create_stm32_flash_device():  STM32 device: Flash size =65535
-[1.944]  create_stm32_flash_device():  FuncExit
-[1.944]  read_option_bytes():  FuncEntry
-[1.950]  read_option_bytes():  FuncExit
-[1.950]  main():  Start Logging
-[1.952]  Socket_WaitForTrueStudioConnection():  Waiting for TrueSTUDIO client to connect on port 61234 ...
-[2.021]  Socket_WaitForTrueStudioConnection():  TrueSTUDIO client connected.
-[2.021]  Socket_WaitForTrueStudioConnection():  Receive buffer size set to 65536 bytes.
-[2.021]  Socket_Write():  Tx: #626d$
+[0.118]  STM32_AppReset():  Enter STM32_AppReset() function 
+[0.229]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
+[0.230]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
+[0.232]  STM32_AppReset():  XPSR = 0x01000000
+[0.232]  STM32_InitDevice():  ST_LINK Major version =2 Jtag version =20
+[0.232]  STM32_InitDevice():  ST_LINK VID=1155 PID=14152
+[0.232]  STM32_InitDevice():  ST_LINK device status: HALT_MODE
+[0.236]  stm32_reset_hw_wtchpt_module():  Hardware watchpoint supported by the target 
+[0.241]  create_stm32_flash_device():  FuncEntry
+[0.242]  create_stm32_flash_device():  STM32 device: id =10036422 
+[0.242]  create_stm32_flash_device():  STM32 device: Flash size =65535
+[0.242]  create_stm32_flash_device():  FuncExit
+[0.242]  read_option_bytes():  FuncEntry
+[0.248]  read_option_bytes():  FuncExit
+[0.248]  main():  Start Logging
+[0.250]  Socket_WaitForTrueStudioConnection():  Waiting for TrueSTUDIO client to connect on port 61234 ...
+[0.533]  Socket_WaitForTrueStudioConnection():  TrueSTUDIO client connected.
+[0.533]  Socket_WaitForTrueStudioConnection():  Receive buffer size set to 65536 bytes.
+[0.533]  Socket_Write():  Tx: #289c$
 
-[2.022]  Socket_Read():  Rx: #5ca$
+[0.533]  Socket_Read():  Rx: #263$
 
-[2.022]  Socket_WaitForNewConnection():  Waiting for GDB client to connect on port 61234 ...
-[2.085]  Socket_WaitForNewConnection():  Client connected.
-[2.085]  Socket_WaitForNewConnection():  Receive buffer size set to 65536 bytes.
-[2.085]  STM32_GetStatus():  ST_LINK device status: HALT_MODE
-[2.095]  Socket_Read():  Rx: +$qSupported:multiprocess+;qRelocInsn+#2a
-[2.195]  Socket_Write():  Tx: +
-[2.195]  Socket_Write():  Tx: $PacketSize=c00;qXfer:memory-map:read+;qXfer:features:read+;QStartNoAckMode+;multiprocess-#f6
-[2.195]  Socket_Read():  Rx: +$QStartNoAckMode#b0
-[2.295]  Socket_Write():  Tx: +
-[2.295]  Socket_Write():  Tx: $OK#9a#00
-[2.295]  Socket_Read():  Rx: +$!#21
-[2.395]  Socket_Write():  Tx: +
-[2.395]  Socket_Write():  Tx: $OK#9a
-[2.396]  Socket_Read():  Rx: $Hg0#df
-[2.396]  Socket_Write():  Tx: +
-[2.396]  Socket_Write():  Tx: $#00
-[2.396]  Socket_Read():  Rx: $qXfer:features:read:target.xml:0,bfb#75
-[2.396]  Socket_Write():  Tx: +
-[2.396]  Socket_Write():  Tx: $l<?xml version="1.0"?><!-- Copyright (C) 2009, 2010, 2011 Free Software Foundation, Inc.     Copying and distribution of this file, with or without modification,     are permitted in any medium without royalty provided the copyright     notice and this notice are preserved.  --><!DOCTYPE target SYSTEM "gdb-target.dtd"><target><feature name="org.gnu.gdb.arm.m-profile">  <reg name="r0" bitsize="32"/>  <reg name="r1" bitsize="32"/>  <reg name="r2" bitsize="32"/>  <reg name="r3" bitsize="32"/>  <reg name="r4" bitsize="32"/>  <reg name="r5" bitsize="32"/>  <reg name="r6" bitsize="32"/>  <reg name="r7" bitsize="32"/>  <reg name="r8" bitsize="32"/>  <reg name="r9" bitsize="32"/>  <reg name="r10" bitsize="32"/>  <reg name="r11" bitsize="32"/>  <reg name="r12" bitsize="32"/>  <reg name="sp" bitsize="32" type="data_ptr"/>  <reg name="lr" bitsize="32"/>  <reg name="pc" bitsize="32" type="code_ptr"/>  <reg name="xpsr" bitsize="32" regnum="25"/></feature><feature name="org.gnu.gdb.arm.vfp">  <reg name="d0" bitsize="64" type="ieee_double"/>  <reg name="d1" bitsize="64" type="ieee_double"/>  <reg name="d2" bitsize="64" type="ieee_double"/>  <reg name="d3" bitsize="64" type="ieee_double"/>  <reg name="d4" bitsize="64" type="ieee_double"/>  <reg name="d5" bitsize="64" type="ieee_double"/>  <reg name="d6" bitsize="64" type="ieee_double"/>  <reg name="d7" bitsize="64" type="ieee_double"/>  <reg name="d8" bitsize="64" type="ieee_double"/>  <reg name="d9" bitsize="64" type="ieee_double"/>  <reg name="d10" bitsize="64" type="ieee_double"/>  <reg name="d11" bitsize="64" type="ieee_double"/>  <reg name="d12" bitsize="64" type="ieee_double"/>  <reg name="d13" bitsize="64" type="ieee_double"/>  <reg name="d14" bitsize="64" type="ieee_double"/>  <reg name="d15" bitsize="64" type="ieee_double"/>  <reg name="fpscr" bitsize="32" type="int" group="float"/>  <reg name="PRIMASK" bitsize="32" regnum="93"/>  <reg name="BASEPRI" bitsize="32" regnum="94"/>  <reg name="FAULTMASK" bitsize="32" regnum="95"/>  <reg name="CONTROL" bitsize="32" regnum="96"/>  <reg name="MSP" bitsize="32" regnum="97"/>  <reg name="PSP" bitsize="32" regnum="98"/>		</feature></target>#3c
-[2.397]  Socket_Read():  Rx: $?#3f
-[2.397]  Socket_Write():  Tx: +
-[2.397]  Socket_Write():  Tx: $S02#b5
-[2.397]  Socket_Read():  Rx: $Hc-1#09
-[2.397]  Socket_Write():  Tx: +
-[2.397]  Socket_Write():  Tx: $#00
-[2.397]  Socket_Read():  Rx: $qC#b4
-[2.397]  Socket_Write():  Tx: +
-[2.397]  Socket_Write():  Tx: $#00
-[2.398]  Socket_Read():  Rx: $qAttached#8f
-[2.398]  Socket_Write():  Tx: +
-[2.398]  Socket_Write():  Tx: $#00
-[2.398]  Socket_Read():  Rx: $qOffsets#4b
-[2.398]  Socket_Write():  Tx: +
-[2.398]  Socket_Write():  Tx: $#00
-[2.398]  Socket_Read():  Rx: $g#67
-[2.398]  Socket_Write():  Tx: +
-[2.411]  Socket_Write():  Tx: $0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00020ffffffff8e250008000000410000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a0002000000000#67
-[2.412]  Socket_Read():  Rx: $qXfer:memory-map:read::0,bfb#14
-[2.412]  Socket_Write():  Tx: +
-[2.412]  Socket_Write():  Tx: $l<memory-map>
+[0.533]  Socket_WaitForNewConnection():  Waiting for GDB client to connect on port 61234 ...
+[0.593]  Socket_WaitForNewConnection():  Client connected.
+[0.594]  Socket_WaitForNewConnection():  Receive buffer size set to 65536 bytes.
+[0.594]  STM32_GetStatus():  ST_LINK device status: HALT_MODE
+[0.594]  Socket_Read():  Rx: +$qSupported:multiprocess+;qRelocInsn+#2a
+[0.694]  Socket_Write():  Tx: +
+[0.694]  Socket_Write():  Tx: $PacketSize=c00;qXfer:memory-map:read+;qXfer:features:read+;QStartNoAckMode+;multiprocess-#f6
+[0.694]  Socket_Read():  Rx: +$QStartNoAckMode#b0
+[0.795]  Socket_Write():  Tx: +
+[0.795]  Socket_Write():  Tx: $OK#9a#00
+[0.795]  Socket_Read():  Rx: +$!#21
+[0.895]  Socket_Write():  Tx: +
+[0.895]  Socket_Write():  Tx: $OK#9a
+[0.896]  Socket_Read():  Rx: $Hg0#df
+[0.896]  Socket_Write():  Tx: +
+[0.896]  Socket_Write():  Tx: $#00
+[0.896]  Socket_Read():  Rx: $qXfer:features:read:target.xml:0,bfb#75
+[0.896]  Socket_Write():  Tx: +
+[0.896]  Socket_Write():  Tx: $l<?xml version="1.0"?><!-- Copyright (C) 2009, 2010, 2011 Free Software Foundation, Inc.     Copying and distribution of this file, with or without modification,     are permitted in any medium without royalty provided the copyright     notice and this notice are preserved.  --><!DOCTYPE target SYSTEM "gdb-target.dtd"><target><feature name="org.gnu.gdb.arm.m-profile">  <reg name="r0" bitsize="32"/>  <reg name="r1" bitsize="32"/>  <reg name="r2" bitsize="32"/>  <reg name="r3" bitsize="32"/>  <reg name="r4" bitsize="32"/>  <reg name="r5" bitsize="32"/>  <reg name="r6" bitsize="32"/>  <reg name="r7" bitsize="32"/>  <reg name="r8" bitsize="32"/>  <reg name="r9" bitsize="32"/>  <reg name="r10" bitsize="32"/>  <reg name="r11" bitsize="32"/>  <reg name="r12" bitsize="32"/>  <reg name="sp" bitsize="32" type="data_ptr"/>  <reg name="lr" bitsize="32"/>  <reg name="pc" bitsize="32" type="code_ptr"/>  <reg name="xpsr" bitsize="32" regnum="25"/></feature><feature name="org.gnu.gdb.arm.vfp">  <reg name="d0" bitsize="64" type="ieee_double"/>  <reg name="d1" bitsize="64" type="ieee_double"/>  <reg name="d2" bitsize="64" type="ieee_double"/>  <reg name="d3" bitsize="64" type="ieee_double"/>  <reg name="d4" bitsize="64" type="ieee_double"/>  <reg name="d5" bitsize="64" type="ieee_double"/>  <reg name="d6" bitsize="64" type="ieee_double"/>  <reg name="d7" bitsize="64" type="ieee_double"/>  <reg name="d8" bitsize="64" type="ieee_double"/>  <reg name="d9" bitsize="64" type="ieee_double"/>  <reg name="d10" bitsize="64" type="ieee_double"/>  <reg name="d11" bitsize="64" type="ieee_double"/>  <reg name="d12" bitsize="64" type="ieee_double"/>  <reg name="d13" bitsize="64" type="ieee_double"/>  <reg name="d14" bitsize="64" type="ieee_double"/>  <reg name="d15" bitsize="64" type="ieee_double"/>  <reg name="fpscr" bitsize="32" type="int" group="float"/>  <reg name="PRIMASK" bitsize="32" regnum="93"/>  <reg name="BASEPRI" bitsize="32" regnum="94"/>  <reg name="FAULTMASK" bitsize="32" regnum="95"/>  <reg name="CONTROL" bitsize="32" regnum="96"/>  <reg name="MSP" bitsize="32" regnum="97"/>  <reg name="PSP" bitsize="32" regnum="98"/>		</feature></target>#3c
+[0.897]  Socket_Read():  Rx: $?#3f
+[0.897]  Socket_Write():  Tx: +
+[0.897]  Socket_Write():  Tx: $S02#b5
+[0.897]  Socket_Read():  Rx: $Hc-1#09
+[0.897]  Socket_Write():  Tx: +
+[0.897]  Socket_Write():  Tx: $#00
+[0.898]  Socket_Read():  Rx: $qC#b4
+[0.898]  Socket_Write():  Tx: +
+[0.898]  Socket_Write():  Tx: $#00
+[0.898]  Socket_Read():  Rx: $qAttached#8f
+[0.898]  Socket_Write():  Tx: +
+[0.898]  Socket_Write():  Tx: $#00
+[0.898]  Socket_Read():  Rx: $qOffsets#4b
+[0.898]  Socket_Write():  Tx: +
+[0.898]  Socket_Write():  Tx: $#00
+[0.898]  Socket_Read():  Rx: $g#67
+[0.898]  Socket_Write():  Tx: +
+[0.911]  Socket_Write():  Tx: $0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00020ffffffff46180008000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a0002000000000#32
+[0.911]  Socket_Read():  Rx: $qXfer:memory-map:read::0,bfb#14
+[0.911]  Socket_Write():  Tx: +
+[0.911]  Socket_Write():  Tx: $l<memory-map>
 <memory type="ram" start="0x0" length="0x8000000"/>
 <memory type="flash" start="0x8000000" length="0x7fff800">
 <property name="blocksize">0x800</property>
 </memory>
 <memory type="ram" start="0xffff800" length="0xf0000800"/>
 </memory-map>#6d
-[2.412]  Socket_Read():  Rx: $m800258e,4#69
-[2.412]  Socket_Write():  Tx: +
-[2.412]  handle_packet():  Reading 0x4 bytes of memory from addr 0x800258e 
-[2.414]  Socket_Write():  Tx: $00f004b8#f4
-[2.414]  Socket_Read():  Rx: $qSymbol::#5b
-[2.414]  Socket_Write():  Tx: +
-[2.414]  Socket_Write():  Tx: $#00
-[2.414]  Socket_Read():  Rx: $qTStatus#49
-[2.414]  Socket_Write():  Tx: +
-[2.414]  Socket_Write():  Tx: $#00
-[2.496]  Socket_Read():  Rx: $m8000e60,2#5e
-[2.496]  Socket_Write():  Tx: +
-[2.496]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e60 
-[2.497]  Socket_Write():  Tx: $90f0#ff
-[2.497]  Socket_Read():  Rx: $m8000e60,2#5e
-[2.497]  Socket_Write():  Tx: +
-[2.497]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e60 
-[2.498]  Socket_Write():  Tx: $90f0#ff
-[2.498]  Socket_Read():  Rx: $qTStatus#49
-[2.498]  Socket_Write():  Tx: +
-[2.498]  Socket_Write():  Tx: $#00
-[2.499]  Socket_Read():  Rx: $m8000e34,2#5f
-[2.499]  Socket_Write():  Tx: +
-[2.499]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e34 
-[2.499]  Socket_Write():  Tx: $0cea#59
-[2.500]  Socket_Read():  Rx: $m8000e34,2#5f
-[2.500]  Socket_Write():  Tx: +
-[2.500]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e34 
-[2.500]  Socket_Write():  Tx: $0cea#59
-[2.500]  Socket_Read():  Rx: $qTStatus#49
-[2.500]  Socket_Write():  Tx: +
-[2.501]  Socket_Write():  Tx: $#00
-[2.501]  Socket_Read():  Rx: $m8000e24,2#5e
-[2.501]  Socket_Write():  Tx: +
-[2.501]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e24 
-[2.501]  Socket_Write():  Tx: $4900#cd
-[2.502]  Socket_Read():  Rx: $m8000e24,2#5e
-[2.502]  Socket_Write():  Tx: +
-[2.502]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e24 
-[2.502]  Socket_Write():  Tx: $4900#cd
-[2.502]  Socket_Read():  Rx: $qTStatus#49
-[2.502]  Socket_Write():  Tx: +
-[2.502]  Socket_Write():  Tx: $#00
-[2.503]  Socket_Read():  Rx: $m8001152,2#2c
-[2.503]  Socket_Write():  Tx: +
-[2.503]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001152 
-[2.504]  Socket_Write():  Tx: $90b2#fd
-[2.504]  Socket_Read():  Rx: $m8001152,2#2c
-[2.504]  Socket_Write():  Tx: +
-[2.504]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001152 
-[2.505]  Socket_Write():  Tx: $90b2#fd
-[2.505]  Socket_Read():  Rx: $qTStatus#49
-[2.505]  Socket_Write():  Tx: +
-[2.505]  Socket_Write():  Tx: $#00
-[2.505]  Socket_Read():  Rx: $m8000e14,2#5d
-[2.505]  Socket_Write():  Tx: +
-[2.505]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e14 
-[2.506]  Socket_Write():  Tx: $f9d0#33
-[2.506]  Socket_Read():  Rx: $m8000e14,2#5d
-[2.506]  Socket_Write():  Tx: +
-[2.506]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e14 
-[2.507]  Socket_Write():  Tx: $f9d0#33
-[2.507]  Socket_Read():  Rx: $qTStatus#49
-[2.507]  Socket_Write():  Tx: +
-[2.507]  Socket_Write():  Tx: $#00
-[2.508]  Socket_Read():  Rx: $m8000e34,2#5f
-[2.508]  Socket_Write():  Tx: +
-[2.508]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e34 
-[2.508]  Socket_Write():  Tx: $0cea#59
-[2.508]  Socket_Read():  Rx: $m8000e34,2#5f
-[2.508]  Socket_Write():  Tx: +
-[2.508]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e34 
-[2.509]  Socket_Write():  Tx: $0cea#59
-[2.509]  Socket_Read():  Rx: $qTStatus#49
-[2.509]  Socket_Write():  Tx: +
-[2.509]  Socket_Write():  Tx: $#00
-[2.510]  Socket_Read():  Rx: $m8000e44,2#60
-[2.510]  Socket_Write():  Tx: +
-[2.510]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e44 
-[2.510]  Socket_Write():  Tx: $30f0#f9
-[2.510]  Socket_Read():  Rx: $m8000e44,2#60
-[2.510]  Socket_Write():  Tx: +
-[2.510]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e44 
-[2.511]  Socket_Write():  Tx: $30f0#f9
-[2.511]  Socket_Read():  Rx: $qTStatus#49
-[2.511]  Socket_Write():  Tx: +
-[2.511]  Socket_Write():  Tx: $#00
-[2.512]  Socket_Read():  Rx: $m8000e04,2#5c
-[2.512]  Socket_Write():  Tx: +
-[2.512]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e04 
-[2.512]  Socket_Write():  Tx: $000f#f6
-[2.513]  Socket_Read():  Rx: $m8000e04,2#5c
-[2.513]  Socket_Write():  Tx: +
-[2.513]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e04 
-[2.513]  Socket_Write():  Tx: $000f#f6
-[2.513]  Socket_Read():  Rx: $qTStatus#49
-[2.513]  Socket_Write():  Tx: +
-[2.513]  Socket_Write():  Tx: $#00
-[2.514]  Socket_Read():  Rx: $m8000e60,2#5e
-[2.514]  Socket_Write():  Tx: +
-[2.514]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e60 
-[2.514]  Socket_Write():  Tx: $90f0#ff
-[2.515]  Socket_Read():  Rx: $m8000e74,2#63
-[2.515]  Socket_Write():  Tx: +
-[2.515]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e74 
-[2.515]  Socket_Write():  Tx: $01d1#f6
-[2.515]  Socket_Read():  Rx: $qTStatus#49
-[2.515]  Socket_Write():  Tx: +
-[2.515]  Socket_Write():  Tx: $#00
-[2.516]  Socket_Read():  Rx: $m8000de8,2#94
-[2.516]  Socket_Write():  Tx: +
-[2.516]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000de8 
-[2.516]  Socket_Write():  Tx: $2002#c4
-[2.517]  Socket_Read():  Rx: $m8000de8,2#94
-[2.517]  Socket_Write():  Tx: +
-[2.517]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000de8 
-[2.517]  Socket_Write():  Tx: $2002#c4
-[2.517]  Socket_Read():  Rx: $qTStatus#49
-[2.517]  Socket_Write():  Tx: +
-[2.517]  Socket_Write():  Tx: $#00
-[2.578]  Socket_Read():  Rx: $vFlashErase:08000000,00002800#cc
-[2.578]  Socket_Write():  Tx: +
-[2.578]  stm32_flash_page_erase():  FuncEntry
-[2.579]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.581]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.582]  wait_while_flash_busy_bank1():  FuncEntry
-[2.583]  wait_while_flash_busy_bank1():  Flash status busy
-[2.584]  wait_while_flash_busy_bank1():  Flash status busy
-[2.584]  wait_while_flash_busy_bank1():  Flash status busy
-[2.585]  wait_while_flash_busy_bank1():  Flash status busy
-[2.585]  wait_while_flash_busy_bank1():  Flash status busy
-[2.586]  wait_while_flash_busy_bank1():  Flash status busy
-[2.586]  wait_while_flash_busy_bank1():  Flash status busy
-[2.587]  wait_while_flash_busy_bank1():  Flash status busy
-[2.588]  wait_while_flash_busy_bank1():  Flash status busy
-[2.588]  wait_while_flash_busy_bank1():  Flash status busy
-[2.589]  wait_while_flash_busy_bank1():  Flash status busy
-[2.590]  wait_while_flash_busy_bank1():  Flash status busy
-[2.590]  wait_while_flash_busy_bank1():  Flash status busy
-[2.591]  wait_while_flash_busy_bank1():  Flash status busy
-[2.591]  wait_while_flash_busy_bank1():  Flash status busy
-[2.592]  wait_while_flash_busy_bank1():  Flash status busy
-[2.592]  wait_while_flash_busy_bank1():  Flash status busy
-[2.593]  wait_while_flash_busy_bank1():  Flash status busy
-[2.594]  wait_while_flash_busy_bank1():  Flash status busy
-[2.594]  wait_while_flash_busy_bank1():  Flash status busy
-[2.595]  wait_while_flash_busy_bank1():  Flash status busy
-[2.595]  wait_while_flash_busy_bank1():  Flash status busy
-[2.596]  wait_while_flash_busy_bank1():  Flash status busy
-[2.596]  wait_while_flash_busy_bank1():  Flash status busy
-[2.597]  wait_while_flash_busy_bank1():  Flash status busy
-[2.598]  wait_while_flash_busy_bank1():  Flash status busy
-[2.598]  wait_while_flash_busy_bank1():  Flash status busy
-[2.599]  wait_while_flash_busy_bank1():  Flash status busy
-[2.599]  wait_while_flash_busy_bank1():  Flash status busy
-[2.600]  wait_while_flash_busy_bank1():  Flash status busy
-[2.600]  wait_while_flash_busy_bank1():  Flash status busy
-[2.601]  wait_while_flash_busy_bank1():  Flash status busy
-[2.602]  wait_while_flash_busy_bank1():  Flash status busy
-[2.602]  wait_while_flash_busy_bank1():  Flash status busy
-[2.603]  wait_while_flash_busy_bank1():  Flash status busy
-[2.603]  wait_while_flash_busy_bank1():  Flash status busy
-[2.604]  wait_while_flash_busy_bank1():  Flash status busy
-[2.604]  wait_while_flash_busy_bank1():  Flash status busy
-[2.605]  wait_while_flash_busy_bank1():  FuncExit
-[2.605]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.606]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.607]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.608]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.610]  wait_while_flash_busy_bank1():  FuncEntry
-[2.611]  wait_while_flash_busy_bank1():  Flash status busy
-[2.611]  wait_while_flash_busy_bank1():  Flash status busy
-[2.612]  wait_while_flash_busy_bank1():  Flash status busy
-[2.612]  wait_while_flash_busy_bank1():  Flash status busy
-[2.613]  wait_while_flash_busy_bank1():  Flash status busy
-[2.614]  wait_while_flash_busy_bank1():  Flash status busy
-[2.615]  wait_while_flash_busy_bank1():  Flash status busy
-[2.616]  wait_while_flash_busy_bank1():  Flash status busy
-[2.617]  wait_while_flash_busy_bank1():  Flash status busy
-[2.617]  wait_while_flash_busy_bank1():  Flash status busy
-[2.618]  wait_while_flash_busy_bank1():  Flash status busy
-[2.619]  wait_while_flash_busy_bank1():  Flash status busy
-[2.619]  wait_while_flash_busy_bank1():  Flash status busy
-[2.620]  wait_while_flash_busy_bank1():  Flash status busy
-[2.620]  wait_while_flash_busy_bank1():  Flash status busy
-[2.621]  wait_while_flash_busy_bank1():  Flash status busy
-[2.622]  wait_while_flash_busy_bank1():  Flash status busy
-[2.622]  wait_while_flash_busy_bank1():  Flash status busy
-[2.623]  wait_while_flash_busy_bank1():  Flash status busy
-[2.623]  wait_while_flash_busy_bank1():  Flash status busy
-[2.624]  wait_while_flash_busy_bank1():  Flash status busy
-[2.625]  wait_while_flash_busy_bank1():  Flash status busy
-[2.625]  wait_while_flash_busy_bank1():  Flash status busy
-[2.626]  wait_while_flash_busy_bank1():  Flash status busy
-[2.626]  wait_while_flash_busy_bank1():  Flash status busy
-[2.627]  wait_while_flash_busy_bank1():  Flash status busy
-[2.627]  wait_while_flash_busy_bank1():  Flash status busy
-[2.628]  wait_while_flash_busy_bank1():  Flash status busy
-[2.629]  wait_while_flash_busy_bank1():  Flash status busy
-[2.629]  wait_while_flash_busy_bank1():  Flash status busy
-[2.630]  wait_while_flash_busy_bank1():  Flash status busy
-[2.630]  wait_while_flash_busy_bank1():  Flash status busy
-[2.631]  wait_while_flash_busy_bank1():  Flash status busy
-[2.631]  wait_while_flash_busy_bank1():  Flash status busy
-[2.632]  wait_while_flash_busy_bank1():  Flash status busy
-[2.633]  wait_while_flash_busy_bank1():  FuncExit
-[2.633]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.634]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.634]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.636]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.638]  wait_while_flash_busy_bank1():  FuncEntry
-[2.638]  wait_while_flash_busy_bank1():  Flash status busy
-[2.639]  wait_while_flash_busy_bank1():  Flash status busy
-[2.640]  wait_while_flash_busy_bank1():  Flash status busy
-[2.640]  wait_while_flash_busy_bank1():  Flash status busy
-[2.641]  wait_while_flash_busy_bank1():  Flash status busy
-[2.641]  wait_while_flash_busy_bank1():  Flash status busy
-[2.642]  wait_while_flash_busy_bank1():  Flash status busy
-[2.642]  wait_while_flash_busy_bank1():  Flash status busy
-[2.643]  wait_while_flash_busy_bank1():  Flash status busy
-[2.644]  wait_while_flash_busy_bank1():  Flash status busy
-[2.644]  wait_while_flash_busy_bank1():  Flash status busy
-[2.645]  wait_while_flash_busy_bank1():  Flash status busy
-[2.645]  wait_while_flash_busy_bank1():  Flash status busy
-[2.646]  wait_while_flash_busy_bank1():  Flash status busy
-[2.646]  wait_while_flash_busy_bank1():  Flash status busy
-[2.647]  wait_while_flash_busy_bank1():  Flash status busy
-[2.648]  wait_while_flash_busy_bank1():  Flash status busy
-[2.648]  wait_while_flash_busy_bank1():  Flash status busy
-[2.649]  wait_while_flash_busy_bank1():  Flash status busy
-[2.649]  wait_while_flash_busy_bank1():  Flash status busy
-[2.650]  wait_while_flash_busy_bank1():  Flash status busy
-[2.650]  wait_while_flash_busy_bank1():  Flash status busy
-[2.651]  wait_while_flash_busy_bank1():  Flash status busy
-[2.652]  wait_while_flash_busy_bank1():  Flash status busy
-[2.652]  wait_while_flash_busy_bank1():  Flash status busy
-[2.653]  wait_while_flash_busy_bank1():  Flash status busy
-[2.653]  wait_while_flash_busy_bank1():  Flash status busy
-[2.654]  wait_while_flash_busy_bank1():  Flash status busy
-[2.655]  wait_while_flash_busy_bank1():  Flash status busy
-[2.655]  wait_while_flash_busy_bank1():  Flash status busy
-[2.656]  wait_while_flash_busy_bank1():  Flash status busy
-[2.656]  wait_while_flash_busy_bank1():  Flash status busy
-[2.657]  wait_while_flash_busy_bank1():  Flash status busy
-[2.658]  wait_while_flash_busy_bank1():  Flash status busy
-[2.658]  wait_while_flash_busy_bank1():  Flash status busy
-[2.659]  wait_while_flash_busy_bank1():  Flash status busy
-[2.659]  wait_while_flash_busy_bank1():  Flash status busy
-[2.660]  wait_while_flash_busy_bank1():  Flash status busy
-[2.661]  wait_while_flash_busy_bank1():  FuncExit
-[2.661]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.662]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.662]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.664]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.666]  wait_while_flash_busy_bank1():  FuncEntry
-[2.666]  wait_while_flash_busy_bank1():  Flash status busy
-[2.667]  wait_while_flash_busy_bank1():  Flash status busy
-[2.668]  wait_while_flash_busy_bank1():  Flash status busy
-[2.668]  wait_while_flash_busy_bank1():  Flash status busy
-[2.669]  wait_while_flash_busy_bank1():  Flash status busy
-[2.669]  wait_while_flash_busy_bank1():  Flash status busy
-[2.670]  wait_while_flash_busy_bank1():  Flash status busy
-[2.670]  wait_while_flash_busy_bank1():  Flash status busy
-[2.671]  wait_while_flash_busy_bank1():  Flash status busy
-[2.672]  wait_while_flash_busy_bank1():  Flash status busy
-[2.672]  wait_while_flash_busy_bank1():  Flash status busy
-[2.673]  wait_while_flash_busy_bank1():  Flash status busy
-[2.673]  wait_while_flash_busy_bank1():  Flash status busy
-[2.674]  wait_while_flash_busy_bank1():  Flash status busy
-[2.674]  wait_while_flash_busy_bank1():  Flash status busy
-[2.675]  wait_while_flash_busy_bank1():  Flash status busy
-[2.676]  wait_while_flash_busy_bank1():  Flash status busy
-[2.676]  wait_while_flash_busy_bank1():  Flash status busy
-[2.677]  wait_while_flash_busy_bank1():  Flash status busy
-[2.677]  wait_while_flash_busy_bank1():  Flash status busy
-[2.678]  wait_while_flash_busy_bank1():  Flash status busy
-[2.679]  wait_while_flash_busy_bank1():  Flash status busy
-[2.679]  wait_while_flash_busy_bank1():  Flash status busy
-[2.680]  wait_while_flash_busy_bank1():  Flash status busy
-[2.680]  wait_while_flash_busy_bank1():  Flash status busy
-[2.681]  wait_while_flash_busy_bank1():  Flash status busy
-[2.681]  wait_while_flash_busy_bank1():  Flash status busy
-[2.682]  wait_while_flash_busy_bank1():  Flash status busy
-[2.683]  wait_while_flash_busy_bank1():  Flash status busy
-[2.683]  wait_while_flash_busy_bank1():  Flash status busy
-[2.684]  wait_while_flash_busy_bank1():  Flash status busy
-[2.684]  wait_while_flash_busy_bank1():  Flash status busy
-[2.685]  wait_while_flash_busy_bank1():  Flash status busy
-[2.685]  wait_while_flash_busy_bank1():  Flash status busy
-[2.686]  wait_while_flash_busy_bank1():  Flash status busy
-[2.687]  wait_while_flash_busy_bank1():  Flash status busy
-[2.687]  wait_while_flash_busy_bank1():  Flash status busy
-[2.688]  wait_while_flash_busy_bank1():  Flash status busy
-[2.688]  wait_while_flash_busy_bank1():  FuncExit
-[2.688]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.690]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.690]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.692]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.694]  wait_while_flash_busy_bank1():  FuncEntry
-[2.694]  wait_while_flash_busy_bank1():  Flash status busy
-[2.695]  wait_while_flash_busy_bank1():  Flash status busy
-[2.695]  wait_while_flash_busy_bank1():  Flash status busy
-[2.696]  wait_while_flash_busy_bank1():  Flash status busy
-[2.696]  wait_while_flash_busy_bank1():  Flash status busy
-[2.697]  wait_while_flash_busy_bank1():  Flash status busy
-[2.698]  wait_while_flash_busy_bank1():  Flash status busy
-[2.698]  wait_while_flash_busy_bank1():  Flash status busy
-[2.699]  wait_while_flash_busy_bank1():  Flash status busy
-[2.700]  wait_while_flash_busy_bank1():  Flash status busy
-[2.701]  wait_while_flash_busy_bank1():  Flash status busy
-[2.701]  wait_while_flash_busy_bank1():  Flash status busy
-[2.702]  wait_while_flash_busy_bank1():  Flash status busy
-[2.703]  wait_while_flash_busy_bank1():  Flash status busy
-[2.703]  wait_while_flash_busy_bank1():  Flash status busy
-[2.704]  wait_while_flash_busy_bank1():  Flash status busy
-[2.704]  wait_while_flash_busy_bank1():  Flash status busy
-[2.705]  wait_while_flash_busy_bank1():  Flash status busy
-[2.705]  wait_while_flash_busy_bank1():  Flash status busy
-[2.706]  wait_while_flash_busy_bank1():  Flash status busy
-[2.707]  wait_while_flash_busy_bank1():  Flash status busy
-[2.707]  wait_while_flash_busy_bank1():  Flash status busy
-[2.708]  wait_while_flash_busy_bank1():  Flash status busy
-[2.708]  wait_while_flash_busy_bank1():  Flash status busy
-[2.709]  wait_while_flash_busy_bank1():  Flash status busy
-[2.710]  wait_while_flash_busy_bank1():  Flash status busy
-[2.710]  wait_while_flash_busy_bank1():  Flash status busy
-[2.711]  wait_while_flash_busy_bank1():  Flash status busy
-[2.711]  wait_while_flash_busy_bank1():  Flash status busy
-[2.712]  wait_while_flash_busy_bank1():  Flash status busy
-[2.712]  wait_while_flash_busy_bank1():  Flash status busy
-[2.713]  wait_while_flash_busy_bank1():  Flash status busy
-[2.714]  wait_while_flash_busy_bank1():  Flash status busy
-[2.714]  wait_while_flash_busy_bank1():  Flash status busy
-[2.715]  wait_while_flash_busy_bank1():  Flash status busy
-[2.715]  wait_while_flash_busy_bank1():  Flash status busy
-[2.716]  wait_while_flash_busy_bank1():  FuncExit
-[2.716]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.717]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.717]  stm32_flash_page_erase():  FuncExit
-[2.717]  Socket_Write():  Tx: $OK#9a#00
-[2.717]  Socket_Read():  Rx: $vFlashWrite:8000000:
-[2.717]  Socket_Write():  Tx: +
-[2.718]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.720]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.720]  stm32_program_flash_memory():  FuncEntry
-[2.754]  stm32_program_flash_memory():  Programming flash.. 
-[2.765]  stm32_program_flash_memory():  Programming flash.. 
-[2.765]  stm32_program_flash_memory():  Programming flash..DONE 
-[2.773]  stm32_program_flash_memory():  STM32 device: flash programming successful 8000000 
-[2.773]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.774]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.774]  stm32_program_flash_memory():  FuncExit
-[2.774]  get_flash_error_status():  FuncEntry
-[2.774]  wait_while_flash_busy_bank1():  FuncEntry
-[2.775]  wait_while_flash_busy_bank1():  FuncExit
-[2.776]  get_flash_error_status():  FuncExit
-[2.776]  Socket_Write():  Tx: $OK#9a#00
-[2.776]  Socket_Read():  Rx: $vFlashWrite:8000188:µL}x3¹H±H¯ó
-[2.776]  Socket_Write():  Tx: +
-[2.777]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[2.779]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[2.779]  stm32_program_flash_memory():  FuncEntry
-[2.907]  stm32_program_flash_memory():  Programming flash.. 
-[2.918]  stm32_program_flash_memory():  Programming flash.. 
-[2.929]  stm32_program_flash_memory():  Programming flash.. 
-[2.940]  stm32_program_flash_memory():  Programming flash.. 
-[2.951]  stm32_program_flash_memory():  Programming flash.. 
-[2.962]  stm32_program_flash_memory():  Programming flash.. 
-[2.973]  stm32_program_flash_memory():  Programming flash.. 
-[2.984]  stm32_program_flash_memory():  Programming flash.. 
-[2.984]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.041]  stm32_program_flash_memory():  STM32 device: flash programming successful 8000188 
-[3.041]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.043]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.043]  stm32_program_flash_memory():  FuncExit
-[3.043]  get_flash_error_status():  FuncEntry
-[3.043]  wait_while_flash_busy_bank1():  FuncEntry
-[3.044]  wait_while_flash_busy_bank1():  FuncExit
-[3.045]  get_flash_error_status():  FuncExit
-[3.045]  Socket_Write():  Tx: $OK#9a#00
-[3.046]  Socket_Read():  Rx: $vFlashWrite:8000d60:RhBôèZ`Oô€SÄòOô€RÄòhBð€r`
-[3.046]  Socket_Write():  Tx: +
-[3.046]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.048]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.048]  stm32_program_flash_memory():  FuncEntry
-[3.176]  stm32_program_flash_memory():  Programming flash.. 
-[3.187]  stm32_program_flash_memory():  Programming flash.. 
-[3.197]  stm32_program_flash_memory():  Programming flash.. 
-[3.208]  stm32_program_flash_memory():  Programming flash.. 
-[3.219]  stm32_program_flash_memory():  Programming flash.. 
-[3.230]  stm32_program_flash_memory():  Programming flash.. 
-[3.241]  stm32_program_flash_memory():  Programming flash.. 
-[3.252]  stm32_program_flash_memory():  Programming flash.. 
-[3.252]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.310]  stm32_program_flash_memory():  STM32 device: flash programming successful 8000d60 
-[3.310]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.311]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.311]  stm32_program_flash_memory():  FuncExit
-[3.311]  get_flash_error_status():  FuncEntry
-[3.311]  wait_while_flash_busy_bank1():  FuncEntry
-[3.312]  wait_while_flash_busy_bank1():  FuncExit
-[3.313]  get_flash_error_status():  FuncExit
-[3.313]  Socket_Write():  Tx: $OK#9a#00
-[3.313]  Socket_Read():  Rx: $vFlashWrite:8001940:€´ƒ°
-[3.313]  Socket_Write():  Tx: +
-[3.314]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.316]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.316]  stm32_program_flash_memory():  FuncEntry
-[3.396]  stm32_program_flash_memory():  Programming flash.. 
-[3.407]  stm32_program_flash_memory():  Programming flash.. 
-[3.418]  stm32_program_flash_memory():  Programming flash.. 
-[3.429]  stm32_program_flash_memory():  Programming flash.. 
-[3.440]  stm32_program_flash_memory():  Programming flash.. 
-[3.440]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.471]  stm32_program_flash_memory():  STM32 device: flash programming successful 8001940 
-[3.471]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.473]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.473]  stm32_program_flash_memory():  FuncExit
-[3.473]  get_flash_error_status():  FuncEntry
-[3.473]  wait_while_flash_busy_bank1():  FuncEntry
-[3.474]  wait_while_flash_busy_bank1():  FuncExit
-[3.476]  get_flash_error_status():  FuncExit
-[3.476]  Socket_Write():  Tx: $OK#9a#00
-[3.476]  Socket_Read():  Rx: $vFlashWrite:8001f94:67+,-.
-[3.476]  Socket_Write():  Tx: +
-[3.477]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.480]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.480]  stm32_program_flash_memory():  FuncEntry
-[3.510]  stm32_program_flash_memory():  Programming flash.. 
-[3.510]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.514]  stm32_program_flash_memory():  STM32 device: flash programming successful 8001f94 
-[3.514]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.516]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.516]  stm32_program_flash_memory():  FuncExit
-[3.516]  get_flash_error_status():  FuncEntry
-[3.516]  wait_while_flash_busy_bank1():  FuncEntry
-[3.517]  wait_while_flash_busy_bank1():  FuncExit
-[3.518]  get_flash_error_status():  FuncExit
-[3.518]  Socket_Write():  Tx: $OK#9a#00
-[3.518]  Socket_Read():  Rx: $vFlashWrite:8002020:­
-[3.518]  Socket_Write():  Tx: +
-[3.519]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.521]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.521]  stm32_program_flash_memory():  FuncEntry
-[3.542]  stm32_program_flash_memory():  Programming flash.. 
-[3.543]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.544]  stm32_program_flash_memory():  STM32 device: flash programming successful 8002020 
-[3.544]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.546]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.546]  stm32_program_flash_memory():  FuncExit
-[3.546]  get_flash_error_status():  FuncEntry
-[3.546]  wait_while_flash_busy_bank1():  FuncEntry
-[3.547]  wait_while_flash_busy_bank1():  FuncExit
-[3.548]  get_flash_error_status():  FuncExit
-[3.548]  Socket_Write():  Tx: $OK#9a#00
-[3.549]  Socket_Read():  Rx: $vFlashWrite:8002024:‰
-[3.549]  Socket_Write():  Tx: +
-[3.549]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.551]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.551]  stm32_program_flash_memory():  FuncEntry
-[3.573]  stm32_program_flash_memory():  Programming flash.. 
-[3.573]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.575]  stm32_program_flash_memory():  STM32 device: flash programming successful 8002024 
-[3.575]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.576]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.576]  stm32_program_flash_memory():  FuncExit
-[3.577]  get_flash_error_status():  FuncEntry
-[3.577]  wait_while_flash_busy_bank1():  FuncEntry
-[3.577]  wait_while_flash_busy_bank1():  FuncExit
-[3.579]  get_flash_error_status():  FuncExit
-[3.579]  Socket_Write():  Tx: $OK#9a#00
-[3.579]  Socket_Read():  Rx: $vFlashWrite:8002028:
-[3.579]  Socket_Write():  Tx: +
-[3.580]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.582]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.582]  stm32_program_flash_memory():  FuncEntry
-[3.612]  stm32_program_flash_memory():  Programming flash.. 
-[3.612]  stm32_program_flash_memory():  Programming flash..DONE 
-[3.616]  stm32_program_flash_memory():  STM32 device: flash programming successful 8002028 
-[3.616]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
-[3.618]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
-[3.618]  stm32_program_flash_memory():  FuncExit
-[3.618]  get_flash_error_status():  FuncEntry
-[3.618]  wait_while_flash_busy_bank1():  FuncEntry
-[3.619]  wait_while_flash_busy_bank1():  FuncExit
-[3.621]  get_flash_error_status():  FuncExit
-[3.621]  Socket_Write():  Tx: $OK#9a#00
-[3.621]  Socket_Read():  Rx: $vFlashDone#ea
-[3.621]  Socket_Write():  Tx: +
-[3.621]  STM32_AppReset():  Enter STM32_AppReset() function 
-[3.732]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
-[3.733]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
-[3.735]  STM32_AppReset():  XPSR = 0x01000000
-[3.735]  Socket_Write():  Tx: $OK#9a#00
-[3.735]  Socket_Read():  Rx: $Pf=110f0008#b3
-[3.735]  Socket_Write():  Tx: +
-[3.736]  Socket_Write():  Tx: $OK#9a
-[3.736]  Socket_Read():  Rx: $m8000e60,2#5e
-[3.736]  Socket_Write():  Tx: +
-[3.736]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e60 
-[3.737]  Socket_Write():  Tx: $4ff0#30
-[3.737]  Socket_Read():  Rx: $qTStatus#49
-[3.737]  Socket_Write():  Tx: +
-[3.737]  Socket_Write():  Tx: $#00
-[3.737]  Socket_Read():  Rx: $m8000e34,2#5f
-[3.737]  Socket_Write():  Tx: +
-[3.737]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e34 
-[3.738]  Socket_Write():  Tx: $4ff0#30
-[3.738]  Socket_Read():  Rx: $qTStatus#49
-[3.738]  Socket_Write():  Tx: +
-[3.738]  Socket_Write():  Tx: $#00
-[3.738]  Socket_Read():  Rx: $m8000e24,2#5e
-[3.738]  Socket_Write():  Tx: +
-[3.738]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e24 
-[3.739]  Socket_Write():  Tx: $4ff0#30
-[3.739]  Socket_Read():  Rx: $qTStatus#49
-[3.739]  Socket_Write():  Tx: +
-[3.739]  Socket_Write():  Tx: $#00
-[3.739]  Socket_Read():  Rx: $m8001152,2#2c
-[3.739]  Socket_Write():  Tx: +
-[3.739]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001152 
-[3.740]  Socket_Write():  Tx: $4ff0#30
-[3.740]  Socket_Read():  Rx: $qTStatus#49
-[3.740]  Socket_Write():  Tx: +
-[3.740]  Socket_Write():  Tx: $#00
-[3.740]  Socket_Read():  Rx: $m8000e14,2#5d
-[3.740]  Socket_Write():  Tx: +
-[3.740]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e14 
-[3.741]  Socket_Write():  Tx: $4ff0#30
-[3.741]  Socket_Read():  Rx: $qTStatus#49
-[3.741]  Socket_Write():  Tx: +
-[3.741]  Socket_Write():  Tx: $#00
-[3.741]  Socket_Read():  Rx: $m8000e34,2#5f
-[3.741]  Socket_Write():  Tx: +
-[3.741]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e34 
-[3.742]  Socket_Write():  Tx: $4ff0#30
-[3.742]  Socket_Read():  Rx: $qTStatus#49
-[3.742]  Socket_Write():  Tx: +
-[3.742]  Socket_Write():  Tx: $#00
-[3.742]  Socket_Read():  Rx: $m8000e44,2#60
-[3.742]  Socket_Write():  Tx: +
-[3.742]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e44 
-[3.743]  Socket_Write():  Tx: $4ff0#30
-[3.743]  Socket_Read():  Rx: $qTStatus#49
-[3.743]  Socket_Write():  Tx: +
-[3.743]  Socket_Write():  Tx: $#00
-[3.743]  Socket_Read():  Rx: $m8000e04,2#5c
-[3.743]  Socket_Write():  Tx: +
-[3.743]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e04 
-[3.744]  Socket_Write():  Tx: $4ff0#30
-[3.744]  Socket_Read():  Rx: $qTStatus#49
-[3.744]  Socket_Write():  Tx: +
-[3.744]  Socket_Write():  Tx: $#00
-[3.744]  Socket_Read():  Rx: $m8000e60,2#5e
-[3.744]  Socket_Write():  Tx: +
-[3.744]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000e60 
-[3.745]  Socket_Write():  Tx: $4ff0#30
-[3.745]  Socket_Read():  Rx: $qTStatus#49
-[3.745]  Socket_Write():  Tx: +
-[3.745]  Socket_Write():  Tx: $#00
-[3.745]  Socket_Read():  Rx: $m8000de8,2#94
-[3.745]  Socket_Write():  Tx: +
-[3.745]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000de8 
-[3.746]  Socket_Write():  Tx: $41f6#01
-[3.746]  Socket_Read():  Rx: $m8000dea,2#bd
-[3.746]  Socket_Write():  Tx: +
-[3.746]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000dea 
-[3.746]  Socket_Write():  Tx: $a470#fc
-[3.746]  Socket_Read():  Rx: $m8000dec,2#bf
-[3.746]  Socket_Write():  Tx: +
-[3.746]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000dec 
-[3.747]  Socket_Write():  Tx: $c0f6#2f
-[3.747]  Socket_Read():  Rx: $m8000dee,2#c1
-[3.747]  Socket_Write():  Tx: +
-[3.747]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000dee 
-[3.748]  Socket_Write():  Tx: $0000#c0
-[3.748]  Socket_Read():  Rx: $m8000df0,2#8d
-[3.748]  Socket_Write():  Tx: +
-[3.748]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8000df0 
-[3.748]  Socket_Write():  Tx: $fff7#69
-[3.749]  Socket_Read():  Rx: $qTStatus#49
-[3.749]  Socket_Write():  Tx: +
-[3.749]  Socket_Write():  Tx: $#00
-[3.749]  Socket_Read():  Rx: $qTStatus#49
-[3.749]  Socket_Write():  Tx: +
-[3.749]  Socket_Write():  Tx: $#00
-[3.749]  Socket_Read():  Rx: $qTStatus#49
-[3.749]  Socket_Write():  Tx: +
-[3.749]  Socket_Write():  Tx: $#00
-[3.749]  Socket_Read():  Rx: $qTStatus#49
-[3.749]  Socket_Write():  Tx: +
-[3.749]  Socket_Write():  Tx: $#00
-[3.749]  Socket_Read():  Rx: $qTStatus#49
-[3.749]  Socket_Write():  Tx: +
-[3.749]  Socket_Write():  Tx: $#00
-[3.749]  Socket_Read():  Rx: $m8000f10,4#5c
-[3.749]  Socket_Write():  Tx: +
-[3.749]  handle_packet():  Reading 0x4 bytes of memory from addr 0x8000f10 
-[3.750]  Socket_Write():  Tx: $00bf00bf#50
-[3.750]  Socket_Read():  Rx: $m8001152,2#2c
-[3.750]  Socket_Write():  Tx: +
-[3.750]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001152 
-[3.751]  Socket_Write():  Tx: $4ff0#30
-[3.751]  Socket_Read():  Rx: $m8001152,2#2c
-[3.751]  Socket_Write():  Tx: +
-[3.751]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001152 
-[3.751]  Socket_Write():  Tx: $4ff0#30
-[3.751]  Socket_Read():  Rx: $m8001152,2#2c
-[3.751]  Socket_Write():  Tx: +
-[3.752]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001152 
-[3.752]  Socket_Write():  Tx: $4ff0#30
-[3.753]  Socket_Read():  Rx: $qTStatus#49
-[3.753]  Socket_Write():  Tx: +
-[3.753]  Socket_Write():  Tx: $#00
-[3.753]  Socket_Read():  Rx: $qRcmd,7265736574#37
-[3.753]  Socket_Write():  Tx: +
-[3.753]  STM32_AppReset():  Enter STM32_AppReset() function 
-[3.864]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
-[3.865]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
-[3.867]  STM32_AppReset():  XPSR = 0x01000000
-[3.867]  Socket_Write():  Tx: $O53544d3332205375636365737366756c6c7920636f6d706c65746564207265736574206f7065726174696f6e0a
-[3.867]  Socket_Read():  Rx: $qTStatus#49
-[3.867]  Socket_Write():  Tx: +
-[3.867]  Socket_Write():  Tx: $#00
-[3.867]  Socket_Read():  Rx: $Z1,8000de8,2#de
-[3.867]  Socket_Write():  Tx: +
-[3.868]  Socket_Write():  Tx: $OK#9a
-[3.868]  Socket_Read():  Rx: $Z1,8000e04,2#a6
-[3.868]  Socket_Write():  Tx: +
-[3.869]  Socket_Write():  Tx: $OK#9a
-[3.869]  Socket_Read():  Rx: $Z1,8000e14,2#a7
-[3.869]  Socket_Write():  Tx: +
-[3.869]  Socket_Write():  Tx: $OK#9a
-[3.869]  Socket_Read():  Rx: $Z1,8000e24,2#a8
-[3.869]  Socket_Write():  Tx: +
-[3.870]  Socket_Write():  Tx: $OK#9a
-[3.870]  Socket_Read():  Rx: $Z1,8000e34,2#a9
-[3.870]  Socket_Write():  Tx: +
-[3.870]  Socket_Write():  Tx: $OK#9a
-[3.870]  Socket_Read():  Rx: $Z1,8000e44,2#aa
-[3.870]  Socket_Write():  Tx: +
-[3.871]  Socket_Write():  Tx: $OK#9a
-[3.871]  Socket_Read():  Rx: $Z1,8000e60,2#a8
-[3.871]  Socket_Write():  Tx: +
-[3.871]  stm32_add_hw_bkpoint():  couldn't find an empty breakpoint register
-[3.871]  Socket_Write():  Tx: $E31#a9
-[3.871]  Socket_Read():  Rx: $Z1,8000e74,2#ad
-[3.871]  Socket_Write():  Tx: +
-[3.871]  stm32_add_hw_bkpoint():  couldn't find an empty breakpoint register
-[3.871]  Socket_Write():  Tx: $E31#a9
-[3.871]  Socket_Read():  Rx: $Z1,8001152,2#76
-[3.871]  Socket_Write():  Tx: +
-[3.871]  stm32_add_hw_bkpoint():  couldn't find an empty breakpoint register
-[3.871]  Socket_Write():  Tx: $E31#a9
-[3.871]  Socket_Read():  Rx: $qfThreadInfo#bb
-[3.871]  Socket_Write():  Tx: +
-[3.871]  Socket_Write():  Tx: $l#6c
-[3.882]  Socket_Read():  Rx: $qfThreadInfo#bb
-[3.882]  Socket_Write():  Tx: +
-[3.882]  Socket_Write():  Tx: $l#6c
-[4.230]  Socket_Read():  Rx: $qfThreadInfo#bb
-[4.230]  Socket_Write():  Tx: +
-[4.230]  Socket_Write():  Tx: $l#6c
-[4.230]  Socket_Read():  Rx: $qfThreadInfo#bb
-[4.230]  Socket_Write():  Tx: +
-[4.230]  Socket_Write():  Tx: $l#6c
-[9.665]  Socket_Read():  Rx: $vKill;a410#33
-[9.665]  Socket_Write():  Tx: +
-[9.665]  Socket_Write():  Tx: $#00
-[9.665]  Socket_Read():  Rx: $k#6b
-[9.665]  Socket_Write():  Tx: +
-[9.665]  STM32_AppReset():  Enter STM32_AppReset() function 
-[9.775]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
-[9.777]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
-[9.778]  STM32_AppReset():  XPSR = 0x01000000
-[9.778]  Socket_Read():  Rx: $?#3f
-[9.778]  Socket_Write():  Tx: +
-[9.778]  Socket_Write():  Tx: $X09#c1
-[9.923]  get_a_packet():  Error in receiving data, exiting.. 
-[9.923]  Run_Server():  Encoutered a Socket Error, Exiting.. 
+[0.911]  Socket_Read():  Rx: $m8001846,4#38
+[0.911]  Socket_Write():  Tx: +
+[0.911]  handle_packet():  Reading 0x4 bytes of memory from addr 0x8001846 
+[0.914]  Socket_Write():  Tx: $00bfdff8#90
+[0.914]  Socket_Read():  Rx: $qSymbol::#5b
+[0.914]  Socket_Write():  Tx: +
+[0.914]  Socket_Write():  Tx: $#00
+[0.914]  Socket_Read():  Rx: $qTStatus#49
+[0.914]  Socket_Write():  Tx: +
+[0.914]  Socket_Write():  Tx: $#00
+[0.986]  Socket_Read():  Rx: $m8001844,2#34
+[0.986]  Socket_Write():  Tx: +
+[0.986]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001844 
+[0.987]  Socket_Write():  Tx: $00bf#28
+[0.987]  Socket_Read():  Rx: $m8001b8e,2#93
+[0.987]  Socket_Write():  Tx: +
+[0.987]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001b8e 
+[0.988]  Socket_Write():  Tx: $4ff0#30
+[0.988]  Socket_Read():  Rx: $m8001b8e,2#93
+[0.988]  Socket_Write():  Tx: +
+[0.988]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001b8e 
+[0.989]  Socket_Write():  Tx: $4ff0#30
+[0.989]  Socket_Read():  Rx: $qTStatus#49
+[0.989]  Socket_Write():  Tx: +
+[0.989]  Socket_Write():  Tx: $#00
+[1.191]  Socket_Read():  Rx: $vFlashErase:08000000,00004000#c6
+[1.191]  Socket_Write():  Tx: +
+[1.191]  stm32_flash_page_erase():  FuncEntry
+[1.192]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.194]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.195]  wait_while_flash_busy_bank1():  FuncEntry
+[1.196]  wait_while_flash_busy_bank1():  Flash status busy
+[1.196]  wait_while_flash_busy_bank1():  Flash status busy
+[1.197]  wait_while_flash_busy_bank1():  Flash status busy
+[1.198]  wait_while_flash_busy_bank1():  Flash status busy
+[1.198]  wait_while_flash_busy_bank1():  Flash status busy
+[1.199]  wait_while_flash_busy_bank1():  Flash status busy
+[1.199]  wait_while_flash_busy_bank1():  Flash status busy
+[1.200]  wait_while_flash_busy_bank1():  Flash status busy
+[1.200]  wait_while_flash_busy_bank1():  Flash status busy
+[1.201]  wait_while_flash_busy_bank1():  Flash status busy
+[1.202]  wait_while_flash_busy_bank1():  Flash status busy
+[1.202]  wait_while_flash_busy_bank1():  Flash status busy
+[1.203]  wait_while_flash_busy_bank1():  Flash status busy
+[1.203]  wait_while_flash_busy_bank1():  Flash status busy
+[1.204]  wait_while_flash_busy_bank1():  Flash status busy
+[1.204]  wait_while_flash_busy_bank1():  Flash status busy
+[1.205]  wait_while_flash_busy_bank1():  Flash status busy
+[1.206]  wait_while_flash_busy_bank1():  Flash status busy
+[1.206]  wait_while_flash_busy_bank1():  Flash status busy
+[1.207]  wait_while_flash_busy_bank1():  Flash status busy
+[1.207]  wait_while_flash_busy_bank1():  Flash status busy
+[1.208]  wait_while_flash_busy_bank1():  Flash status busy
+[1.208]  wait_while_flash_busy_bank1():  Flash status busy
+[1.209]  wait_while_flash_busy_bank1():  Flash status busy
+[1.210]  wait_while_flash_busy_bank1():  Flash status busy
+[1.210]  wait_while_flash_busy_bank1():  Flash status busy
+[1.211]  wait_while_flash_busy_bank1():  Flash status busy
+[1.211]  wait_while_flash_busy_bank1():  Flash status busy
+[1.212]  wait_while_flash_busy_bank1():  Flash status busy
+[1.212]  wait_while_flash_busy_bank1():  Flash status busy
+[1.213]  wait_while_flash_busy_bank1():  Flash status busy
+[1.214]  wait_while_flash_busy_bank1():  Flash status busy
+[1.214]  wait_while_flash_busy_bank1():  Flash status busy
+[1.215]  wait_while_flash_busy_bank1():  Flash status busy
+[1.215]  wait_while_flash_busy_bank1():  Flash status busy
+[1.216]  wait_while_flash_busy_bank1():  Flash status busy
+[1.216]  wait_while_flash_busy_bank1():  Flash status busy
+[1.217]  wait_while_flash_busy_bank1():  Flash status busy
+[1.218]  wait_while_flash_busy_bank1():  FuncExit
+[1.218]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.219]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.219]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.221]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.223]  wait_while_flash_busy_bank1():  FuncEntry
+[1.223]  wait_while_flash_busy_bank1():  Flash status busy
+[1.224]  wait_while_flash_busy_bank1():  Flash status busy
+[1.224]  wait_while_flash_busy_bank1():  Flash status busy
+[1.225]  wait_while_flash_busy_bank1():  Flash status busy
+[1.226]  wait_while_flash_busy_bank1():  Flash status busy
+[1.226]  wait_while_flash_busy_bank1():  Flash status busy
+[1.227]  wait_while_flash_busy_bank1():  Flash status busy
+[1.227]  wait_while_flash_busy_bank1():  Flash status busy
+[1.228]  wait_while_flash_busy_bank1():  Flash status busy
+[1.228]  wait_while_flash_busy_bank1():  Flash status busy
+[1.229]  wait_while_flash_busy_bank1():  Flash status busy
+[1.230]  wait_while_flash_busy_bank1():  Flash status busy
+[1.230]  wait_while_flash_busy_bank1():  Flash status busy
+[1.231]  wait_while_flash_busy_bank1():  Flash status busy
+[1.231]  wait_while_flash_busy_bank1():  Flash status busy
+[1.232]  wait_while_flash_busy_bank1():  Flash status busy
+[1.232]  wait_while_flash_busy_bank1():  Flash status busy
+[1.233]  wait_while_flash_busy_bank1():  Flash status busy
+[1.234]  wait_while_flash_busy_bank1():  Flash status busy
+[1.234]  wait_while_flash_busy_bank1():  Flash status busy
+[1.235]  wait_while_flash_busy_bank1():  Flash status busy
+[1.235]  wait_while_flash_busy_bank1():  Flash status busy
+[1.236]  wait_while_flash_busy_bank1():  Flash status busy
+[1.237]  wait_while_flash_busy_bank1():  Flash status busy
+[1.237]  wait_while_flash_busy_bank1():  Flash status busy
+[1.238]  wait_while_flash_busy_bank1():  Flash status busy
+[1.238]  wait_while_flash_busy_bank1():  Flash status busy
+[1.239]  wait_while_flash_busy_bank1():  Flash status busy
+[1.240]  wait_while_flash_busy_bank1():  Flash status busy
+[1.240]  wait_while_flash_busy_bank1():  Flash status busy
+[1.241]  wait_while_flash_busy_bank1():  Flash status busy
+[1.241]  wait_while_flash_busy_bank1():  Flash status busy
+[1.242]  wait_while_flash_busy_bank1():  Flash status busy
+[1.242]  wait_while_flash_busy_bank1():  Flash status busy
+[1.243]  wait_while_flash_busy_bank1():  Flash status busy
+[1.244]  wait_while_flash_busy_bank1():  Flash status busy
+[1.244]  wait_while_flash_busy_bank1():  Flash status busy
+[1.245]  wait_while_flash_busy_bank1():  Flash status busy
+[1.245]  wait_while_flash_busy_bank1():  FuncExit
+[1.245]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.246]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.247]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.249]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.250]  wait_while_flash_busy_bank1():  FuncEntry
+[1.251]  wait_while_flash_busy_bank1():  Flash status busy
+[1.252]  wait_while_flash_busy_bank1():  Flash status busy
+[1.252]  wait_while_flash_busy_bank1():  Flash status busy
+[1.253]  wait_while_flash_busy_bank1():  Flash status busy
+[1.253]  wait_while_flash_busy_bank1():  Flash status busy
+[1.254]  wait_while_flash_busy_bank1():  Flash status busy
+[1.254]  wait_while_flash_busy_bank1():  Flash status busy
+[1.255]  wait_while_flash_busy_bank1():  Flash status busy
+[1.256]  wait_while_flash_busy_bank1():  Flash status busy
+[1.256]  wait_while_flash_busy_bank1():  Flash status busy
+[1.257]  wait_while_flash_busy_bank1():  Flash status busy
+[1.258]  wait_while_flash_busy_bank1():  Flash status busy
+[1.258]  wait_while_flash_busy_bank1():  Flash status busy
+[1.259]  wait_while_flash_busy_bank1():  Flash status busy
+[1.260]  wait_while_flash_busy_bank1():  Flash status busy
+[1.260]  wait_while_flash_busy_bank1():  Flash status busy
+[1.261]  wait_while_flash_busy_bank1():  Flash status busy
+[1.261]  wait_while_flash_busy_bank1():  Flash status busy
+[1.262]  wait_while_flash_busy_bank1():  Flash status busy
+[1.262]  wait_while_flash_busy_bank1():  Flash status busy
+[1.263]  wait_while_flash_busy_bank1():  Flash status busy
+[1.263]  wait_while_flash_busy_bank1():  Flash status busy
+[1.264]  wait_while_flash_busy_bank1():  Flash status busy
+[1.265]  wait_while_flash_busy_bank1():  Flash status busy
+[1.265]  wait_while_flash_busy_bank1():  Flash status busy
+[1.266]  wait_while_flash_busy_bank1():  Flash status busy
+[1.266]  wait_while_flash_busy_bank1():  Flash status busy
+[1.267]  wait_while_flash_busy_bank1():  Flash status busy
+[1.267]  wait_while_flash_busy_bank1():  Flash status busy
+[1.268]  wait_while_flash_busy_bank1():  Flash status busy
+[1.269]  wait_while_flash_busy_bank1():  Flash status busy
+[1.269]  wait_while_flash_busy_bank1():  Flash status busy
+[1.270]  wait_while_flash_busy_bank1():  Flash status busy
+[1.270]  wait_while_flash_busy_bank1():  Flash status busy
+[1.271]  wait_while_flash_busy_bank1():  Flash status busy
+[1.271]  wait_while_flash_busy_bank1():  Flash status busy
+[1.272]  wait_while_flash_busy_bank1():  Flash status busy
+[1.273]  wait_while_flash_busy_bank1():  FuncExit
+[1.273]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.274]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.275]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.276]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.278]  wait_while_flash_busy_bank1():  FuncEntry
+[1.279]  wait_while_flash_busy_bank1():  Flash status busy
+[1.279]  wait_while_flash_busy_bank1():  Flash status busy
+[1.280]  wait_while_flash_busy_bank1():  Flash status busy
+[1.280]  wait_while_flash_busy_bank1():  Flash status busy
+[1.281]  wait_while_flash_busy_bank1():  Flash status busy
+[1.282]  wait_while_flash_busy_bank1():  Flash status busy
+[1.282]  wait_while_flash_busy_bank1():  Flash status busy
+[1.283]  wait_while_flash_busy_bank1():  Flash status busy
+[1.283]  wait_while_flash_busy_bank1():  Flash status busy
+[1.284]  wait_while_flash_busy_bank1():  Flash status busy
+[1.285]  wait_while_flash_busy_bank1():  Flash status busy
+[1.285]  wait_while_flash_busy_bank1():  Flash status busy
+[1.286]  wait_while_flash_busy_bank1():  Flash status busy
+[1.286]  wait_while_flash_busy_bank1():  Flash status busy
+[1.287]  wait_while_flash_busy_bank1():  Flash status busy
+[1.287]  wait_while_flash_busy_bank1():  Flash status busy
+[1.288]  wait_while_flash_busy_bank1():  Flash status busy
+[1.289]  wait_while_flash_busy_bank1():  Flash status busy
+[1.289]  wait_while_flash_busy_bank1():  Flash status busy
+[1.290]  wait_while_flash_busy_bank1():  Flash status busy
+[1.290]  wait_while_flash_busy_bank1():  Flash status busy
+[1.291]  wait_while_flash_busy_bank1():  Flash status busy
+[1.291]  wait_while_flash_busy_bank1():  Flash status busy
+[1.292]  wait_while_flash_busy_bank1():  Flash status busy
+[1.293]  wait_while_flash_busy_bank1():  Flash status busy
+[1.293]  wait_while_flash_busy_bank1():  Flash status busy
+[1.294]  wait_while_flash_busy_bank1():  Flash status busy
+[1.294]  wait_while_flash_busy_bank1():  Flash status busy
+[1.295]  wait_while_flash_busy_bank1():  Flash status busy
+[1.295]  wait_while_flash_busy_bank1():  Flash status busy
+[1.296]  wait_while_flash_busy_bank1():  Flash status busy
+[1.297]  wait_while_flash_busy_bank1():  Flash status busy
+[1.297]  wait_while_flash_busy_bank1():  Flash status busy
+[1.298]  wait_while_flash_busy_bank1():  Flash status busy
+[1.298]  wait_while_flash_busy_bank1():  Flash status busy
+[1.299]  wait_while_flash_busy_bank1():  Flash status busy
+[1.299]  wait_while_flash_busy_bank1():  Flash status busy
+[1.300]  wait_while_flash_busy_bank1():  Flash status busy
+[1.301]  wait_while_flash_busy_bank1():  FuncExit
+[1.301]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.302]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.302]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.304]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.306]  wait_while_flash_busy_bank1():  FuncEntry
+[1.306]  wait_while_flash_busy_bank1():  Flash status busy
+[1.307]  wait_while_flash_busy_bank1():  Flash status busy
+[1.308]  wait_while_flash_busy_bank1():  Flash status busy
+[1.308]  wait_while_flash_busy_bank1():  Flash status busy
+[1.309]  wait_while_flash_busy_bank1():  Flash status busy
+[1.309]  wait_while_flash_busy_bank1():  Flash status busy
+[1.310]  wait_while_flash_busy_bank1():  Flash status busy
+[1.310]  wait_while_flash_busy_bank1():  Flash status busy
+[1.311]  wait_while_flash_busy_bank1():  Flash status busy
+[1.312]  wait_while_flash_busy_bank1():  Flash status busy
+[1.312]  wait_while_flash_busy_bank1():  Flash status busy
+[1.313]  wait_while_flash_busy_bank1():  Flash status busy
+[1.313]  wait_while_flash_busy_bank1():  Flash status busy
+[1.314]  wait_while_flash_busy_bank1():  Flash status busy
+[1.314]  wait_while_flash_busy_bank1():  Flash status busy
+[1.315]  wait_while_flash_busy_bank1():  Flash status busy
+[1.316]  wait_while_flash_busy_bank1():  Flash status busy
+[1.316]  wait_while_flash_busy_bank1():  Flash status busy
+[1.317]  wait_while_flash_busy_bank1():  Flash status busy
+[1.318]  wait_while_flash_busy_bank1():  Flash status busy
+[1.318]  wait_while_flash_busy_bank1():  Flash status busy
+[1.319]  wait_while_flash_busy_bank1():  Flash status busy
+[1.319]  wait_while_flash_busy_bank1():  Flash status busy
+[1.320]  wait_while_flash_busy_bank1():  Flash status busy
+[1.321]  wait_while_flash_busy_bank1():  Flash status busy
+[1.321]  wait_while_flash_busy_bank1():  Flash status busy
+[1.322]  wait_while_flash_busy_bank1():  Flash status busy
+[1.322]  wait_while_flash_busy_bank1():  Flash status busy
+[1.323]  wait_while_flash_busy_bank1():  Flash status busy
+[1.323]  wait_while_flash_busy_bank1():  Flash status busy
+[1.324]  wait_while_flash_busy_bank1():  Flash status busy
+[1.325]  wait_while_flash_busy_bank1():  Flash status busy
+[1.325]  wait_while_flash_busy_bank1():  Flash status busy
+[1.326]  wait_while_flash_busy_bank1():  Flash status busy
+[1.326]  wait_while_flash_busy_bank1():  Flash status busy
+[1.327]  wait_while_flash_busy_bank1():  Flash status busy
+[1.327]  wait_while_flash_busy_bank1():  Flash status busy
+[1.328]  wait_while_flash_busy_bank1():  FuncExit
+[1.328]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.329]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.330]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.331]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.333]  wait_while_flash_busy_bank1():  FuncEntry
+[1.334]  wait_while_flash_busy_bank1():  Flash status busy
+[1.334]  wait_while_flash_busy_bank1():  Flash status busy
+[1.335]  wait_while_flash_busy_bank1():  Flash status busy
+[1.335]  wait_while_flash_busy_bank1():  Flash status busy
+[1.336]  wait_while_flash_busy_bank1():  Flash status busy
+[1.337]  wait_while_flash_busy_bank1():  Flash status busy
+[1.337]  wait_while_flash_busy_bank1():  Flash status busy
+[1.338]  wait_while_flash_busy_bank1():  Flash status busy
+[1.338]  wait_while_flash_busy_bank1():  Flash status busy
+[1.339]  wait_while_flash_busy_bank1():  Flash status busy
+[1.340]  wait_while_flash_busy_bank1():  Flash status busy
+[1.340]  wait_while_flash_busy_bank1():  Flash status busy
+[1.341]  wait_while_flash_busy_bank1():  Flash status busy
+[1.341]  wait_while_flash_busy_bank1():  Flash status busy
+[1.342]  wait_while_flash_busy_bank1():  Flash status busy
+[1.342]  wait_while_flash_busy_bank1():  Flash status busy
+[1.343]  wait_while_flash_busy_bank1():  Flash status busy
+[1.344]  wait_while_flash_busy_bank1():  Flash status busy
+[1.344]  wait_while_flash_busy_bank1():  Flash status busy
+[1.345]  wait_while_flash_busy_bank1():  Flash status busy
+[1.345]  wait_while_flash_busy_bank1():  Flash status busy
+[1.346]  wait_while_flash_busy_bank1():  Flash status busy
+[1.347]  wait_while_flash_busy_bank1():  Flash status busy
+[1.347]  wait_while_flash_busy_bank1():  Flash status busy
+[1.348]  wait_while_flash_busy_bank1():  Flash status busy
+[1.348]  wait_while_flash_busy_bank1():  Flash status busy
+[1.349]  wait_while_flash_busy_bank1():  Flash status busy
+[1.350]  wait_while_flash_busy_bank1():  Flash status busy
+[1.350]  wait_while_flash_busy_bank1():  Flash status busy
+[1.351]  wait_while_flash_busy_bank1():  Flash status busy
+[1.351]  wait_while_flash_busy_bank1():  Flash status busy
+[1.352]  wait_while_flash_busy_bank1():  Flash status busy
+[1.352]  wait_while_flash_busy_bank1():  Flash status busy
+[1.353]  wait_while_flash_busy_bank1():  Flash status busy
+[1.354]  wait_while_flash_busy_bank1():  Flash status busy
+[1.354]  wait_while_flash_busy_bank1():  Flash status busy
+[1.355]  wait_while_flash_busy_bank1():  Flash status busy
+[1.355]  wait_while_flash_busy_bank1():  Flash status busy
+[1.356]  wait_while_flash_busy_bank1():  FuncExit
+[1.356]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.357]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.358]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.359]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.361]  wait_while_flash_busy_bank1():  FuncEntry
+[1.362]  wait_while_flash_busy_bank1():  Flash status busy
+[1.362]  wait_while_flash_busy_bank1():  Flash status busy
+[1.363]  wait_while_flash_busy_bank1():  Flash status busy
+[1.363]  wait_while_flash_busy_bank1():  Flash status busy
+[1.364]  wait_while_flash_busy_bank1():  Flash status busy
+[1.365]  wait_while_flash_busy_bank1():  Flash status busy
+[1.365]  wait_while_flash_busy_bank1():  Flash status busy
+[1.366]  wait_while_flash_busy_bank1():  Flash status busy
+[1.366]  wait_while_flash_busy_bank1():  Flash status busy
+[1.367]  wait_while_flash_busy_bank1():  Flash status busy
+[1.367]  wait_while_flash_busy_bank1():  Flash status busy
+[1.368]  wait_while_flash_busy_bank1():  Flash status busy
+[1.369]  wait_while_flash_busy_bank1():  Flash status busy
+[1.369]  wait_while_flash_busy_bank1():  Flash status busy
+[1.370]  wait_while_flash_busy_bank1():  Flash status busy
+[1.370]  wait_while_flash_busy_bank1():  Flash status busy
+[1.371]  wait_while_flash_busy_bank1():  Flash status busy
+[1.372]  wait_while_flash_busy_bank1():  Flash status busy
+[1.372]  wait_while_flash_busy_bank1():  Flash status busy
+[1.373]  wait_while_flash_busy_bank1():  Flash status busy
+[1.374]  wait_while_flash_busy_bank1():  Flash status busy
+[1.374]  wait_while_flash_busy_bank1():  Flash status busy
+[1.375]  wait_while_flash_busy_bank1():  Flash status busy
+[1.375]  wait_while_flash_busy_bank1():  Flash status busy
+[1.376]  wait_while_flash_busy_bank1():  Flash status busy
+[1.377]  wait_while_flash_busy_bank1():  Flash status busy
+[1.377]  wait_while_flash_busy_bank1():  Flash status busy
+[1.378]  wait_while_flash_busy_bank1():  Flash status busy
+[1.378]  wait_while_flash_busy_bank1():  Flash status busy
+[1.379]  wait_while_flash_busy_bank1():  Flash status busy
+[1.380]  wait_while_flash_busy_bank1():  Flash status busy
+[1.380]  wait_while_flash_busy_bank1():  Flash status busy
+[1.381]  wait_while_flash_busy_bank1():  Flash status busy
+[1.382]  wait_while_flash_busy_bank1():  Flash status busy
+[1.382]  wait_while_flash_busy_bank1():  Flash status busy
+[1.383]  wait_while_flash_busy_bank1():  Flash status busy
+[1.383]  wait_while_flash_busy_bank1():  FuncExit
+[1.383]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.384]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.385]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.387]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.388]  wait_while_flash_busy_bank1():  FuncEntry
+[1.389]  wait_while_flash_busy_bank1():  Flash status busy
+[1.390]  wait_while_flash_busy_bank1():  Flash status busy
+[1.390]  wait_while_flash_busy_bank1():  Flash status busy
+[1.391]  wait_while_flash_busy_bank1():  Flash status busy
+[1.391]  wait_while_flash_busy_bank1():  Flash status busy
+[1.392]  wait_while_flash_busy_bank1():  Flash status busy
+[1.392]  wait_while_flash_busy_bank1():  Flash status busy
+[1.393]  wait_while_flash_busy_bank1():  Flash status busy
+[1.394]  wait_while_flash_busy_bank1():  Flash status busy
+[1.394]  wait_while_flash_busy_bank1():  Flash status busy
+[1.395]  wait_while_flash_busy_bank1():  Flash status busy
+[1.395]  wait_while_flash_busy_bank1():  Flash status busy
+[1.396]  wait_while_flash_busy_bank1():  Flash status busy
+[1.396]  wait_while_flash_busy_bank1():  Flash status busy
+[1.397]  wait_while_flash_busy_bank1():  Flash status busy
+[1.398]  wait_while_flash_busy_bank1():  Flash status busy
+[1.398]  wait_while_flash_busy_bank1():  Flash status busy
+[1.399]  wait_while_flash_busy_bank1():  Flash status busy
+[1.399]  wait_while_flash_busy_bank1():  Flash status busy
+[1.400]  wait_while_flash_busy_bank1():  Flash status busy
+[1.401]  wait_while_flash_busy_bank1():  Flash status busy
+[1.401]  wait_while_flash_busy_bank1():  Flash status busy
+[1.402]  wait_while_flash_busy_bank1():  Flash status busy
+[1.402]  wait_while_flash_busy_bank1():  Flash status busy
+[1.403]  wait_while_flash_busy_bank1():  Flash status busy
+[1.403]  wait_while_flash_busy_bank1():  Flash status busy
+[1.404]  wait_while_flash_busy_bank1():  Flash status busy
+[1.405]  wait_while_flash_busy_bank1():  Flash status busy
+[1.405]  wait_while_flash_busy_bank1():  Flash status busy
+[1.406]  wait_while_flash_busy_bank1():  Flash status busy
+[1.406]  wait_while_flash_busy_bank1():  Flash status busy
+[1.407]  wait_while_flash_busy_bank1():  Flash status busy
+[1.407]  wait_while_flash_busy_bank1():  Flash status busy
+[1.408]  wait_while_flash_busy_bank1():  Flash status busy
+[1.409]  wait_while_flash_busy_bank1():  Flash status busy
+[1.410]  wait_while_flash_busy_bank1():  Flash status busy
+[1.410]  wait_while_flash_busy_bank1():  Flash status busy
+[1.411]  wait_while_flash_busy_bank1():  FuncExit
+[1.411]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.412]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.412]  stm32_flash_page_erase():  FuncExit
+[1.412]  Socket_Write():  Tx: $OK#9a#00
+[1.412]  Socket_Read():  Rx: $vFlashWrite:8000000:
+[1.412]  Socket_Write():  Tx: +
+[1.413]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.415]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.415]  stm32_program_flash_memory():  FuncEntry
+[1.451]  stm32_program_flash_memory():  Programming flash.. 
+[1.461]  stm32_program_flash_memory():  Programming flash.. 
+[1.461]  stm32_program_flash_memory():  Programming flash..DONE 
+[1.470]  stm32_program_flash_memory():  STM32 device: flash programming successful 8000000 
+[1.470]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.471]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.471]  stm32_program_flash_memory():  FuncExit
+[1.471]  get_flash_error_status():  FuncEntry
+[1.471]  wait_while_flash_busy_bank1():  FuncEntry
+[1.472]  wait_while_flash_busy_bank1():  FuncExit
+[1.473]  get_flash_error_status():  FuncExit
+[1.473]  Socket_Write():  Tx: $OK#9a#00
+[1.473]  Socket_Read():  Rx: $vFlashWrite:8000188:µL}x3¹H±H¯ó
+[1.474]  Socket_Write():  Tx: +
+[1.474]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.476]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.476]  stm32_program_flash_memory():  FuncEntry
+[1.602]  stm32_program_flash_memory():  Programming flash.. 
+[1.612]  stm32_program_flash_memory():  Programming flash.. 
+[1.623]  stm32_program_flash_memory():  Programming flash.. 
+[1.635]  stm32_program_flash_memory():  Programming flash.. 
+[1.646]  stm32_program_flash_memory():  Programming flash.. 
+[1.657]  stm32_program_flash_memory():  Programming flash.. 
+[1.668]  stm32_program_flash_memory():  Programming flash.. 
+[1.679]  stm32_program_flash_memory():  Programming flash.. 
+[1.679]  stm32_program_flash_memory():  Programming flash..DONE 
+[1.736]  stm32_program_flash_memory():  STM32 device: flash programming successful 8000188 
+[1.736]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.737]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.737]  stm32_program_flash_memory():  FuncExit
+[1.737]  get_flash_error_status():  FuncEntry
+[1.737]  wait_while_flash_busy_bank1():  FuncEntry
+[1.738]  wait_while_flash_busy_bank1():  FuncExit
+[1.739]  get_flash_error_status():  FuncExit
+[1.739]  Socket_Write():  Tx: $OK#9a#00
+[1.740]  Socket_Read():  Rx: $vFlashWrite:8000d60:7
+[1.740]  Socket_Write():  Tx: +
+[1.740]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[1.742]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[1.742]  stm32_program_flash_memory():  FuncEntry
+[1.870]  stm32_program_flash_memory():  Programming flash.. 
+[1.882]  stm32_program_flash_memory():  Programming flash.. 
+[1.893]  stm32_program_flash_memory():  Programming flash.. 
+[1.904]  stm32_program_flash_memory():  Programming flash.. 
+[1.915]  stm32_program_flash_memory():  Programming flash.. 
+[1.926]  stm32_program_flash_memory():  Programming flash.. 
+[1.937]  stm32_program_flash_memory():  Programming flash.. 
+[1.948]  stm32_program_flash_memory():  Programming flash.. 
+[1.948]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.006]  stm32_program_flash_memory():  STM32 device: flash programming successful 8000d60 
+[2.006]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.007]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.007]  stm32_program_flash_memory():  FuncExit
+[2.007]  get_flash_error_status():  FuncEntry
+[2.007]  wait_while_flash_busy_bank1():  FuncEntry
+[2.008]  wait_while_flash_busy_bank1():  FuncExit
+[2.010]  get_flash_error_status():  FuncExit
+[2.010]  Socket_Write():  Tx: $OK#9a#00
+[2.010]  Socket_Read():  Rx: $vFlashWrite:8001940:NòÎò
+[2.010]  Socket_Write():  Tx: +
+[2.011]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.012]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.012]  stm32_program_flash_memory():  FuncEntry
+[2.140]  stm32_program_flash_memory():  Programming flash.. 
+[2.151]  stm32_program_flash_memory():  Programming flash.. 
+[2.163]  stm32_program_flash_memory():  Programming flash.. 
+[2.174]  stm32_program_flash_memory():  Programming flash.. 
+[2.185]  stm32_program_flash_memory():  Programming flash.. 
+[2.196]  stm32_program_flash_memory():  Programming flash.. 
+[2.207]  stm32_program_flash_memory():  Programming flash.. 
+[2.218]  stm32_program_flash_memory():  Programming flash.. 
+[2.218]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.276]  stm32_program_flash_memory():  STM32 device: flash programming successful 8001940 
+[2.276]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.277]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.277]  stm32_program_flash_memory():  FuncExit
+[2.277]  get_flash_error_status():  FuncEntry
+[2.277]  wait_while_flash_busy_bank1():  FuncEntry
+[2.278]  wait_while_flash_busy_bank1():  FuncExit
+[2.280]  get_flash_error_status():  FuncExit
+[2.280]  Socket_Write():  Tx: $OK#9a#00
+[2.280]  Socket_Read():  Rx: $vFlashWrite:8002500:›²@š²{hš€{h›ˆš²;h›yF{i›²úó›²Cš²{hš€{hh{iOêCOðúóoê@{h`{hh;hyF{iOêCúóC{h`{hÚh{i›²OêCOðúóoê@{hÚ`{hÚh;hÛyF{iOêCúóC{hÚ`{iñ{a{i+öo¯ñ½F€¼pG€´ƒ°
+[2.280]  Socket_Write():  Tx: +
+[2.281]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.284]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.284]  stm32_program_flash_memory():  FuncEntry
+[2.413]  stm32_program_flash_memory():  Programming flash.. 
+[2.425]  stm32_program_flash_memory():  Programming flash.. 
+[2.436]  stm32_program_flash_memory():  Programming flash.. 
+[2.447]  stm32_program_flash_memory():  Programming flash.. 
+[2.458]  stm32_program_flash_memory():  Programming flash.. 
+[2.470]  stm32_program_flash_memory():  Programming flash.. 
+[2.481]  stm32_program_flash_memory():  Programming flash.. 
+[2.492]  stm32_program_flash_memory():  Programming flash.. 
+[2.492]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.549]  stm32_program_flash_memory():  STM32 device: flash programming successful 8002500 
+[2.549]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.551]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.551]  stm32_program_flash_memory():  FuncExit
+[2.551]  get_flash_error_status():  FuncEntry
+[2.551]  wait_while_flash_busy_bank1():  FuncEntry
+[2.552]  wait_while_flash_busy_bank1():  FuncExit
+[2.553]  get_flash_error_status():  FuncExit
+[2.553]  Socket_Write():  Tx: $OK#9a#00
+[2.553]  Socket_Read():  Rx: $vFlashWrite:80030b0:Sî
+)Fý÷HúAì
+[2.553]  Socket_Write():  Tx: +
+[2.554]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.555]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.555]  stm32_program_flash_memory():  FuncEntry
+[2.664]  stm32_program_flash_memory():  Programming flash.. 
+[2.675]  stm32_program_flash_memory():  Programming flash.. 
+[2.686]  stm32_program_flash_memory():  Programming flash.. 
+[2.697]  stm32_program_flash_memory():  Programming flash.. 
+[2.708]  stm32_program_flash_memory():  Programming flash.. 
+[2.719]  stm32_program_flash_memory():  Programming flash.. 
+[2.731]  stm32_program_flash_memory():  Programming flash.. 
+[2.731]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.776]  stm32_program_flash_memory():  STM32 device: flash programming successful 80030b0 
+[2.776]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.777]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.777]  stm32_program_flash_memory():  FuncExit
+[2.777]  get_flash_error_status():  FuncEntry
+[2.777]  wait_while_flash_busy_bank1():  FuncEntry
+[2.778]  wait_while_flash_busy_bank1():  FuncExit
+[2.779]  get_flash_error_status():  FuncExit
+[2.779]  Socket_Write():  Tx: $OK#9a#00
+[2.779]  Socket_Read():  Rx: $vFlashWrite:8003a20:67+,-.
+[2.779]  Socket_Write():  Tx: +
+[2.781]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.783]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.783]  stm32_program_flash_memory():  FuncEntry
+[2.830]  stm32_program_flash_memory():  Programming flash.. 
+[2.841]  stm32_program_flash_memory():  Programming flash.. 
+[2.841]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.853]  stm32_program_flash_memory():  STM32 device: flash programming successful 8003a20 
+[2.853]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.855]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.855]  stm32_program_flash_memory():  FuncExit
+[2.855]  get_flash_error_status():  FuncEntry
+[2.855]  wait_while_flash_busy_bank1():  FuncEntry
+[2.856]  wait_while_flash_busy_bank1():  FuncExit
+[2.858]  get_flash_error_status():  FuncExit
+[2.858]  Socket_Write():  Tx: $OK#9a#00
+[2.859]  Socket_Read():  Rx: $vFlashWrite:8003c88:­
+[2.859]  Socket_Write():  Tx: +
+[2.860]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.862]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.862]  stm32_program_flash_memory():  FuncEntry
+[2.886]  stm32_program_flash_memory():  Programming flash.. 
+[2.886]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.887]  stm32_program_flash_memory():  STM32 device: flash programming successful 8003c88 
+[2.887]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.889]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.889]  stm32_program_flash_memory():  FuncExit
+[2.889]  get_flash_error_status():  FuncEntry
+[2.889]  wait_while_flash_busy_bank1():  FuncEntry
+[2.889]  wait_while_flash_busy_bank1():  FuncExit
+[2.891]  get_flash_error_status():  FuncExit
+[2.891]  Socket_Write():  Tx: $OK#9a#00
+[2.891]  Socket_Read():  Rx: $vFlashWrite:8003c8c:‰
+[2.891]  Socket_Write():  Tx: +
+[2.892]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.894]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.894]  stm32_program_flash_memory():  FuncEntry
+[2.917]  stm32_program_flash_memory():  Programming flash.. 
+[2.917]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.918]  stm32_program_flash_memory():  STM32 device: flash programming successful 8003c8c 
+[2.918]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.920]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.920]  stm32_program_flash_memory():  FuncExit
+[2.920]  get_flash_error_status():  FuncEntry
+[2.920]  wait_while_flash_busy_bank1():  FuncEntry
+[2.921]  wait_while_flash_busy_bank1():  FuncExit
+[2.923]  get_flash_error_status():  FuncExit
+[2.923]  Socket_Write():  Tx: $OK#9a#00
+[2.924]  Socket_Read():  Rx: $vFlashWrite:8003c90:
+[2.924]  Socket_Write():  Tx: +
+[2.925]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.927]  unlock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.927]  stm32_program_flash_memory():  FuncEntry
+[2.954]  stm32_program_flash_memory():  Programming flash.. 
+[2.955]  stm32_program_flash_memory():  Programming flash..DONE 
+[2.958]  stm32_program_flash_memory():  STM32 device: flash programming successful 8003c90 
+[2.958]  lock_flash_prg_and_erase_ctrler_bank1():  FuncEntry
+[2.959]  lock_flash_prg_and_erase_ctrler_bank1():  FuncExit
+[2.959]  stm32_program_flash_memory():  FuncExit
+[2.959]  get_flash_error_status():  FuncEntry
+[2.960]  wait_while_flash_busy_bank1():  FuncEntry
+[2.960]  wait_while_flash_busy_bank1():  FuncExit
+[2.963]  get_flash_error_status():  FuncExit
+[2.963]  Socket_Write():  Tx: $OK#9a#00
+[2.963]  Socket_Read():  Rx: $vFlashDone#ea
+[2.963]  Socket_Write():  Tx: +
+[2.963]  STM32_AppReset():  Enter STM32_AppReset() function 
+[3.074]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
+[3.075]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
+[3.076]  STM32_AppReset():  XPSR = 0x01000000
+[3.076]  Socket_Write():  Tx: $OK#9a#00
+[3.076]  Socket_Read():  Rx: $Pf=45180008#8d
+[3.076]  Socket_Write():  Tx: +
+[3.077]  Socket_Write():  Tx: $OK#9a
+[3.077]  Socket_Read():  Rx: $m8001b8e,2#93
+[3.077]  Socket_Write():  Tx: +
+[3.077]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001b8e 
+[3.078]  Socket_Write():  Tx: $4ff0#30
+[3.078]  Socket_Read():  Rx: $qTStatus#49
+[3.078]  Socket_Write():  Tx: +
+[3.078]  Socket_Write():  Tx: $#00
+[3.079]  Socket_Read():  Rx: $qTStatus#49
+[3.079]  Socket_Write():  Tx: +
+[3.079]  Socket_Write():  Tx: $#00
+[3.079]  Socket_Read():  Rx: $qTStatus#49
+[3.079]  Socket_Write():  Tx: +
+[3.079]  Socket_Write():  Tx: $#00
+[3.079]  Socket_Read():  Rx: $qTStatus#49
+[3.079]  Socket_Write():  Tx: +
+[3.079]  Socket_Write():  Tx: $#00
+[3.079]  Socket_Read():  Rx: $qTStatus#49
+[3.079]  Socket_Write():  Tx: +
+[3.079]  Socket_Write():  Tx: $#00
+[3.079]  Socket_Read():  Rx: $m8001844,4#36
+[3.079]  Socket_Write():  Tx: +
+[3.079]  handle_packet():  Reading 0x4 bytes of memory from addr 0x8001844 
+[3.080]  Socket_Write():  Tx: $00bf00bf#50
+[3.080]  Socket_Read():  Rx: $m8001b8e,2#93
+[3.080]  Socket_Write():  Tx: +
+[3.080]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001b8e 
+[3.081]  Socket_Write():  Tx: $4ff0#30
+[3.081]  Socket_Read():  Rx: $m8001b8e,2#93
+[3.081]  Socket_Write():  Tx: +
+[3.081]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001b8e 
+[3.082]  Socket_Write():  Tx: $4ff0#30
+[3.082]  Socket_Read():  Rx: $m8001b8e,2#93
+[3.082]  Socket_Write():  Tx: +
+[3.082]  handle_packet():  Reading 0x2 bytes of memory from addr 0x8001b8e 
+[3.082]  Socket_Write():  Tx: $4ff0#30
+[3.083]  Socket_Read():  Rx: $qTStatus#49
+[3.083]  Socket_Write():  Tx: +
+[3.083]  Socket_Write():  Tx: $#00
+[3.083]  Socket_Read():  Rx: $qRcmd,7265736574#37
+[3.083]  Socket_Write():  Tx: +
+[3.083]  STM32_AppReset():  Enter STM32_AppReset() function 
+[3.195]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
+[3.196]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
+[3.197]  STM32_AppReset():  XPSR = 0x01000000
+[3.197]  Socket_Write():  Tx: $O53544d3332205375636365737366756c6c7920636f6d706c65746564207265736574206f7065726174696f6e0a
+[3.197]  Socket_Read():  Rx: $qTStatus#49
+[3.197]  Socket_Write():  Tx: +
+[3.197]  Socket_Write():  Tx: $#00
+[3.197]  Socket_Read():  Rx: $Z1,8001b8e,2#dd
+[3.197]  Socket_Write():  Tx: +
+[3.198]  Socket_Write():  Tx: $OK#9a
+[3.198]  Socket_Read():  Rx: $vCont?#49
+[3.198]  Socket_Write():  Tx: +
+[3.198]  Socket_Write():  Tx: $#00
+[3.198]  Socket_Read():  Rx: $Hc0#db
+[3.198]  Socket_Write():  Tx: +
+[3.198]  Socket_Write():  Tx: $#00
+[3.198]  Socket_Read():  Rx: $c#63
+[3.198]  Socket_Write():  Tx: +
+[3.198]  handle_packet():  TraceCaptureStart and SWV event set to APP_TRUE 
+[3.304]  Run_Server():  TraceCaptureStart and SWV event set to APP_FALSE 
+[3.310]  STM32_GetHaltReason():  NVIC_DFSR_REG = 0x00000002 
+[3.311]  HandleStopReply():  ST_LINK Halt Reason break point hit 
+ 
+[3.312]  Socket_Write():  Tx: $T05#b9
+[3.312]  Socket_Read():  Rx: $g#67
+[3.312]  Socket_Write():  Tx: +
+[3.324]  Socket_Write():  Tx: $6c000020000000008c3c000800ed00e0000000000000000000000000f09f00200000000000000000000000000000000000000000f09f00208b1800088e1b00080000006100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f09f002000000000#81
+[3.324]  Socket_Read():  Rx: $z1,8001b8e,2#fd
+[3.324]  Socket_Write():  Tx: +
+[3.325]  Socket_Write():  Tx: $OK#9a
+[3.325]  Socket_Read():  Rx: $m8001b8e,4#95
+[3.325]  Socket_Write():  Tx: +
+[3.325]  handle_packet():  Reading 0x4 bytes of memory from addr 0x8001b8e 
+[3.327]  Socket_Write():  Tx: $4ff00000#f0
+[3.327]  Socket_Read():  Rx: $m20009fc0,40#f1
+[3.327]  Socket_Write():  Tx: +
+[3.327]  handle_packet():  Reading 0x40 bytes of memory from addr 0x20009fc0 
+[3.329]  Socket_Write():  Tx: $c89f002019100008f09f0020f9ffffff0100000001000000883c0008000000000000000000000000883c00089f28000800ed00e000000000000000008b180008#61
+[3.330]  Socket_Read():  Rx: $qfThreadInfo#bb
+[3.330]  Socket_Write():  Tx: +
+[3.330]  Socket_Write():  Tx: $l#6c
+[3.371]  Socket_Read():  Rx: $qfThreadInfo#bb
+[3.371]  Socket_Write():  Tx: +
+[3.371]  Socket_Write():  Tx: $l#6c
+[3.730]  Socket_Read():  Rx: $qfThreadInfo#bb
+[3.730]  Socket_Write():  Tx: +
+[3.730]  Socket_Write():  Tx: $l#6c
+[3.730]  Socket_Read():  Rx: $qfThreadInfo#bb
+[3.730]  Socket_Write():  Tx: +
+[3.730]  Socket_Write():  Tx: $l#6c
+[5.803]  Socket_Read():  Rx: $vKill;a410#33
+[5.803]  Socket_Write():  Tx: +
+[5.803]  Socket_Write():  Tx: $#00
+[5.803]  Socket_Read():  Rx: $k#6b
+[5.803]  Socket_Write():  Tx: +
+[5.803]  STM32_AppReset():  Enter STM32_AppReset() function 
+[5.916]  STM32_AppReset():  NVIC_DFSR_REG	= 0x00000009
+[5.917]  STM32_AppReset():  NVIC_CFGFSR_REG	= 0x00000000
+[5.918]  STM32_AppReset():  XPSR = 0x01000000
+[5.918]  Socket_Read():  Rx: $?#3f
+[5.918]  Socket_Write():  Tx: +
+[5.918]  Socket_Write():  Tx: $X09#c1
+[5.918]  get_a_packet():  Error in receiving data, exiting.. 
+[5.918]  Run_Server():  Encoutered a Socket Error, Exiting.. 

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;test/src/timer&apos; to &apos;timer.h&apos;" description="Rename resource &apos;timer&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/timer" name="timer.h" stamp="1405382882934" updateReferences="true"/>&#x0A;<refactoring comment="Create constant for 13" description="Extract Constant Refactoring" fileName="file:/C:/temp/stmf3/workspace/test/src/timer.c" flags="4" id="org.eclipse.cdt.ui.refactoring.extractconstant.ExtractConstantRefactoring" name="nIRQn" selection="3404,2" stamp="1405454052316" visibility="private"/>
-</session>

@@ -1,578 +1,437 @@
-!SESSION 2014-05-25 17:02:27.930 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.7.0_51
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\temp\stmf3\workspace
-
-!ENTRY TrueSTUDIO 4 0 2014-05-25 17:02:32.801
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-05-25 17:02:34.744
-!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY org.eclipse.osgi 2 1 2014-05-25 17:02:34.750
-!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.671
-!MESSAGE sst.gp.core earlyStartup()
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.683
-!MESSAGE Register ResourceChangeListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.688
-!MESSAGE Register WorkspaceSelectionListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.709
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.714
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-25 17:02:50.718
-!MESSAGE iconv is loaded.
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.721
-!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-25 17:02:50.725
-!MESSAGE est is loaded.
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.728
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-25 17:02:50.732
-!MESSAGE libiconv-2 is loaded.
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.735
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-25 17:02:50.738
-!MESSAGE libintl-2 is loaded.
-
-!ENTRY sst.gp.core 1 0 2014-05-25 17:02:50.742
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-25 17:02:50.747
-!MESSAGE xerces-c_2_7 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-25 17:02:50.756
-!MESSAGE RIMXJNI is loaded.
-
-!ENTRY sst.csgp 1 0 2014-05-25 17:02:50.835
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.tm 1 0 2014-05-25 17:02:50.842
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
-
-!ENTRY sst.tm 1 0 2014-05-25 17:02:50.880
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
-
-!ENTRY sst.tm 1 0 2014-05-25 17:02:55.783
-!MESSAGE 
-
-
----------------------------------------------------
-2014/05/25 17:02:55
----------------------------------------------------
-
-
-!ENTRY org.eclipse.cdt.core 1 0 2014-05-25 17:05:15.186
-!MESSAGE Indexed 'test' (29 sources, 69 headers) in 7.51 sec: 9,512 declarations; 28,091 references; 1 unresolved inclusions; 38 syntax errors; 36 unresolved names (0.10%)
-
-!ENTRY org.eclipse.jface 2 0 2014-05-25 17:08:55.078
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.078
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18eda30,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18eda30,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@196a3dc,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@196a3dc,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for F3:
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@dfd0b7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@dfd0b7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ffccfd,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ffccfd,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@eb0467,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@eb0467,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@16e225b,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@16e225b,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@191c5b9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@191c5b9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14c00c5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14c00c5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-25 17:08:55.079
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c6b871,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c6b871,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SESSION 2014-05-26 15:56:00.860 -----------------------------------------------
+!SESSION 2014-07-16 18:16:12.947 -----------------------------------------------
 eclipse.buildId=unknown
 java.version=1.7.0_51
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86
 
-!ENTRY org.eclipse.core.resources 2 10035 2014-05-26 15:56:11.890
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!ENTRY TrueSTUDIO 4 0 2014-07-16 18:16:27.218
+!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
 
-!ENTRY TrueSTUDIO 4 0 2014-05-26 15:56:15.334
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-05-26 15:56:19.651
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:16:28.493
 !MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
 
-!ENTRY org.eclipse.osgi 2 1 2014-05-26 15:56:19.656
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:16:28.495
 !MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.296
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.803
 !MESSAGE sst.gp.core earlyStartup()
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.334
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.808
 !MESSAGE Register ResourceChangeListener to current workspace
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.343
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.810
 !MESSAGE Register WorkspaceSelectionListener to current workspace
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.756
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.821
+!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.760
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.824
+!MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.766
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.826
 !MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
 
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.770
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.773
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY sst.gp.core 1 0 2014-05-26 15:57:40.777
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-26 15:57:41.159
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:16:35.828
 !MESSAGE iconv is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-26 15:57:41.189
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.830
+!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:16:35.831
 !MESSAGE est is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-26 15:57:41.227
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.833
+!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:16:35.836
 !MESSAGE libiconv-2 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-26 15:57:41.259
+!ENTRY sst.gp.core 1 0 2014-07-16 18:16:35.838
+!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:16:35.840
 !MESSAGE libintl-2 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-26 15:57:41.415
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:16:35.845
 !MESSAGE xerces-c_2_7 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-26 15:57:41.525
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:16:35.849
 !MESSAGE RIMXJNI is loaded.
 
-!ENTRY sst.csgp 1 0 2014-05-26 15:57:41.932
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
+!ENTRY sst.csgp 1 0 2014-07-16 18:16:35.880
+!MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.tm 1 0 2014-05-26 15:57:41.953
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
+!ENTRY sst.tm 1 0 2014-07-16 18:16:35.885
+!MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
 
-!ENTRY sst.tm 1 0 2014-05-26 15:57:41.973
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
+!ENTRY sst.tm 1 0 2014-07-16 18:16:35.892
+!MESSAGE C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace\.metadata\.plugins\sst.tm
 
-!ENTRY sst.tm 1 0 2014-05-26 15:57:45.505
+!ENTRY sst.tm 1 0 2014-07-16 18:16:38.001
 !MESSAGE 
 
 
 ---------------------------------------------------
-2014/05/26 15:57:45
+2014/07/16 18:16:38
 ---------------------------------------------------
 
 
-!ENTRY org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@92d288,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@92d288,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13bdf03,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13bdf03,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for F3:
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ae5214,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ae5214,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ec5dd,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ec5dd,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@604161,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@604161,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@16459ef,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@16459ef,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14c702a,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14c702a,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@157fafe,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@157fafe,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-26 15:59:51.361
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@8fcdfd,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@8fcdfd,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:17:04.904
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
 
-!ENTRY org.eclipse.cdt.ui 4 0 2014-05-26 17:24:32.696
-!MESSAGE Cannot work without definition
-!SESSION 2014-05-27 13:45:42.693 -----------------------------------------------
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:17:04.909
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:17:04.913
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY org.eclipse.cdt.core 1 0 2014-07-16 18:17:06.387
+!MESSAGE Indexed 'Demo' (1 sources, 35 headers) in 1.08 sec: 1,568 declarations; 1,915 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2014-07-16 18:41:24.712 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace
+
+!ENTRY TrueSTUDIO 4 0 2014-07-16 18:41:26.373
+!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
+
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:41:27.650
+!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:41:27.653
+!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:42:14.904
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:42:14.912
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:42:14.916
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.550
+!MESSAGE sst.gp.core earlyStartup()
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.554
+!MESSAGE Register ResourceChangeListener to current workspace
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.557
+!MESSAGE Register WorkspaceSelectionListener to current workspace
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.568
+!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.570
+!MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.573
+!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.575
+!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.578
+!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:42:16.580
+!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:42:16.582
+!MESSAGE iconv is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:42:16.585
+!MESSAGE est is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:42:16.588
+!MESSAGE libiconv-2 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:42:16.591
+!MESSAGE libintl-2 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:42:16.595
+!MESSAGE xerces-c_2_7 is loaded.
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:42:16.598
+!MESSAGE RIMXJNI is loaded.
+
+!ENTRY sst.csgp 1 0 2014-07-16 18:42:16.641
+!MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
+
+!ENTRY sst.tm 1 0 2014-07-16 18:42:16.645
+!MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
+
+!ENTRY sst.tm 1 0 2014-07-16 18:42:16.648
+!MESSAGE C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace\.metadata\.plugins\sst.tm
+
+!ENTRY sst.tm 1 0 2014-07-16 18:42:18.701
+!MESSAGE 
+
+
+---------------------------------------------------
+2014/07/16 18:42:18
+---------------------------------------------------
+
+!SESSION 2014-07-16 18:48:24.546 -----------------------------------------------
 eclipse.buildId=unknown
 java.version=1.7.0_51
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86
 
-!ENTRY TrueSTUDIO 4 0 2014-05-27 13:46:12.307
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
+!ENTRY TrueSTUDIO 4 0 2014-07-16 18:48:35.872
+!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
 
-!ENTRY org.eclipse.osgi 2 1 2014-05-27 13:46:16.557
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:48:37.143
 !MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
 
-!ENTRY org.eclipse.osgi 2 1 2014-05-27 13:46:16.560
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:48:37.145
 !MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:38.885
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:48:42.990
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:48:42.998
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:48:43.003
+!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
+
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.550
 !MESSAGE sst.gp.core earlyStartup()
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:38.914
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.553
 !MESSAGE Register ResourceChangeListener to current workspace
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:38.923
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.556
 !MESSAGE Register WorkspaceSelectionListener to current workspace
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:39.290
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.566
+!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:39.294
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.569
+!MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:39.300
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.572
 !MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:39.304
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.574
 !MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:39.308
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.576
 !MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
 
-!ENTRY sst.gp.core 1 0 2014-05-27 13:46:39.311
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-27 13:46:39.662
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:48:44.578
 !MESSAGE iconv is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-27 13:46:39.709
+!ENTRY sst.gp.core 1 0 2014-07-16 18:48:44.580
+!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:48:44.582
 !MESSAGE est is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-27 13:46:39.752
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:48:44.585
 !MESSAGE libiconv-2 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-27 13:46:39.785
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:48:44.589
 !MESSAGE libintl-2 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-27 13:46:39.975
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:48:44.594
 !MESSAGE xerces-c_2_7 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-05-27 13:46:40.094
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:48:44.597
 !MESSAGE RIMXJNI is loaded.
 
-!ENTRY sst.csgp 1 0 2014-05-27 13:46:40.568
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
+!ENTRY sst.csgp 1 0 2014-07-16 18:48:44.639
+!MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.tm 1 0 2014-05-27 13:46:40.588
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
+!ENTRY sst.tm 1 0 2014-07-16 18:48:44.644
+!MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
 
-!ENTRY sst.tm 1 0 2014-05-27 13:46:40.607
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
+!ENTRY sst.tm 1 0 2014-07-16 18:48:44.647
+!MESSAGE C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace\.metadata\.plugins\sst.tm
 
-!ENTRY sst.tm 1 0 2014-05-27 13:46:44.041
+!ENTRY sst.tm 1 0 2014-07-16 18:48:46.705
 !MESSAGE 
 
 
 ---------------------------------------------------
-2014/05/27 13:46:43
+2014/07/16 18:48:46
 ---------------------------------------------------
 
 
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-05-27 13:57:13.417
+!ENTRY org.eclipse.cdt.core 1 0 2014-07-16 18:50:03.836
+!MESSAGE Indexed 'test' (31 sources, 74 headers) in 1.94 sec: 10,065 declarations; 29,049 references; 1 unresolved inclusions; 38 syntax errors; 36 unresolved names (0.09%)
+
+!ENTRY org.eclipse.jface 2 0 2014-07-16 18:50:06.392
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.392
+!MESSAGE A conflict occurred for ALT+CTRL+I:
+Binding(ALT+CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
+		Open an include browser on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@89cd27,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
+		Open an include browser on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@89cd27,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.392
+!MESSAGE A conflict occurred for ALT+SHIFT+R:
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@fbc2e5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+SHIFT+R,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@fbc2e5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.392
+!MESSAGE A conflict occurred for F3:
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
+		Open an editor on the selected element's declaration(s),
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b88670,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
+		Open an editor on the selected element's declaration(s),
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b88670,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.392
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
+		Open an element in an Editor,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@825091,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
+		Open an element in an Editor,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@825091,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.393
+!MESSAGE A conflict occurred for F4:
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1777d99,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1777d99,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.393
+!MESSAGE A conflict occurred for CTRL+G:
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d6e963,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d6e963,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.393
+!MESSAGE A conflict occurred for CTRL+SHIFT+G:
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7468a7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7468a7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.393
+!MESSAGE A conflict occurred for ALT+CTRL+H:
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
+		Open the call hierarchy for the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@82d221,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
+		Open the call hierarchy for the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@82d221,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:50:06.393
+!MESSAGE A conflict occurred for CTRL+SHIFT+H:
+Binding(CTRL+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b18533,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b18533,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-16 19:33:35.597
 !MESSAGE 
 !STACK 0
 java.lang.NullPointerException
@@ -623,7 +482,7 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-05-27 14:42:18.805
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-16 19:33:51.269
 !MESSAGE 
 !STACK 0
 java.lang.NullPointerException
@@ -674,328 +533,7 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-05-27 14:51:22.177
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIRunControl$9@e22f29): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Interrupt failed. null' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-05-27 14:51:22.177
-!MESSAGE Interrupt failed.
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-05-27 14:59:24.525
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIRunControl$9@1b10d17): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Interrupt failed. null' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-05-27 14:59:24.525
-!MESSAGE Interrupt failed.
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-05-27 14:59:26.988
-!MESSAGE Breakpoint already removed
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10005 2014-05-27 14:59:26.988
-!MESSAGE Breakpoint already removed
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-05-27 14:59:35.626
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIRunControl$9@1b8b274): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Interrupt failed. null' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-05-27 14:59:35.626
-!MESSAGE Interrupt failed.
-
-!ENTRY org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@129436,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@129436,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1c076b3,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1c076b3,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for F3:
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b11c1d,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@b11c1d,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1acbd81,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1acbd81,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1cd7587,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1cd7587,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1def81e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1def81e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@173a9b7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@173a9b7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@8b5b42,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@8b5b42,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-05-27 15:14:59.873
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@114670e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@114670e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-
-!ENTRY TrueSTUDIO 4 0 2014-05-27 15:22:13.201
-!MESSAGE ST-Link GDB server failed to start (exit code = -1).
-
-!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-05-27 15:22:13.224
-!MESSAGE Error in initializing ST-Link device.
-Reason: (-1) Failed to connect to device. Please check power and cabling to target.
-!SESSION 2014-07-08 14:56:18.465 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.7.0_51
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86
-
-!ENTRY TrueSTUDIO 4 0 2014-07-08 14:56:29.814
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-08 14:56:32.606
-!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-08 14:56:32.608
-!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:49.962
-!MESSAGE sst.gp.core earlyStartup()
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:50.066
-!MESSAGE Register ResourceChangeListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:50.082
-!MESSAGE Register WorkspaceSelectionListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:50.993
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:51.028
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:51.032
-!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:51.034
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:51.036
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-08 14:56:51.038
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-08 14:56:51.761
-!MESSAGE iconv is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-08 14:56:51.794
-!MESSAGE est is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-08 14:56:51.894
-!MESSAGE libiconv-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-08 14:56:51.928
-!MESSAGE libintl-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-08 14:56:52.066
-!MESSAGE xerces-c_2_7 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-08 14:56:52.119
-!MESSAGE RIMXJNI is loaded.
-
-!ENTRY sst.csgp 1 0 2014-07-08 14:56:52.827
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.tm 1 0 2014-07-08 14:56:52.867
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
-
-!ENTRY sst.tm 1 0 2014-07-08 14:56:52.892
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
-
-!ENTRY sst.tm 1 0 2014-07-08 14:56:55.577
-!MESSAGE 
-
-
----------------------------------------------------
-2014/07/08 14:56:55
----------------------------------------------------
-
-
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-08 15:25:08.140
-!MESSAGE 
-!STACK 0
-java.lang.NullPointerException
-	at sst.csut.core.event.CSEventHandler.postExecuteSuccess(CSEventHandler.java:723)
-	at org.eclipse.core.commands.CommandManager$ExecutionListener.postExecuteSuccess(CommandManager.java:112)
-	at org.eclipse.core.commands.Command.firePostExecuteSuccess(Command.java:670)
-	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:501)
-	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
-	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
-	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:285)
-	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:504)
-	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:555)
-	at org.eclipse.e4.ui.bindings.keys.OutOfOrderListener.handleEvent(OutOfOrderListener.java:70)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1081)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
-	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1108)
-	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104)
-	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1827)
-	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:4975)
-	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:429)
-	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4643)
-	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
-	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4977)
-	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
-	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3757)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
-	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:126)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
-
-!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-08 15:26:39.788
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-16 19:51:50.948
 !MESSAGE 
 !STACK 0
 java.lang.NullPointerException
@@ -1046,1584 +584,182 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 
-!ENTRY org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@191d58c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@191d58c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@15aec92,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@15aec92,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for F3:
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6183af,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6183af,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c7e5c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c7e5c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3bfd54,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3bfd54,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@74cf5c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@74cf5c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d9dbb8,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d9dbb8,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e83786,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e83786,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-08 15:38:20.420
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1956e11,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1956e11,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SESSION 2014-07-09 11:59:15.929 -----------------------------------------------
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-16 19:51:51.395
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at sst.csut.core.event.CSEventHandler.postExecuteSuccess(CSEventHandler.java:723)
+	at org.eclipse.core.commands.CommandManager$ExecutionListener.postExecuteSuccess(CommandManager.java:112)
+	at org.eclipse.core.commands.Command.firePostExecuteSuccess(Command.java:670)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:501)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:285)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:504)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:555)
+	at org.eclipse.e4.ui.bindings.keys.OutOfOrderListener.handleEvent(OutOfOrderListener.java:70)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1081)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1108)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104)
+	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1827)
+	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:4975)
+	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:429)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4643)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4990)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3757)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:126)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-16 19:51:51.900
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at sst.csut.core.event.CSEventHandler.postExecuteSuccess(CSEventHandler.java:723)
+	at org.eclipse.core.commands.CommandManager$ExecutionListener.postExecuteSuccess(CommandManager.java:112)
+	at org.eclipse.core.commands.Command.firePostExecuteSuccess(Command.java:670)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:501)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:285)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:504)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:555)
+	at org.eclipse.e4.ui.bindings.keys.OutOfOrderListener.handleEvent(OutOfOrderListener.java:70)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1081)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1108)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1104)
+	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1827)
+	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:4975)
+	at org.eclipse.swt.widgets.Canvas.WM_KEYDOWN(Canvas.java:429)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4643)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4990)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3757)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:126)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+!SESSION 2014-07-16 20:16:35.186 -----------------------------------------------
 eclipse.buildId=unknown
 java.version=1.7.0_51
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86
 
-!ENTRY TrueSTUDIO 4 0 2014-07-09 11:59:38.394
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-09 11:59:43.269
-!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-09 11:59:43.271
-!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.663
-!MESSAGE sst.gp.core earlyStartup()
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.678
-!MESSAGE Register ResourceChangeListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.682
-!MESSAGE Register WorkspaceSelectionListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.694
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.697
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.699
-!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.702
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.705
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-09 11:59:57.708
-!MESSAGE iconv is loaded.
-
-!ENTRY sst.gp.core 1 0 2014-07-09 11:59:57.710
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-09 11:59:57.713
-!MESSAGE est is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-09 11:59:57.716
-!MESSAGE libiconv-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-09 11:59:57.719
-!MESSAGE libintl-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-09 11:59:57.724
-!MESSAGE xerces-c_2_7 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-09 11:59:57.728
-!MESSAGE RIMXJNI is loaded.
-
-!ENTRY sst.csgp 1 0 2014-07-09 11:59:57.757
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.tm 1 0 2014-07-09 11:59:57.764
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
-
-!ENTRY sst.tm 1 0 2014-07-09 11:59:57.768
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
-
-!ENTRY sst.tm 1 0 2014-07-09 11:59:59.860
-!MESSAGE 
-
-
----------------------------------------------------
-2014/07/09 11:59:59
----------------------------------------------------
-
-
-!ENTRY org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d344c8,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d344c8,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@148ddc5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@148ddc5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d7efbe,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d7efbe,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@bcdac5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@bcdac5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@bee6f9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@bee6f9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.ui.edit.text.goto.line,Go to Line,
-		Go to a specified line of text,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@12e0390,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.textEditorScope,,,user)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ec097f,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ec097f,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1638e8e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1638e8e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-10 12:13:58.425
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@124290a,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@124290a,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-
-!ENTRY TrueSTUDIO 4 0 2014-07-11 15:01:59.076
-!MESSAGE ST-Link GDB server failed to start (exit code = -1).
-
-!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-07-11 15:01:59.212
-!MESSAGE Error in initializing ST-Link device.
-Reason: (-1) Failed to connect to device. Please check power and cabling to target.
-
-!ENTRY TrueSTUDIO 4 0 2014-07-11 16:53:46.157
-!MESSAGE ST-Link GDB server failed to start (exit code = -1).
-
-!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-07-11 16:53:46.228
-!MESSAGE Error in initializing ST-Link device.
-Reason: (-1) Failed to connect to device. Please check power and cabling to target.
-
-!ENTRY org.eclipse.jface 2 0 2014-07-11 17:23:50.254
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-11 17:23:50.254
-!MESSAGE A conflict occurred for ALT+ARROW_LEFT:
-Binding(ALT+ARROW_LEFT,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.hover.backwardMacroExpansion,Back,
-		Step backward in macro expansions,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18a55e9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.macroExpansionHoverScope,,,system)
-Binding(ALT+ARROW_LEFT,
-	ParameterizedCommand(Command(org.eclipse.ui.navigate.backwardHistory,Backward History,
-		Move backward in the editor navigation history,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14e3bf6,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.contexts.window,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-11 17:23:50.254
-!MESSAGE A conflict occurred for ALT+ARROW_RIGHT:
-Binding(ALT+ARROW_RIGHT,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.hover.forwardMacroExpansion,Forward,
-		Step forward in macro expansions,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@10e4e6e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.macroExpansionHoverScope,,,system)
-Binding(ALT+ARROW_RIGHT,
-	ParameterizedCommand(Command(org.eclipse.ui.navigate.forwardHistory,Forward History,
-		Move forward in the editor navigation history,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@816e31,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.contexts.window,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-11 17:23:50.254
-!MESSAGE A conflict occurred for F3:
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5ee9a5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5ee9a5,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.macroExpansionHoverScope,,,system)
-!SESSION 2014-07-12 09:58:13.713 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.7.0_51
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86
-
-!ENTRY TrueSTUDIO 4 0 2014-07-12 09:58:30.541
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-12 09:58:33.346
-!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-12 09:58:33.346
-!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:12.304
-!MESSAGE sst.gp.core earlyStartup()
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:12.383
-!MESSAGE Register ResourceChangeListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:12.398
-!MESSAGE Register WorkspaceSelectionListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:13.040
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:13.040
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:13.040
-!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:13.055
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:13.055
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-12 09:59:13.055
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-12 09:59:13.462
-!MESSAGE iconv is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-12 09:59:13.540
-!MESSAGE est is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-12 09:59:13.571
-!MESSAGE libiconv-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-12 09:59:13.602
-!MESSAGE libintl-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-12 09:59:13.712
-!MESSAGE xerces-c_2_7 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-12 09:59:13.759
-!MESSAGE RIMXJNI is loaded.
-
-!ENTRY sst.csgp 1 0 2014-07-12 09:59:14.384
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.tm 1 0 2014-07-12 09:59:14.415
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
-
-!ENTRY sst.tm 1 0 2014-07-12 09:59:14.431
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
-
-!ENTRY sst.tm 1 0 2014-07-12 09:59:17.009
-!MESSAGE 
-
-
----------------------------------------------------
-2014/07/12 09:59:16
----------------------------------------------------
-
-
-!ENTRY org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@767d4,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@767d4,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@31c4a7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@31c4a7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@165cfd7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@165cfd7,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13047a4,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13047a4,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@af7830,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@af7830,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.ui.edit.text.goto.line,Go to Line,
-		Go to a specified line of text,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1fb9ccb,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.textEditorScope,,,user)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1f2d67e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1f2d67e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1e0101f,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1e0101f,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-12 15:58:44.983
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1429779,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1429779,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-13 16:32:34.895
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@ae57ca): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-13 16:32:34.895
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-13 16:33:22.814
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@dab7e2): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-13 16:33:22.814
-!MESSAGE Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-13 16:33:24.295
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@25558c): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-13 16:33:24.295
-!MESSAGE Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 4.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-13 16:45:25.259
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@1e5d402): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-13 16:45:25.259
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-!SESSION 2014-07-13 17:01:33.968 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.7.0_51
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86
-
-!ENTRY TrueSTUDIO 4 0 2014-07-13 17:01:44.014
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-13 17:01:45.290
-!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-13 17:01:45.292
-!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.413
-!MESSAGE sst.gp.core earlyStartup()
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.419
-!MESSAGE Register ResourceChangeListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.421
-!MESSAGE Register WorkspaceSelectionListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.437
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.440
-!MESSAGE Platform installed location : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.443
-!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.445
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.448
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-13 17:01:52.450
-!MESSAGE iconv is loaded.
-
-!ENTRY sst.gp.core 1 0 2014-07-13 17:01:52.452
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-13 17:01:52.454
-!MESSAGE est is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-13 17:01:52.457
-!MESSAGE libiconv-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-13 17:01:52.460
-!MESSAGE libintl-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-13 17:01:52.464
-!MESSAGE xerces-c_2_7 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-13 17:01:52.467
-!MESSAGE RIMXJNI is loaded.
-
-!ENTRY sst.csgp 1 0 2014-07-13 17:01:52.496
-!MESSAGE platform install loc : D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.tm 1 0 2014-07-13 17:01:52.501
-!MESSAGE D:\programs\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
-
-!ENTRY sst.tm 1 0 2014-07-13 17:01:52.503
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
-
-!ENTRY sst.tm 1 0 2014-07-13 17:01:54.537
-!MESSAGE 
-
-
----------------------------------------------------
-2014/07/13 17:01:54
----------------------------------------------------
-
-
-!ENTRY org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7a325d,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7a325d,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@808332,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@808332,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@125607e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@125607e,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e213a9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e213a9,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@78c902,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@78c902,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.ui.edit.text.goto.line,Go to Line,
-		Go to a specified line of text,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d4b3fc,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.textEditorScope,,,user)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@17479d1,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@17479d1,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1e9c8af,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1e9c8af,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-13 17:12:31.254
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1768f7b,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1768f7b,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-13 17:15:08.068
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-13 17:15:08.072
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-13 17:15:08.074
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-13 17:15:08.456
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-13 17:15:08.460
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-13 17:15:08.463
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY org.eclipse.cdt.core 1 0 2014-07-13 17:15:11.253
-!MESSAGE Indexed 'SysTick' (29 sources, 72 headers) in 2.38 sec: 6,744 declarations; 24,024 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
-
-!ENTRY org.eclipse.team.core 4 279 2014-07-13 17:15:53.795
-!MESSAGE File /SysTick/SysTick.elf.launch is read-only.
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-13 18:27:00.660
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@b3c3ac): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCannot insert hardware breakpoint 5.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCannot insert hardware breakpoint 5.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-13 18:27:00.660
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCannot insert hardware breakpoint 5.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCannot insert hardware breakpoint 5.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY org.eclipse.jface 2 0 2014-07-14 19:39:24.949
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-14 19:39:24.949
-!MESSAGE A conflict occurred for ALT+ARROW_LEFT:
-Binding(ALT+ARROW_LEFT,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.hover.backwardMacroExpansion,Back,
-		Step backward in macro expansions,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18d5003,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.macroExpansionHoverScope,,,system)
-Binding(ALT+ARROW_LEFT,
-	ParameterizedCommand(Command(org.eclipse.ui.navigate.backwardHistory,Backward History,
-		Move backward in the editor navigation history,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6f7262,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.contexts.window,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-14 19:39:24.949
-!MESSAGE A conflict occurred for ALT+ARROW_RIGHT:
-Binding(ALT+ARROW_RIGHT,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.hover.forwardMacroExpansion,Forward,
-		Step forward in macro expansions,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@8018a1,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.macroExpansionHoverScope,,,system)
-Binding(ALT+ARROW_RIGHT,
-	ParameterizedCommand(Command(org.eclipse.ui.navigate.forwardHistory,Forward History,
-		Move forward in the editor navigation history,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@deba2c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.contexts.window,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-14 19:39:24.949
-!MESSAGE A conflict occurred for F3:
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d1131c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F3,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
-		Open an editor on the selected element's declaration(s),
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d1131c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.macroExpansionHoverScope,,,system)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-15 15:37:06.123
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@1891a8): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-15 15:37:06.123
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-15 15:48:52.561
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@1e9c06d): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 2.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 2.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-15 15:48:52.561
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 2.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCannot insert hardware breakpoint 2.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY TrueSTUDIO 4 0 2014-07-15 16:43:32.951
-!MESSAGE ST-Link GDB server failed to start (exit code = -1).
-
-!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-07-15 16:43:32.968
-!MESSAGE Error in initializing ST-Link device.
-Reason: (-1) Failed to connect to device. Please check power and cabling to target.
-
-!ENTRY org.eclipse.cdt.ui 4 0 2014-07-15 17:14:41.350
-!MESSAGE Cannot work without definition
-
-!ENTRY org.eclipse.cdt.ui 4 0 2014-07-15 17:16:35.575
-!MESSAGE One-definition-rule broken
-
-!ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 10:57:38.590
-!MESSAGE Cannot work without definition
-
-!ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 11:10:04.621
-!MESSAGE Multiple declarations would result in ambiguous results
-
-!ENTRY org.eclipse.cdt.ui 4 0 2014-07-16 11:10:06.478
-!MESSAGE Multiple declarations would result in ambiguous results
-
-!ENTRY TrueSTUDIO 4 0 2014-07-16 17:12:41.869
-!MESSAGE ST-Link GDB server failed to start (exit code = -6).
-
-!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2014-07-16 17:12:41.884
-!MESSAGE Error in initializing ST-Link device.
-Reason: (-6) ST-Link firmware upgrade required.
-Please upgrade the ST-Link firmware using the upgrade tool. Reconnect ST-LINK and click OK
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 17:13:24.472
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@1fcc3ab): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 17:13:24.472
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 6.\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.393
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.396
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.399
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.640
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.643
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 17:16:16.645
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY org.eclipse.cdt.core 1 0 2014-07-16 17:16:19.009
-!MESSAGE Indexed 'SysTick' (29 sources, 72 headers) in 1.68 sec: 6,744 declarations; 24,024 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 17:17:20.171
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@1117578): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 17:17:20.171
-!MESSAGE Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 17:17:21.266
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@f5c76a): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 17:17:21.266
-!MESSAGE Failed to execute MI command:
--exec-next 1
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 4.\nCannot insert hardware breakpoint 7.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-!SESSION 2014-07-16 18:19:00.693 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.7.0_51
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\temp\stmf3\workspace
-
-!ENTRY TrueSTUDIO 4 0 2014-07-16 18:19:02.349
+!ENTRY TrueSTUDIO 4 0 2014-07-16 20:16:39.580
 !MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
 
-!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:19:03.621
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 20:16:40.844
 !MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
 
-!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:19:03.622
+!ENTRY org.eclipse.osgi 2 1 2014-07-16 20:16:40.846
 !MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
 
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:20:11.211
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:20:11.219
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:20:11.223
-!MESSAGE SysTick is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.054
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.033
 !MESSAGE sst.gp.core earlyStartup()
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.057
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.042
 !MESSAGE Register ResourceChangeListener to current workspace
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.060
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.044
 !MESSAGE Register WorkspaceSelectionListener to current workspace
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.077
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.056
 !MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.079
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.058
 !MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.082
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.061
 !MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.085
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.063
 !MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.087
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.066
 !MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
 
-!ENTRY sst.gp.core 1 0 2014-07-16 18:20:13.102
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.112
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 20:16:48.068
 !MESSAGE iconv is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.116
+!ENTRY sst.gp.core 1 0 2014-07-16 20:16:48.070
+!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
+
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 20:16:48.072
 !MESSAGE est is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.119
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 20:16:48.074
 !MESSAGE libiconv-2 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.121
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 20:16:48.076
 !MESSAGE libintl-2 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.126
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 20:16:48.081
 !MESSAGE xerces-c_2_7 is loaded.
 
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:20:13.129
+!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 20:16:48.084
 !MESSAGE RIMXJNI is loaded.
 
-!ENTRY sst.csgp 1 0 2014-07-16 18:20:13.168
+!ENTRY sst.csgp 1 0 2014-07-16 20:16:48.111
 !MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
 
-!ENTRY sst.tm 1 0 2014-07-16 18:20:13.174
+!ENTRY sst.tm 1 0 2014-07-16 20:16:48.116
 !MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
 
-!ENTRY sst.tm 1 0 2014-07-16 18:20:13.178
+!ENTRY sst.tm 1 0 2014-07-16 20:16:48.119
 !MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
 
-!ENTRY sst.tm 1 0 2014-07-16 18:20:15.242
+!ENTRY sst.tm 1 0 2014-07-16 20:16:50.130
 !MESSAGE 
 
 
 ---------------------------------------------------
-2014/07/16 18:20:15
+2014/07/16 20:16:50
 ---------------------------------------------------
 
-
-!ENTRY org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for ALT+CTRL+I:
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ce59c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+I,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
-		Open an include browser on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@18ce59c,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for ALT+SHIFT+R:
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13692b2,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+SHIFT+R,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
-		Rename the selected element,
-		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13692b2,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for CTRL+SHIFT+T:
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d8fd5b,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+T,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
-		Open an element in an Editor,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d8fd5b,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for F4:
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e19dce,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(F4,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
-		Open a type hierarchy on the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e19dce,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for CTRL+G:
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f7d62,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
-		Search for declarations of the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f7d62,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-Binding(CTRL+G,
-	ParameterizedCommand(Command(org.eclipse.ui.edit.text.goto.line,Go to Line,
-		Go to a specified line of text,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@40bf85,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.ui.textEditorScope,,,user)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for CTRL+SHIFT+G:
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ddd7c4,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+G,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
-		Search for references to the selected element in the workspace,
-		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ddd7c4,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for ALT+CTRL+H:
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@80c1d3,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(ALT+CTRL+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
-		Open the call hierarchy for the selected element,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@80c1d3,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2014-07-16 18:20:49.894
-!MESSAGE A conflict occurred for CTRL+SHIFT+H:
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@135341d,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cEditorScope,,,system)
-Binding(CTRL+SHIFT+H,
-	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
-		Open a type in the type hierarchy view,
-		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
-		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@135341d,
-		,,true),null),
-	org.eclipse.ui.defaultAcceleratorConfiguration,
-	org.eclipse.cdt.ui.cViewScope,,,system)
-
-!ENTRY org.eclipse.cdt.dsf 4 10005 2014-07-16 18:37:29.581
-!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@5cbc82): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
-!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2014-07-16 18:37:29.581
-!MESSAGE Failed to execute MI command:
--exec-continue
-Error message from debugger back end:
-Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-!STACK 0
-java.lang.Exception: Warning:\nCannot insert hardware breakpoint 2.\nCannot insert hardware breakpoint 10.\nCannot insert hardware breakpoint 3.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1006)
-	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:835)
-!SESSION 2014-07-16 18:43:12.568 -----------------------------------------------
-eclipse.buildId=unknown
-java.version=1.7.0_51
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\temp\stmf3\workspace
-
-!ENTRY TrueSTUDIO 4 0 2014-07-16 18:43:14.203
-!MESSAGE Target:ARM, Model:Lite, Version:5.0.0, Installation dir:/D:/programs/Atollic/TrueSTUDIO for ARM Lite 5.0.0/ide/
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:43:15.473
-!MESSAGE NLS missing message: MarketingDialog_This_window_is_not_displayedin_pro in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY org.eclipse.osgi 2 1 2014-07-16 18:43:15.476
-!MESSAGE NLS missing message: MarketingDialog_btnUpgradeToPro_text in: com.atollic.truestudio.startup.exposed.messages
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.240
-!MESSAGE sst.gp.core earlyStartup()
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.247
-!MESSAGE Register ResourceChangeListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.254
-!MESSAGE Register WorkspaceSelectionListener to current workspace
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.272
-!MESSAGE ##sst.gp.core Util##PLATFORM_INSTALL_LOCATION: D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.276
-!MESSAGE Platform installed location : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.279
-!MESSAGE IS_ATOLLIC_PLUGIN_INSTALLED : true
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.282
-!MESSAGE ATOLLIC_INSTALL_STATUS(stm32): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.285
-!MESSAGE ATOLLIC_INSTALL_STATUS(avr): -1
-
-!ENTRY sst.gp.core 1 0 2014-07-16 18:43:26.289
-!MESSAGE ATOLLIC_INSTALL_STATUS(arm): 2
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.292
-!MESSAGE iconv is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.295
-!MESSAGE est is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.298
-!MESSAGE libiconv-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.302
-!MESSAGE libintl-2 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.308
-!MESSAGE xerces-c_2_7 is loaded.
-
-!ENTRY com.suresofttech.cs.rimx 1 0 2014-07-16 18:43:26.311
-!MESSAGE RIMXJNI is loaded.
-
-!ENTRY sst.csgp 1 0 2014-07-16 18:43:26.347
-!MESSAGE platform install loc : D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide
-
-!ENTRY sst.tm 1 0 2014-07-16 18:43:26.351
-!MESSAGE D:\programs\Atollic\TrueSTUDIO for ARM Lite 5.0.0\ide\plugins\sst.tm_1.1.2.201402181534\CSHOME\
-
-!ENTRY sst.tm 1 0 2014-07-16 18:43:26.356
-!MESSAGE C:\temp\stmf3\workspace\.metadata\.plugins\sst.tm
-
-!ENTRY sst.tm 1 0 2014-07-16 18:43:28.522
-!MESSAGE 
-
-
----------------------------------------------------
-2014/07/16 18:43:28
----------------------------------------------------
-
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:45:06.994
-!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:45:06.998
-!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY com.atollic.truestudio.mbs 4 0 2014-07-16 18:45:07.001
-!MESSAGE Demo is still loading, but needs property FPU fixed. Fixing.
-
-!ENTRY org.eclipse.cdt.core 1 0 2014-07-16 18:45:08.145
-!MESSAGE Indexed 'Demo' (1 sources, 35 headers) in 0.84 sec: 1,568 declarations; 1,915 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
-
-!ENTRY org.eclipse.core.resources 4 1 2014-07-16 20:08:07.980
-!MESSAGE Problems occurred while refreshing local changes
-!SUBENTRY 1 org.eclipse.core.resources 4 1 2014-07-16 20:08:07.980
-!MESSAGE Problems occurred while refreshing local changes
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:923)
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:904)
-	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1699)
-	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:167)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
-Contains: The project description file (.project) for 'Demo' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
-!SUBENTRY 2 org.eclipse.core.resources 4 271 2014-07-16 20:08:07.980
-!MESSAGE Errors occurred while refreshing resources with the local file system.
-!SUBENTRY 3 org.eclipse.core.resources 4 567 2014-07-16 20:08:07.980
-!MESSAGE The project description file (.project) for 'Demo' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.

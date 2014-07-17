@@ -1,90 +1,40 @@
 
 ------------------------------------
-  Logging start.  ## CURRENT TIME  : [5/25, 2014   17:2  51.88]  ## COMMAND LINE  : 
+  Logging start.  ## CURRENT TIME  : [7/16, 2014   18:16  35.963]  ## COMMAND LINE  : 
 cmd /C "gen_csini.exe"
 ------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
+[STD-IN] : C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
 GUI is waiting for subprocess to be done...
 Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [5/25, 2014   17:2  55.776]
+  Logging finished.  ## CURRENT TIME  : [7/16, 2014   18:16  37.999]
 ------------------------------------
 
 ------------------------------------
-  Logging start.  ## CURRENT TIME  : [5/26, 2014   15:57  42.308]  ## COMMAND LINE  : 
+  Logging start.  ## CURRENT TIME  : [7/16, 2014   18:42  16.722]  ## COMMAND LINE  : 
 cmd /C "gen_csini.exe"
 ------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
+[STD-IN] : C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
 GUI is waiting for subprocess to be done...
 Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [5/26, 2014   15:57  45.452]
+  Logging finished.  ## CURRENT TIME  : [7/16, 2014   18:42  18.699]
 ------------------------------------
 
 ------------------------------------
-  Logging start.  ## CURRENT TIME  : [5/27, 2014   13:46  40.959]  ## COMMAND LINE  : 
+  Logging start.  ## CURRENT TIME  : [7/16, 2014   18:48  44.717]  ## COMMAND LINE  : 
 cmd /C "gen_csini.exe"
 ------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
+[STD-IN] : C:\Users\zacaj\Atollic\TrueSTUDIO\ARM_workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
 GUI is waiting for subprocess to be done...
 Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [5/27, 2014   13:46  43.988]
+  Logging finished.  ## CURRENT TIME  : [7/16, 2014   18:48  46.703]
 ------------------------------------
 
 ------------------------------------
-  Logging start.  ## CURRENT TIME  : [7/8, 2014   14:56  53.413]  ## COMMAND LINE  : 
+  Logging start.  ## CURRENT TIME  : [7/16, 2014   20:16  48.184]  ## COMMAND LINE  : 
 cmd /C "gen_csini.exe"
 ------------------------------------
 [STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
 GUI is waiting for subprocess to be done...
 Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [7/8, 2014   14:56  55.528]
-------------------------------------
-
-------------------------------------
-  Logging start.  ## CURRENT TIME  : [7/9, 2014   11:59  57.846]  ## COMMAND LINE  : 
-cmd /C "gen_csini.exe"
-------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
-GUI is waiting for subprocess to be done...
-Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [7/9, 2014   11:59  59.858]
-------------------------------------
-
-------------------------------------
-  Logging start.  ## CURRENT TIME  : [7/12, 2014   9:59  14.821]  ## COMMAND LINE  : 
-cmd /C "gen_csini.exe"
-------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
-GUI is waiting for subprocess to be done...
-Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [7/12, 2014   9:59  16.962]
-------------------------------------
-
-------------------------------------
-  Logging start.  ## CURRENT TIME  : [7/13, 2014   17:1  52.578]  ## COMMAND LINE  : 
-cmd /C "gen_csini.exe"
-------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
-GUI is waiting for subprocess to be done...
-Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [7/13, 2014   17:1  54.534]
-------------------------------------
-
-------------------------------------
-  Logging start.  ## CURRENT TIME  : [7/16, 2014   18:20  13.259]  ## COMMAND LINE  : 
-cmd /C "gen_csini.exe"
-------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
-GUI is waiting for subprocess to be done...
-Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [7/16, 2014   18:20  15.240]
-------------------------------------
-
-------------------------------------
-  Logging start.  ## CURRENT TIME  : [7/16, 2014   18:43  26.446]  ## COMMAND LINE  : 
-cmd /C "gen_csini.exe"
-------------------------------------
-[STD-IN] : C:\temp\stmf3\workspace\.metadata\.plugins\sst.csgp\bin\env_vars.txt
-GUI is waiting for subprocess to be done...
-Execution done. EXIT CODE = 0
-  Logging finished.  ## CURRENT TIME  : [7/16, 2014   18:43  28.519]
+  Logging finished.  ## CURRENT TIME  : [7/16, 2014   20:16  50.128]
 ------------------------------------

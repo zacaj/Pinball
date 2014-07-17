@@ -1,0 +1,9 @@
+18:42:30 **** Incremental Build of configuration Debug for project Demo ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu99 -DUSE_STDPERIPH_DRIVER -DSTM32F30X -I..\..\.\..\ -I..\..\.\..\..\..\Libraries\CMSIS\Device\ST\STM32F30x\Include -I..\..\.\..\..\..\Libraries\CMSIS\Include -I..\..\.\..\..\..\Libraries\STM32F30x_StdPeriph_Driver\inc -I..\..\.\..\..\..\Libraries\STM32_USB-FS-Device_Driver\inc -I..\..\.\..\..\..\Utilities\STM32F3_Discovery -Os -ffunction-sections -fdata-sections -g -Wall -o STM32F30x_StdPeriph_Driver\stm32f30x_adc.o ..\..\..\..\..\Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_adc.c 
+arm-atollic-eabi-gcc: error: ..\..\..\..\..\Libraries\STM32F30x_StdPeriph_Driver\src\stm32f30x_adc.c: No such file or directory
+arm-atollic-eabi-gcc: fatal error: no input files
+compilation terminated.
+
+18:42:30 Build Finished (took 92ms)
+

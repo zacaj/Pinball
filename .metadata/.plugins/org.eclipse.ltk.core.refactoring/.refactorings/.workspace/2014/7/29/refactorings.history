@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <session version="1.0">
-<refactoring comment="Delete resource &apos;SysTick&apos;" deleteContents="false" description="Delete resource &apos;SysTick&apos;" element1="/SysTick" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1405381125250"/>
+<refactoring comment="Delete resource &apos;Demo&apos;" deleteContents="false" description="Delete resource &apos;Demo&apos;" element1="/Demo" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1405553148622"/>
 </session>
