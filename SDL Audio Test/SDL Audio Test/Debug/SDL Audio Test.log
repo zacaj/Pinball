@@ -1,21 +1,22 @@
-﻿Build started 7/16/2014 9:27:41 PM.
-     1>Project "c:\source\SDL Audio Test\SDL Audio Test\SDL Audio Test.vcxproj" on node 2 (Build target(s)).
+﻿Build started 7/17/2014 9:11:57 PM.
+     1>Project "E:\temp\stmf3\workspace\SDL Audio Test\SDL Audio Test\SDL Audio Test.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
-         Touching "Debug\SDL Audio Test.tlog\unsuccessfulbuild".
+         Creating "Debug\SDL Audio Test.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\SDL Audio Test.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "SDL Audio Test.cpp"
          SDL Audio Test.cpp
-     1>c:\source\sdl audio test\sdl audio test\sdl audio test.cpp(38): warning C4244: '=' : conversion from 'double' to 'uint8_t', possible loss of data
+     1>e:\temp\stmf3\workspace\sdl audio test\sdl audio test\sdl audio test.cpp(84): warning C4244: '=' : conversion from 'double' to 'uint8_t', possible loss of data
+     1>e:\temp\stmf3\workspace\sdl audio test\sdl audio test\sdl audio test.cpp(130): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\source\SDL Audio Test\Debug\SDL Audio Test.exe" /INCREMENTAL /NOLOGO SDL1main.lib SDL1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\source\SDL Audio Test\Debug\SDL Audio Test.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\source\SDL Audio Test\Debug\SDL Audio Test.lib" /MACHINE:X86 "Debug\SDL Audio Test.obj"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\temp\stmf3\workspace\SDL Audio Test\Debug\SDL Audio Test.exe" /INCREMENTAL /NOLOGO SDL1main.lib SDL1.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\temp\stmf3\workspace\SDL Audio Test\Debug\SDL Audio Test.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\temp\stmf3\workspace\SDL Audio Test\Debug\SDL Audio Test.lib" /MACHINE:X86 "Debug\SDL Audio Test.obj"
          Debug\stdafx.obj
-         SDL Audio Test.vcxproj -> c:\source\SDL Audio Test\Debug\SDL Audio Test.exe
+         SDL Audio Test.vcxproj -> E:\temp\stmf3\workspace\SDL Audio Test\Debug\SDL Audio Test.exe
        FinalizeBuildStatus:
          Deleting file "Debug\SDL Audio Test.tlog\unsuccessfulbuild".
          Touching "Debug\SDL Audio Test.tlog\SDL Audio Test.lastbuildstate".
-     1>Done Building Project "c:\source\SDL Audio Test\SDL Audio Test\SDL Audio Test.vcxproj" (Build target(s)).
+     1>Done Building Project "E:\temp\stmf3\workspace\SDL Audio Test\SDL Audio Test\SDL Audio Test.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.27
+Time Elapsed 00:00:00.29

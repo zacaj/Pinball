@@ -129,6 +129,7 @@ void updateIOs()
 uint32_t turnOffSolenoid(IOPin *pin)
 {
 	setOut(*pin,0);
+	free(pin);
 	return 1;
 }
 
