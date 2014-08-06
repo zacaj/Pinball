@@ -1,4 +1,0 @@
-[2014-07-16 18:16:38,042] INFO  at sst.csut.CSUTStartup.earlyStartup(CSUTStartup.java:46)     - Log properties are loaded successfuly!
-[2014-07-16 18:42:18,740] INFO  at sst.csut.CSUTStartup.earlyStartup(CSUTStartup.java:46)     - Log properties are loaded successfuly!
-[2014-07-16 18:48:46,745] INFO  at sst.csut.CSUTStartup.earlyStartup(CSUTStartup.java:46)     - Log properties are loaded successfuly!
-[2014-07-16 20:16:50,169] INFO  at sst.csut.CSUTStartup.earlyStartup(CSUTStartup.java:46)     - Log properties are loaded successfuly!
