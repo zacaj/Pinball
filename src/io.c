@@ -21,6 +21,7 @@ uint8_t mInputState[nMultiInput];
 uint8_t mLEDState[6];
 uint8_t LED_Dirty=0;
 #define nLED 48
+uint8_t heldRelayState[nHeldRelay];
 uint32_t LedState[nLED];
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def)
@@ -96,7 +97,10 @@ void initIOs()
 		//for(int j=0;j<16;j++)
 			mInputState[i]=0;
 	for(int i=0;i<nHeldRelay;i++)
+	{
 		heldRelayState[i]=0;
+		initOutput(heldRelays[i]);
+	}
 
 	//for(int i=0;i<nLED;i++)
 	//	LedState[i]=0;
@@ -108,18 +112,54 @@ void initIOs()
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF, ENABLE);
 
 	initOutput(HOLD);
-	for(int i=0;i<4;i++)
-	{
-		initOutput(PLAYER_ENABLE[i]);
-		initOutput(SCORE[i]);
-		initInput(SCORE_ZERO[i],NO_PULL);
-	}
+	initOutput(BALL_SHOOT);
+	initOutput(LEFT_DROP_RESET);
+	initOutput(RIGHT_DROP_RESET);
+	initOutput(TOP_DROP_RESET);
+	initOutput(FIVE_DROP_RESET);
+	initOutput(LEFT_CAPTURE_EJECT);
+	initOutput(RIGHT_CAPTURE_EJECT);
+	initOutput(TOP_CAPTURE_EJECT);
 	for(int i=0;i<nMultiInput;i++)
 	{
 		initOutput(MULTI_IN_LATCH[i]);
 		initOutput(MULTI_IN_CLOCK[i]);
 		initInput(MULTI_IN_DATA[i],PULL_DOWN);
 	}
+	for(int i=0;i<3;i++)
+		for(int j=0;j<3;j++)
+			initInput(DROP_TARGET[i][j],NO_PULL);
+	for(int i=0;i<4;i++)
+	{
+		initOutput(SCORE[i]);
+		initOutput(BONUS[i]);
+		initInput(SCORE_ZERO[i],NO_PULL);
+		initInput(BONUS_ZERO[i],NO_PULL);
+		initInput(LANES[i],PULL_DOWN);
+		initInput(RED_TARGET[i],PULL_DOWN);
+	}
+	for(int i=0;i<5;i++)
+		initInput(FIVE_TARGET[i],NO_PULL);
+
+	initInput(LEFT_CAPTURE,NO_PULL);
+	initInput(RIGHT_CAPTURE,NO_PULL);
+	initInput(TOP_CAPTURE,NO_PULL);
+	initInput(BALL_OUT,NO_PULL);
+	initInput(BALL_LOADED,NO_PULL);
+	initInput(START,NO_PULL);
+	initInput(CAB_LEFT,NO_PULL);
+	initInput(CAB_RIGHT,NO_PULL);
+	initInput(LEFT_FLIPPER,PULL_DOWN);
+	initInput(RIGHT_FLIPPER,PULL_DOWN);
+	initInput(LEFT_BLOCK,PULL_DOWN);
+	initInput(RIGHT_BLOCK,PULL_DOWN);
+	initInput(ACTIVATE_TARGET,PULL_DOWN);
+	initInput(LEFT_POP,PULL_DOWN);
+	initInput(RIGHT_POP,PULL_DOWN);
+	initInput(BUMPER,PULL_DOWN);
+	initInput(ROTATE_ROLLOVER,PULL_DOWN);
+
+
 }
 
 void updateIOs()
@@ -209,7 +249,7 @@ void setLED(uint8_t index,uint8_t state)
 		LedState[index]=4294967295;
 		break;
 	case FLASHING:
-		LedState[index]=1;
+		LedState[index]+=3;
 		break;
 	}
 }
