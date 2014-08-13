@@ -25,7 +25,6 @@ USER_OBJS	= $(USER_SRCS:.c=.o) src/startup_stm32f30x.o
 INCLUDES 	= -ILibraries/STM32F30x_StdPeriph_Driver/inc/ \
 			-ILibraries/CMSIS/Include \
 			-ILibraries/CMSIS/Device/ST/STM32F30x/Include \
-			-Iinc/
 			
 # Set Libraries
 LIBS		= -lm -lc

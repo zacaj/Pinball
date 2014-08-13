@@ -23,9 +23,40 @@ uint8_t LED_Dirty=0;
 #define nLED 48
 uint8_t heldRelayState[nHeldRelay];
 uint32_t LedState[nLED];
+ Input DROP_TARGET[3][3]=
+{
+		{In(bU,P0),In(bU,P0),In(bU,P0)},
+		{In(bU,P0),In(bU,P0),In(bU,P0)},
+		{In(bU,P0),In(bU,P0),In(bU,P0)}
+};
+ Input FIVE_TARGET[5]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+ Input LEFT_CAPTURE=In(bU,P0);
+ Input RIGHT_CAPTURE=In(bU,P0);
+ Input TOP_CAPTURE=In(bU,P0);
+ Input SCORE_ZERO[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+ Input BONUS_ZERO[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+ Input BALL_OUT=In(bU,P0);
+ Input BALL_LOADED=In(bU,P0);
+ Input LANES[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+ Input LEFT_FLIPPER=In(bU,P0);
+ Input LEFT_BLOCK=In(bU,P0);
+ Input RIGHT_FLIPPER=In(bU,P0);
+ Input RIGHT_BLOCK=In(bU,P0);
+ Input START=In(bU,P0);
+ Input CAB_LEFT=In(bU,P0);
+ Input CAB_RIGHT=In(bU,P0);
+ Input LEFT_POP=In(bU,P0);
+ Input RIGHT_POP=In(bU,P0);
+ Input BUMPER=In(bU,P0);
+ Input ROTATE_ROLLOVER=In(bU,P0);
+ Input ACTIVATE_TARGET=In(bU,P0);
+ Input RED_TARGET[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def)
 {
+	if(pin.bank==bU)
+		return;
 	if((int)pin.bank<11)
 		return;
 	GPIO_InitTypeDef init;
@@ -39,6 +70,8 @@ void initInput(IOPin pin, GPIOPuPd_TypeDef def)
 
 void initOutput(IOPin pin)
 {
+	if(pin.bank==bU)
+		return;
 	if((int)pin.bank<11)
 		return;
 	GPIO_InitTypeDef init;
@@ -52,11 +85,15 @@ void initOutput(IOPin pin)
 
 inline void setOutDirect(IOPin pin, uint32_t value)
 {
+	if(pin.bank==bU)
+		return;
 	GPIO_WriteBit(pin.bank, pin.pin, value);
 }
 
 void setOut(IOPin pin, uint32_t value)
 {
+	if(pin.bank==bU)
+		return;
 	if((int)pin.bank<11)
 	{
 		if((int)pin.bank>=5 && (int)pin.bank<=10)
@@ -77,11 +114,15 @@ void setOut(IOPin pin, uint32_t value)
 
 uint8_t getInDirect(IOPin pin)
 {
+	if(pin.bank==bU)
+		return 0;
 	return GPIO_ReadInputDataBit(pin.bank, pin.pin);
 }
 
 uint8_t getIn(IOPin pin)
 {
+	if(pin.bank==bU)
+		return 0;
 	if((int)pin.bank<11)
 	{
 		if((int)pin.bank>=1 && (int)pin.bank<=4)
@@ -120,51 +161,100 @@ void initIOs()
 	initOutput(LEFT_CAPTURE_EJECT);
 	initOutput(RIGHT_CAPTURE_EJECT);
 	initOutput(TOP_CAPTURE_EJECT);
+	initOutput(MULTI_IN_LATCH);
+	initOutput(MULTI_IN_CLOCK);
+	setOutDirect(MULTI_IN_CLOCK,0);
+	setOutDirect(MULTI_IN_LATCH,1);
 	for(int i=0;i<nMultiInput;i++)
 	{
-		initOutput(MULTI_IN_LATCH[i]);
-		initOutput(MULTI_IN_CLOCK[i]);
 		initInput(MULTI_IN_DATA[i],PULL_DOWN);
 	}
 	for(int i=0;i<3;i++)
 		for(int j=0;j<3;j++)
-			initInput(DROP_TARGET[i][j],NO_PULL);
+			initInput(DROP_TARGET[i][j].pin,NO_PULL);
 	for(int i=0;i<4;i++)
 	{
 		initOutput(SCORE[i]);
 		initOutput(BONUS[i]);
-		initInput(SCORE_ZERO[i],NO_PULL);
-		initInput(BONUS_ZERO[i],NO_PULL);
-		initInput(LANES[i],PULL_DOWN);
-		initInput(RED_TARGET[i],PULL_DOWN);
+		initInput(SCORE_ZERO[i].pin,NO_PULL);
+		initInput(BONUS_ZERO[i].pin,NO_PULL);
+		initInput(LANES[i].pin,PULL_DOWN);
+		initInput(RED_TARGET[i].pin,PULL_DOWN);
 	}
 	for(int i=0;i<5;i++)
-		initInput(FIVE_TARGET[i],NO_PULL);
+		initInput(FIVE_TARGET[i].pin,NO_PULL);
 
-	initInput(LEFT_CAPTURE,NO_PULL);
-	initInput(RIGHT_CAPTURE,NO_PULL);
-	initInput(TOP_CAPTURE,NO_PULL);
-	initInput(BALL_OUT,NO_PULL);
-	initInput(BALL_LOADED,NO_PULL);
-	initInput(START,NO_PULL);
-	initInput(CAB_LEFT,NO_PULL);
-	initInput(CAB_RIGHT,NO_PULL);
-	initInput(LEFT_FLIPPER,PULL_DOWN);
-	initInput(RIGHT_FLIPPER,PULL_DOWN);
-	initInput(LEFT_BLOCK,PULL_DOWN);
-	initInput(RIGHT_BLOCK,PULL_DOWN);
-	initInput(ACTIVATE_TARGET,PULL_DOWN);
-	initInput(LEFT_POP,PULL_DOWN);
-	initInput(RIGHT_POP,PULL_DOWN);
-	initInput(BUMPER,PULL_DOWN);
-	initInput(ROTATE_ROLLOVER,PULL_DOWN);
+	initInput(LEFT_CAPTURE.pin,NO_PULL);
+	initInput(RIGHT_CAPTURE.pin,NO_PULL);
+	initInput(TOP_CAPTURE.pin,NO_PULL);
+	initInput(BALL_OUT.pin,NO_PULL);
+	initInput(BALL_LOADED.pin,NO_PULL);
+	initInput(START.pin,NO_PULL);
+	initInput(CAB_LEFT.pin,NO_PULL);
+	initInput(CAB_RIGHT.pin,NO_PULL);
+	initInput(LEFT_FLIPPER.pin,PULL_DOWN);
+	initInput(RIGHT_FLIPPER.pin,PULL_DOWN);
+	initInput(LEFT_BLOCK.pin,PULL_DOWN);
+	initInput(RIGHT_BLOCK.pin,PULL_DOWN);
+	initInput(ACTIVATE_TARGET.pin,PULL_DOWN);
+	initInput(LEFT_POP.pin,PULL_DOWN);
+	initInput(RIGHT_POP.pin,PULL_DOWN);
+	initInput(BUMPER.pin,PULL_DOWN);
+	initInput(ROTATE_ROLLOVER.pin,PULL_DOWN);
 
 
 }
 
+void updateInput(Input* in)
+{
+	uint8_t state=getIn(in->pin);
+	in->pressed=0;
+	in->released=0;
+	if(state!=in->state && msElapsed-in->lastChange>30)
+	{
+		in->state=state;
+		in->lastChange=msElapsed;
+		if(state)
+			in->pressed=1;
+		else
+			in->released=1;
+	}
+}
+
 void updateIOs()
 {
-	//updateSlowInputs();
+	updateSlowInputs();
+	{
+		for(int i=0;i<3;i++)
+			for(int j=0;j<3;j++)
+				updateInput(&DROP_TARGET[i][j]);
+		for(int i=0;i<5;i++)
+			updateInput(&FIVE_TARGET[i]);
+		for(int i=0;i<4;i++)
+		{
+			updateInput(&SCORE_ZERO[i]);
+			updateInput(&BONUS_ZERO[i]);
+			updateInput(&LANES[i]);
+			updateInput(&RED_TARGET[i]);
+		}
+		updateInput(&LEFT_CAPTURE);
+		updateInput(&RIGHT_CAPTURE);
+		updateInput(&TOP_CAPTURE);
+		updateInput(&BALL_OUT);
+		updateInput(&BALL_LOADED);
+		updateInput(&START);
+		updateInput(&CAB_LEFT);
+		updateInput(&CAB_RIGHT);
+		updateInput(&LEFT_FLIPPER);
+		updateInput(&RIGHT_FLIPPER);
+		updateInput(&LEFT_BLOCK);
+		updateInput(&RIGHT_BLOCK);
+		updateInput(&ACTIVATE_TARGET);
+		updateInput(&LEFT_POP);
+		updateInput(&RIGHT_POP);
+		updateInput(&BUMPER);
+		updateInput(&ROTATE_ROLLOVER);
+	}
 	/*
 	for(int i=0;i<nLED;i++)
 	{
@@ -200,21 +290,29 @@ void updateIOs()
 
 void updateSlowInputs()
 {
-	for(int i=0;i<nMultiInput;i++)
+	if(msTicks>500)
 	{
-		uint8_t in=0;
-		setOutDirect(MULTI_IN_LATCH[i],0);
-		int i;
-		for(i=0;i<8;i++)
-		{
-			setOutDirect(MULTI_IN_CLOCK[i],0);
-			in<<=1;
-			in|=getInDirect(MULTI_IN_DATA[i]);
-			setOutDirect(MULTI_IN_CLOCK[i],1);
-		}
-		setOutDirect(MULTI_IN_LATCH[i],1);
-		mInputState[i]=in;
+		msTicks=0;
+
+		STM_EVAL_LEDToggle(LED3);
 	}
+	setOutDirect(MULTI_IN_LATCH,0);
+	uint8_t in[nMultiInput];
+	for(int i=0;i<nMultiInput;i++)
+		in[i]=0;
+	for(int i=0;i<8;i++)
+	{
+		setOutDirect(MULTI_IN_CLOCK,0);
+		for(int j=0;j<nMultiInput;j++)
+		{
+			in[j]<<=1;
+			in[j]|=getInDirect(MULTI_IN_DATA[j]);
+		}
+		setOutDirect(MULTI_IN_CLOCK,1);
+	}
+	for(int i=0;i<nMultiInput;i++)
+		mInputState[i]=in[i];
+	setOutDirect(MULTI_IN_LATCH,1);
 }
 
 //uint32_t lastSolenoidFiringTime= 0;

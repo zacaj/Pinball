@@ -1,11 +1,12 @@
 
+*.o
 .history
 
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
 
-*.o
+
 # Folder config file
 Desktop.ini
 

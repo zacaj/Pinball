@@ -17,22 +17,22 @@ __IO uint32_t TimingDelay = 0;
  * @param  nTime: specifies the delay time length, in 10 ms.
  * @retval None
  */
-void Delay(__IO uint32_t nTime)
-{
-	TimingDelay = nTime;
-
-	while(TimingDelay != 0);
-}
-
 
 /**********************************/
+extern uint32_t msTicks,msElapsed;
 void SysTick_Handler(void)
 {
-	if (TimingDelay != 0x00)
-	{
-		TimingDelay--;
-	}
-	//USBConnectTimeOut--;
-	//DataReady ++;
-}
+  static uint32_t count = 1000;
 
+  if (count>0)
+  {
+    count--;
+  }
+  if (0==count)
+  {
+    count = 1000;
+    //timerFlag = 1;
+  }
+  msTicks++;
+  msElapsed++;
+}

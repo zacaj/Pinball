@@ -27,10 +27,11 @@ typedef struct
 #define bD GPIOD
 #define bE GPIOE
 #define bF GPIOF
-#define bmA 1
-#define bmB 2
-#define bmC 3
-#define bmD 4
+#define bmA (GPIO_TypeDef*)1
+#define bmB (GPIO_TypeDef*)2
+#define bmC (GPIO_TypeDef*)3
+#define bmD (GPIO_TypeDef*)4
+#define bU (GPIO_TypeDef*)100
 #define P0 GPIO_Pin_0
 #define P1 GPIO_Pin_1
 #define P2 GPIO_Pin_2
@@ -49,76 +50,81 @@ typedef struct
 #define P15 GPIO_Pin_15
 
 #define nMultiInput 4
-static const IOPin MULTI_IN_LATCH[nMultiInput]= { {bA,P0},{bA,P0},{bA,P0},{bA,P0} };
-static const IOPin MULTI_IN_CLOCK[nMultiInput]= { {bA,P0},{bA,P0},{bA,P0},{bA,P0} };
-static const IOPin MULTI_IN_DATA[nMultiInput]=  { {bA,P0},{bA,P0},{bA,P0},{bA,P0} };
-static const IOPin LED_LATCH={bA,P0};
-static const IOPin LED_DATA={bA,P0};
-static const IOPin LED_CLOCK={bA,P0};
+static const IOPin MULTI_IN_LATCH= {bA,P6};
+static const IOPin MULTI_IN_CLOCK= {bC,P4};
+static const IOPin MULTI_IN_DATA[nMultiInput]=  { {bB,P2},{bB,P0},{bA,P4},{bA,P2} };
+static const IOPin LED_LATCH={bU,P0};
+static const IOPin LED_DATA={bU,P0};
+static const IOPin LED_CLOCK={bU,P0};
 
-static const IOPin HOLD={bA,P0};
+static const IOPin HOLD={bU,P0};
 static const int PLAYFIELD_DISABLE=9;
 static const int PLAYER_ENABLE[]={0,1,2,3};
-static const IOPin SCORE[]={{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
-static const IOPin BONUS[]={{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
-static const IOPin SCORE_ZERO[]={{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
-static const IOPin BONUS_ZERO[]={{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
+static const IOPin SCORE[]={{bU,P0},{bU,P0},{bU,P0},{bU,P0}};
+static const IOPin BONUS[]={{bU,P0},{bU,P0},{bU,P0},{bU,P0}};
 
 static const int BALL_ACK=4;
 static const int BALL_RELEASE=5;
-static const IOPin BALL_SHOOT={bA,P0};
+static const IOPin BALL_SHOOT={bU,P0};
 
-static const IOPin LEFT_DROP_RESET={bA,P0};
-static const IOPin RIGHT_DROP_RESET={bA,P0};
-static const IOPin TOP_DROP_RESET={bA,P0};
-static const IOPin FIVE_DROP_RESET={bA,P0};
+static const IOPin LEFT_DROP_RESET={bU,P0};
+static const IOPin RIGHT_DROP_RESET={bU,P0};
+static const IOPin TOP_DROP_RESET={bU,P0};
+static const IOPin FIVE_DROP_RESET={bU,P0};
 static const int MAGNET=6;
 static const int LEFT_BLOCK_DISABLE=7;
 static const int RIGHT_BLOCK_DISABLE=8;
-static const IOPin LEFT_CAPTURE_EJECT={bA,P0};
-static const IOPin RIGHT_CAPTURE_EJECT={bA,P0};
-static const IOPin TOP_CAPTURE_EJECT={bA,P0};
+static const IOPin LEFT_CAPTURE_EJECT={bU,P0};
+static const IOPin RIGHT_CAPTURE_EJECT={bU,P0};
+static const IOPin TOP_CAPTURE_EJECT={bU,P0};
 
 #define nHeldRelay 10
 static const IOPin heldRelays[nHeldRelay]={
 		{/*Player enable 1*/bA,P0},
-		{bA,P0},
-		{bA,P0},
+		{bU,P0},
+		{bU,P0},
 		{bA,P0/*Player enable 4*/},
-		{bA,P0},//ball ack
-		{bA,P0},//ball release
-		{bA,P0},//magnet
-		{bA,P0},//left block
-		{bA,P0},//right block
-		{bA,P0},//playfield disable
+		{bU,P0},//ball ack
+		{bU,P0},//ball release
+		{bU,P0},//magnet
+		{bU,P0},//left block
+		{bU,P0},//right block
+		{bU,P0},//playfield disable
 };
 
-static const IOPin DROP_TARGET[3][3]=
+typedef struct
 {
-		{{bA,P0},{bA,P0},{bA,P0}},
-		{{bA,P0},{bA,P0},{bA,P0}},
-		{{bA,P0},{bA,P0},{bA,P0}}
-};
-static const IOPin FIVE_TARGET[5]={{bA,P0},{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
-static const IOPin LEFT_CAPTURE={bA,P0};
-static const IOPin RIGHT_CAPTURE={bA,P0};
-static const IOPin TOP_CAPTURE={bA,P0};
-static const IOPin BALL_OUT={bA,P0};
-static const IOPin BALL_LOADED={bA,P0};
-static const IOPin LANES[4]={{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
-static const IOPin LEFT_FLIPPER={bA,P0};
-static const IOPin LEFT_BLOCK={bA,P0};
-static const IOPin RIGHT_FLIPPER={bA,P0};
-static const IOPin RIGHT_BLOCK={bA,P0};
-static const IOPin START={bA,P0};
-static const IOPin CAB_LEFT={bA,P0};
-static const IOPin CAB_RIGHT={bA,P0};
-static const IOPin LEFT_POP={bA,P0};
-static const IOPin RIGHT_POP={bA,P0};
-static const IOPin BUMPER={bA,P0};
-static const IOPin ROTATE_ROLLOVER={bA,P0};
-static const IOPin ACTIVATE_TARGET={bA,P0};
-static const IOPin RED_TARGET[4]={{bA,P0},{bA,P0},{bA,P0},{bA,P0}};
+	IOPin pin;
+	uint8_t state;
+	uint32_t lastChange;
+	uint8_t pressed;
+	uint8_t released;
+} Input;
+#define In(b,p) {{b,p},0,1,0,0}
+
+extern Input DROP_TARGET[3][3];
+extern Input FIVE_TARGET[5];
+extern Input LEFT_CAPTURE;
+extern Input RIGHT_CAPTURE;
+extern Input TOP_CAPTURE;
+extern Input SCORE_ZERO[4];
+extern Input BONUS_ZERO[4];
+extern Input BALL_OUT;
+extern Input BALL_LOADED;
+extern Input LANES[4];
+extern Input LEFT_FLIPPER;
+extern Input LEFT_BLOCK;
+extern Input RIGHT_FLIPPER;
+extern Input RIGHT_BLOCK;
+extern Input START;
+extern Input CAB_LEFT;
+extern Input CAB_RIGHT;
+extern Input LEFT_POP;
+extern Input RIGHT_POP;
+extern Input BUMPER;
+extern Input ROTATE_ROLLOVER;
+extern Input ACTIVATE_TARGET;
+extern Input RED_TARGET[4];
 
 extern uint8_t heldRelayState[nHeldRelay];
 void initInput(IOPin pin, GPIOPuPd_TypeDef def);
@@ -136,6 +142,9 @@ void fireSolenoid(IOPin pin);
 #define OFF 0
 #define ON 1
 #define FLASHING 2
+enum LEDs {
+		BALL_1=0, BALL_2, BALL_3, BALL_4, BALL_5
+};
 void setLED(uint8_t index,uint8_t state);
 uint8_t getLED(uint8_t index);
 

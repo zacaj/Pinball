@@ -110,24 +110,27 @@ void switchPlayerRelay(int n)
 {
 	for(int i=0;i<4;i++)
 		heldRelayState[PLAYER_ENABLE[i]]=0;
-	setHeldRelay(n,1);
+	setHeldRelay(n-1,1);
 }
+extern uint8_t mInputState[];
 int main(void)
 {
 
-	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	/* Example use SysTick timer and read System core clock */
 	SysTick_Config(72000);  /* 1  ms if clock frequency 72 MHz */
 	initTimers();
 	initIOs();
-	initSound();
+	//initSound();
+	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	int i;
 
 	SystemCoreClockUpdate();
 	for(i=0;i<8;i++)
 		STM_EVAL_LEDInit(LED3+i);
+	STM_EVAL_LEDToggle(LED3);
 	ii = 0;
 	int iii=0;
+	int iiii=0;
 	switchPlayerRelay(1);
 	while (1)
 	{
@@ -140,7 +143,7 @@ int main(void)
 				iii++;
 				if(iii>=4)
 					iii=0;
-				switchPlayerRelay(iii);
+				switchPlayerRelay(iii+1);
 			}
 			STM_EVAL_LEDOff(LED3+ii);
 			//setOut(pins[ii],1);
@@ -150,12 +153,22 @@ int main(void)
 			STM_EVAL_LEDOn(LED3+ii);
 		}
 		updateIOs();
+		/*uint8_t in=1;
+		if(iiii!=4)
+			in=mInputState[iiii];
+		for(int i=0;i<8;i++)
+		{
+			if(in& 1<<i)
+				STM_EVAL_LEDOn(LED3+i);
+			else
+				STM_EVAL_LEDOff(LED3+i);
+		}*/
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
 		{
 			buttonState=!buttonState;
 			if(buttonState)
 			{
-				updateSlowInputs();
+				/*updateSlowInputs();
 				for(int i=0;i<4;i++)
 				{
 					switchPlayerRelay(i);
@@ -167,7 +180,10 @@ int main(void)
 							updateSlowInputs();
 						}
 					}
-				}
+				}*/
+				iiii++;
+				if(iiii>4)
+					iiii=0;
 			}
 		}
 	}
