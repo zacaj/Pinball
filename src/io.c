@@ -23,6 +23,31 @@ uint8_t LED_Dirty=0;
 #define nLED 48
 uint8_t heldRelayState[nHeldRelay];
 uint32_t LedState[nLED];
+
+Solenoid HOLD=Sd(bU,P0,20);
+Solenoid SCORE[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
+Solenoid BONUS[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
+Solenoid BALL_SHOOT=Sd(bU,P0,120);
+Solenoid LEFT_DROP_RESET=S(bU,P0);
+Solenoid RIGHT_DROP_RESET=S(bU,P0);
+Solenoid TOP_DROP_RESET=S(bU,P0);
+Solenoid FIVE_DROP_RESET=S(bU,P0);
+Solenoid LEFT_CAPTURE_EJECT=S(bU,P0);
+Solenoid RIGHT_CAPTURE_EJECT=S(bU,P0);
+Solenoid TOP_CAPTURE_EJECT=S(bU,P0);
+Solenoid heldRelays[nHeldRelay]={
+		/*Player enable 1*/Sd(bU,P0,20),
+		Sd(bU,P0,20),
+		Sd(bU,P0,20),
+		Sd(bU,P0,20),/*Player enable 4*/
+		Sd(bU,P0,20),//ball ack
+		Sd(bU,P0,20),//ball release
+		Sd(bU,P0,20),//magnet
+		Sd(bU,P0,20),//left block
+		Sd(bU,P0,20),//right block
+		Sd(bU,P0,20),//playfield disable
+};
+
  Input DROP_TARGET[3][3]=
 {
 		{In(bU,P0),In(bU,P0),In(bU,P0)},
@@ -140,11 +165,11 @@ void initIOs()
 	for(int i=0;i<nHeldRelay;i++)
 	{
 		heldRelayState[i]=0;
-		initOutput(heldRelays[i]);
+		initOutput(heldRelays[i].pin);
 	}
 
-	//for(int i=0;i<nLED;i++)
-	//	LedState[i]=0;
+	for(int i=0;i<nLED;i++)
+		LedState[i]=0;
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
@@ -152,15 +177,15 @@ void initIOs()
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOF, ENABLE);
 
-	initOutput(HOLD);
-	initOutput(BALL_SHOOT);
-	initOutput(LEFT_DROP_RESET);
-	initOutput(RIGHT_DROP_RESET);
-	initOutput(TOP_DROP_RESET);
-	initOutput(FIVE_DROP_RESET);
-	initOutput(LEFT_CAPTURE_EJECT);
-	initOutput(RIGHT_CAPTURE_EJECT);
-	initOutput(TOP_CAPTURE_EJECT);
+	initOutput(HOLD.pin);
+	initOutput(BALL_SHOOT.pin);
+	initOutput(LEFT_DROP_RESET.pin);
+	initOutput(RIGHT_DROP_RESET.pin);
+	initOutput(TOP_DROP_RESET.pin);
+	initOutput(FIVE_DROP_RESET.pin);
+	initOutput(LEFT_CAPTURE_EJECT.pin);
+	initOutput(RIGHT_CAPTURE_EJECT.pin);
+	initOutput(TOP_CAPTURE_EJECT.pin);
 	initOutput(MULTI_IN_LATCH);
 	initOutput(MULTI_IN_CLOCK);
 	setOutDirect(MULTI_IN_CLOCK,0);
@@ -174,8 +199,8 @@ void initIOs()
 			initInput(DROP_TARGET[i][j].pin,NO_PULL);
 	for(int i=0;i<4;i++)
 	{
-		initOutput(SCORE[i]);
-		initOutput(BONUS[i]);
+		initOutput(SCORE[i].pin);
+		initOutput(BONUS[i].pin);
 		initInput(SCORE_ZERO[i].pin,NO_PULL);
 		initInput(BONUS_ZERO[i].pin,NO_PULL);
 		initInput(LANES[i].pin,PULL_DOWN);
@@ -255,7 +280,7 @@ void updateIOs()
 		updateInput(&BUMPER);
 		updateInput(&ROTATE_ROLLOVER);
 	}
-	/*
+
 	for(int i=0;i<nLED;i++)
 	{
 		uint8_t oldState=mLEDState[i/8]&=1<<(i%8);
@@ -277,15 +302,15 @@ void updateIOs()
 		for(int j=0;j<6;j++)
 			for(int i=0;i<8;i++)
 			{
-				setOutDirect(GPIOD,LED_DATA,mLEDState[j] & 1<<i);
-				setOutDirect(GPIOD,LED_CLOCK,1);
-				setOutDirect(GPIOD,LED_CLOCK,0);
+				setOutDirect(LED_DATA,mLEDState[j] & 1<<i);
+				setOutDirect(LED_CLOCK,1);
+				setOutDirect(LED_CLOCK,0);
 			}
-		setOutDirect(GPIOD,LED_DATA,0);
-		setOutDirect(GPIOD,LED_LATCH,1);
-		setOutDirect(GPIOD,LED_LATCH,0);
+		setOutDirect(LED_DATA,0);
+		setOutDirect(LED_LATCH,1);
+		setOutDirect(LED_LATCH,0);
 		LED_Dirty=0;
-	}*/
+	}
 }
 
 void updateSlowInputs()
@@ -317,23 +342,26 @@ void updateSlowInputs()
 
 //uint32_t lastSolenoidFiringTime= 0;
 
-uint32_t turnOffSolenoid(IOPin *pin)
+uint32_t turnOffSolenoid(Solenoid *s)
 {
-	setOut(*pin,0);
-	free(pin);
+	setOut(s->pin,0);
+	//free(pin);
+	s->lastFired=msElapsed;
 	return 1;
 }
 
-void fireSolenoid(IOPin pin)
+void fireSolenoid(Solenoid *s)
 {
-	fireSolenoidFor(pin, 90);
+	fireSolenoidFor(s, s->onTime);
 }
 
-void fireSolenoidFor(IOPin pin, uint32_t ms)
+void fireSolenoidFor(Solenoid *s, uint32_t ms)
 {
+	if(s->offTime+s->lastFired>msElapsed)
+		return;
 	//while(msElapsed<lastSolenoidFiringTime+50);
-	setOut(pin, 1);
-	callFuncIn_s(turnOffSolenoid, ms, memcpy(malloc(sizeof(IOPin)), &pin,sizeof(IOPin)));
+	setOut(s->pin, 1);
+	callFuncIn_s(turnOffSolenoid, ms,s);
 }
 
 void setLED(uint8_t index,uint8_t state)
@@ -366,13 +394,13 @@ void setHeldRelay(int n,uint8_t state)
 	heldRelayState[n]=state;
 	if(state)
 	{
-		fireSolenoidFor(heldRelays[n],20);
+		fireSolenoidFor(&heldRelays[n],20);
 	}
 	else
 	{
-		fireSolenoidFor(HOLD,20);
+		fireSolenoidFor(&HOLD,20);
 		for(int i=0;i<nHeldRelay;i++)
 			if(heldRelayState[i])
-				fireSolenoidFor(heldRelays[i],20);
+				fireSolenoidFor(&heldRelays[i],20);
 	}
 }

@@ -57,40 +57,39 @@ static const IOPin LED_LATCH={bU,P0};
 static const IOPin LED_DATA={bU,P0};
 static const IOPin LED_CLOCK={bU,P0};
 
-static const IOPin HOLD={bU,P0};
+
+typedef struct
+{
+	IOPin pin;
+	uint32_t lastFired;
+	uint32_t onTime,offTime;
+} Solenoid;
+#define S(b,p) {{b,p},0,90,250}
+#define Sd(b,p,on) {{b,p},0,on,250}
+
+extern Solenoid HOLD;
 static const int PLAYFIELD_DISABLE=9;
 static const int PLAYER_ENABLE[]={0,1,2,3};
-static const IOPin SCORE[]={{bU,P0},{bU,P0},{bU,P0},{bU,P0}};
-static const IOPin BONUS[]={{bU,P0},{bU,P0},{bU,P0},{bU,P0}};
+extern Solenoid SCORE[4];
+extern Solenoid BONUS[4];
 
 static const int BALL_ACK=4;
 static const int BALL_RELEASE=5;
-static const IOPin BALL_SHOOT={bU,P0};
+extern Solenoid BALL_SHOOT;
 
-static const IOPin LEFT_DROP_RESET={bU,P0};
-static const IOPin RIGHT_DROP_RESET={bU,P0};
-static const IOPin TOP_DROP_RESET={bU,P0};
-static const IOPin FIVE_DROP_RESET={bU,P0};
+extern Solenoid LEFT_DROP_RESET;
+extern Solenoid RIGHT_DROP_RESET;
+extern Solenoid TOP_DROP_RESET;
+extern Solenoid FIVE_DROP_RESET;
 static const int MAGNET=6;
 static const int LEFT_BLOCK_DISABLE=7;
 static const int RIGHT_BLOCK_DISABLE=8;
-static const IOPin LEFT_CAPTURE_EJECT={bU,P0};
-static const IOPin RIGHT_CAPTURE_EJECT={bU,P0};
-static const IOPin TOP_CAPTURE_EJECT={bU,P0};
+extern Solenoid LEFT_CAPTURE_EJECT;
+extern Solenoid RIGHT_CAPTURE_EJECT;
+extern Solenoid TOP_CAPTURE_EJECT;
 
 #define nHeldRelay 10
-static const IOPin heldRelays[nHeldRelay]={
-		{/*Player enable 1*/bA,P0},
-		{bU,P0},
-		{bU,P0},
-		{bA,P0/*Player enable 4*/},
-		{bU,P0},//ball ack
-		{bU,P0},//ball release
-		{bU,P0},//magnet
-		{bU,P0},//left block
-		{bU,P0},//right block
-		{bU,P0},//playfield disable
-};
+extern Solenoid heldRelays[nHeldRelay];
 
 typedef struct
 {
@@ -135,8 +134,8 @@ uint8_t getIn(IOPin pin);
 void initIOs();
 void updateIOs();
 
-void fireSolenoidFor(IOPin pin, uint32_t ms);
-void fireSolenoid(IOPin pin);
+void fireSolenoidFor(Solenoid *s, uint32_t ms);
+void fireSolenoid(Solenoid *s);
 
 
 #define OFF 0
