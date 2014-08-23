@@ -112,7 +112,8 @@ void switchPlayerRelay(int n)
 		heldRelayState[PLAYER_ENABLE[i]]=0;
 	setHeldRelay(n-1,1);
 }
-extern uint8_t mInputState[];
+extern uint8_t mLEDState[];
+extern uint8_t LED_Dirty;
 int main(void)
 {
 
@@ -132,11 +133,22 @@ int main(void)
 	int iii=0;
 	int iiii=0;
 	switchPlayerRelay(1);
+	int on=0;
 	while (1)
 	{
-		if (msTicks>500)
+
+		if(msTicks>500)
 		{
 			msTicks=0;
+			on=!on;
+			for(int i=0;i<48;i++)
+				setLED(i,on);
+
+			/*for(int i=0;i<6;i++)
+				mLEDState[i]=on?255:0;
+						LED_Dirty=1;*/
+			STM_EVAL_LEDToggle(LED4);
+			/*msTicks=0;
 			if(ii>=4)
 			{
 				ii=0;
@@ -150,7 +162,7 @@ int main(void)
 			//callFuncIn(disableLight,1000,ii);
 			fireSolenoid(SCORE[ii]);
 			ii++;
-			STM_EVAL_LEDOn(LED3+ii);
+			STM_EVAL_LEDOn(LED3+ii);*/
 		}
 		updateIOs();
 		/*uint8_t in=1;

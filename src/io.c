@@ -190,6 +190,13 @@ void initIOs()
 	initOutput(MULTI_IN_CLOCK);
 	setOutDirect(MULTI_IN_CLOCK,0);
 	setOutDirect(MULTI_IN_LATCH,1);
+	initOutput(LED_LATCH);
+	setOutDirect(LED_LATCH,0);
+	initOutput(LED_DATA);
+	setOutDirect(LED_DATA,0);
+	initOutput(LED_CLOCK);
+	setOutDirect(LED_CLOCK,0);
+
 	for(int i=0;i<nMultiInput;i++)
 	{
 		initInput(MULTI_IN_DATA[i],PULL_DOWN);
@@ -283,7 +290,7 @@ void updateIOs()
 
 	for(int i=0;i<nLED;i++)
 	{
-		uint8_t oldState=mLEDState[i/8]&=1<<(i%8);
+		uint8_t oldState=mLEDState[i/8]& 1<<(i%8);
 		if(LedState[i]>0 && LedState[i]<4294967295)
 			LedState[i]+=10000;
 		if((LedState[i]==0 || (LedState[i]>4294967295/2 && LedState[i]<4294967295)) && oldState)
@@ -299,10 +306,11 @@ void updateIOs()
 	}
 	if(LED_Dirty)
 	{
+		setOutDirect(LED_CLOCK,0);
 		for(int j=0;j<6;j++)
 			for(int i=0;i<8;i++)
 			{
-				setOutDirect(LED_DATA,mLEDState[j] & 1<<i);
+				setOutDirect(LED_DATA,mLEDState[j] & 1<<i);//
 				setOutDirect(LED_CLOCK,1);
 				setOutDirect(LED_CLOCK,0);
 			}
@@ -315,12 +323,6 @@ void updateIOs()
 
 void updateSlowInputs()
 {
-	if(msTicks>500)
-	{
-		msTicks=0;
-
-		STM_EVAL_LEDToggle(LED3);
-	}
 	setOutDirect(MULTI_IN_LATCH,0);
 	uint8_t in[nMultiInput];
 	for(int i=0;i<nMultiInput;i++)

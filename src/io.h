@@ -53,9 +53,9 @@ typedef struct
 static const IOPin MULTI_IN_LATCH= {bA,P6};
 static const IOPin MULTI_IN_CLOCK= {bC,P4};
 static const IOPin MULTI_IN_DATA[nMultiInput]=  { {bB,P2},{bB,P0},{bA,P4},{bA,P2} };
-static const IOPin LED_LATCH={bU,P0};
-static const IOPin LED_DATA={bU,P0};
-static const IOPin LED_CLOCK={bU,P0};
+static const IOPin LED_LATCH={bC,P0};
+static const IOPin LED_DATA={bC,P2};
+static const IOPin LED_CLOCK={bF,P2};
 
 
 typedef struct
