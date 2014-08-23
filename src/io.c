@@ -27,14 +27,14 @@ uint32_t LedState[nLED];
 Solenoid HOLD=Sd(bU,P0,20);
 Solenoid SCORE[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
 Solenoid BONUS[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
-Solenoid BALL_SHOOT=Sd(bU,P0,120);
-Solenoid LEFT_DROP_RESET=S(bU,P0);
-Solenoid RIGHT_DROP_RESET=S(bU,P0);
-Solenoid TOP_DROP_RESET=S(bU,P0);
-Solenoid FIVE_DROP_RESET=S(bU,P0);
-Solenoid LEFT_CAPTURE_EJECT=S(bU,P0);
-Solenoid RIGHT_CAPTURE_EJECT=S(bU,P0);
-Solenoid TOP_CAPTURE_EJECT=S(bU,P0);
+Solenoid BALL_SHOOT=Sds(bU,P0,120,500);
+Solenoid LEFT_DROP_RESET=Sds(bU,P0,120,700);
+Solenoid RIGHT_DROP_RESET=Sds(bU,P0,120,700);
+Solenoid TOP_DROP_RESET=Sds(bU,P0,120,700);
+Solenoid FIVE_DROP_RESET=Sds(bU,P0,120,700);
+Solenoid LEFT_CAPTURE_EJECT=Sds(bU,P0,120,700);
+Solenoid RIGHT_CAPTURE_EJECT=Sds(bU,P0,120,700);
+Solenoid TOP_CAPTURE_EJECT=Sds(bU,P0,120,700);
 Solenoid heldRelays[nHeldRelay]={
 		/*Player enable 1*/Sd(bU,P0,20),
 		Sd(bU,P0,20),
@@ -310,7 +310,7 @@ void updateIOs()
 		for(int j=0;j<6;j++)
 			for(int i=0;i<8;i++)
 			{
-				setOutDirect(LED_DATA,mLEDState[j] & 1<<i);//
+ 				setOutDirect(LED_DATA,mLEDState[j] & 1<<i);//
 				setOutDirect(LED_CLOCK,1);
 				setOutDirect(LED_CLOCK,0);
 			}
@@ -366,7 +366,7 @@ void fireSolenoidFor(Solenoid *s, uint32_t ms)
 	callFuncIn_s(turnOffSolenoid, ms,s);
 }
 
-void setLED(uint8_t index,uint8_t state)
+void setLED(enum LEDs index,uint8_t state)
 {
 	switch(state)
 	{
@@ -382,7 +382,7 @@ void setLED(uint8_t index,uint8_t state)
 	}
 }
 
-uint8_t getLED(uint8_t index)
+uint8_t getLED(enum LEDs index)
 {
 	if(LedState[index]==0)
 		return OFF;

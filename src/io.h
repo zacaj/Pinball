@@ -66,6 +66,7 @@ typedef struct
 } Solenoid;
 #define S(b,p) {{b,p},0,90,250}
 #define Sd(b,p,on) {{b,p},0,on,250}
+#define Sds(b,p,on,off) {{b,p},0,on,off}
 
 extern Solenoid HOLD;
 static const int PLAYFIELD_DISABLE=9;
@@ -77,16 +78,12 @@ static const int BALL_ACK=4;
 static const int BALL_RELEASE=5;
 extern Solenoid BALL_SHOOT;
 
-extern Solenoid LEFT_DROP_RESET;
-extern Solenoid RIGHT_DROP_RESET;
-extern Solenoid TOP_DROP_RESET;
+extern Solenoid LEFT_DROP_RESET,RIGHT_DROP_RESET,TOP_DROP_RESET;
 extern Solenoid FIVE_DROP_RESET;
 static const int MAGNET=6;
 static const int LEFT_BLOCK_DISABLE=7;
 static const int RIGHT_BLOCK_DISABLE=8;
-extern Solenoid LEFT_CAPTURE_EJECT;
-extern Solenoid RIGHT_CAPTURE_EJECT;
-extern Solenoid TOP_CAPTURE_EJECT;
+extern Solenoid LEFT_CAPTURE_EJECT,RIGHT_CAPTURE_EJECT,TOP_CAPTURE_EJECT;
 
 #define nHeldRelay 10
 extern Solenoid heldRelays[nHeldRelay];
@@ -142,10 +139,10 @@ void fireSolenoid(Solenoid *s);
 #define ON 1
 #define FLASHING 2
 enum LEDs {
-		BALL_1=0, BALL_2, BALL_3, BALL_4, BALL_5
+		BALL_1=0, BALL_2, BALL_3, BALL_4, BALL_5,LEFT_CAPTURE_LIGHT,RIGHT_CAPTURE_LIGHT,TOP_CAPTURE_LIGHT
 };
-void setLED(uint8_t index,uint8_t state);
-uint8_t getLED(uint8_t index);
+void setLED(enum LEDs index,uint8_t state);
+uint8_t getLED(enum LEDs index);
 
 void updateSlowInputs();
 void setHeldRelay(int n,uint8_t state);
