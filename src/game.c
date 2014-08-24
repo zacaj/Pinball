@@ -63,6 +63,7 @@ uint8_t leftPopScore1=1,leftPopScore2=1;
 uint8_t rightPopScore1=1,rightPopScore2=1;
 uint32_t lastLeftPopHitTime=0;
 uint32_t lastRightPopHitTime=0;
+uint8_t extraBallCount=0;
 enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
 enum GameMode mode=PLAYER_SELECT;
 
@@ -136,7 +137,7 @@ void updateDropBank(DropBank *bank)
 	}
 }
 
-void resetGame()
+void startGame()
 {
 	if(nPlayer==0)
 		return;
@@ -146,6 +147,21 @@ void resetGame()
 		playerScore[i]=0;
 	}
 
+
+}
+
+void startShoot()
+{
+	setHeldRelay(BALL_RELEASE,1);
+	uint32_t start=msElapsed;
+	while(!getInDirect(BALL_LOADED.pin) && msElapsed-start<3000);
+	setHeldRelay(BALL_RELEASE,0);
+	mode=SHOOT;
+	setHeldRelay(BALL_SHOOT_ENABLE,1);
+}
+
+void startBall()
+{
 	for(int i=0;i<3;i++)
 	{
 		captureState[i]=0;
@@ -161,11 +177,15 @@ void resetGame()
 	leftPopScore2=1;
 	rightPopScore1=1;
 	rightPopScore2=1;
+	startShoot();
 }
 
 void extraBall()
 {
-
+	extraBallCount++;
+	if(extraBallCount>max_extra_balls_per_ball)
+		extraBallCount=max_extra_balls_per_ball;
+	setLed(SHOOT_AGAIN,ON);
 }
 
 void resetRedTargets()
@@ -196,8 +216,71 @@ void switchPlayerRelay(int n)
 	setHeldRelay(n,1);
 }
 
+void startDrain()
+{
+	mode=DRAIN;
+	for(int i=0;i<3;i++)
+		captureState[i]=0;
+}
+
+void nextPlayer()
+{
+	curPlayer++;
+	if(curPlayer>=nPlayer)
+	{
+		curPlayer=0;
+		ballNumber++;
+		if(ballNumber>=3)
+		{
+			mode=PLAYER_SELECT;
+		}
+	}
+}
+
 void updateGame()
 {
+	if(mode==SHOOT)
+	{
+		if(BALL_LOADED.pressed)
+			setHeldRelay(BALL_SHOOT_ENABLE,1);
+		else if(BALL_LOADED.released)
+			setHeldRelay(BALL_SHOOT_ENABLE,0);
+		if(CAB_LEFT.pressed || CAB_RIGHT.pressed)
+		{
+			fireSolenoid(BALL_SHOOT);
+		}
+		if(LANES[3].pressed)
+		{
+			mode=PLAY;
+		}
+	}
+	if(mode==DRAIN)
+	{
+		if(BALL_LOADED.state)
+		{
+			nextPlayer();
+			startBall();
+		}
+	}
+	{//ack
+		if(BALL_OUT.state)
+			fireSolenoid(BALL_ACK);
+		if(mode==PLAY)
+		{
+			if(BALL_OUT.pressed)
+			{
+				if(extraBallCount>0)
+				{
+					extraBallCount--;
+					startShoot();
+				}
+				else
+				{
+					startDrain();
+				}
+			}
+		}
+	}
 	{//captures
 		if(TOP_CAPTURE.pressed)
 		{
@@ -359,11 +442,12 @@ void updateGame()
 			setLed(RIGHT_POP_LIGHT_3,ON);
 		}
 	}
+
 	if(mode==PLAYER_SELECT)
 	{
 		if(START.pressed)
 		{
-			resetGame();
+			startGame();
 		}
 		if(CAB_LEFT.pressed)
 		{

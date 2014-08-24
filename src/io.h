@@ -74,9 +74,10 @@ static const int PLAYER_ENABLE[]={0,1,2,3};
 extern Solenoid SCORE[4];
 extern Solenoid BONUS[4];
 
-static const int BALL_ACK=4;
+static const int BALL_SHOOT_ENABLE=4;
 static const int BALL_RELEASE=5;
 extern Solenoid BALL_SHOOT;
+extern Solenoid BALL_ACK;
 
 extern Solenoid LEFT_DROP_RESET,RIGHT_DROP_RESET,TOP_DROP_RESET;
 extern Solenoid FIVE_DROP_RESET;
@@ -143,7 +144,8 @@ enum LEDs {
 		LEFT_CAPTURE_LIGHT,RIGHT_CAPTURE_LIGHT,TOP_CAPTURE_LIGHT,
 		RED_TARGET_LEFT,RED_TARGET_RIGHT,RED_TARGET_TOP,RED_TARGET_BOTTOM,
 		LANE_1,LANE_2,LANE_3,LANE_4,
-		LEFT_POP_LIGHT,RIGHT_POP_LIGHT_1,RIGHT_POP_LIGHT_2,RIGHT_POP_LIGHT_3
+		LEFT_POP_LIGHT,RIGHT_POP_LIGHT_1,RIGHT_POP_LIGHT_2,RIGHT_POP_LIGHT_3,
+		SHOOT_AGAIN
 };
 void setLED(enum LEDs index,uint8_t state);
 void offsetLED(enum LEDs index,uint32_t offset);

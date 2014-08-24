@@ -28,6 +28,7 @@ Solenoid HOLD=Sd(bU,P0,20);
 Solenoid SCORE[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
 Solenoid BONUS[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
 Solenoid BALL_SHOOT=Sds(bU,P0,120,500);
+Solenoid BALL_ACK=Sds(bU,P0,120,500);
 Solenoid LEFT_DROP_RESET=Sds(bU,P0,120,700);
 Solenoid RIGHT_DROP_RESET=Sds(bU,P0,120,700);
 Solenoid TOP_DROP_RESET=Sds(bU,P0,120,700);
@@ -380,6 +381,11 @@ void setLED(enum LEDs index,uint8_t state)
 		LedState[index]+=3;
 		break;
 	}
+}
+
+void offsetLED(enum LEDs index,uint32_t offset)
+{
+	LedState[index]+=offset;
 }
 
 uint8_t getLED(enum LEDs index)
