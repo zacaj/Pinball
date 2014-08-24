@@ -17,7 +17,15 @@ static const uint16_t drop_complete_score=5;
 static const uint16_t drop_complete_bonus=1;
 static const uint16_t drop_sequence_bonus=1;
 static const uint16_t red_target_miss_score=1;
-static const uint16_t red_target_hit_score=1;
+static const uint16_t red_target_hit_score=10;
+static const uint16_t red_target_hit_bonus=1;
+static const uint16_t red_target_complete_bonus=1;
+static const uint16_t lane_hit_score=10;
+static const uint16_t lane_miss_score=1;
+static const uint16_t lane_complete_bonus=1;
+static const uint16_t bonus_mult_extra_ball_divisor=10;
+static const uint32_t left_pop_hit_time=500;
+static const uint32_t right_pop_hit_time=500;
 
 typedef struct
 {
@@ -33,7 +41,7 @@ typedef struct
 {
 	enum LEDs led;
 	uint8_t state;
-} RedTarget;
+} Target;
 
 
 extern DropBank dropBanks[4];

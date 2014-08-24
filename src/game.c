@@ -58,6 +58,11 @@ uint16_t playerScore[];
 uint8_t curPlayer=0;
 uint16_t bonus=0;
 uint8_t ballNumber=1,nPlayer=0;
+uint8_t bonusMult=0;
+uint8_t leftPopScore1=1,leftPopScore2=1;
+uint8_t rightPopScore1=1,rightPopScore2=1;
+uint32_t lastLeftPopHitTime=0;
+uint32_t lastRightPopHitTime=0;
 enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
 enum GameMode mode=PLAYER_SELECT;
 
@@ -77,11 +82,17 @@ DropBank dropBanks[4]={
 		{5,FIVE_TARGET,{0,0,0,0,0},0,&FIVE_DROP_RESET,fiveDown},
 };
 uint8_t captureState[3];
-RedTarget redTargets[4]={
+Target redTargets[4]={
 		{RED_TARGET_LEFT,0},
 		{RED_TARGET_RIGHT,0},
 		{RED_TARGET_TOP,0},
 		{RED_TARGET_BOTTOM,0},
+};
+Target lanes[4]={
+		{LANE_1,0},
+		{LANE_2,0},
+		{LANE_3,0},
+		{LANE_4,0},
 };
 
 void initGame()
@@ -144,6 +155,12 @@ void resetGame()
 	setLed(TOP_CAPTURE_LIGHT,OFF);
 
 	resetRedTargets();
+	resetLanes();
+	bonusMult=0;
+	leftPopScore1=1;
+	leftPopScore2=1;
+	rightPopScore1=1;
+	rightPopScore2=1;
 }
 
 void extraBall()
@@ -161,6 +178,15 @@ void resetRedTargets()
 	int i=rand()%4;
 	setLed(redTargets[i].led,FLASHING);
 	redTargets[i].state=1;
+}
+
+void resetLanes()
+{
+	for(int i=0;i<4;i++)
+	{
+		lanes[i].state=0;
+		setLed(lanes[i].led,OFF);
+	}
 }
 
 void switchPlayerRelay(int n)
@@ -219,13 +245,14 @@ void updateGame()
 					break;
 				case 1:
 					{
-						addScore(red_target_hit_score);
 						redTargets[i].state=2;
-						setLed(redTargets[i].led,ON);
 						int on=0;
 						for(int j=0;j<4;j++)
 							if(redTargets[i].state==2)
 								on++;
+						addScore(red_target_hit_score,on==4?red_target_complete_bonus:0+red_target_hit_bonus);
+
+						setLed(redTargets[i].led,ON);
 						if(on==4)
 						{
 							resetRedTargets();
@@ -245,6 +272,91 @@ void updateGame()
 					break;
 				}
 			}
+		}
+	}
+	if(mode==PLAY)//lanes
+	{
+		for(int i=0;i<4;i++)
+		{
+			if(LANES[i].pressed)
+			{
+				if(lanes[i].state==0)
+				{
+					lanes[i].state=1;
+					int on=0;
+					for(int j=0;j<4;j++)
+						if(lanes[i].state==1)
+							on++;
+					if(on==4)
+					{
+						resetLanes();
+						bonusMult++;
+						if(bonusMult%bonus_mult_extra_ball_divisor==0)
+							extraBall();
+					}
+					addScore(lane_hit_score,on==4?lane_complete_bonus:0);
+					setLed(lanes[i].led,ON);
+				}
+				else
+					addScore(lane_miss_score);
+			}
+		}
+		if(LEFT_FLIPPER.pressed)
+		{
+			uint8_t temp=lanes[0].state;
+			lanes[0].state=lanes[3].state;
+			lanes[3].state=lanes[2].state;
+			lanes[2].state=lanes[1].state;
+			lanes[1].state=temp;
+			for(int i=0;i<4;i++)
+				setLed(lanes[i].led,lanes[i].state?ON:OFF);
+		}
+		if(RIGHT_FLIPPER.pressed)
+		{
+			uint8_t temp=lanes[0].state;
+			lanes[0].state=lanes[1].state;
+			lanes[1].state=lanes[2].state;
+			lanes[2].state=lanes[3].state;
+			lanes[3].state=temp;
+			for(int i=0;i<4;i++)
+				setLed(lanes[i].led,lanes[i].state?ON:OFF);
+		}
+	}
+	if(mode==PLAY)//pops
+	{
+		if(LEFT_POP.pressed)
+		{
+			addScore(leftPopScore1*10);
+			uint16_t temp=leftPopScore2;
+			leftPopScore2=leftPopScore2+leftPopScore1;
+			leftPopScore1=temp;
+			lastLeftPopHitTime=msElapsed;
+			setLed(LEFT_POP_LIGHT,FLASHING);
+		}
+		if(msElapsed-lastLeftPopHitTime>left_pop_hit_time)
+		{
+			leftPopScore1=leftPopScore2=1;
+			setLed(LEFT_POP_LIGHT,ON);
+		}
+		if(RIGHT_POP.pressed)
+		{
+			addScore(rightPopScore1);
+			uint16_t temp=rightPopScore2;
+			rightPopScore2=rightPopScore2+rightPopScore1;
+			rightPopScore1=temp;
+			lastRightPopHitTime=msElapsed;
+			setLed(RIGHT_POP_LIGHT_1,FLASHING);
+			setLed(RIGHT_POP_LIGHT_2,FLASHING);
+			offsetLed(RIGHT_POP_LIGHT_2,4294967295/3);
+			setLed(RIGHT_POP_LIGHT_3,FLASHING);
+			offsetLed(RIGHT_POP_LIGHT_3,4294967295/3*2);
+		}
+		if(msElapsed-lastRightPopHitTime>right_pop_hit_time)
+		{
+			rightPopScore1=rightPopScore2=1;
+			setLed(RIGHT_POP_LIGHT_1,ON);
+			setLed(RIGHT_POP_LIGHT_2,ON);
+			setLed(RIGHT_POP_LIGHT_3,ON);
 		}
 	}
 	if(mode==PLAYER_SELECT)
