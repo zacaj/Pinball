@@ -147,9 +147,9 @@ enum LEDs {
 		LEFT_POP_LIGHT,RIGHT_POP_LIGHT_1,RIGHT_POP_LIGHT_2,RIGHT_POP_LIGHT_3,
 		SHOOT_AGAIN
 };
-void setLED(enum LEDs index,uint8_t state);
-void offsetLED(enum LEDs index,uint32_t offset);
-uint8_t getLED(enum LEDs index);
+void setLed(enum LEDs index,uint8_t state);
+void offsetLed(enum LEDs index,uint32_t offset);
+uint8_t getLed(enum LEDs index);
 
 void updateSlowInputs();
 void setHeldRelay(int n,uint8_t state);

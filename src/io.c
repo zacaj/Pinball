@@ -367,7 +367,7 @@ void fireSolenoidFor(Solenoid *s, uint32_t ms)
 	callFuncIn_s(turnOffSolenoid, ms,s);
 }
 
-void setLED(enum LEDs index,uint8_t state)
+void setLed(enum LEDs index,uint8_t state)
 {
 	switch(state)
 	{
@@ -383,12 +383,12 @@ void setLED(enum LEDs index,uint8_t state)
 	}
 }
 
-void offsetLED(enum LEDs index,uint32_t offset)
+void offsetLed(enum LEDs index,uint32_t offset)
 {
 	LedState[index]+=offset;
 }
 
-uint8_t getLED(enum LEDs index)
+uint8_t getLed(enum LEDs index)
 {
 	if(LedState[index]==0)
 		return OFF;

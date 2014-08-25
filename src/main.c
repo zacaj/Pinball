@@ -107,12 +107,6 @@ uint32_t disableLight(void *d)
 	STM_EVAL_LEDOff(LED3+(int)d);
 	return 1;
 }
-void switchPlayerRelay(int n)
-{
-	for(int i=0;i<4;i++)
-		heldRelayState[PLAYER_ENABLE[i]]=0;
-	setHeldRelay(n-1,1);
-}
 extern uint8_t mLEDState[];
 extern uint8_t LED_Dirty;
 int main(void)
@@ -134,7 +128,6 @@ int main(void)
 	ii = 0;
 	int iii=0;
 	int iiii=0;
-	switchPlayerRelay(1);
 	int on=0;
 	while (1)
 	{
@@ -144,7 +137,7 @@ int main(void)
 			msTicks=0;
 			on=!on;
 			for(int i=0;i<48;i++)
-				setLED(i,on);
+				setLed(i,on);
 
 			/*for(int i=0;i<6;i++)
 				mLEDState[i]=on?255:0;
