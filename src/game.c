@@ -16,53 +16,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "game.h"
-
-void threeDown(void *data)
-{
-	DropBank *bank=data;
-	if(bank->flashing==bank->nTarget)
-	{
-		enum LEDs led;
-		int n;
-		if(bank->reset==&LEFT_DROP_RESET)
-		{
-			led=LEFT_CAPTURE_LIGHT;
-			n=0;
-		}
-		else if(bank->reset==&RIGHT_DROP_RESET)
-		{
-			led=RIGHT_CAPTURE_LIGHT;
-			n=1;
-		}
-		else
-		{
-			led=TOP_CAPTURE_LIGHT;
-			n=2;
-		}
-
-		switch(getLed(led))
-		{
-		case OFF:
-			setLed(led,FLASHING);
-			captureState[n]=1;
-			break;
-		case FLASHING:
-			setLed(led,ON);
-			captureState[n]=2;
-			break;
-		case ON:
-			curScore+=drop_complete_score*drop_sequence_mult;
-			break;
-		}
-	}
-}
-
-void fiveDown(void *data)
-{
-	DropBank *bank=data;
-
-}
-
 uint16_t playerScore[];
 uint8_t curPlayer=0;
 uint16_t bonus=0;
@@ -78,6 +31,8 @@ uint8_t extraBallCount=0;
 uint8_t lockMBMax=0;
 uint8_t nLock=0;
 uint16_t startScore=0;
+uint8_t activeActivate=0;
+uint16_t currentJackpotScore=0;
 uint8_t nBallInPlay,nBallCaptured,nMinTargetBallInPlay;
 uint32_t lastBallTroughReleaseTime=0;
 enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
@@ -95,13 +50,6 @@ void addScore(uint16_t score,uint16_t _bonus)
 	}
 }
 
-DropBank dropBanks[4]={
-		{3,DROP_TARGET[0],{0,0,0,0,0},0,&LEFT_DROP_RESET,threeDown},
-		{3,DROP_TARGET[1],{0,0,0,0,0},0,&RIGHT_DROP_RESET,threeDown},
-		{3,DROP_TARGET[2],{0,0,0,0,0},0,&TOP_DROP_RESET,threeDown},
-		{5,FIVE_TARGET,{0,0,0,0,0},0,&FIVE_DROP_RESET,fiveDown},
-};
-uint8_t captureState[3];
 Target redTargets[4]={
 		{RED_TARGET_LEFT,0},
 		{RED_TARGET_RIGHT,0},
@@ -113,6 +61,70 @@ Target lanes[4]={
 		{LANE_2,0},
 		{LANE_3,0},
 		{LANE_4,0},
+};
+Target activates[4]={
+		{LOCK_BALL,0},
+		{START_LOCK,0},
+		{JACKPOT,0},
+		{BONUS_HOLD_INCREMENT,0}
+};
+
+void syncCaptureLights();
+void rotateActivates();
+uint8_t captureState[3];
+void threeDown(void *data)
+{
+	DropBank *bank=data;
+	if(bank->flashing==bank->nTarget)
+	{
+		int n;
+		if(bank->reset==&LEFT_DROP_RESET)
+		{
+			n=0;
+		}
+		else if(bank->reset==&RIGHT_DROP_RESET)
+		{
+			n=1;
+		}
+		else
+		{
+			n=2;
+		}
+
+		switch(captureState[n])
+		{
+		case 0:
+			captureState[n]=1;
+			break;
+		case 1:
+			captureState[n]=2;
+			break;
+		case 2:
+			curScore+=drop_complete_score*drop_sequence_mult;
+			break;
+		}
+		syncCaptureLights();
+	}
+}
+
+void fiveDown(void *data)
+{
+	DropBank *bank=data;
+	if(bank->flashing==bank->nTarget)
+	{
+		activates[3].state=1;
+		rotateActivates();
+	}
+	activates[0].state=1;
+	rotateActivates();
+}
+
+
+DropBank dropBanks[4]={
+		{3,DROP_TARGET[0],{0,0,0,0,0},0,&LEFT_DROP_RESET,threeDown},
+		{3,DROP_TARGET[1],{0,0,0,0,0},0,&RIGHT_DROP_RESET,threeDown},
+		{3,DROP_TARGET[2],{0,0,0,0,0},0,&TOP_DROP_RESET,threeDown},
+		{5,FIVE_TARGET,{0,0,0,0,0},0,&FIVE_DROP_RESET,fiveDown},
 };
 
 void initGame()
@@ -186,6 +198,8 @@ void resetLanes();
 void setLocks(int lock)
 {
 	nLock=lock;
+	if(nLock>=4)
+		nLock=3;
 	for(int i=0;i<4;i++)
 		setLed(LOCK_1+i,i<nLock?ON:OFF);
 }
@@ -196,9 +210,7 @@ void startBall()
 	{
 		captureState[i]=0;
 	}
-	setLed(LEFT_CAPTURE_LIGHT,OFF);
-	setLed(RIGHT_CAPTURE_LIGHT,OFF);
-	setLed(TOP_CAPTURE_LIGHT,OFF);
+	syncCaptureLights();
 
 	resetRedTargets();
 	resetLanes();
@@ -240,6 +252,26 @@ void resetLanes()
 	}
 }
 
+void syncCaptureLights()
+{
+#define sync(led,n) \
+	switch(captureState[n]) \
+	{ \
+	case 0: \
+		setLed(led,OFF); \
+		break; \
+	case 1: \
+		setLed(led,FLASHING); \
+		break; \
+	case 2: \
+		setLed(led,ON); \
+		break; \
+	}
+
+	sync(LEFT_CAPTURE_LIGHT,0);
+	sync(RIGHT_CAPTURE_LIGHT,1);
+	sync(TOP_CAPTURE_LIGHT,2);
+}
 void switchPlayerRelay(int n)
 {
 	for(int i=0;i<4;i++)
@@ -254,6 +286,15 @@ void startDrain()
 		captureState[i]=0;
 	addScore(bonus*bonusMult,0);
 	bonus=0;
+}
+
+void rotateActivates()
+{
+	setLed(activates[activeActivate].led,OFF);
+	activeActivate++;
+	if(activeActivate>=4)
+		activeActivate=0;
+	setLed(activates[activeActivate].led,activates[activeActivate].state);
 }
 
 void nextPlayer()
@@ -292,7 +333,7 @@ void updateGame()
 	}
 	if(mode==DRAIN)
 	{
-		if(BALL_LOADED.state && physicalScore==curScore && physicalBonus==0)
+		if(BALL_LOADED.state && physicalScore[curPlayer]==curScore && physicalBonus==0)
 		{
 			nextPlayer();
 			startBall();
@@ -311,8 +352,8 @@ void updateGame()
 					if(extraBallCount>0)
 					{
 						extraBallCount--;
-						startShoot();
 						nBallInPlay--;
+						startShoot();
 					}
 					else if(nMinTargetBallInPlay==0)
 					{
@@ -326,6 +367,11 @@ void updateGame()
 					{
 						nMinTargetBallInPlay=nBallCaptured+nBallInPlay+1;
 					}
+					else if(nBallInPlay==2)
+					{
+						lockMBMax=0;
+					}
+					nBallInPlay--;
 				}
 			}
 		}
@@ -341,7 +387,7 @@ void updateGame()
 					setHeldRelay(BALL_RELEASE,0);
 					lastBallTroughReleaseTime=msElapsed;
 					fireSolenoid(&BALL_SHOOT);
-					setLock(nLock-1);
+					setLocks(nLock-1);
 				}
 				else if(msElapsed-lastBallTroughReleaseTime>500)
 				{
@@ -354,30 +400,35 @@ void updateGame()
 				if(LEFT_CAPTURE.state)
 				{
 					if(fireSolenoid(&LEFT_CAPTURE_EJECT))
-						setLock(nLock-1);
+						setLocks(nLock-1);
 				}
 				else if(RIGHT_CAPTURE.state)
 				{
 					if(fireSolenoid(&RIGHT_CAPTURE_EJECT))
-						setLock(nLock-1);
+						setLocks(nLock-1);
 				}
 				else if(TOP_CAPTURE.state)
 				{
 					if(fireSolenoid(&TOP_CAPTURE_EJECT))
-						setLock(nLock-1);
+						setLocks(nLock-1);
 				}
 			}
 		}
 		else //done firing
+		{
 			nMinTargetBallInPlay=0;
+			setHeldRelay(MAGNET,0);
+		}
 	}
 	{//captures
 #define doCapture(in,eject,n) \
-		if(in.pressed) \
+	if(in.pressed) \
+	{ \
+		addScore(capture_score,0); \
+		nBallInPlay--; \
+		nBallCaptured++; \
+		if(lockMBMax==0) \
 		{ \
-			addScore(capture_score,0); \
-			nBallInPlay--; \
-			nBallCaptured++; \
 			if(captureState[n]==1 || (captureState[n]==2 && nBallCaptured==3)) \
 			{ \
 				nMinTargetBallInPlay=nBallCaptured+nBallInPlay+1; \
@@ -385,28 +436,40 @@ void updateGame()
 				{ \
 					captureState[i]=0; \
 				} \
-				setLed(LEFT_CAPTURE_LIGHT,OFF); \
-				setLed(RIGHT_CAPTURE_LIGHT,OFF); \
-				setLed(TOP_CAPTURE_LIGHT,OFF); \
+				syncCaptureLights(); \
 			} \
 		} \
-		if(in.released) \
+		else \
 		{ \
-			nBallCaptured--; \
-		} \
-		if(in .state) \
-		{ \
-			switch(captureState[n]) \
+			if(captureState[n]<2) \
 			{ \
-			case 0: \
-				fireSolenoid(&eject); \
-				break; \
-			case 1: \
-				break; \
-			case 2: \
-				break; \
+				captureState[n]++; \
+				syncCaptureLights(); \
 			} \
-		}
+			if(captureState[0]==2 && captureState[1]==2 && captureState[2]==2) \
+			{ \
+				activates[2].state=2; \
+				rotateActivates(); \
+			} \
+		} \
+	} \
+	if(in.released) \
+	{ \
+		nBallCaptured--; \
+	} \
+	if(in .state) \
+	{ \
+		switch(captureState[n]) \
+		{ \
+		case 0: \
+			fireSolenoid(&eject); \
+			break; \
+		case 1: \
+			break; \
+		case 2: \
+			break; \
+		} \
+	}
 
 		doCapture(TOP_CAPTURE,TOP_CAPTURE_EJECT,2);
 		doCapture(LEFT_CAPTURE,LEFT_CAPTURE_EJECT,0);
@@ -543,6 +606,48 @@ void updateGame()
 			setLed(RIGHT_POP_LIGHT_1,ON);
 			setLed(RIGHT_POP_LIGHT_2,ON);
 			setLed(RIGHT_POP_LIGHT_3,ON);
+		}
+	}
+	if(mode==PLAY)
+	{
+		if(ROTATE_ROLLOVER.pressed)
+		{
+			rotateActivates();
+		}
+		if(ACTIVATE_TARGET.pressed)
+		{
+			if(activates[activeActivate].state)
+				switch(activeActivate)
+				{
+				case 0:
+					setLocks(nLock+1);
+					activates[0].state=0;
+					break;
+				case 1:
+					nMinTargetBallInPlay=nBallCaptured+nBallInPlay+nLock;
+					lockMBMax=nLock;
+					setHeldRelay(MAGNET,1);
+					currentJackpotScore=jackpot_score;
+					activates[1].state=0;
+					break;
+				case 2:
+					addScore(currentJackpotScore,jackpot_bonus);
+					currentJackpotScore*=jackpot_score_mult;
+					activates[2].state=0;
+					break;
+				case 3:
+					//todo;
+					break;
+				}
+			rotateActivates();
+		}
+		if(nLock>=nBallCaptured)
+		{
+			activates[1].state=2;
+		}
+		else
+		{
+			activates[1].state=0;
 		}
 	}
 

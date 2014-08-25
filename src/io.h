@@ -147,6 +147,7 @@ enum LEDs {
 		LEFT_POP_LIGHT,RIGHT_POP_LIGHT_1,RIGHT_POP_LIGHT_2,RIGHT_POP_LIGHT_3,
 		SHOOT_AGAIN,
 		LOCK_1,LOCK_2,LOCK_3,LOCK_4,
+		LOCK_BALL,START_LOCK,JACKPOT,BONUS_HOLD_INCREMENT,
 };
 void setLed(enum LEDs index,uint8_t state);
 void offsetLed(enum LEDs index,uint32_t offset);
