@@ -353,18 +353,19 @@ uint32_t turnOffSolenoid(Solenoid *s)
 	return 1;
 }
 
-void fireSolenoid(Solenoid *s)
+uint8_t fireSolenoid(Solenoid *s)
 {
-	fireSolenoidFor(s, s->onTime);
+	return fireSolenoidFor(s, s->onTime);
 }
 
-void fireSolenoidFor(Solenoid *s, uint32_t ms)
+uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms)
 {
 	if(s->offTime+s->lastFired>msElapsed)
-		return;
+		return 0;
 	//while(msElapsed<lastSolenoidFiringTime+50);
 	setOut(s->pin, 1);
 	callFuncIn_s(turnOffSolenoid, ms,s);
+	return 1;
 }
 
 void setLed(enum LEDs index,uint8_t state)

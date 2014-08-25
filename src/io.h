@@ -132,8 +132,8 @@ uint8_t getIn(IOPin pin);
 void initIOs();
 void updateIOs();
 
-void fireSolenoidFor(Solenoid *s, uint32_t ms);
-void fireSolenoid(Solenoid *s);
+uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms);
+uint8_t fireSolenoid(Solenoid *s);
 
 
 #define OFF 0
@@ -145,7 +145,8 @@ enum LEDs {
 		RED_TARGET_LEFT,RED_TARGET_RIGHT,RED_TARGET_TOP,RED_TARGET_BOTTOM,
 		LANE_1,LANE_2,LANE_3,LANE_4,
 		LEFT_POP_LIGHT,RIGHT_POP_LIGHT_1,RIGHT_POP_LIGHT_2,RIGHT_POP_LIGHT_3,
-		SHOOT_AGAIN
+		SHOOT_AGAIN,
+		LOCK_1,LOCK_2,LOCK_3,LOCK_4,
 };
 void setLed(enum LEDs index,uint8_t state);
 void offsetLed(enum LEDs index,uint32_t offset);

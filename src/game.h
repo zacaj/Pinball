@@ -27,6 +27,7 @@ static const uint16_t bonus_mult_extra_ball_divisor=10;
 static const uint32_t left_pop_hit_time=500;
 static const uint32_t right_pop_hit_time=500;
 static const uint8_t max_extra_balls_per_ball=2;
+static const uint16_t consolation_score=10;
 
 typedef struct
 {
