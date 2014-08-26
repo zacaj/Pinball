@@ -33,6 +33,7 @@ uint8_t nLock=0;
 uint16_t startScore=0;
 uint8_t activeActivate=0;
 uint16_t currentJackpotScore=0;
+uint16_t scoreMult=1;
 uint8_t nBallInPlay,nBallCaptured,nMinTargetBallInPlay;
 uint32_t lastBallTroughReleaseTime=0;
 enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
@@ -42,7 +43,7 @@ void addScore(uint16_t score,uint16_t _bonus)
 {
 	if(mode==PLAY)
 	{
-		curScore+=score;
+		curScore+=score*scoreMult;
 		bonus+=_bonus;
 		if(curScore>startScore+consolation_score)
 			if(getLed(SHOOT_AGAIN)==FLASHING)
@@ -214,6 +215,7 @@ void startBall()
 
 	resetRedTargets();
 	resetLanes();
+	scoreMult=1;
 	bonusMult=0;
 	leftPopScore1=1;
 	leftPopScore2=1;
@@ -372,6 +374,8 @@ void updateGame()
 						lockMBMax=0;
 					}
 					nBallInPlay--;
+					if(scoreMult!=1)
+						scoreMult=nBallInPlay;
 				}
 			}
 		}
@@ -432,6 +436,7 @@ void updateGame()
 			if(captureState[n]==1 || (captureState[n]==2 && nBallCaptured==3)) \
 			{ \
 				nMinTargetBallInPlay=nBallCaptured+nBallInPlay+1; \
+				scoreMult=nMinTargetBallInPlay; \
 				for(int i=0;i<3;i++) \
 				{ \
 					captureState[i]=0; \
@@ -617,6 +622,8 @@ void updateGame()
 		if(ACTIVATE_TARGET.pressed)
 		{
 			if(activates[activeActivate].state)
+			{
+				addScore(0,1);
 				switch(activeActivate)
 				{
 				case 0:
@@ -639,6 +646,9 @@ void updateGame()
 					//todo;
 					break;
 				}
+			}
+			else
+				addScore(5,0);
 			rotateActivates();
 		}
 		if(nLock>=nBallCaptured)
