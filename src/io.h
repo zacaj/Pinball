@@ -88,6 +88,15 @@ extern Solenoid LEFT_CAPTURE_EJECT,RIGHT_CAPTURE_EJECT,TOP_CAPTURE_EJECT;
 
 #define nHeldRelay 10
 extern Solenoid heldRelays[nHeldRelay];
+extern uint32_t lastHeldRelayOnTime[nHeldRelay];
+static const uint32_t heldRelayMaxOnTime[nHeldRelay]={
+		-1,-1,-1,-1,
+		-1,
+		3000,
+		8000,
+		-1,-1,-1
+
+};
 
 typedef struct
 {

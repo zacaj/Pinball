@@ -31,6 +31,8 @@ static const uint16_t consolation_score=10;
 static const uint16_t jackpot_score=500;
 static const uint16_t jackpot_score_mult=2;
 static const uint16_t jackpot_bonus=10;
+static const uint32_t max_blocker_on_time=2500;
+static const uint32_t blocker_cooldown_time=1500;
 
 typedef struct
 {
@@ -52,7 +54,9 @@ typedef struct
 extern DropBank dropBanks[4];
 
 extern uint16_t playerScore[MAX_PLAYER];
+extern uint16_t physicalScore[4];
 extern uint16_t bonus;
+extern uint16_t physicalBonus;
 extern uint8_t curPlayer;
 #define curScore playerScore[curPlayer]
 extern uint8_t ballNumber,nPlayer;
@@ -60,6 +64,7 @@ extern uint8_t ballNumber,nPlayer;
 
 void updateGame();
 void initGame();
+void switchPlayerRelay(int n);//-1 for all off
 
 
 #endif /* GAME_H_ */

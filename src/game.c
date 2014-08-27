@@ -16,6 +16,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "game.h"
+#include "score.h"
 uint16_t playerScore[];
 uint8_t curPlayer=0;
 uint16_t bonus=0;
@@ -36,6 +37,8 @@ uint16_t currentJackpotScore=0;
 uint16_t scoreMult=1;
 uint8_t nBallInPlay,nBallCaptured,nMinTargetBallInPlay;
 uint32_t lastBallTroughReleaseTime=0;
+uint32_t lastLeftBlockerOnTime=0,lastRightBlockerOnTime=0;
+uint32_t lastLeftBlockerOffTime=0,lastRightBlockerOffTime=0;
 enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
 enum GameMode mode=PLAYER_SELECT;
 
@@ -178,7 +181,9 @@ void startGame()
 	{
 		playerScore[i]=0;
 	}
-
+	bonus=0;
+	bonusMult=0;
+	resetScores();
 
 }
 
@@ -221,6 +226,12 @@ void startBall()
 	leftPopScore2=1;
 	rightPopScore1=1;
 	rightPopScore2=1;
+	lastLeftBlockerOnTime=0;
+	lastRightBlockerOnTime=0;
+	lastLeftBlockerOffTime=0;
+	lastRightBlockerOffTime=0;
+	setHeldRelay(LEFT_BLOCK_DISABLE,0);
+	setHeldRelay(RIGHT_BLOCK_DISABLE,0);
 	setLocks(0);
 	startShoot();
 }
@@ -658,6 +669,41 @@ void updateGame()
 		else
 		{
 			activates[1].state=0;
+		}
+	}
+	if(mode==PLAY)//blockers
+	{
+		if(LEFT_BLOCK.pressed)
+			lastLeftBlockerOnTime=msElapsed;
+		if(RIGHT_BLOCK.pressed)
+			lastRightBlockerOnTime=msElapsed;
+		if(LEFT_BLOCK.released)
+		{
+			lastLeftBlockerOnTime=0;
+			lastLeftBlockerOffTime=msElapsed;
+		}
+		if(RIGHT_BLOCK.released)
+		{
+			lastRightBlockerOnTime=0;
+			lastRightBlockerOffTime=msElapsed;
+		}
+		if(msElapsed-lastLeftBlockerOnTime>max_blocker_on_time)
+		{
+			setHeldRelay(LEFT_BLOCK_DISABLE,1);
+			lastLeftBlockerOffTime=msElapsed;
+		}
+		if(msElapsed-lastRightBlockerOnTime>max_blocker_on_time)
+		{
+			setHeldRelay(RIGHT_BLOCK_DISABLE,1);
+			lastRightBlockerOffTime=msElapsed;
+		}
+		if(msElapsed-lastLeftBlockerOffTime>blocker_cooldown_time)
+		{
+			setHeldRelay(LEFT_BLOCK_DISABLE,0);
+		}
+		if(msElapsed-lastRightBlockerOffTime>blocker_cooldown_time)
+		{
+			setHeldRelay(RIGHT_BLOCK_DISABLE,0);
 		}
 	}
 

@@ -22,6 +22,7 @@ uint8_t mLEDState[6];
 uint8_t LED_Dirty=0;
 #define nLED 48
 uint8_t heldRelayState[nHeldRelay];
+uint32_t lastHeldRelayOnTime[nHeldRelay];
 uint32_t LedState[nLED];
 
 Solenoid HOLD=Sd(bU,P0,20);
@@ -161,11 +162,11 @@ uint8_t getIn(IOPin pin)
 void initIOs()
 {
 	for(int i=0;i<4;i++)
-		//for(int j=0;j<16;j++)
 			mInputState[i]=0;
 	for(int i=0;i<nHeldRelay;i++)
 	{
 		heldRelayState[i]=0;
+		lastHeldRelayOnTime[i]=0;
 		initOutput(heldRelays[i].pin);
 	}
 
@@ -320,6 +321,13 @@ void updateIOs()
 		setOutDirect(LED_LATCH,0);
 		LED_Dirty=0;
 	}
+	for(int i=0;i<nHeldRelay;i++)
+	{
+		if(lastHeldRelayOnTime[i]+heldRelayMaxOnTime[i]>msElapsed)
+		{
+			setHeldRelay(i,0);
+		}
+	}
 }
 
 void updateSlowInputs()
@@ -404,6 +412,7 @@ void setHeldRelay(int n,uint8_t state)
 	if(state)
 	{
 		fireSolenoidFor(&heldRelays[n],20);
+		lastHeldRelayOnTime[n]=msElapsed;
 	}
 	else
 	{

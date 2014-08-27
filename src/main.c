@@ -33,6 +33,7 @@
 #include "io.h"
 #include "sound.h"
 #include "game.h"
+#include "score.h"
 /* Private typedef */
 
 /* Private define  */
@@ -117,6 +118,7 @@ int main(void)
 	initTimers();
 	initIOs();
 	//initSound();
+	initScores();
 	initGame();
 	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	int i;
@@ -172,6 +174,7 @@ int main(void)
 		}*/
 		if(0)
 		{
+			updateScores();
 			updateGame();
 		}
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
