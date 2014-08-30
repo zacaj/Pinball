@@ -39,8 +39,14 @@ uint8_t nBallInPlay,nBallCaptured,nMinTargetBallInPlay;
 uint32_t lastBallTroughReleaseTime=0;
 uint32_t lastLeftBlockerOnTime=0,lastRightBlockerOnTime=0;
 uint32_t lastLeftBlockerOffTime=0,lastRightBlockerOffTime=0;
+uint8_t currentCapture=0;
 enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
 enum GameMode mode=PLAYER_SELECT;
+uint8_t p_captureState[4][3];
+uint16_t p_bonus[4];
+uint8_t p_bonusMult[4];
+uint8_t p_nLock[4];
+uint8_t p_activateStates[4][4];
 
 void addScore(uint16_t score,uint16_t _bonus)
 {
@@ -104,6 +110,7 @@ void threeDown(void *data)
 			captureState[n]=2;
 			break;
 		case 2:
+		case 3:
 			curScore+=drop_complete_score*drop_sequence_mult;
 			break;
 		}
@@ -133,6 +140,16 @@ DropBank dropBanks[4]={
 
 void initGame()
 {
+	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<3;j++)
+			p_captureState[i][j]=0;
+		for(int j=0;j<4;j++)
+			p_activateStates[i][j]=0;
+		p_bonus[i]=0;
+		p_bonusMult[i]=0;
+		p_nLock[i]=0;
+	}
 }
 
 void updateDropBank(DropBank *bank)
@@ -214,14 +231,14 @@ void startBall()
 	nBallInPlay=nBallCaptured=nMinTargetBallInPlay=0;
 	for(int i=0;i<3;i++)
 	{
-		captureState[i]=0;
+		captureState[i]=p_captureState[curPlayer][i];
 	}
 	syncCaptureLights();
 
 	resetRedTargets();
 	resetLanes();
 	scoreMult=1;
-	bonusMult=0;
+	bonusMult=p_bonusMult[curPlayer];
 	leftPopScore1=1;
 	leftPopScore2=1;
 	rightPopScore1=1;
@@ -232,7 +249,8 @@ void startBall()
 	lastRightBlockerOffTime=0;
 	setHeldRelay(LEFT_BLOCK_DISABLE,0);
 	setHeldRelay(RIGHT_BLOCK_DISABLE,0);
-	setLocks(0);
+	setLocks(p_nLock[curPlayer]);
+	bonus=p_bonus[curPlayer];
 	startShoot();
 }
 
@@ -277,6 +295,7 @@ void syncCaptureLights()
 		setLed(led,FLASHING); \
 		break; \
 	case 2: \
+	case 3: \
 		setLed(led,ON); \
 		break; \
 	}
@@ -298,6 +317,7 @@ void startDrain()
 	for(int i=0;i<3;i++)
 		captureState[i]=0;
 	addScore(bonus*bonusMult,0);
+
 	bonus=0;
 }
 
@@ -312,6 +332,14 @@ void rotateActivates()
 
 void nextPlayer()
 {
+	p_bonus[curPlayer]=0;//todo
+	p_bonusMult[curPlayer]=0;//todo
+	p_nLock[curPlayer]=nLock>0?nLock-1:0;
+	for(int i=0;i<4;i++)
+		p_activateStates[curPlayer][i]=activates[i].state;
+	captureState[currentCapture]--;
+	for(int i=0;i<3;i++)
+		p_captureState[curPlayer][i]=captureState[i]>0:captureState[i]-1:0;
 	curPlayer++;
 	switchPlayerRelay(curPlayer);
 	if(curPlayer>=nPlayer)
@@ -444,7 +472,7 @@ void updateGame()
 		nBallCaptured++; \
 		if(lockMBMax==0) \
 		{ \
-			if(captureState[n]==1 || (captureState[n]==2 && nBallCaptured==3)) \
+			if(captureState[n]==1 || (captureState[n]>=2 && nBallCaptured==3)) \
 			{ \
 				nMinTargetBallInPlay=nBallCaptured+nBallInPlay+1; \
 				scoreMult=nMinTargetBallInPlay; \
@@ -462,7 +490,7 @@ void updateGame()
 				captureState[n]++; \
 				syncCaptureLights(); \
 			} \
-			if(captureState[0]==2 && captureState[1]==2 && captureState[2]==2) \
+			if(captureState[0]>=2 && captureState[1]>=2 && captureState[2]>=2) \
 			{ \
 				activates[2].state=2; \
 				rotateActivates(); \
@@ -704,6 +732,18 @@ void updateGame()
 		if(msElapsed-lastRightBlockerOffTime>blocker_cooldown_time)
 		{
 			setHeldRelay(RIGHT_BLOCK_DISABLE,0);
+		}
+	}
+	if(mode==PLAY)
+	{
+		if(BUMPER.pressed)
+		{
+			captureState[currentCapture]--;
+			currentCapture++;
+			if(currentCapture>2)
+				currentCapture=0;
+			captureState[currentCapture]++;
+			syncCaptureLights();
 		}
 	}
 

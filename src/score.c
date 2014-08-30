@@ -51,7 +51,7 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical)
 	{
 		if(getDigit(target,i)!=getDigit(*physical,i) || (getDigit(*physical,i)==0 && zeros[i].state))
 		{
-			if(&fireSolenoid(&score[i]))
+			if(fireSolenoid(&score[i]))
 				break;
 		}
 	}
