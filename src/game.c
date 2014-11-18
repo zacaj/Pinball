@@ -31,7 +31,9 @@ uint32_t lastRightPopHitTime=0;
 uint8_t extraBallCount=0;
 uint8_t lockMBMax=0;
 uint8_t nLock=0;
+uint8_t hold=0;
 uint16_t startScore=0;
+uint32_t startTime=0;
 uint8_t activeActivate=0;
 uint16_t currentJackpotScore=0;
 uint16_t scoreMult=1;
@@ -54,7 +56,7 @@ void addScore(uint16_t score,uint16_t _bonus)
 	{
 		curScore+=score*scoreMult;
 		bonus+=_bonus;
-		if(curScore>startScore+consolation_score)
+		if(curScore>startScore+consolation_score && msElapsed-startTime>consolation_time)
 			if(getLed(SHOOT_AGAIN)==FLASHING)
 				setLed(SHOOT_AGAIN,OFF);
 	}
@@ -221,10 +223,20 @@ void resetLanes();
 void setLocks(int lock)
 {
 	nLock=lock;
-	if(nLock>=4)
-		nLock=3;
-	for(int i=0;i<4;i++)
-		setLed(LOCK_1+i,i<nLock?ON:OFF);
+	if(nLock>4)
+		nLock=4;
+	for(int i=1;i<=4;i++)
+		setLed(LOCK_1+i-1,i<=nLock?ON:OFF);
+}
+void setHold(int _hold)
+{
+	hold=_hold;
+	if(hold>4)
+	{
+		hold=4;
+	}
+	for(int i=1;i<=4;i++)
+		setLed(HOLD_1+i-1,i<=hold?ON:OFF);
 }
 void startBall()
 {
@@ -250,6 +262,7 @@ void startBall()
 	setHeldRelay(LEFT_BLOCK_DISABLE,0);
 	setHeldRelay(RIGHT_BLOCK_DISABLE,0);
 	setLocks(p_nLock[curPlayer]);
+	setHold(0);
 	bonus=p_bonus[curPlayer];
 	startShoot();
 }
@@ -317,7 +330,7 @@ void startDrain()
 	for(int i=0;i<3;i++)
 		captureState[i]=0;
 	addScore(bonus*bonusMult,0);
-
+	p_bonus[curPlayer]=bonus*hold/4;
 	bonus=0;
 }
 
@@ -332,14 +345,13 @@ void rotateActivates()
 
 void nextPlayer()
 {
-	p_bonus[curPlayer]=0;//todo
-	p_bonusMult[curPlayer]=0;//todo
+	p_bonusMult[curPlayer]=bonusMult*hold/4;
 	p_nLock[curPlayer]=nLock>0?nLock-1:0;
 	for(int i=0;i<4;i++)
 		p_activateStates[curPlayer][i]=activates[i].state;
 	captureState[currentCapture]--;
 	for(int i=0;i<3;i++)
-		p_captureState[curPlayer][i]=captureState[i]>0:captureState[i]-1:0;
+		p_captureState[curPlayer][i]=captureState[i]>0?captureState[i]-1:0;
 	curPlayer++;
 	switchPlayerRelay(curPlayer);
 	if(curPlayer>=nPlayer)
@@ -369,6 +381,7 @@ void updateGame()
 		if(LANES[3].pressed)
 		{
 			mode=PLAY;
+			startTime=msElapsed;
 			nBallInPlay++;
 		}
 	}
@@ -682,7 +695,8 @@ void updateGame()
 					activates[2].state=0;
 					break;
 				case 3:
-					//todo;
+					setHold(hold+1);
+					activates[3].state=0;
 					break;
 				}
 			}

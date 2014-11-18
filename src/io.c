@@ -18,12 +18,19 @@
 #include <stdlib.h>
 
 uint8_t mInputState[nMultiInput];
+typedef struct
+{
+	uint32_t state;
+	void *data;
+	uint8_t pwm;
+	uint8_t (*pwmFunc)(void*);
+}LedState;
 uint8_t mLEDState[6];
 uint8_t LED_Dirty=0;
 #define nLED 48
 uint8_t heldRelayState[nHeldRelay];
 uint32_t lastHeldRelayOnTime[nHeldRelay];
-uint32_t LedState[nLED];
+LedState ledState[nLED];
 
 Solenoid HOLD=Sd(bU,P0,20);
 Solenoid SCORE[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
@@ -171,7 +178,12 @@ void initIOs()
 	}
 
 	for(int i=0;i<nLED;i++)
-		LedState[i]=0;
+	{
+		ledState[i].state=0;
+		ledState[i].pwm=64;
+		ledState[i].pwmFunc=NULL;
+		ledState[i].data=NULL;
+	}
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
@@ -255,6 +267,8 @@ void updateInput(Input* in)
 	}
 }
 
+uint32_t ioTicks=0;
+
 void updateIOs()
 {
 	updateSlowInputs();
@@ -293,14 +307,26 @@ void updateIOs()
 	for(int i=0;i<nLED;i++)
 	{
 		uint8_t oldState=mLEDState[i/8]& 1<<(i%8);
-		if(LedState[i]>0 && LedState[i]<4294967295)
-			LedState[i]+=10000;
-		if((LedState[i]==0 || (LedState[i]>4294967295/2 && LedState[i]<4294967295)) && oldState)
+		if(ledState[i].state>0 && ledState[i].state<4294967295)
+			ledState[i].state+=8192;
+		uint8_t newState=oldState;
+		if(ledState[i].state==1)//PWM
+		{
+			uint8_t pwm=ledState[i].pwm;
+			if(ledState[i].pwmFunc)
+				pwm=ledState[i].pwmFunc(ledState[i].data);
+			newState=(ioTicks%255)<pwm;
+		}
+		else if((ledState[i].state==0 || (ledState[i].state>4294967295/2 && ledState[i].state<4294967295)))
+				newState=0;
+		else if((ledState[i].state==4294967295 || (ledState[i].state<=4294967295/2 && ledState[i].state>0)))
+				newState=1;
+		if(!newState && oldState)//should be off
 		{
 			mLEDState[i/8]&= ~(1 << i%8);
 			LED_Dirty=1;
 		}
-		else if((LedState[i]==4294967295 || (LedState[i]<=4294967295/2 && LedState[i]>0)) && !oldState)
+		else if(newState && !oldState)
 		{
 			mLEDState[i/8]|= (1 << i%8);
 			LED_Dirty=1;
@@ -328,6 +354,7 @@ void updateIOs()
 			setHeldRelay(i,0);
 		}
 	}
+	ioTicks++;
 }
 
 void updateSlowInputs()
@@ -381,28 +408,33 @@ void setLed(enum LEDs index,uint8_t state)
 	switch(state)
 	{
 	case OFF:
-		LedState[index]=0;
+		ledState[index].state=0;
 		break;
 	case ON:
-		LedState[index]=4294967295;
+		ledState[index].state=4294967295;
 		break;
 	case FLASHING:
-		LedState[index]+=3;
+		ledState[index].state+=4;
+		break;
+	case PWM:
+		ledState[index].state=1;
 		break;
 	}
 }
 
 void offsetLed(enum LEDs index,uint32_t offset)
 {
-	LedState[index]+=offset;
+	ledState[index].state+=offset;
 }
 
 uint8_t getLed(enum LEDs index)
 {
-	if(LedState[index]==0)
+	if(ledState[index].state==0)
 		return OFF;
-	if(LedState[index]==4294967295)
+	if(ledState[index].state==4294967295)
 		return ON;
+	if(ledState[index].state==1)
+		return PWM;
 	return FLASHING;
 }
 
