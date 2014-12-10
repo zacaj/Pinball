@@ -422,6 +422,20 @@ void setLed(enum LEDs index,uint8_t state)
 	}
 }
 
+void setPWM(enum LEDs index, uint8_t pwm)
+{
+	ledState[index].state=1;
+	ledState[index].pwm=pwm;
+	ledState[index].pwmFunc=NULL;
+}
+
+void setPWMFunc(enum LEDs index, uint8_t (*pwmFunc)(void*), void *data)
+{
+	ledState[index].state=1;
+	ledState[index].pwmFunc=pwmFunc;
+	ledState[index].data=data;
+}
+
 void offsetLed(enum LEDs index,uint32_t offset)
 {
 	ledState[index].state+=offset;

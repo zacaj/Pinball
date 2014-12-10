@@ -161,6 +161,8 @@ enum LEDs {
 		LOCK_BALL,START_LOCK,JACKPOT,BONUS_HOLD_INCREMENT,
 };
 void setLed(enum LEDs index,uint8_t state);
+void setPWM(enum LEDs index, uint8_t pwm);
+void setPWMFunc(enum LEDs index, uint8_t (*pwmFunc)(void*), void *data);
 void offsetLed(enum LEDs index,uint32_t offset);
 uint8_t getLed(enum LEDs index);
 
