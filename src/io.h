@@ -15,8 +15,8 @@
 
 typedef struct
 {
-	GPIO_TypeDef* bank;
-	uint32_t pin;
+	GPIO_TypeDef* const bank;
+	const uint32_t pin;
 } IOPin;
 #define NO_PULL GPIO_PuPd_NOPULL
 #define PULL_DOWN GPIO_PuPd_DOWN
@@ -60,7 +60,7 @@ static const IOPin LED_CLOCK={bF,P2};
 
 typedef struct
 {
-	IOPin pin;
+	const IOPin pin;
 	uint32_t lastFired;
 	uint32_t onTime,offTime;
 } Solenoid;
@@ -100,7 +100,7 @@ static const uint32_t heldRelayMaxOnTime[nHeldRelay]={
 
 typedef struct
 {
-	IOPin pin;
+	const IOPin pin;
 	uint8_t state;
 	uint32_t lastChange;
 	uint8_t pressed;
@@ -163,6 +163,7 @@ enum LEDs {
 		LOCK_BALL,START_LOCK,JACKPOT,BONUS_HOLD_INCREMENT,
 };
 void setLed(enum LEDs index,uint8_t state);
+void setFlash(enum LEDs index, uint32_t max);
 void setPWM(enum LEDs index, uint8_t pwm);
 void setPWMFunc(enum LEDs index, uint8_t (*pwmFunc)(void*), void *data);
 void offsetLed(enum LEDs index,uint32_t offset);

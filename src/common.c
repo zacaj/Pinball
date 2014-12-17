@@ -22,17 +22,6 @@ __IO uint32_t TimingDelay = 0;
 extern uint32_t msTicks,msElapsed;
 void SysTick_Handler(void)
 {
-  static uint32_t count = 1000;
-
-  if (count>0)
-  {
-    count--;
-  }
-  if (0==count)
-  {
-    count = 1000;
-    //timerFlag = 1;
-  }
   msTicks++;
   msElapsed++;
 }

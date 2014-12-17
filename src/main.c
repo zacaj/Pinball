@@ -9,7 +9,7 @@
 **
 **  Environment : Atollic TrueSTUDIO(R)
 **
-**  Distribution: The file is distributed “as is,” without any warranty
+**  Distribution: The file is distributed
 **                of any kind.
 **
 **  (c)Copyright Atollic AB.
@@ -100,7 +100,27 @@ IOPin pins[8]={
 */
 
 uint32_t ii;
+uint8_t bsint[]={127,130,133,136,139,142,145,148,151,155,158,161,164,167,170,173,175,178,181,184,187,190,192,195,198,200,203,205,208,210,212,215,217,219,221,223,225,227,229,231,233,235,236,238,239,241,242,244,245,246,247,248,249,250,251,251,252,253,253,254,254,254,254,254,254,254,254,254,254,254,253,253,252,251,251,250,249,248,247,246,245,244,242,241,239,238,236,235,233,231,229,227,225,223,221,219,217,215,212,210,208,205,203,200,198,195,192,190,187,184,181,178,175,173,170,167,164,161,158,155,151,148,145,142,139,136,133,130,126,123,120,117,114,111,108,105,102,98,95,92,89,86,83,80,78,75,72,69,66,63,61,58,55,53,50,48,45,43,41,38,36,34,32,30,28,26,24,22,20,18,17,15,14,12,11,9,8,7,6,5,4,3,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,3,4,5,6,7,8,9,11,12,14,15,17,18,20,22,24,26,28,30,32,34,36,38,41,43,45,48,50,53,55,58,61,63,66,69,72,75,78,80,83,86,89,92,95,98,102,105,108,111,114,117,120,123};
+#define  bsin(a) (((uint8_t)(bsint[((uint8_t)((a)))])))
+#define MAX_CIRCLE_ANGLE      512
+#define HALF_MAX_CIRCLE_ANGLE (MAX_CIRCLE_ANGLE/2)
+#define QUARTER_MAX_CIRCLE_ANGLE (MAX_CIRCLE_ANGLE/4)
+#define MASK_MAX_CIRCLE_ANGLE (MAX_CIRCLE_ANGLE - 1)
+#define PI 3.14159265358979323846f
+float _sin(float n)
+{
+   float f = n * HALF_MAX_CIRCLE_ANGLE / PI;
+   int i=f;
+   if (i < 0)
+   {
+      return fast_cossin_table[(-((-i)&MASK_MAX_CIRCLE_ANGLE)) + MAX_CIRCLE_ANGLE];
+   }
+   else
+   {
+      return fast_cossin_table[i&MASK_MAX_CIRCLE_ANGLE];
+   }
 
+}
 //return 1 to disable timer, 0 to repeat
 uint32_t disableLight(void *d)
 {
@@ -110,41 +130,50 @@ uint32_t disableLight(void *d)
 }
 extern uint8_t mLEDState[];
 extern uint8_t LED_Dirty;
+uint8_t pwmFunc(void *d)
+{
+	unsigned char pwm=bsin((msElapsed+(int)d*300)*(int)(256.f/2.5)/1000);//(float)_sin((float)(msElapsed+(int)d*300)/1000.f*2*PI/1.8)*128+127;//
+	return pwm;
+}
 int main(void)
 {
 
 	/* Example use SysTick timer and read System core clock */
 	SysTick_Config(72000);  /* 1  ms if clock frequency 72 MHz */
-	initTimers();
+	//initTimers();
 	initIOs();
 	//initSound();
-	initScores();
-	initGame();
+	//initScores();
+	//initGame();
 	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	int i;
 
 	SystemCoreClockUpdate();
 	for(i=0;i<8;i++)
 		STM_EVAL_LEDInit(LED3+i);
-	STM_EVAL_LEDToggle(LED3);
+	//STM_EVAL_LEDToggle(LED3);
 	ii = 0;
 	int iii=0;
 	int iiii=0;
 	int on=0;
+	STM_EVAL_LEDOn(LED4);
 	for(int i=0;i<nLED;i++)
 	{
-		setLed(i,PWM);
-		offsetLed(i,rand());
+		setPWMFunc(i,pwmFunc,i);
 	}
 	while (1)
 	{
-
+		uint8_t pwm=pwmFunc(0);
+		if(ii++%255<pwm)
+			STM_EVAL_LEDOn(LED3);
+		else
+			STM_EVAL_LEDOff(LED3);
 		if(msTicks>500)
 		{
 			msTicks=0;
 			on=!on;
-			for(int i=0;i<48;i++)
-				setLed(i,on);
+			//for(int i=0;i<48;i++)
+			//	setLed(i,on);
 
 			/*for(int i=0;i<6;i++)
 				mLEDState[i]=on?255:0;
@@ -167,16 +196,6 @@ int main(void)
 			STM_EVAL_LEDOn(LED3+ii);*/
 		}
 		updateIOs();
-		/*uint8_t in=1;
-		if(iiii!=4)
-			in=mInputState[iiii];
-		for(int i=0;i<8;i++)
-		{
-			if(in& 1<<i)
-				STM_EVAL_LEDOn(LED3+i);
-			else
-				STM_EVAL_LEDOff(LED3+i);
-		}*/
 		if(0)
 		{
 			updateScores();
@@ -187,19 +206,7 @@ int main(void)
 			buttonState=!buttonState;
 			if(buttonState)
 			{
-				/*updateSlowInputs();
-				for(int i=0;i<4;i++)
-				{
-					switchPlayerRelay(i);
-					for(int j=0;j<4;j++)
-					{
-						while (getIn(SCORE_ZERO[j]))
-						{
-							fireSolenoid(SCORE[j]);
-							updateSlowInputs();
-						}
-					}
-				}*/
+				STM_EVAL_LEDToggle(LED5);
 				iiii++;
 				if(iiii>4)
 					iiii=0;
@@ -208,3 +215,226 @@ int main(void)
 	}
 	return 0;
 }
+void IRQHander()
+{
+	printf("");
+}
+void WWDG_IRQHandler()
+{IRQHander();
+}
+                   /* Window WatchDog */
+void PVD_IRQHandler()
+{IRQHander();
+}
+                    /* PVD through EXTI Line detection */
+void TAMPER_STAMP_IRQHandler()
+{IRQHander();
+}
+           /* Tamper and TimeStamps through the EXTI line */
+void RTC_WKUP_IRQHandler()
+{IRQHander();
+}
+               /* RTC Wakeup through the EXTI line */
+void FLASH_IRQHandler()
+{IRQHander();
+}
+                  /* FLASH */
+void RCC_IRQHandler()
+{IRQHander();
+}
+                    /* RCC */
+void EXTI0_IRQHandler()
+{IRQHander();
+}
+                  /* EXTI Line0 */
+void EXTI1_IRQHandler()
+{IRQHander();
+}
+                  /* EXTI Line1 */
+void EXTI2_TS_IRQHandler()
+{IRQHander();
+}
+               /* EXTI Line2 and Touch Sense */
+void EXTI3_IRQHandler()
+{IRQHander();
+}
+                  /* EXTI Line3 */
+void EXTI4_IRQHandler()
+{IRQHander();
+}
+                  /* EXTI Line4 */
+void DMA1_Channel1_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 1 */
+void DMA1_Channel2_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 2 */
+void DMA1_Channel3_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 3 */
+void DMA1_Channel4_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 4 */
+void DMA1_Channel5_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 5 */
+void DMA1_Channel6_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 6 */
+void DMA1_Channel7_IRQHandler()
+{IRQHander();
+}
+          /* DMA1 Channel 7 */
+void ADC1_2_IRQHandler()
+{IRQHander();
+}
+                 /* ADC1 and ADC2 */
+void USB_HP_CAN1_TX_IRQHandler()
+{IRQHander();
+}
+         /* USB Device High Priority or CAN1 TX */
+void USB_LP_CAN1_RX0_IRQHandler()
+{IRQHander();
+}
+        /* USB Device Low Priority or CAN1 RX0 */
+void CAN1_RX1_IRQHandler()
+{IRQHander();
+}
+               /* CAN1 RX1 */
+void CAN1_SCE_IRQHandler()
+{IRQHander();
+}
+               /* CAN1 SCE */
+void EXTI9_5_IRQHandler()
+{IRQHander();
+}
+                /* External Line[9:5]s */
+            /* TIM4 */
+void I2C1_EV_IRQHandler()
+{IRQHander();
+}
+                /* I2C1 Event */
+void I2C1_ER_IRQHandler()
+{IRQHander();
+}
+                /* I2C1 Error */
+void I2C2_EV_IRQHandler()
+{IRQHander();
+}
+                /* I2C2 Event */
+void I2C2_ER_IRQHandler()
+{IRQHander();
+}
+                /* I2C2 Error */
+void SPI1_IRQHandler()
+{IRQHander();
+}
+                   /* SPI1 */
+void SPI2_IRQHandler()
+{IRQHander();
+}
+                   /* SPI2 */
+void USART1_IRQHandler()
+{IRQHander();
+}
+                 /* USART1 */
+void USART2_IRQHandler()
+{IRQHander();
+}
+                 /* USART2 */
+void USART3_IRQHandler()
+{IRQHander();
+}
+                 /* USART3 */
+void EXTI15_10_IRQHandler()
+{IRQHander();
+}
+              /* External Line[15:10]s */
+void RTC_Alarm_IRQHandler()
+{IRQHander();
+}
+              /* RTC Alarm (A and B) through EXTI Line */
+void USBWakeUp_IRQHandler()
+{IRQHander();
+}
+
+void ADC3_IRQHandler()
+{IRQHander();
+}
+                   /* ADC3 */
+
+                                 /* Reserved */
+void SPI3_IRQHandler()
+{IRQHander();
+}
+                   /* SPI3 */
+void UART4_IRQHandler()
+{IRQHander();
+}
+                  /* UART4 */
+void UART5_IRQHandler()
+{IRQHander();
+}
+
+void DMA2_Channel1_IRQHandler()
+{IRQHander();
+}
+          /* DMA2 Channel 1 */
+void DMA2_Channel2_IRQHandler()
+{IRQHander();
+}
+          /* DMA2 Channel 2 */
+void DMA2_Channel3_IRQHandler()
+{IRQHander();
+}
+          /* DMA2 Channel 3 */
+void DMA2_Channel4_IRQHandler()
+{IRQHander();
+}
+          /* DMA2 Channel 4 */
+void DMA2_Channel5_IRQHandler()
+{IRQHander();
+}
+          /* DMA2 Channel 5 */
+void ADC4_IRQHandler()
+{IRQHander();
+}
+                   /* ADC4 */
+                         /* Reserved */
+void COMP1_2_3_IRQHandler()
+{IRQHander();
+}
+              /* COMP1, COMP2 and COMP3 */
+void COMP4_5_6_IRQHandler()
+{IRQHander();
+}
+              /* COMP4, COMP5 and COMP6 */
+void COMP7_IRQHandler()
+{IRQHander();
+}
+                  /* COMP7 */
+
+                                 /* Reserved */
+void USB_HP_IRQHandler()
+{IRQHander();
+}
+                 /* USB High Priority remap */
+void USB_LP_IRQHandler()
+{IRQHander();
+}
+                 /* USB Low Priority remap */
+void USBWakeUp_RMP_IRQHandler()
+{IRQHander();
+}
+
+                                 /* Reserved */
+void FPU_IRQHandler()
+{IRQHander();
+}
+                    /* FPU */

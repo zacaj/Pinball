@@ -120,9 +120,9 @@ int _kill(int pid, int sig) {
 /*
  * Establish a new name for an existing file. Minimal implementation.
  */
-int _link(char *old, char *new) {
+int _link(char *old, char *newn) {
 	UNUSED(old);
-	UNUSED(new);
+	UNUSED(newn);
 
 	errno = EMLINK;
 	return -1;

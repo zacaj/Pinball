@@ -2,7 +2,7 @@ PROJ_NAME = pinball
 
 ###################################################
 # Set toolchain
-TC = arm-none-eabi
+TC = arm-eabi
 RM = d:\root\rbdevkit\bin\rm.exe -f
 
 # Set Tools
@@ -33,11 +33,11 @@ LIBS		= -lm -lc
 # Set Board
 MCU 		= -mthumb -mcpu=cortex-m4
 FPU 		= -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-DEFINES 	= -DSTM32F3XX -DUSE_STDPERIPH_DRIVER
+DEFINES 	= -DSTM32F3XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT
 
 # Set Compilation and Linking Flags
 CFLAGS 		= $(MCU) $(FPU) $(DEFINES) $(INCLUDES) \
-			-g -Wall -std=gnu99 -O0 -ffunction-sections -fdata-sections -funroll-loops
+			-ggdb -Wall -std=gnu99 -O3 -ffunction-sections -fdata-sections -funroll-loops 
 ASFLAGS 	= $(MCU) $(FPU) -g -Wa,--warn -x assembler-with-cpp
 LDFLAGS 	= $(MCU) $(FPU) -g -gdwarf-2 \
 			-Tstm32f30_flash.ld \
@@ -73,6 +73,10 @@ info: $(PROJ_NAME).elf
 
 # Rule for .c files
 .c.o:
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@echo $@
+# Rule for .c files
+.cpp.o:
 	@$(CC) $(CFLAGS) -c -o $@ $<
 	@echo $@
 

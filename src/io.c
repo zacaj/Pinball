@@ -17,10 +17,18 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define _GPIO_WriteBit(b,p,v) \
+	if(!v) ((b))->BRR = ((p)); \
+else ((b))->BSRR = ((p));
+
+#define _GPIO_ReadInputDataBit(b,p) \
+	(( ( ((b))->IDR & ((p)) ) != 0 ))
+
 uint8_t mInputState[nMultiInput];
 typedef struct
 {
-	uint32_t state;
+	uint8_t state;
+	uint32_t flashAt,flashMax;
 	void *data;
 	uint8_t pwm;
 	uint8_t (*pwmFunc)(void*);
@@ -120,7 +128,7 @@ inline void setOutDirect(IOPin pin, uint32_t value)
 {
 	if(pin.bank==bU)
 		return;
-	GPIO_WriteBit(pin.bank, pin.pin, value);
+	_GPIO_WriteBit(pin.bank, pin.pin, value);
 }
 
 void setOut(IOPin pin, uint32_t value)
@@ -142,14 +150,14 @@ void setOut(IOPin pin, uint32_t value)
 		}
 		return;
 	}
-
+	_GPIO_WriteBit(pin.bank, pin.pin, value);
 }
 
-uint8_t getInDirect(IOPin pin)
+inline uint8_t getInDirect(IOPin pin)
 {
 	if(pin.bank==bU)
 		return 0;
-	return GPIO_ReadInputDataBit(pin.bank, pin.pin);
+	return _GPIO_ReadInputDataBit(pin.bank, pin.pin);
 }
 
 uint8_t getIn(IOPin pin)
@@ -162,7 +170,7 @@ uint8_t getIn(IOPin pin)
 			return (mInputState[(int)pin.bank-1]&(1<<pin.pin))?1:0;
 		return 0;
 	}
-	return GPIO_ReadInputDataBit(pin.bank, pin.pin);
+	return _GPIO_ReadInputDataBit(pin.bank, pin.pin);
 }
 
 void initIOs()
@@ -305,34 +313,48 @@ void updateIOs()
 
 	for(int i=0;i<nLED;i++)
 	{
-		uint8_t oldState=mLEDState[i/8]& 1<<(i%8);
-		if(ledState[i].state>0 && ledState[i].state<4294967295)
-			ledState[i].state+=8192;
+		uint8_t id8=i/8;
+		uint8_t im8s=1<<(i%8);
+		uint8_t oldState=mLEDState[id8]&im8s;
 		uint8_t newState=oldState;
-		if(ledState[i].state==1)//PWM
+		switch(ledState[i].state)
 		{
-			uint8_t pwm=ledState[i].pwm;
+		case OFF:
+			newState=0;
+			break;
+		case ON:
+			newState=1;
+			break;
+		case FLASHING:
+			newState=(ledState[i].flashAt--)<ledState[i].flashMax;
+			if(ledState[i].flashAt<=0)
+				ledState[i].flashAt=ledState[i].flashMax*2;
+			break;
+		case PWM:
+		{
+			uint8_t pwm;;
 			if(ledState[i].pwmFunc)
 				pwm=ledState[i].pwmFunc(ledState[i].data);
-			newState=(ioTicks%255)<pwm;
+			else
+				pwm=ledState[i].pwm;
+			newState=(ioTicks&0xFF)<pwm;
+			break;
 		}
-		else if((ledState[i].state==0 || (ledState[i].state>4294967295/2 && ledState[i].state<4294967295)))
-				newState=0;
-		else if((ledState[i].state==4294967295 || (ledState[i].state<=4294967295/2 && ledState[i].state>0)))
-				newState=1;
+		}
 		if(!newState && oldState)//should be off
 		{
-			mLEDState[i/8]&= ~(1 << i%8);
+			mLEDState[id8]&= ~im8s;
 			LED_Dirty=1;
 		}
 		else if(newState && !oldState)
 		{
-			mLEDState[i/8]|= (1 << i%8);
+			mLEDState[id8]|= im8s;
 			LED_Dirty=1;
 		}
 	}
 	if(LED_Dirty)
 	{
+		//STM_EVAL_LEDToggle(LED4);
 		setOutDirect(LED_CLOCK,0);
 		for(int j=0;j<6;j++)
 			for(int i=0;i<8;i++)
@@ -346,13 +368,13 @@ void updateIOs()
 		setOutDirect(LED_LATCH,0);
 		LED_Dirty=0;
 	}
-	for(int i=0;i<nHeldRelay;i++)
+	/*for(int i=0;i<nHeldRelay;i++)
 	{
 		if(lastHeldRelayOnTime[i]+heldRelayMaxOnTime[i]>msElapsed)
 		{
 			setHeldRelay(i,0);
 		}
-	}
+	}*/
 	ioTicks++;
 }
 
@@ -404,42 +426,33 @@ uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms)
 
 void setLed(enum LEDs index,uint8_t state)
 {
-	switch(state)
-	{
-	case OFF:
-		ledState[index].state=0;
-		break;
-	case ON:
-		ledState[index].state=4294967295;
-		break;
-	case FLASHING:
-		ledState[index].state+=4;
-		break;
-	case PWM:
-		ledState[index].state=1;
-		break;
-	}
+	ledState[index].state=state;
 }
 
 void setPWM(enum LEDs index, uint8_t pwm)
 {
-	ledState[index].state=1;
+	ledState[index].state=PWM;
 	ledState[index].pwm=pwm;
 	ledState[index].pwmFunc=NULL;
 }
 
 void setPWMFunc(enum LEDs index, uint8_t (*pwmFunc)(void*), void *data)
 {
-	ledState[index].state=1;
+	ledState[index].state=PWM;
 	ledState[index].pwmFunc=pwmFunc;
 	ledState[index].data=data;
 }
 
 void offsetLed(enum LEDs index,uint32_t offset)
 {
-	ledState[index].state+=offset;
+	ledState[index].flashAt+=offset;
 }
-
+void setFlash(enum LEDs index, uint32_t max)
+{
+	ledState[index].state=FLASHING;
+	ledState[index].flashMax=max;
+	ledState[index].flashAt=0;
+}
 uint8_t getLed(enum LEDs index)
 {
 	if(ledState[index].state==0)
