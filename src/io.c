@@ -27,34 +27,32 @@ typedef struct
 }LedState;
 uint8_t mLEDState[6];
 uint8_t LED_Dirty=0;
-#define nLED 48
 uint8_t heldRelayState[nHeldRelay];
 uint32_t lastHeldRelayOnTime[nHeldRelay];
 LedState ledState[nLED];
 
-Solenoid HOLD=Sd(bU,P0,20);
-Solenoid SCORE[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
-Solenoid BONUS[4]={S(bU,P0),S(bU,P0),S(bU,P0),S(bU,P0)};
-Solenoid BALL_SHOOT=Sds(bU,P0,120,500);
-Solenoid BALL_ACK=Sds(bU,P0,120,500);
-Solenoid LEFT_DROP_RESET=Sds(bU,P0,120,700);
-Solenoid RIGHT_DROP_RESET=Sds(bU,P0,120,700);
-Solenoid TOP_DROP_RESET=Sds(bU,P0,120,700);
-Solenoid FIVE_DROP_RESET=Sds(bU,P0,120,700);
-Solenoid LEFT_CAPTURE_EJECT=Sds(bU,P0,120,700);
-Solenoid RIGHT_CAPTURE_EJECT=Sds(bU,P0,120,700);
-Solenoid TOP_CAPTURE_EJECT=Sds(bU,P0,120,700);
+Solenoid HOLD=Sd(bC,P15,20);
+Solenoid SCORE[4]={S(bB,P4),S(bD,P7),S(bD,P5),S(bD,P3)};
+Solenoid BONUS[4]={S(bF,P10),S(bC,P13),S(bB,P9),S(bB,P5)};
+Solenoid BALL_SHOOT=Sds(bC,P1,120,500);
+Solenoid LEFT_DROP_RESET=Sds(bC,P8,120,700);
+Solenoid RIGHT_DROP_RESET=Sds(bF,P6,120,700);
+Solenoid TOP_DROP_RESET=Sds(bD,P6,120,700);
+Solenoid FIVE_DROP_RESET=Sds(bD,P4,120,700);
+Solenoid LEFT_CAPTURE_EJECT=Sds(bD,P2,120,700);
+Solenoid RIGHT_CAPTURE_EJECT=Sds(bA,P8,120,700);
+Solenoid TOP_CAPTURE_EJECT=Sds(bD,P0,120,700);
 Solenoid heldRelays[nHeldRelay]={
-		/*Player enable 1*/Sd(bU,P0,20),
-		Sd(bU,P0,20),
-		Sd(bU,P0,20),
-		Sd(bU,P0,20),/*Player enable 4*/
-		Sd(bU,P0,20),//ball ack
-		Sd(bU,P0,20),//ball release
-		Sd(bU,P0,20),//magnet
-		Sd(bU,P0,20),//left block
-		Sd(bU,P0,20),//right block
-		Sd(bU,P0,20),//playfield disable
+		/*Player enable 1*/Sd(bD,P1,20),
+		Sd(bC,P12,20),
+		Sd(bC,P10,20),
+		Sd(bB,P8,20),/*Player enable 4*/
+		Sd(bC,30,20),//ball ack
+		Sd(bA,P1,20),//ball release
+		Sd(bA,P10,20),//magnet
+		Sd(bA,P3,20),//left block
+		Sd(bF,P4,20),//right block
+		Sd(bC,P11,20),//playfield disable
 };
 
  Input DROP_TARGET[3][3]=
@@ -69,9 +67,10 @@ Solenoid heldRelays[nHeldRelay]={
  Input TOP_CAPTURE=In(bU,P0);
  Input SCORE_ZERO[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
  Input BONUS_ZERO[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
- Input BALL_OUT=In(bU,P0);
- Input BALL_LOADED=In(bU,P0);
- Input LANES[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+ Input BALL_OUT=In(bB,P10);
+ Input BALL_LOADED=In(bB,P12);
+ Input BALLS_FULL=In(bB,P14);
+ Input LANES[4]={In(bD,P8),In(bD,P10),In(bD,P12),In(bD,P14)};
  Input LEFT_FLIPPER=In(bU,P0);
  Input LEFT_BLOCK=In(bU,P0);
  Input RIGHT_FLIPPER=In(bU,P0);
@@ -79,12 +78,12 @@ Solenoid heldRelays[nHeldRelay]={
  Input START=In(bU,P0);
  Input CAB_LEFT=In(bU,P0);
  Input CAB_RIGHT=In(bU,P0);
- Input LEFT_POP=In(bU,P0);
- Input RIGHT_POP=In(bU,P0);
- Input BUMPER=In(bU,P0);
- Input ROTATE_ROLLOVER=In(bU,P0);
- Input ACTIVATE_TARGET=In(bU,P0);
- Input RED_TARGET[4]={In(bU,P0),In(bU,P0),In(bU,P0),In(bU,P0)};
+ Input LEFT_POP=In(bB,P11);
+ Input RIGHT_POP=In(bB,P13);
+ Input BUMPER=In(bC,P7);
+ Input ROTATE_ROLLOVER=In(bB,P15);
+ Input ACTIVATE_TARGET=In(bD,P9);
+ Input RED_TARGET[4]={In(bD,P11),In(bD,P13),In(bD,P15),In(bC,P6)};
 
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def)

@@ -394,7 +394,7 @@ void updateGame()
 		}
 	}
 	{//ack
-		if(BALL_OUT.state)
+		if(BALL_OUT.state && !BALLS_FULL.state)
 			fireSolenoid(&BALL_ACK);
 		if(mode==PLAY)
 		{
@@ -474,6 +474,13 @@ void updateGame()
 		{
 			nMinTargetBallInPlay=0;
 			setHeldRelay(MAGNET,0);
+		}
+	}
+	if(mode==PLAY)
+	{//temp
+		if(BALL_LOADED.state && msElapsed-lastBallTroughReleaseTime>1000)
+		{
+			fireSolenoid(&BALL_SHOOT);
 		}
 	}
 	{//captures

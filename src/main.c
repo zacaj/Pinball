@@ -131,6 +131,11 @@ int main(void)
 	int iii=0;
 	int iiii=0;
 	int on=0;
+	for(int i=0;i<nLED;i++)
+	{
+		setLed(i,PWM);
+		offsetLed(i,rand());
+	}
 	while (1)
 	{
 

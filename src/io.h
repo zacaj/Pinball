@@ -117,6 +117,7 @@ extern Input SCORE_ZERO[4];
 extern Input BONUS_ZERO[4];
 extern Input BALL_OUT;
 extern Input BALL_LOADED;
+extern Input BALLS_FULL;
 extern Input LANES[4];
 extern Input LEFT_FLIPPER;
 extern Input LEFT_BLOCK;
@@ -149,6 +150,7 @@ uint8_t fireSolenoid(Solenoid *s);
 #define ON 1
 #define FLASHING 2
 #define PWM 3
+#define nLED 48
 enum LEDs {
 		BALL_1=0, BALL_2, BALL_3, BALL_4, BALL_5,
 		LEFT_CAPTURE_LIGHT,RIGHT_CAPTURE_LIGHT,TOP_CAPTURE_LIGHT,
