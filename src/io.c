@@ -40,7 +40,7 @@ uint32_t lastHeldRelayOnTime[nHeldRelay];
 LedState ledState[nLED];
 
 Solenoid HOLD=Sd(bC,P15,20);
-Solenoid SCORE[4]={S(bB,P4),S(bD,P7),S(bD,P5),S(bD,P3)};
+Solenoid SCORE[4]={S(bB,P4),S(bD,P5),S(bC,P10),S(bB,P8)};
 Solenoid BONUS[4]={S(bF,P10),S(bC,P13),S(bB,P9),S(bB,P5)};
 Solenoid BALL_SHOOT=Sds(bC,P1,120,500);
 Solenoid LEFT_DROP_RESET=Sds(bC,P8,120,700);
@@ -51,10 +51,10 @@ Solenoid LEFT_CAPTURE_EJECT=Sds(bD,P2,120,700);
 Solenoid RIGHT_CAPTURE_EJECT=Sds(bA,P8,120,700);
 Solenoid TOP_CAPTURE_EJECT=Sds(bD,P0,120,700);
 Solenoid heldRelays[nHeldRelay]={
-		/*Player enable 1*/Sd(bD,P1,20),
+		/*Player enable 1*/Sd(bD,P3,20),
 		Sd(bC,P12,20),
-		Sd(bC,P10,20),
-		Sd(bB,P8,20),/*Player enable 4*/
+		Sd(bD,P7,20),
+		Sd(bD,P1,20),/*Player enable 4*/
 		Sd(bC,30,20),//ball ack
 		Sd(bA,P1,20),//ball release
 		Sd(bA,P10,20),//magnet

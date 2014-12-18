@@ -159,7 +159,7 @@ int main(void)
 	STM_EVAL_LEDOn(LED4);
 	for(int i=0;i<nLED;i++)
 	{
-		setPWMFunc(i,pwmFunc,i);
+		setPWMFunc(i,pwmFunc,rand()%100);
 	}
 	while (1)
 	{
