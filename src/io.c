@@ -39,8 +39,8 @@ uint8_t heldRelayState[nHeldRelay];
 uint32_t lastHeldRelayOnTime[nHeldRelay];
 LedState ledState[nLED];
 
-Solenoid HOLD=Sd(bC,P15,20);
-Solenoid SCORE[4]={S(bB,P4),S(bD,P5),S(bC,P10),S(bB,P8)};
+Solenoid HOLD=Sd(bA,P15,20);
+Solenoid SCORE[4]={S(bB,P4),S(bD,P7),S(bD,P5),S(bD,P3)};
 Solenoid BONUS[4]={S(bF,P10),S(bC,P13),S(bB,P9),S(bB,P5)};
 Solenoid BALL_SHOOT=Sds(bC,P1,120,500);
 Solenoid LEFT_DROP_RESET=Sds(bC,P8,120,700);
@@ -51,11 +51,11 @@ Solenoid LEFT_CAPTURE_EJECT=Sds(bD,P2,120,700);
 Solenoid RIGHT_CAPTURE_EJECT=Sds(bA,P8,120,700);
 Solenoid TOP_CAPTURE_EJECT=Sds(bD,P0,120,700);
 Solenoid heldRelays[nHeldRelay]={
-		/*Player enable 1*/Sd(bD,P3,20),
+		/*Player enable 1*/Sd(bD,P1,20),
 		Sd(bC,P12,20),
-		Sd(bD,P7,20),
-		Sd(bD,P1,20),/*Player enable 4*/
-		Sd(bC,30,20),//ball ack
+		Sd(bC,P10,20),
+		Sd(bB,P8,20),/*Player enable 4*/
+		Sd(bC,30,20),//ball shoot enable
 		Sd(bA,P1,20),//ball release
 		Sd(bA,P10,20),//magnet
 		Sd(bA,P3,20),//left block
@@ -368,14 +368,30 @@ void updateIOs()
 		setOutDirect(LED_LATCH,0);
 		LED_Dirty=0;
 	}
-	/*for(int i=0;i<nHeldRelay;i++)
+	for(int i=0;i<nHeldRelay;i++)
 	{
 		if(lastHeldRelayOnTime[i]+heldRelayMaxOnTime[i]>msElapsed)
 		{
 			setHeldRelay(i,0);
 		}
-	}*/
+	}
 	ioTicks++;
+}
+
+void setLedDebug(uint8_t n, enum LEDs leds[8])
+{
+	for(int i=0;i<8;i++)
+	{
+		if(n&1)
+		{
+			setLed(leds[i],ON);
+		}
+		else
+		{
+			setLed(leds[i],OFF);
+		}
+		n>>=1;
+	}
 }
 
 void updateSlowInputs()
@@ -384,6 +400,8 @@ void updateSlowInputs()
 	uint8_t in[nMultiInput];
 	for(int i=0;i<nMultiInput;i++)
 		in[i]=0;
+	setLedDebug(0,{RED_TARGET_LEFT,LEFT_1,LEFT_2,LEFT_3,RIGHT_1,RIGHT_2,RIGHT_3,RED_TARGET_RIGHT});
+	setLedDebug(0,{TOP_3,RED_TARGET_TOP,FIVE_1,FIVE_2,FIVE_3,FIVE_4,FIVE_5,RED_TARGET_BOTTOM});
 	for(int i=0;i<8;i++)
 	{
 		setOutDirect(MULTI_IN_CLOCK,0);
@@ -391,6 +409,11 @@ void updateSlowInputs()
 		{
 			in[j]<<=1;
 			in[j]|=getInDirect(MULTI_IN_DATA[j]);
+			if(getInDirect(MULTI_IN_DATA[j]))
+			{
+				setLedDebug(i,{RED_TARGET_LEFT,LEFT_1,LEFT_2,LEFT_3,RIGHT_1,RIGHT_2,RIGHT_3,RED_TARGET_RIGHT});
+				setLedDebug(j,{TOP_3,RED_TARGET_TOP,FIVE_1,FIVE_2,FIVE_3,FIVE_4,FIVE_5,RED_TARGET_BOTTOM});
+			}
 		}
 		setOutDirect(MULTI_IN_CLOCK,1);
 	}

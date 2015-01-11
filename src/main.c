@@ -159,8 +159,10 @@ int main(void)
 	STM_EVAL_LEDOn(LED4);
 	for(int i=0;i<nLED;i++)
 	{
-		setPWMFunc(i,pwmFunc,rand()%100);
+		//setPWMFunc(i,pwmFunc,i);
+		setLed(i,OFF);
 	}
+	setLed(0,FLASHING);
 	while (1)
 	{
 		uint8_t pwm=pwmFunc(0);
@@ -207,9 +209,11 @@ int main(void)
 			if(buttonState)
 			{
 				STM_EVAL_LEDToggle(LED5);
+				setLed(iiii,OFF);
 				iiii++;
-				if(iiii>4)
+				if(iiii>=nLED)
 					iiii=0;
+				setLed(iiii,FLASHING);
 			}
 		}
 	}

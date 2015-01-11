@@ -134,10 +134,10 @@ void fiveDown(void *data)
 
 
 DropBank dropBanks[4]={
-		{3,DROP_TARGET[0],{0,0,0,0,0},0,&LEFT_DROP_RESET,threeDown},
-		{3,DROP_TARGET[1],{0,0,0,0,0},0,&RIGHT_DROP_RESET,threeDown},
-		{3,DROP_TARGET[2],{0,0,0,0,0},0,&TOP_DROP_RESET,threeDown},
-		{5,FIVE_TARGET,{0,0,0,0,0},0,&FIVE_DROP_RESET,fiveDown},
+		{3,DROP_TARGET[0],{LEFT_1,LEFT_2,LEFT_3,0,0},0,&LEFT_DROP_RESET,threeDown},
+		{3,DROP_TARGET[1],{RIGHT_3,RIGHT_2,RIGHT_1,0,0},0,&RIGHT_DROP_RESET,threeDown},
+		{3,DROP_TARGET[2],{TOP_1,TOP_2,TOP_3,0,0},0,&TOP_DROP_RESET,threeDown},
+		{5,FIVE_TARGET,{FIVE_1,FIVE_2,FIVE_3,FIVE_4,FIVE_5},0,&FIVE_DROP_RESET,fiveDown},
 };
 
 void initGame()
@@ -399,7 +399,7 @@ void updateGame()
 		if(mode==PLAY)
 		{
 			if(BALL_OUT.pressed)
-			{
+			{//hxh 11:00 23
 				if(nBallInPlay==1)//single ball
 				{
 					lockMBMax=0;
