@@ -34,6 +34,7 @@ static const uint16_t jackpot_score_mult=2;
 static const uint16_t jackpot_bonus=10;
 static const uint32_t max_blocker_on_time=2500;
 static const uint32_t blocker_cooldown_time=1500;
+static const uint32_t ball_release_wait_time=1500;
 
 typedef struct
 {

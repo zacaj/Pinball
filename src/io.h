@@ -75,7 +75,7 @@ extern Solenoid SCORE[4];
 extern Solenoid BONUS[4];
 
 static const int BALL_SHOOT_ENABLE=4;
-static const int BALL_RELEASE=5;
+static const int BALL_RELEASE=4;
 extern Solenoid BALL_SHOOT;
 extern Solenoid BALL_ACK;
 
@@ -116,7 +116,7 @@ extern Input TOP_CAPTURE;
 extern Input SCORE_ZERO[4];
 extern Input BONUS_ZERO[4];
 extern Input BALL_OUT;
-extern Input BALL_LOADED;
+extern Input SHOOT_BUTTON;
 extern Input BALLS_FULL;
 extern Input LANES[4];
 extern Input LEFT_FLIPPER;

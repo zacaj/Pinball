@@ -211,8 +211,7 @@ void startShoot()
 	startScore=curScore;
 	setLed(SHOOT_AGAIN,FLASHING);
 	setHeldRelay(BALL_RELEASE,1);
-	uint32_t start=msElapsed;
-	while(!getIn(BALL_LOADED.pin) && msElapsed-start<3000);
+	wait(500);
 	setHeldRelay(BALL_RELEASE,0);
 	lastBallTroughReleaseTime=msElapsed;
 	mode=SHOOT;
@@ -365,18 +364,15 @@ void nextPlayer()
 		}
 	}
 }
-
+uint8_t waitingToAutoFireBall=0;
 void updateGame()
 {
 	if(mode==SHOOT)
 	{
-		if(BALL_LOADED.pressed)
-			setHeldRelay(BALL_SHOOT_ENABLE,1);
-		else if(BALL_LOADED.released)
-			setHeldRelay(BALL_SHOOT_ENABLE,0);
-		if(CAB_LEFT.pressed || CAB_RIGHT.pressed)
+		if(SHOOT_BUTTON.pressed)
 		{
 			fireSolenoid(&BALL_SHOOT);
+			setHeldRelay(BALL_SHOOT_ENABLE,0);
 		}
 		if(LANES[3].pressed)
 		{
@@ -384,10 +380,14 @@ void updateGame()
 			startTime=msElapsed;
 			nBallInPlay++;
 		}
+		if(BALL_OUT.pressed)
+		{
+			startShoot();
+		}
 	}
 	if(mode==DRAIN)
 	{
-		if(BALL_LOADED.state && physicalScore[curPlayer]==curScore && physicalBonus==0)
+		if(BALLS_FULL.state && BALL_OUT.state && physicalScore[curPlayer]==curScore && physicalBonus==0)
 		{
 			nextPlayer();
 			startBall();
@@ -438,17 +438,24 @@ void updateGame()
 		{
 			if(nMinTargetBallInPlay-nBallInPlay-nBallCaptured>0)
 			{
-				if(BALL_LOADED.state)
+				if(waitingToAutoFireBall && msElapsed-lastBallTroughReleaseTime>ball_release_wait_time)
 				{
 					setHeldRelay(BALL_RELEASE,0);
+					//setHeldRelay(BALL_SHOOT_ENABLE,0);
 					lastBallTroughReleaseTime=msElapsed;
 					fireSolenoid(&BALL_SHOOT);
 					setLocks(nLock-1);
+					waitingToAutoFireBall=0;
 				}
 				else if(msElapsed-lastBallTroughReleaseTime>500)
 				{
 					if(!heldRelayState[BALL_RELEASE])
+					{
 						setHeldRelay(BALL_RELEASE,1);
+						//setHeldRelay(BALL_SHOOT_ENABLE,1);
+						lastBallTroughReleaseTime=msElapsed;
+						waitingToAutoFireBall=1;
+					}
 				}
 			}
 			else
@@ -474,13 +481,6 @@ void updateGame()
 		{
 			nMinTargetBallInPlay=0;
 			setHeldRelay(MAGNET,0);
-		}
-	}
-	if(mode==PLAY)
-	{//temp
-		if(BALL_LOADED.state && msElapsed-lastBallTroughReleaseTime>1000)
-		{
-			fireSolenoid(&BALL_SHOOT);
 		}
 	}
 	{//captures
