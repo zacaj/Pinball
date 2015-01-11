@@ -47,20 +47,25 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical)
 	if(msElapsed-lastScoreFire<100)
 		return;
 
+	int ten=1000;
 	for(int i=3;i>=0;i--)
 	{
 		if(getDigit(target,i)!=getDigit(*physical,i) || (getDigit(*physical,i)==0 && zeros[i].state))
 		{
 			if(fireSolenoid(&score[i]))
+			{
+				*physical+=ten;
 				break;
+			}
 		}
+		ten/=10;
 	}
 }
 
 void updateScores()
 {
 	updateBank(SCORE,SCORE_ZERO,curScore,physicalScore[curPlayer]);
-	updateBank(BONUS,BONUS_ZERO,bonus,physicalBonus);
+	updateBank(BONUS,BONUS_ZERO,bonus*10+bonusMult%10,physicalBonus);
 }
 
 void resetScores()

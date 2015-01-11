@@ -55,7 +55,7 @@ void addScore(uint16_t score,uint16_t _bonus)
 	if(mode==PLAY)
 	{
 		curScore+=score*scoreMult;
-		bonus+=_bonus;
+		bonus+=_bonus*scoreMult;
 		if(curScore>startScore+consolation_score && msElapsed-startTime>consolation_time)
 			if(getLed(SHOOT_AGAIN)==FLASHING)
 				setLed(SHOOT_AGAIN,OFF);
@@ -232,7 +232,8 @@ void setHold(int _hold)
 	hold=_hold;
 	if(hold>4)
 	{
-		hold=4;
+		hold=0;
+		addScore(bonus*bonusMult*2,0);
 	}
 	for(int i=1;i<=4;i++)
 		setLed(HOLD_1+i-1,i<=hold?ON:OFF);
@@ -270,7 +271,10 @@ void extraBall()
 {
 	extraBallCount++;
 	if(extraBallCount>max_extra_balls_per_ball)
+	{
 		extraBallCount=max_extra_balls_per_ball;
+		addScore(100,10);
+	}
 	setLed(SHOOT_AGAIN,ON);
 }
 
@@ -330,21 +334,28 @@ void startDrain()
 		captureState[i]=0;
 	addScore(bonus*bonusMult,0);
 	p_bonus[curPlayer]=bonus*hold/4;
+	p_bonusMult[curPlayer]=bonusMult*hold/4;
 	bonus=0;
+	bonusMult=0;
 }
 
 void rotateActivates()
 {
-	setLed(activates[activeActivate].led,OFF);
 	activeActivate++;
 	if(activeActivate>=4)
 		activeActivate=0;
-	setLed(activates[activeActivate].led,activates[activeActivate].state);
+	for(int i=0;i<4;i++)
+	{
+		if(activates[activeActivate].state==0)
+			setLed(activates[i].led,OFF);
+		else if(i==activeActivate)
+			setLed(activates[i].led,FLASHING);
+		setPWM(activates[i].led,128);
+	}
 }
 
 void nextPlayer()
 {
-	p_bonusMult[curPlayer]=bonusMult*hold/4;
 	p_nLock[curPlayer]=nLock>0?nLock-1:0;
 	for(int i=0;i<4;i++)
 		p_activateStates[curPlayer][i]=activates[i].state;
@@ -352,17 +363,17 @@ void nextPlayer()
 	for(int i=0;i<3;i++)
 		p_captureState[curPlayer][i]=captureState[i]>0?captureState[i]-1:0;
 	curPlayer++;
-	switchPlayerRelay(curPlayer);
 	if(curPlayer>=nPlayer)
 	{
 		curPlayer=0;
 		ballNumber++;
 		if(ballNumber>=3)
 		{
-			switchPlayerRelay(-1);
+			curPlayer=-1;
 			mode=PLAYER_SELECT;
 		}
 	}
+	switchPlayerRelay(curPlayer);
 }
 uint8_t waitingToAutoFireBall=0;
 void updateGame()
@@ -403,7 +414,12 @@ void updateGame()
 				if(nBallInPlay==1)//single ball
 				{
 					lockMBMax=0;
-					if(extraBallCount>0)
+					if(getLed(SHOOT_AGAIN)==FLASHING)
+					{
+						nBallInPlay--;
+						startShoot();
+					}
+					else if(extraBallCount>0)
 					{
 						extraBallCount--;
 						nBallInPlay--;

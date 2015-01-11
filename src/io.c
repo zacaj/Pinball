@@ -49,7 +49,6 @@ Solenoid FIVE_DROP_RESET = Sds(bC,P3,120,700);
 Solenoid LEFT_CAPTURE_EJECT = Sds(bC,P5,120,700);
 Solenoid RIGHT_CAPTURE_EJECT = Sds(bA,P8,120,700);
 Solenoid TOP_CAPTURE_EJECT = Sds(bA,P1,120,700);
-Solenoid BALL_RELEASE = Sds(bD,P2,120,1000);
 Solenoid heldRelays[nHeldRelay] = {
 	/*Player enable 1*/Sd(bD,P1,20),
 	Sd(bC,P12,20),
