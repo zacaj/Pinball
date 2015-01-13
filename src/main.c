@@ -159,8 +159,11 @@ int main(void)
 	STM_EVAL_LEDOn(LED4);
 	for(int i=0;i<nLED;i++)
 	{
-		//setPWMFunc(i,pwmFunc,i);
-		setLed(i,OFF);
+		setPWMFunc(i,pwmFunc,i);
+		//setPWM(i,255);
+		setLed(i,ON);
+		setFlash(i,7000);
+		offsetLed(i,rand()%7000*2);
 	}
 	setLed(0,FLASHING);
 	while (1)

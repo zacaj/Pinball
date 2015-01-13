@@ -26,7 +26,7 @@ else ((b))->BSRR = ((p));
 uint8_t mInputState[nMultiInput];
 typedef struct {
 	uint8_t state;
-	uint32_t flashAt, flashMax;
+	int32_t flashAt, flashMax;
 	void *data;
 	uint8_t pwm;
 	uint8_t (*pwmFunc)(void*);
@@ -254,7 +254,8 @@ void updateInput(Input* in) {
 uint32_t ioTicks = 0;
 
 void updateIOs() {
-	updateSlowInputs();
+	//updateSlowInputs();
+	if(0)
 	{
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
@@ -338,7 +339,7 @@ void updateIOs() {
 		LED_Dirty = 0;
 	}
 	for (int i = 0; i < nHeldRelay; i++) {
-		if (lastHeldRelayOnTime[i] + heldRelayMaxOnTime[i] > msElapsed) {
+		if (heldRelayState[i] && lastHeldRelayOnTime[i] + heldRelayMaxOnTime[i] > msElapsed) {
 			setHeldRelay(i, 0);
 		}
 	}
@@ -365,16 +366,16 @@ void updateSlowInputs() {
 			LEFT_3, RIGHT_1, RIGHT_2, RIGHT_3, RED_TARGET_RIGHT };
 	const enum LEDs upperDebugLights[] = { TOP_3, RED_TARGET_TOP, FIVE_1,
 			FIVE_2, FIVE_3, FIVE_4, FIVE_5, RED_TARGET_BOTTOM };
-	setLedDebug(0, lowerDebugLights);
-	setLedDebug(0, upperDebugLights);
+	//setLedDebug(0, lowerDebugLights);
+	//setLedDebug(0, upperDebugLights);
 	for (int i = 0; i < 8; i++) {
 		setOutDirect(MULTI_IN_CLOCK, 0);
 		for (int j = 0; j < nMultiInput; j++) {
 			in[j] <<= 1;
 			in[j] |= getInDirect(MULTI_IN_DATA[j]);
 			if (j != 3 && getInDirect(MULTI_IN_DATA[j])) {
-				setLedDebug(i, lowerDebugLights);
-				setLedDebug(j, upperDebugLights);
+				//setLedDebug(i, lowerDebugLights);
+				//setLedDebug(j, upperDebugLights);
 			}
 		}
 		setOutDirect(MULTI_IN_CLOCK, 1);

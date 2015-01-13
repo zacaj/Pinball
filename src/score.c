@@ -20,6 +20,7 @@
 #include "score.h"
 
 uint32_t lastScoreFire=0;
+extern uint8_t bonusMult;
 
 void initScores()
 {
