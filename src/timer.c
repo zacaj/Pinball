@@ -35,32 +35,22 @@ TIM_TypeDef* timerIds[]={
 };
 void TIM_IRQHandler()
 {
-#define HANDLE_(a,i) \
-	if (TIM_GetITStatus(a, TIM_IT_Update) != RESET) \
-	{ \
-		active[i]=0; \
-		if(timerFuncs[i]!=NULL) \
-		{ \
-			if(timerFuncs[i](timerData[i])) \
-				stopTimer(i); \
-			else \
-				active[i]=1; \
-		} \
-		TIM_ClearITPendingBit(a, TIM_IT_Update); \
-	}
-
 	for(int i=0;i<10;i++)
-		HANDLE_(timerIds[i],i)
-	/*HANDLE_(TIM1,0)
-	HANDLE_(TIM2,1)
-	HANDLE_(TIM3,2)
-	HANDLE_(TIM4,3)
-	HANDLE_(TIM6,4)
-	HANDLE_(TIM7,5)
-	HANDLE_(TIM8,6)
-	HANDLE_(TIM15,7)
-	HANDLE_(TIM16,8)
-	HANDLE_(TIM17,9)*/
+		if (TIM_GetITStatus(timerIds[i], TIM_IT_Update) != RESET)
+		{
+			TIM_ClearITPendingBit(timerIds[i], TIM_IT_Update);
+			if(active[i])
+			{
+				active[i]=0;
+				if(timerFuncs[i]!=NULL)
+				{
+					if(timerFuncs[i](timerData[i]))
+						stopTimer(i);
+					else
+						active[i]=1;
+				}
+			}
+		}
 }
 void TIM1_BRK_TIM15_IRQHandler(void) {	TIM_IRQHandler(); }
 void TIM8_BRK_IRQHandler(void) {	TIM_IRQHandler(); }
@@ -81,14 +71,15 @@ void TIM1_UP_TIM16_IRQHandler(void) {	TIM_IRQHandler(); }
 void startTimer(uint32_t n)
 {
 	TIM_ClearITPendingBit(timerIds[n], TIM_IT_Update);
-	TIM_SetCounter(timerIds[n], 0);
-	active[n]=1;
+	TIM_SetCounter(timerIds[n], 1);
 	TIM_Cmd(timerIds[n], ENABLE);
+	active[n]=1;
 }
 
 void setTimer(uint32_t n, uint32_t ms)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
 	/* Time base configuration */
 	TIM_TimeBaseStructure.TIM_Period = 2 * (ms * (1)) - 1; // 1 MHz down to 1 KHz (1 ms)
 	TIM_TimeBaseStructure.TIM_Prescaler = 36000 - 1; // 24 MHz Clock down to 2 KHz (adjust per your clock)
@@ -175,10 +166,12 @@ uint8_t callFuncIn(uint32_t (*func)(void*), uint32_t ms,void *data)
 
 void callFuncIn_s(uint32_t (*func)(void*), uint32_t ms, void* data)
 {
+	//ms=400;
 	if(!callFuncIn(func,ms,data))
 	{
 		wait(ms);
 		func(data);
+		printf("xgfdhdfgh");
 	}
 }
 uint8_t callFuncInCustom(uint32_t (*func)(void*), uint32_t prescalar, uint32_t period,void *data)

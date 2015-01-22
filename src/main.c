@@ -135,48 +135,86 @@ uint8_t pwmFunc(void *d)
 	unsigned char pwm=bsin((msElapsed+(int)d*300)*(int)(256.f/2.5)/1000);//(float)_sin((float)(msElapsed+(int)d*300)/1000.f*2*PI/1.8)*128+127;//
 	return pwm;
 }
+Solenoid* solenoids[] = {
+		&HOLD,
+		&SCORE[0],
+		&SCORE[1],
+		&SCORE[2],
+		&SCORE[3],
+		&BONUS[0],
+		&BONUS[1],
+		&BONUS[2],
+		&BONUS[3],
+		&BALL_SHOOT,
+		&LEFT_DROP_RESET,
+		&RIGHT_DROP_RESET,
+		&TOP_DROP_RESET,
+		&FIVE_DROP_RESET,
+		&LEFT_CAPTURE_EJECT,
+		&RIGHT_CAPTURE_EJECT,
+		&TOP_CAPTURE_EJECT,
+		&BALL_ACK
+
+};
+uint32_t timerFunc(void* data) {
+
+	STM_EVAL_LEDToggle(LED8);
+	return 0;
+}
+void switchPlayerRelay(int n);
 int main(void)
 {
 
 	/* Example use SysTick timer and read System core clock */
 	SysTick_Config(72000);  /* 1  ms if clock frequency 72 MHz */
-	//initTimers();
+	initTimers();
 	initIOs();
 	//initSound();
-	//initScores();
+	initScores();
 	//initGame();
 	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	int i;
-
+//9 on p1,p3
+	//0 on p2-1000,p4
 	SystemCoreClockUpdate();
 	for(i=0;i<8;i++)
 		STM_EVAL_LEDInit(LED3+i);
 	//STM_EVAL_LEDToggle(LED3);
 	ii = 0;
 	int iii=0;
-	int iiii=0;
+	int iiii=3;
 	int on=0;
-	STM_EVAL_LEDOn(LED4);
+	//STM_EVAL_LEDOn(LED4);
 	for(int i=0;i<nLED;i++)
 	{
 		setPWMFunc(i,pwmFunc,i);
 		//setPWM(i,255);
 		setLed(i,ON);
 		setFlash(i,7000);
-		offsetLed(i,rand()%7000*2);
+		//offsetLed(i,rand()%7000*2);
+		setLed(i,FLASHING);
 	}
 	setLed(0,FLASHING);
+	//callFuncIn(timerFunc,1000,NULL);
+	switchPlayerRelay(1);
 	while (1)
 	{
-		uint8_t pwm=pwmFunc(0);
+		/*uint8_t pwm=pwmFunc(0);
 		if(ii++%255<pwm)
-			STM_EVAL_LEDOn(LED3);
+			STM_EVAL_LEDOn(LED8);
 		else
-			STM_EVAL_LEDOff(LED3);
-		if(msTicks>500)
+			STM_EVAL_LEDOff(LED8);*/
+		if(msTicks>500 &&0)
 		{
 			msTicks=0;
 			on=!on;
+			setLed(iii,OFF);
+			iii--;
+			if(iii==nLED)
+				iii=0;
+			if(iii<0)
+				iii=nLED-1;
+			setLed(iii,ON);
 			//for(int i=0;i<48;i++)
 			//	setLed(i,on);
 
@@ -206,22 +244,45 @@ int main(void)
 			updateScores();
 			updateGame();
 		}
+		if(START.pressed)
+			resetScores();
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
 		{
 			buttonState=!buttonState;
 			if(buttonState)
 			{
-				STM_EVAL_LEDToggle(LED5);
-				setLed(iiii,OFF);
-				iiii++;
-				if(iiii>=nLED)
+				//fireSolenoidFor(&heldRelays[0], 50);
+				//setHeldRelay(0,1);
+				//switchPlayerRelay(iiii++);
+				///if(iiii==4)
+				//	iiii=0;
+				/*if(!iiii) {
+				resetScores();
+				iiii=1;
+				}
+				else {
+
+					while(physicalScore[1]!=3763) {
+						updateBank(SCORE,SCORE_ZERO,3763,&physicalScore[1]);
+						updateIOs();
+					}
+					wait(100);
 					iiii=0;
-				setLed(iiii,FLASHING);
+				}
+				switchPlayerRelay(-1);*/
+				//fireSolenoid(&BONUS[2]);
+				//wait(2000);
+				resetScores();
+				//switchPlayerRelay(iiii++);
+				//switchPlayerRelay(1);
+				//resetScores();
+				//switchPlayerRelay(-1);
 			}
 		}
 	}
 	return 0;
 }
+#if 0
 void IRQHander()
 {
 	printf("");
@@ -445,3 +506,4 @@ void FPU_IRQHandler()
 {IRQHander();
 }
                     /* FPU */
+#endif

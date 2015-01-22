@@ -1,5 +1,5 @@
 /*
- * game.c
+  * game.c
 
  *
  *  Created on: Aug 23, 2014
@@ -32,8 +32,8 @@ uint8_t extraBallCount=0;
 uint8_t lockMBMax=0;
 uint8_t nLock=0;
 uint8_t hold=0;
-uint16_t startScore=0;
-uint32_t startTime=0;
+uint16_t ballSaveMinScore=0;
+uint32_t ballSaveEndTime=0;
 uint8_t activeActivate=0;
 uint16_t currentJackpotScore=0;
 uint16_t scoreMult=1;
@@ -50,15 +50,29 @@ uint8_t p_bonusMult[4];
 uint8_t p_nLock[4];
 uint8_t p_activateStates[4][4];
 
+void updateExtraBall()
+{
+	if(curScore<ballSaveMinScore || msElapsed<ballSaveEndTime)
+		setFlash(SHOOT_AGAIN,4000);
+	else if(extraBallCount>0)
+		setLed(SHOOT_AGAIN,ON);
+	else
+		setLed(SHOOT_AGAIN,OFF);
+}
+void startBallSave(uint32_t time)
+{
+	ballSaveEndTime=msElapsed+time;
+	updateExtraBall();
+}
+
+
 void addScore(uint16_t score,uint16_t _bonus)
 {
 	if(mode==PLAY)
 	{
 		curScore+=score*scoreMult;
 		bonus+=_bonus*scoreMult;
-		if(curScore>startScore+consolation_score && msElapsed-startTime>consolation_time)
-			if(getLed(SHOOT_AGAIN)==FLASHING)
-				setLed(SHOOT_AGAIN,OFF);
+		updateExtraBall();
 	}
 }
 
@@ -208,7 +222,7 @@ void startGame()
 
 void startShoot()
 {
-	startScore=curScore;
+	ballSaveMinScore=curScore;
 	setLed(SHOOT_AGAIN,FLASHING);
 	setHeldRelay(BALL_RELEASE,1);
 	wait(500);
@@ -275,7 +289,8 @@ void extraBall()
 		extraBallCount=max_extra_balls_per_ball;
 		addScore(100,10);
 	}
-	setLed(SHOOT_AGAIN,ON);
+	startBallSave(4000);
+	updateExtraBall();
 }
 
 void resetRedTargets()
@@ -324,7 +339,9 @@ void switchPlayerRelay(int n)
 {
 	for(int i=0;i<4;i++)
 		heldRelayState[PLAYER_ENABLE[i]]=0;
-	setHeldRelay(n==-1?PLAYER_ENABLE[0]:n,n==-1?0:1);
+	if(n!=-1)
+		heldRelayState[PLAYER_ENABLE[n]]=1;
+	updateHeldRelays();
 }
 
 void startDrain()
@@ -375,6 +392,9 @@ void nextPlayer()
 	}
 	switchPlayerRelay(curPlayer);
 }
+uint32_t turnOffMagnet() {
+	setHeldRelay(MAGNET,0);
+}
 uint8_t waitingToAutoFireBall=0;
 void updateGame()
 {
@@ -388,7 +408,9 @@ void updateGame()
 		if(LANES[3].pressed)
 		{
 			mode=PLAY;
-			startTime=msElapsed;
+			startBallSave(consolation_time);
+			ballSaveMinScore=curScore+consolation_score;
+			updateExtraBall();
 			nBallInPlay++;
 		}
 		if(BALL_OUT.pressed)
@@ -460,6 +482,7 @@ void updateGame()
 					//setHeldRelay(BALL_SHOOT_ENABLE,0);
 					lastBallTroughReleaseTime=msElapsed;
 					fireSolenoid(&BALL_SHOOT);
+					startBallSave(consolation_time);
 					setLocks(nLock-1);
 					waitingToAutoFireBall=0;
 				}
@@ -584,8 +607,7 @@ void updateGame()
 						setLed(redTargets[i].led,ON);
 						if(on==4)
 						{
-							resetRedTargets();
-							extraBall();
+							activates[2].state=2;
 						}
 						else
 						{
@@ -703,22 +725,37 @@ void updateGame()
 				{
 				case 0:
 					setLocks(nLock+1);
+					setHeldRelay(MAGNET,1);
+					callFuncIn(turnOffMagnet,1000,NULL);
 					activates[0].state=0;
 					break;
 				case 1:
-					nMinTargetBallInPlay=nBallCaptured+nBallInPlay+nLock;
-					lockMBMax=nLock;
-					setHeldRelay(MAGNET,1);
-					currentJackpotScore=jackpot_score;
+					if(lockMBMax)
+					{
+						addScore(currentJackpotScore,jackpot_bonus);
+						currentJackpotScore*=jackpot_score_mult;
+						setHeldRelay(MAGNET,1);
+						callFuncIn(turnOffMagnet,1500,NULL);
+					}
+					else
+					{
+						nMinTargetBallInPlay=nBallCaptured+nBallInPlay+nLock;
+						lockMBMax=nLock;
+						setHeldRelay(MAGNET,1);
+						currentJackpotScore=jackpot_score;
+						startBallSave(3000);
+					}
 					activates[1].state=0;
 					break;
 				case 2:
-					addScore(currentJackpotScore,jackpot_bonus);
-					currentJackpotScore*=jackpot_score_mult;
+					resetRedTargets();
+					extraBall();
 					activates[2].state=0;
 					break;
 				case 3:
 					setHold(hold+1);
+					setHeldRelay(MAGNET,1);
+					callFuncIn(turnOffMagnet,1000,NULL);
 					activates[3].state=0;
 					break;
 				}
