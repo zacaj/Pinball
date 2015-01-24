@@ -69,8 +69,10 @@ Input FIVE_TARGET[5] = { In(bmB,P3), In(bmB,P4), In(bmB,P7), In(bmB,P6), In(bmB,
 Input LEFT_CAPTURE = In(bB,P14);
 Input RIGHT_CAPTURE = In(bmA,P5);
 Input TOP_CAPTURE = In(bmA,P1);
-Input SCORE_ZERO[4] = { In(bmD,P7), In(bmD,P6), In(bmD,P5), In(bmD,P3) };
-Input BONUS_ZERO[4] = { In(bmD,P2), In(bmD,P1), In(bmD,P0), In(bmD,P4) };
+Input SCORE_ZERO[4] = { In(bmD,P0), In(bmD,P1), In(bmD,P2), In(bmD,P4) };
+Input BONUS_ZERO[4] = { In(bmD,P5), In(bmD,P6), In(bmD,P7), In(bmD,P3) };
+//Input SCORE_ZERO[4] = { In(bmD,P7), In(bmD,P6), In(bmD,P5), In(bmD,P3) };
+//Input BONUS_ZERO[4] = { In(bmD,P2), In(bmD,P1), In(bmD,P0), In(bmD,P4) };
 Input BALL_OUT = In(bB,P10);
 Input SHOOT_BUTTON = In(bmC,P3);
 Input BALLS_FULL = In(bB,P12);
@@ -294,7 +296,7 @@ void updateIOs() {
 		updateInput(&START);//35
 		updateInput(&CAB_LEFT);
 		updateInput(&CAB_RIGHT);
-		updateInput(&LEFT_FLIPPER);
+		//updateInput(&LEFT_FLIPPER);
 		updateInput(&RIGHT_FLIPPER);//
 		updateInput(&LEFT_BLOCK);//40
 		updateInput(&RIGHT_BLOCK);//
@@ -343,7 +345,7 @@ void updateIOs() {
 			LED_Dirty = 1;
 		}
 	}
-	if (LED_Dirty || 1) {
+	if (LED_Dirty && 0) {
 		//STM_EVAL_LEDToggle(LED4);
 		setOutDirect(LED_CLOCK, 0);
 		for (int j = 0; j < 6; j++)
@@ -397,9 +399,6 @@ void updateSlowInputs()
 			in[j]>>=1;
 			uint8_t state=getInDirect(MULTI_IN_DATA[j]);
 			in[j]|=state<<7;
-			/*if(state) {
-				printf("hello");*/
-			}
 		}
 		setOutDirect(MULTI_IN_CLOCK,1);
 	}

@@ -107,6 +107,7 @@ void resetScores()
 	//resetBank(SCORE,SCORE_ZERO,1*);
 	Input *zero=SCORE_ZERO;
 	Solenoid *reel=SCORE;
+	switchPlayerRelay(1);
 	wait(100);
 	updateIOs();
 	//return;
@@ -130,6 +131,6 @@ void resetScores()
 		}
 		updateIOs();
 	}
-	//physicalScore[1]=0;
+	physicalScore[1]=0;
 	//physicalBonus=0;
 }

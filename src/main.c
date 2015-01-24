@@ -204,24 +204,29 @@ int main(void)
 			STM_EVAL_LEDOn(LED8);
 		else
 			STM_EVAL_LEDOff(LED8);*/
-		if(msTicks>500 &&0)
+		if(msTicks>500)
 		{
 			msTicks=0;
 			on=!on;
-			setLed(iii,OFF);
+			/*setLed(iii,OFF);
 			iii--;
 			if(iii==nLED)
 				iii=0;
 			if(iii<0)
 				iii=nLED-1;
-			setLed(iii,ON);
+			setLed(iii,ON);*/
 			//for(int i=0;i<48;i++)
 			//	setLed(i,on);
 
 			/*for(int i=0;i<6;i++)
 				mLEDState[i]=on?255:0;
 						LED_Dirty=1;*/
-			STM_EVAL_LEDToggle(LED4);
+			iii++;
+			if(iii>=4)
+				iii=0;
+			Solenoid * s[]={&RIGHT_CAPTURE_EJECT,&LEFT_CAPTURE_EJECT,&RIGHT_DROP_RESET,&LEFT_DROP_RESET};
+			//fireSolenoid(s[iii]);
+			//STM_EVAL_LEDToggle(LED4);
 			/*msTicks=0;
 			if(ii>=4)
 			{
@@ -246,6 +251,13 @@ int main(void)
 		}
 		if(START.pressed)
 			resetScores();
+		if(SHOOT_BUTTON.pressed) {
+			while(physicalScore[1]!=3763) {
+				updateBank(SCORE,SCORE_ZERO,3763,&physicalScore[1]);
+				updateIOs();
+			}
+			wait(100);
+		}
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
 		{
 			buttonState=!buttonState;
