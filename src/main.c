@@ -169,9 +169,13 @@ int main(void)
 	SysTick_Config(72000);  /* 1  ms if clock frequency 72 MHz */
 	initTimers();
 	initIOs();
-	//initSound();
+#ifdef SOUND
+	initSound();
+#endif
+	//setOut(HOLD.pin,1);
+	//fireSolenoid(&HOLD);
 	initScores();
-	//initGame();
+	initGame();
 	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	int i;
 //9 on p1,p3
@@ -187,16 +191,17 @@ int main(void)
 	//STM_EVAL_LEDOn(LED4);
 	for(int i=0;i<nLED;i++)
 	{
-		setPWMFunc(i,pwmFunc,i);
+		//setPWMFunc(i,pwmFunc,i);
 		//setPWM(i,255);
-		setLed(i,ON);
-		setFlash(i,7000);
-		//offsetLed(i,rand()%7000*2);
-		setLed(i,FLASHING);
+		//setLed(i,ON);
+		//setFlash(i,3000);
+		//offsetLed(i,3000*(i%2));
+		//setLed(i,FLASHING);
 	}
-	setLed(0,FLASHING);
+	//setLed(0,FLASHING);
 	//callFuncIn(timerFunc,1000,NULL);
-	switchPlayerRelay(1);
+	//switchPlayerRelay(1);
+	LED_Dirty=1;
 	while (1)
 	{
 		/*uint8_t pwm=pwmFunc(0);
@@ -244,20 +249,35 @@ int main(void)
 			STM_EVAL_LEDOn(LED3+ii);*/
 		}
 		updateIOs();
-		if(0)
+		if(1)
 		{
-			updateScores();
 			updateGame();
 		}
-		if(START.pressed)
-			resetScores();
-		if(SHOOT_BUTTON.pressed) {
-			while(physicalScore[1]!=3763) {
-				updateBank(SCORE,SCORE_ZERO,3763,&physicalScore[1]);
-				updateIOs();
-			}
-			wait(100);
+		if(CAB_LEFT.pressed) {
+
+			//setHeldRelay(MAGNET,1);
+			//switchPlayerRelay(1);
+			//fireSolenoid(&BONUS[0]);
+			//setLed(BLACKOUT,ON);
+			//setHeldRelay(PLAYER_ENABLE[1],0);
+			switchPlayerRelay(3);
 		}
+		if(CAB_RIGHT.pressed) {
+
+			//setHeldRelay(MAGNET,0);
+			//fireSolenoid(&BONUS[2]);
+			//setLed(EXTRA_BALL,ON);
+			//setHeldRelay(PLAYER_ENABLE[1],1);
+			switchPlayerRelay(1);
+		}
+		if(SHOOT_BUTTON.pressed) {
+
+			//setHeldRelay(PLAYFIELD_DISABLE,1);
+			//fireSolenoid(&HOLD);
+			//setLed(START_LOCK,ON);
+			//fireSolenoid(&heldRelays[PLAYER_ENABLE[0]]);
+			switchPlayerRelay(2);
+		}/**/
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
 		{
 			buttonState=!buttonState;
@@ -284,7 +304,7 @@ int main(void)
 				switchPlayerRelay(-1);*/
 				//fireSolenoid(&BONUS[2]);
 				//wait(2000);
-				resetScores();
+				//resetScores();
 				//switchPlayerRelay(iiii++);
 				//switchPlayerRelay(1);
 				//resetScores();

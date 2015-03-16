@@ -65,9 +65,9 @@ typedef struct
 	uint32_t onTime,offTime;
 	uint8_t waitingToFire;
 } Solenoid;
-#define S(b,p) {{b,p},-250,90,250,0}
-#define Sd(b,p,on) {{b,p},-250,on,250,0}
-#define Sds(b,p,on,off) {{b,p},-off,on,off,0}
+#define S(b,p) {{b,p},0,90,250,0}
+#define Sd(b,p,on) {{b,p},0,on,250,0}
+#define Sds(b,p,on,off) {{b,p},0,on,off,0}
 
 extern Solenoid HOLD;
 static const int PLAYFIELD_DISABLE=9;
@@ -175,8 +175,8 @@ enum LEDs {
 	LEFT_3, RED_TARGET_RIGHT, RED_TARGET_LEFT, RIGHT_2,
 	LOCK_1, SHOOT_AGAIN, LOCK_3, LOCK_2, LANE_3, RIGHT_CAPTURE_LIGHT,
 	LANE_4, LOCK_4, RIGHT_3, LEFT_1, RIGHT_1, LEFT_2,
-	BALL_2, BALL_3, BALL_4, BALL_5, EXTRA_BALL, START_LOCK, BONUS_HOLD_INCREMENT,
-	LEFT_POP_LIGHT, HOLD_1, LANE_2, LANE_1, BLACKOUT, HOLD_2,
+	BALL_2, BALL_3, BALL_4, BALL_5, JACKPOT, START_LOCK, BONUS_HOLD_INCREMENT,
+	LEFT_POP_LIGHT, HOLD_1, LANE_2, LANE_1, LOCK_BALL, HOLD_2,
 	HOLD_3, HOLD_4, TEMP_BALL_LAUNCH_READY
 };
 void setLed(enum LEDs index,uint8_t state);

@@ -32,9 +32,10 @@ static const uint32_t consolation_time=5000;
 static const uint16_t jackpot_score=500;
 static const uint16_t jackpot_score_mult=2;
 static const uint16_t jackpot_bonus=10;
-static const uint32_t max_blocker_on_time=2500;
-static const uint32_t blocker_cooldown_time=1500;
+static const uint32_t max_blocker_on_time=750;
+static const uint32_t blocker_cooldown_time=2000;
 static const uint32_t ball_release_wait_time=500;
+static const uint32_t drop_flash_period=250;
 
 typedef struct
 {
@@ -43,6 +44,7 @@ typedef struct
 	enum LEDs led[5];
 	uint8_t flashing;
 	Solenoid *reset;
+	uint8_t resetting;
 	void (*down)(void *);
 } DropBank;
 

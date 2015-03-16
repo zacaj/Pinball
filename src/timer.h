@@ -18,4 +18,10 @@ uint8_t callFuncInCustom(uint32_t (*func)(void*), uint32_t prescalar, uint32_t p
 void callFuncIn_s(uint32_t (*func)(void*), uint32_t ms, void* data);
 void wait(uint32_t ms);
 extern float fast_cossin_table[];
+
+void _BREAK();
+#define BREAK() \
+	_BREAK();
+	//__asm__("BKPT");
+
 #endif

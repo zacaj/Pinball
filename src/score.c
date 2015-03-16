@@ -53,11 +53,21 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 	{
 		int targetDigit=getDigit(target,i+1);
 		int physicalDigit=getDigit(*physical,i+1);
-		if(targetDigit!=physicalDigit || (physicalDigit==0 && (zeros[i].state^invert)))
+		if(targetDigit!=physicalDigit || ((physicalDigit!=0) != (zeros[i].state^invert) && 1))
 		{
 			if(fireSolenoid(&score[i]))
 			{
-				*physical+=ten;
+				_BREAK();
+				if(targetDigit!=physicalDigit && !((physicalDigit!=0) != (zeros[i].state^invert))) {
+					if(physicalDigit==9)
+						*physical-=ten*9;
+					else
+						*physical+=ten;
+				}
+				else {
+					if(!(zeros[i].state^invert)) //if the reel is zero
+						*physical-=(physicalDigit-1)*ten;
+				}
 				lastScoreFire=msElapsed;
 				break;
 			}
@@ -66,62 +76,21 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 	}
 }
 
-void updateScores()
-{
-	//updateBank(SCORE,SCORE_ZERO,curScore,&physicalScore[curPlayer],0);
-	//updateBank(BONUS,BONUS_ZERO,bonus*10+bonusMult%10,&physicalBonus,1);
-}
-
-void resetScores()
-{
-#define resetBank(reel,zero, operator) \
-	updateIOs(); \
-	while( operator zero[0].state ||  operator zero[1].state ||  operator zero[2].state ||  operator zero[3].state) \
-	{ \
-		if(msElapsed-lastScoreFire>50) \
-		{ \
-			int i=0; \
-			for(i=0;i<4;i++) \
-			{ \
-				if( operator zero[i].state) \
-				{ \
-					if(fireSolenoid(&reel[i])) \
-					{ \
-						lastScoreFire=msElapsed; \
-						break; \
-					} \
-				} \
-			} \
-		} \
-		updateIOs(); \
-	}
-
-	/*for(int i=0;i<4;i++)
-	{
-		switchPlayerRelay(i);
-		resetBank(SCORE,SCORE_ZERO,1*);
-		physicalScore[i]=0;
-	}
-	switchPlayerRelay(-1);*/
-	resetBank(BONUS,BONUS_ZERO,!);
-	//resetBank(SCORE,SCORE_ZERO,1*);
-	Input *zero=SCORE_ZERO;
-	Solenoid *reel=SCORE;
-	switchPlayerRelay(1);
+void resetBank(Solenoid *reel,Input *zero, uint8_t invert) {
 	wait(100);
 	updateIOs();
-	//return;
-	while(  zero[0].state ||   zero[1].state ||   zero[2].state ||   zero[3].state)
+	while( (invert^ zero[0].state) ||  (invert^zero[1].state) ||  (invert^ zero[2].state) ||  (invert^ zero[3].state))
 	{
-		if(msElapsed-lastScoreFire>100)
+		if(msElapsed-lastScoreFire>50)
 		{
 			int i=0;
 			for(i=0;i<4;i++)
 			{
-				if(  zero[i].state)
+				if( invert^ zero[i].state)
 				{
 					if(fireSolenoid(&reel[i]))
 					{
+						_BREAK();
 						wait(200);
 						lastScoreFire=msElapsed;
 						break;
@@ -131,6 +100,32 @@ void resetScores()
 		}
 		updateIOs();
 	}
+}
+
+void updateScores()
+{
+	if(curPlayer==1)
+		updateBank(SCORE,SCORE_ZERO,curScore,&physicalScore[curPlayer],0);
+	updateBank(BONUS,BONUS_ZERO,bonus*10+bonusMult%10,&physicalBonus,1);
+}
+
+void resetScores()
+{
+
+
+	/*for(int i=0;i<4;i++)
+	{
+		switchPlayerRelay(i);
+		resetBank(SCORE,SCORE_ZERO,1*);
+		physicalScore[i]=0;
+	}
+	switchPlayerRelay(-1);*/
+	resetBank(BONUS,BONUS_ZERO,1);
+	switchPlayerRelay(1);
+	resetBank(SCORE,SCORE_ZERO,0);
+	wait(100);
+	updateIOs();
+
 	physicalScore[1]=0;
-	//physicalBonus=0;
+	physicalBonus=0;
 }
