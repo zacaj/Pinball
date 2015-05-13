@@ -161,6 +161,10 @@ const IOPin SHIFT_DATA={bU,P0};
 const IOPin SHIFT_CLOCK={bU,P0};
 const IOPin SHIFT_LATCH={bU,P0};
 
+const IOPin HIGH[]={
+					{bC,P3}, {bD, P2}
+};
+
 int nDigit=10;
 int curDigit=0;
 
@@ -168,12 +172,17 @@ uint16_t digits[10];
 
 void initDisplay()
 {
-	initOutput(SHIFT_DATA);
+	/*initOutput(SHIFT_DATA);
 	setOutDirect(SHIFT_DATA,0);
 	initOutput(SHIFT_CLOCK);
 	setOutDirect(SHIFT_CLOCK,0);
 	initOutput(SHIFT_LATCH);
-	setOutDirect(SHIFT_LATCH,1);
+	setOutDirect(SHIFT_LATCH,1);*/
+
+	initOutput(HIGH[0]);
+	setOutDirect(HIGH[0],1);
+	initOutput(HIGH[1]);
+	setOutDirect(HIGH[1],1);
 
 	GPIO_InitTypeDef init;
 	init.GPIO_Mode = GPIO_Mode_OUT;
@@ -181,22 +190,29 @@ void initDisplay()
 	init.GPIO_Pin = GPIO_Pin_All;
 	init.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	init.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(bD, &init);
-	GPIO_Write(bD,0);
+	GPIO_Init(bB, &init);
+	GPIO_Write(bB,0);
 
 	for(int i=0;i<10;i++)
-		digits[i]=symbol('@');
+		digits[i]=symbol('_');
 }
 
-void updateDigits()
+void updateDisplay()
 {
-	if(curDigit==0)
+	/*if(curDigit==0)
 		setOutDirect(SHIFT_DATA,0);
 	else
 		setOutDirect(SHIFT_DATA,1);
 	setOutDirect(SHIFT_CLOCK,1);
-	setOutDirect(SHIFT_CLOCK,0);
-	GPIO_Write(bD,digits[curDigit]);
+	setOutDirect(SHIFT_CLOCK,0);*/
+	GPIO_Write(bB,0);
+	if(curDigit<2)
+	setOutDirect(HIGH[curDigit],1);
+	curDigit++;
+	if(curDigit>=10)
+		curDigit=0;
+	if(curDigit<2)
+	setOutDirect(HIGH[curDigit],0);
+	GPIO_Write(bB,digits[curDigit]);
 	wait(5);
-	GPIO_Write(bD,0);
 }

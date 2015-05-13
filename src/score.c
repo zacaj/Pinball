@@ -104,8 +104,7 @@ void resetBank(Solenoid *reel,Input *zero, uint8_t invert) {
 
 void updateScores()
 {
-	if(curPlayer==1)
-		updateBank(SCORE,SCORE_ZERO,curScore,&physicalScore[curPlayer],0);
+	updateBank(SCORE,SCORE_ZERO,curScore,&physicalScore[curPlayer],0);
 	updateBank(BONUS,BONUS_ZERO,bonus*10+bonusMult%10,&physicalBonus,1);
 }
 
@@ -113,16 +112,15 @@ void resetScores()
 {
 
 
-	/*for(int i=0;i<4;i++)
+	resetBank(BONUS,BONUS_ZERO,1);
+	for(int i=0;i<4-1;i++)
 	{
 		switchPlayerRelay(i);
-		resetBank(SCORE,SCORE_ZERO,1*);
+		wait(250);
+		resetBank(SCORE,SCORE_ZERO,0);
 		physicalScore[i]=0;
 	}
-	switchPlayerRelay(-1);*/
-	resetBank(BONUS,BONUS_ZERO,1);
-	switchPlayerRelay(1);
-	resetBank(SCORE,SCORE_ZERO,0);
+	switchPlayerRelay(-1);
 	wait(100);
 	updateIOs();
 

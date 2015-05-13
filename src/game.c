@@ -52,11 +52,11 @@ uint8_t p_activateStates[4][4];
 
 void updateExtraBall()
 {
-	if(curScore<ballSaveMinScore || msElapsed<ballSaveEndTime)
+	/*if(curScore<ballSaveMinScore || msElapsed<ballSaveEndTime)
 		flashLed(SHOOT_AGAIN,800);
 	else if(extraBallCount>0)
 		setLed(SHOOT_AGAIN,ON);
-	else
+	else*/
 		setLed(SHOOT_AGAIN,OFF);
 }
 void startBallSave(uint32_t time)
@@ -107,8 +107,7 @@ void threeDown(void *data)
 void fiveDown(void *data)
 {
 	DropBank *bank=data;
-	activates[0].state=1;
-	rotateActivates();
+	setLocks(nLock + 1,1);
 }
 
 
@@ -137,7 +136,7 @@ void initGame()
 		//setPWMFunc(i,pwmFunc,i);
 		//setPWM(i,255);
 		//setLed(i,ON);
-		setFlash(i,3000);
+		setFlash(i,rand()%1500+2000);
 		offsetLed(i,3000*(i%2));
 		//setLed(i,FLASHING);
 	}
@@ -187,13 +186,19 @@ void updateDropBank(DropBank *bank)
 		if(bank->in[i].pressed)
 		{
 			//BREAK();
+			addScore(drop_score*(bank->flashing==i?drop_sequence_mult:1),bank->flashing==i?drop_sequence_bonus:0);
+			if(bank->flashing==i)//was flashing
+			{
+				setLed(bank->led[bank->flashing],ON);
+				bank->flashing++;
+				flashLed(bank->led[bank->flashing],drop_flash_period);
+			}
 			if (bank->nTarget == 5) {
 				if (bank->flashing == bank->nTarget)
 				{
-					activates[3].state = 1;
+					activates[HOLD_].state++;
 					rotateActivates();
 				}
-				setLocks(nLock + 1);
 			}
 			else if (bank->nTarget == 3) {
 				if (bank->flashing == bank->nTarget)
@@ -228,15 +233,9 @@ void updateDropBank(DropBank *bank)
 					syncCaptureLights();
 				}
 			}
-			addScore(drop_score*(bank->flashing==i?drop_sequence_mult:1),bank->flashing==i?drop_sequence_bonus:0);
-			if(bank->flashing==i)//was flashing
-			{
-				setLed(bank->led[bank->flashing],ON);
-				bank->flashing++;
-				flashLed(bank->led[bank->flashing],drop_flash_period);
-			}
 			if(down==bank->nTarget)//last one
 			{
+				rotateActivates();
 				bank->down(bank);
 				addScore(drop_complete_score*(bank->flashing==i?drop_sequence_mult:1),drop_complete_bonus);
 			}
@@ -267,6 +266,8 @@ void startGame()
 {
 	if(nPlayer==0)
 		return;
+		
+	ballNumber=0;
 
 	for(int i=0;i<nLED;i++)
 	{
@@ -287,7 +288,7 @@ void startGame()
 	wait(500);
 	for(int i=3;i>=0;i--)
 		initDropBank(&dropBanks[i]);
-	curPlayer=1;
+	curPlayer=0;
 	switchPlayerRelay(curPlayer);
 	startBall();
 }
@@ -301,19 +302,28 @@ void startShoot()
 	wait(250);
 	setHeldRelay(BALL_RELEASE,0);
 	lastBallTroughReleaseTime=msElapsed;
-	mode=SHOOT;
+	switchMode(SHOOT);
 	//BREAK();
 	setHeldRelay(BALL_SHOOT_ENABLE,1);
 }
 void resetRedTargets();
 void resetLanes();
-void setLocks(int lock)
+void setLocks(int lock,uint8_t refreshLights)
 {
 	nLock=lock;
 	if(nLock>4)
 		nLock=4;
 	for(int i=1;i<=4;i++)
 		setLed(LOCK_1+i-1,i<=nLock?ON:OFF);
+	if(refreshLights) {
+		uint8_t oldState=activates[LOCK_JACKPOT].state;
+		if(nLock>0)
+			activates[LOCK_JACKPOT].state=1;
+		else
+			activates[LOCK_JACKPOT].state=0;
+		if(oldState!=activates[LOCK_JACKPOT].state)
+			rotateActivates();
+	}
 }
 void setHold(int _hold)
 {
@@ -329,6 +339,10 @@ void setHold(int _hold)
 void startBall()
 {//
 	//BREAK();
+	for(int i=0;i<nLED;i++)
+	{
+		setLed(i,OFF);
+	}
 	nBallInPlay=nBallCaptured=nMinTargetBallInPlay=0;
 	for(int i=0;i<3;i++)
 	{
@@ -351,7 +365,7 @@ void startBall()
 	lastRightBlockerOffTime=-1;
 	setHeldRelay(LEFT_BLOCK_DISABLE,0);
 	setHeldRelay(RIGHT_BLOCK_DISABLE,0);
-	setLocks(p_nLock[curPlayer]);
+	setLocks(p_nLock[curPlayer],1);
 	setHold(0);
 	bonus=p_bonus[curPlayer];
 	//BREAK();
@@ -425,13 +439,20 @@ void switchPlayerRelay(int n)
 void startDrain()
 {
 	BREAK();
-	mode=DRAIN;
 	for(int i=0;i<3;i++)
 		captureState[i]=0;
 	addScore(bonus*bonusMult,0);
+	switchMode(DRAIN);
+	fireSolenoid(&BALL_SHOOT);
 	p_bonus[curPlayer]=bonus*hold/4;
 	p_bonusMult[curPlayer]=bonusMult*hold/4;
 	bonus=0;
+	
+	for(int i=0;i<nLED;i++)
+	{
+		setFlash(i,3000);
+		offsetLed(i,3000*(i%2));
+	}
 	bonusMult=0;
 }
 
@@ -440,6 +461,7 @@ void rotateActivates()
 	int i = 0;
 	do {
 		activeActivate++;
+		activeActivate%=4;
 		i++;
 		if (activates[activeActivate].state)
 			break;
@@ -448,7 +470,7 @@ void rotateActivates()
 		activeActivate = -1;
 	for(int i=0;i<4;i++)
 	{
-		if(activates[activeActivate].state==0)
+		if(activates[i].state==0)
 			setLed(activates[i].led,OFF);
 		else if(i==activeActivate)
 			flashLed(activates[i].led,400);
@@ -469,12 +491,12 @@ void nextPlayer()
 	curPlayer++;
 	if(curPlayer>=nPlayer)
 	{
-		curPlayer=1;//should be 0
+		curPlayer=0;//should be 0
 		ballNumber++;
 		if(ballNumber>=5)
 		{
 			curPlayer=-1;
-			mode=PLAYER_SELECT;
+			switchMode(PLAYER_SELECT);
 		}
 	}
 	switchPlayerRelay(curPlayer);
@@ -483,26 +505,63 @@ uint32_t turnOffMagnet() {
 	setHeldRelay(MAGNET,0);
 }
 uint8_t waitingToAutoFireBall=0;
+uint32_t ballAckCount=0;
+void switchMode(enum GameMode newMode) {
+	enum GameMode oldMode=mode;
+	mode=newMode;
+	//leaving
+	if(oldMode!=newMode) 
+		switch(oldMode) {
+			case SHOOT:
+			
+				break;
+			case PLAY:
+			
+				break;
+			case PLAYER_SELECT:
+			
+				break;
+			case DRAIN:
+				setHeldRelay(PLAYFIELD_DISABLE,0);
+				break;
+		}
+	//leaving
+	if(oldMode!=newMode)
+		switch(newMode) {
+			case SHOOT:
+			
+				break;
+			case PLAY:
+
+				break;
+			case PLAYER_SELECT:
+
+				break;
+			case DRAIN:
+				setHeldRelay(PLAYFIELD_DISABLE,1);
+				break;
+		}
+}
 void updateGame()
 {
 	if(mode==SHOOT)
 	{
-		/*if(SHOOT_BUTTON.pressed)
+		if(SHOOT_BUTTON.pressed)
 		{
 			fireSolenoid(&BALL_SHOOT);
 			setHeldRelay(BALL_SHOOT_ENABLE,0);
-		}*/
+		}
 		if(LANES[3].pressed)
 		{
-			mode=PLAY;
-			startBallSave(consolation_time);
+			switchMode(PLAY);
+			startBallSave(consolation_time); 
 			ballSaveMinScore=curScore+consolation_score;
 			updateExtraBall();
 			nBallInPlay++;
-			//LANES[3].pressed=0;
+			LANES[3].pressed=0;
 		}
 		if(BALL_OUT.pressed)
-		{
+		{ 
 			startShoot();
 		}
 	}
@@ -510,18 +569,28 @@ void updateGame()
 	{
 		if(BALLS_FULL.state && BALL_OUT.state && physicalScore[curPlayer]==curScore && physicalBonus==0)
 		{
-			nextPlayer();
-			startBall();
+			if(ballNumber==-1)
+				startGame();
+			else {
+				nextPlayer();
+				if(mode!=PLAYER_SELECT)
+					startBall();
+			}
 		}
 	}
 	{//ack
-		if(BALL_OUT.state && !BALLS_FULL.state)
+		if(BALL_OUT.state && !BALLS_FULL.state) {
+			ballAckCount++;
+		}
+		else
+			ballAckCount=0;
+		if(ballAckCount>2000)
 			fireSolenoid(&BALL_ACK);
 		if(mode==PLAY)
 		{
-			if(BALL_OUT.pressed)
-			{//hxh 11:00 23
-				//if(nBallInPlay==1)//single ball
+			if(BALLS_FULL.pressed || (BALL_OUT.pressed && BALLS_FULL.state && msElapsed-BALLS_FULL.lastChange>50))
+			{
+				if(nBallInPlay==1)//single ball
 				{
 					lockMBMax=0;
 					if(getLed(SHOOT_AGAIN)==FLASHING)
@@ -535,13 +604,13 @@ void updateGame()
 						nBallInPlay--;
 						startShoot();
 					}
-					else //if(nMinTargetBallInPlay==0)
+					else if(nMinTargetBallInPlay==0)
 					{
 						startDrain();
 						nBallInPlay--;
 					}
 				}
-				/*else if(nBallInPlay>1) //multi-ball
+				else if(nBallInPlay>1) //multi-ball
 				{
 					if(nBallInPlay<lockMBMax && nLock>0)
 					{
@@ -554,11 +623,13 @@ void updateGame()
 					nBallInPlay--;
 					if(scoreMult!=1)
 						scoreMult=nBallInPlay;
-				}*/
+				}
 			}
 		}
 	}
-	/*if(mode==PLAY)
+	if(nBallInPlay<0)
+		nBallInPlay=0;
+	if(mode==PLAY)
 	{
 		if(nMinTargetBallInPlay>nBallInPlay)
 		{
@@ -570,8 +641,9 @@ void updateGame()
 					//setHeldRelay(BALL_SHOOT_ENABLE,0);
 					lastBallTroughReleaseTime=msElapsed;
 					fireSolenoid(&BALL_SHOOT);
+					nBallInPlay++;
 					startBallSave(consolation_time);
-					setLocks(nLock-1);
+					setLocks(nLock-1,1);
 					waitingToAutoFireBall=0;
 				}
 				else if(msElapsed-lastBallTroughReleaseTime>500)
@@ -590,17 +662,17 @@ void updateGame()
 				if(LEFT_CAPTURE.state)
 				{
 					if(fireSolenoid(&LEFT_CAPTURE_EJECT))
-						setLocks(nLock-1);
+						setLocks(nLock-1,1);
 				}
 				else if(RIGHT_CAPTURE.state)
 				{
 					if(fireSolenoid(&RIGHT_CAPTURE_EJECT))
-						setLocks(nLock-1);
+						setLocks(nLock-1,1);
 				}
 				else if(TOP_CAPTURE.state)
 				{
 					if(fireSolenoid(&TOP_CAPTURE_EJECT))
-						setLocks(nLock-1);
+						setLocks(nLock-1,1);
 				}
 			}
 		}
@@ -609,62 +681,61 @@ void updateGame()
 			nMinTargetBallInPlay=0;
 			setHeldRelay(MAGNET,0);
 		}
-	}*/
-	{//captures
-#define doCapture(in,eject,n) \
-	if(in.pressed && 0) \
-	{ \
-		addScore(capture_score,0); \
-		nBallInPlay--; \
-		nBallCaptured++; \
-		if(lockMBMax==0) \
-		{ \
-			if(captureState[n]==1 || (captureState[n]>=2 && nBallCaptured==3)) \
-			{ \
-				nMinTargetBallInPlay=nBallCaptured+nBallInPlay+1; \
-				scoreMult=nMinTargetBallInPlay; \
-				for(int i=0;i<3;i++) \
-				{ \
-					captureState[i]=0; \
-				} \
-				syncCaptureLights(); \
-			} \
-		} \
-		else if(0)\
-		{ \
-			if(captureState[n]<2) \
-			{ \
-				captureState[n]++; \
-				syncCaptureLights(); \
-			} \
-			if(captureState[0]>=2 && captureState[1]>=2 && captureState[2]>=2) \
-			{ \
-				activates[2].state=2; \
-				rotateActivates(); \
-			} \
-		} \
-	} \
-	if(in.released && 0) \
-	{ \
-		nBallCaptured--; \
-	} \
-	if(in .state) \
-	{ \
-		switch(captureState[n]) \
-		{ \
-		case 0: \
-			fireSolenoidIn(&eject,450); \
-			break; \
-		case 1: \
-			break; \
-		case 2: \
-			break; \
-		} \
 	}
-
-		doCapture(TOP_CAPTURE,TOP_CAPTURE_EJECT,2);
-		doCapture(LEFT_CAPTURE,LEFT_CAPTURE_EJECT,0);
-		doCapture(RIGHT_CAPTURE,RIGHT_CAPTURE_EJECT,1);
+	{//captures
+		Input ins[]={TOP_CAPTURE,LEFT_CAPTURE,RIGHT_CAPTURE};
+		Solenoid ejects[]={TOP_CAPTURE_EJECT,LEFT_CAPTURE_EJECT,RIGHT_CAPTURE_EJECT};
+		int ns[]={2,0,1};
+		for(int i=0;i<3;i++) {
+			Input in=ins[i];
+			Solenoid eject=ejects[i];
+			int n=ns[i];
+			if(in.pressed)
+			{
+				addScore(capture_score,0);
+				nBallInPlay--;
+				nBallCaptured++;
+				if(lockMBMax==0)
+				{
+					if(captureState[n]==1 || (captureState[n]>=2 && nBallCaptured==3))
+					{
+						nMinTargetBallInPlay=nBallCaptured+nBallInPlay+1;
+						scoreMult=nMinTargetBallInPlay;
+						for(int i=0;i<3;i++)
+						{
+							captureState[i]=0;
+						}
+						syncCaptureLights();
+					}
+				}
+				else\
+				{
+					if(captureState[n]<2)
+					{
+						captureState[n]++;
+						syncCaptureLights();
+					}
+				}
+			}
+			if(in.released)
+			{
+				nBallCaptured--;
+				nBallInPlay++;
+			}
+			if(in .state)
+			{
+				switch(captureState[n])
+				{
+				case 0:
+					fireSolenoidIn(&eject,450);
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
+				}
+			}
+		}
 	}
 	if(mode==PLAY)
 	{//drop
@@ -703,7 +774,13 @@ void updateGame()
 
 						if (on == 4 && redTargets[i].state == 4)
 						{
-							activates[2].state=2;
+							activates[EXTRA_BALL].state++;
+							rotateActivates();
+						}
+						else if(on==4) {
+							int j=rand()%4;
+							redTargets[j].state++;
+							flashLed(redTargets[j].led,500);
 						}
 						else
 						{
@@ -813,8 +890,8 @@ void updateGame()
 	setHeldRelay(MAGNET, 1); \
 	callFuncIn(turnOffMagnet, 1000, NULL);
 #define doLock() \
-		if (lockMBMax) \
-		{ \
+	if (lockMBMax) \
+	{ \
 		addScore(currentJackpotScore, jackpot_bonus); \
 		currentJackpotScore *= jackpot_score_mult; \
 		setHeldRelay(MAGNET, 1); \
@@ -824,7 +901,8 @@ void updateGame()
 		{ \
 		nMinTargetBallInPlay = nBallCaptured + nBallInPlay + nLock; \
 		lockMBMax = nLock; \
-		setHeldRelay(MAGNET, 1); \
+		if (ACTIVATE_TARGET.state) \
+			setHeldRelay(MAGNET, 1); \
 		currentJackpotScore = jackpot_score; \
 		startBallSave(3000); \
 	}
@@ -837,18 +915,18 @@ void updateGame()
 	callFuncIn(turnOffMagnet, 1000, NULL);
 
 #define doActivate(n) \
-	switch (n) {
+	switch (n) { \
 		\
-	case 0: \
+	case BLACKOUT: \
 			doBlackout(); \
 			break; \
-	case 1: \
+	case LOCK_JACKPOT: \
 			doLock(); \
 			break; \
-	case 2: \
+	case EXTRA_BALL: \
 			doExtraBall(); \
 			break; \
-	case 3: \
+	case HOLD_: \
 			doHold(); \
 			break; \
 	}
@@ -856,8 +934,9 @@ void updateGame()
 		{
 			if (activeActivate != -1)
 			{
-				doActive(activeActivate);
-				activates[activeActivate].state = 0;
+				doActivate(activeActivate);
+				if(activates[activeActivate].state>0);
+					activates[activeActivate].state--;
 				rotateActivates();
 				addScore(50, 0);
 			}
@@ -869,7 +948,8 @@ void updateGame()
 			for (int i = 0; i < 4;i++)
 			if (activates[i].state) {
 				doActivate(i);
-				activates[i].state = 0;
+				if(activates[i].state>0);
+					activates[i].state--;
 			}
 			rotateActivates();
 			addScore(50, 0);
@@ -946,20 +1026,21 @@ void updateGame()
 	{
 		if(START.pressed)
 		{
-			startGame();
+			ballNumber=-1;
+			startDrain();
 		}
-		/*if(CAB_LEFT.pressed)
+		if(CAB_LEFT.pressed)
 		{
 			if(nPlayer>1)
 				nPlayer--;
-			switchPlayerRelay(nPlayer);
+			switchPlayerRelay(nPlayer-1);
 		}
 		if(CAB_RIGHT.pressed)
 		{
 			if(nPlayer<MAX_PLAYER)
 				nPlayer++;
-			switchPlayerRelay(nPlayer);
-		}*/
+			switchPlayerRelay(nPlayer-1);
+		}
 	}
 	if(mode==PLAY || mode==DRAIN)
 		updateScores();

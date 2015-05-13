@@ -170,12 +170,14 @@ int main(void)
 	initTimers();
 	initIOs();
 #ifdef SOUND
-	initSound();
+	//initSound();
+	initDisplay();
+#else
+	initScores();
+	initGame();
 #endif
 	//setOut(HOLD.pin,1);
 	//fireSolenoid(&HOLD);
-	initScores();
-	initGame();
 	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
 	int i;
 //9 on p1,p3
@@ -204,71 +206,42 @@ int main(void)
 	LED_Dirty=1;
 	while (1)
 	{
-		/*uint8_t pwm=pwmFunc(0);
-		if(ii++%255<pwm)
-			STM_EVAL_LEDOn(LED8);
-		else
-			STM_EVAL_LEDOff(LED8);*/
-		if(msTicks>500)
-		{
-			msTicks=0;
-			on=!on;
-			/*setLed(iii,OFF);
-			iii--;
-			if(iii==nLED)
-				iii=0;
-			if(iii<0)
-				iii=nLED-1;
-			setLed(iii,ON);*/
-			//for(int i=0;i<48;i++)
-			//	setLed(i,on);
-
-			/*for(int i=0;i<6;i++)
-				mLEDState[i]=on?255:0;
-						LED_Dirty=1;*/
-			iii++;
-			if(iii>=4)
-				iii=0;
-			Solenoid * s[]={&RIGHT_CAPTURE_EJECT,&LEFT_CAPTURE_EJECT,&RIGHT_DROP_RESET,&LEFT_DROP_RESET};
-			//fireSolenoid(s[iii]);
-			//STM_EVAL_LEDToggle(LED4);
-			/*msTicks=0;
-			if(ii>=4)
+		for(int i=0;i<nLED;i++)
 			{
-				ii=0;
-				iii++;
-				if(iii>=4)
-					iii=0;
-				switchPlayerRelay(iii+1);
+				//setPWMFunc(i,pwmFunc,i);
+				//setPWM(i,255);
+				//setLed(i,ON);
+				//setFlash(i,3000);
+				//offsetLed(i,3000*(i%2));
+				//setLed(i,ON);
 			}
-			STM_EVAL_LEDOff(LED3+ii);
-			//setOut(pins[ii],1);
-			//callFuncIn(disableLight,1000,ii);
-			fireSolenoid(SCORE[ii]);
-			ii++;
-			STM_EVAL_LEDOn(LED3+ii);*/
-		}
+		//LED_Dirty=1;
 		updateIOs();
+#ifdef SOUND
+		updateDisplay();
+#else
 		if(1)
 		{
 			updateGame();
 		}
+#endif
 		if(CAB_LEFT.pressed) {
 
 			//setHeldRelay(MAGNET,1);
 			//switchPlayerRelay(1);
-			//fireSolenoid(&BONUS[0]);
+			//fireSolenoid(&BALL_ACK);
 			//setLed(BLACKOUT,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],0);
-			switchPlayerRelay(3);
+			//switchPlayerRelay(3);
 		}
 		if(CAB_RIGHT.pressed) {
 
 			//setHeldRelay(MAGNET,0);
-			//fireSolenoid(&BONUS[2]);
+			//fireSolenoid(&LEFT_DROP_RESET);
 			//setLed(EXTRA_BALL,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],1);
-			switchPlayerRelay(1);
+			//switchPlayerRelay(1);
+
 		}
 		if(SHOOT_BUTTON.pressed) {
 
@@ -276,8 +249,12 @@ int main(void)
 			//fireSolenoid(&HOLD);
 			//setLed(START_LOCK,ON);
 			//fireSolenoid(&heldRelays[PLAYER_ENABLE[0]]);
-			switchPlayerRelay(2);
+			//switchPlayerRelay(2);
 		}/**/
+		if(BALLS_FULL.state)
+			STM_EVAL_LEDOn(LED7);
+		else
+			STM_EVAL_LEDOff(LED7);
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
 		{
 			buttonState=!buttonState;

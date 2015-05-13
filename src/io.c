@@ -42,8 +42,8 @@ LedState ledState[nLED];
 Solenoid HOLD = Sd(bF,P4,20);
 Solenoid SCORE[4] = { Sds(bB,P4,90,150), Sds(bD,P5,90,150), Sds(bC,P10,90,150), Sds(bB,P8,90,150) };
 Solenoid BONUS[4] = { S(bB,P5), S(bB,P9), S(bC,P13), S(bF,P10) };
-Solenoid BALL_SHOOT = Sds(bD,P6,120,500);
-Solenoid BALL_ACK = Sds(bA,P15,120,500);
+Solenoid BALL_SHOOT = Sds(bD,P6,280,500);
+Solenoid BALL_ACK = Sds(bA,P15,200,800);
 Solenoid LEFT_DROP_RESET = Sds(bC,P8,100,700);
 Solenoid RIGHT_DROP_RESET = Sds(bF,P6,100,700);
 Solenoid TOP_DROP_RESET = Sds(bC,P3,100,700);
@@ -56,11 +56,11 @@ Solenoid heldRelays[nHeldRelay] = {
 	Sd(bC,P12,20),
 	Sd(bD,P7,20),
 	Sd(bD,P1,20),/*Player enable 4*/
-	Sd(bD,P4,20), //ball shoot enable
-	Sd(bD,P2,20), //ball_release
-	Sd(bA,P10,20), //magnet
+	Sd(bD,P4,-1), //ball shoot enable
+	Sd(bD,P2,-1), //ball_release
+	Sd(bA,P10,-1), //magnet
 	Sd(bD,P0,-1), //left block
-	Sd(bC,P11,20), //right block
+	Sd(bC,P11,-1), //right block
 	Sd(bA,P3,20), //playfield disable
 };
 //left right top
@@ -72,8 +72,6 @@ Input RIGHT_CAPTURE = In(bmA,P5);
 Input TOP_CAPTURE = In(bmA,P1);
 Input SCORE_ZERO[4] = { In(bmD,P0), In(bmD,P1), In(bmD,P2), In(bmD,P4) };
 Input BONUS_ZERO[4] = { In(bmD,P5), In(bmD,P6), In(bmD,P7), In(bmD,P3) };
-//Input SCORE_ZERO[4] = { In(bmD,P7), In(bmD,P6), In(bmD,P5), In(bmD,P3) };
-//Input BONUS_ZERO[4] = { In(bmD,P2), In(bmD,P1), In(bmD,P0), In(bmD,P4) };
 Input BALL_OUT = In(bB,P10);
 Input SHOOT_BUTTON = In(bmC,P3);
 Input BALLS_FULL = In(bB,P12);
@@ -221,6 +219,7 @@ void initIOs() {
 	initInput(RIGHT_CAPTURE.pin, NO_PULL);
 	initInput(TOP_CAPTURE.pin, NO_PULL);
 	initInput(BALL_OUT.pin, NO_PULL);
+	BALL_OUT.settleTime=50;
 	initInput(SHOOT_BUTTON.pin, NO_PULL);
 	initInput(START.pin, NO_PULL);
 	initInput(CAB_LEFT.pin, NO_PULL);
@@ -235,8 +234,9 @@ void initIOs() {
 	initInput(BUMPER.pin, PULL_DOWN);
 	BUMPER.inverse=1;
 	initInput(ROTATE_ROLLOVER.pin, PULL_DOWN);
-
 	initInput(BALLS_FULL.pin, PULL_DOWN);
+	BALLS_FULL.settleTime=50;
+	
 	for (int i = 0; i < nHeldRelay; i++) {
 		physicalHeldRelayState[i] = 0;
 		heldRelayState[i] = 0;
@@ -247,6 +247,7 @@ void initIOs() {
 	fireSolenoidFor(&HOLD,50);
 }
 int ledi=0;
+uint8_t forceInputCheck=0;
 int nled=0;
 void updateInput(Input* in) {
 	const enum LEDs lowerDebugLights[] = { RED_TARGET_LEFT, LEFT_1, LEFT_2,
@@ -257,7 +258,11 @@ void updateInput(Input* in) {
 		state=!state;
 	in->pressed = 0;
 	in->released = 0;
-	if (state != in->state && msElapsed - in->lastChange > 30) {
+	if(state != in->rawState) {
+		in->rawState=state;
+		in->lastChange=msElapsed;
+	}
+	if (state != in->state && (msElapsed - in->lastChange > in->settleTime || forceInputCheck)) {
 		in->state = state;
 		in->lastChange = msElapsed;
 		if (state) {
@@ -355,6 +360,7 @@ void updateIOs() {
 		for (int j = 0; j < 6; j++)
 			for (int i = 0; i < 8; i++) {
 				setOutDirect(LED_DATA, mLEDState[j] & 1 << i); //
+				//setOutDirect(LED_DATA, 1); //
 				setOutDirect(LED_CLOCK, 1);
 				setOutDirect(LED_CLOCK, 0);
 			}
@@ -543,8 +549,8 @@ void updateHeldRelays()
 }
 void setHeldRelay(int n, uint8_t state) {
 	if (heldRelays[n].onTime == -1) {
-		lastHeldRelayOnTime[i] = msElapsed;
-		setOut(heldRelays[i].pin, state);
+		lastHeldRelayOnTime[n] = msElapsed;
+		setOut(heldRelays[n].pin, state);
 	}
 	else if(physicalHeldRelayState[n]!=state || 1) {
 		heldRelayState[n] = state;

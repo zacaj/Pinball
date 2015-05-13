@@ -8,7 +8,7 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-#define MAX_PLAYER 4
+#define MAX_PLAYER 3
 
 static const uint16_t capture_score=10;
 static const uint16_t drop_score=1;
@@ -46,7 +46,7 @@ typedef struct
 	Solenoid *reset;
 	uint8_t resetting;
 	void (*down)(void *);
-} DropBank;
+} DropBank; 
 
 typedef struct
 {
@@ -64,6 +64,11 @@ extern uint16_t physicalBonus;
 extern uint8_t curPlayer;
 #define curScore playerScore[curPlayer]
 extern uint8_t ballNumber,nPlayer;
+
+#define BLACKOUT 0
+#define LOCK_JACKPOT 1
+#define EXTRA_BALL 2
+#define HOLD_ 3
 
 
 void updateGame();

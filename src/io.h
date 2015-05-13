@@ -107,8 +107,10 @@ typedef struct
 	uint8_t pressed;
 	uint8_t released;
 	uint8_t inverse;
+	uint8_t rawState;
+	uint32_t settleTime;
 } Input;
-#define In(b,p) {{b,p},0,1,0,0,0}
+#define In(b,p) {{b,p},0,1,0,0,0,0,5}
 
 extern Input DROP_TARGET[3][3];
 extern Input FIVE_TARGET[5];
@@ -142,7 +144,7 @@ void setOut(IOPin pin, uint32_t value);
 void setOutDirect(IOPin pin, uint32_t value);
 uint8_t getIn(IOPin pin);
 void initIOs();
-void updateIOs();
+void updateIOs(uint8_t manual=0);
 
 uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms);
 uint8_t fireSolenoid(Solenoid *s);
@@ -175,8 +177,8 @@ enum LEDs {
 	LEFT_3, RED_TARGET_RIGHT, RED_TARGET_LEFT, RIGHT_2,
 	LOCK_1, SHOOT_AGAIN, LOCK_3, LOCK_2, LANE_3, RIGHT_CAPTURE_LIGHT,
 	LANE_4, LOCK_4, RIGHT_3, LEFT_1, RIGHT_1, LEFT_2,
-	BALL_2, BALL_3, BALL_4, BALL_5, EXTRA_BALL, START_LOCK, BONUS_HOLD_INCREMENT,
-	LEFT_POP_LIGHT, HOLD_1, LANE_2, LANE_1, BLACKOUT, HOLD_2,
+	BALL_2, BALL_3, BALL_4, BALL_5, EXTRA_BALL, BONUS_HOLD_INCREMENT, BLACKOUT,
+	LEFT_POP_LIGHT, HOLD_1, LANE_2, LANE_1, START_LOCK, HOLD_2,
 	HOLD_3, HOLD_4, TEMP_BALL_LAUNCH_READY
 };
 void setLed(enum LEDs index,uint8_t state);
