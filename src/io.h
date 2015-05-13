@@ -110,7 +110,7 @@ typedef struct
 	uint8_t rawState;
 	uint32_t settleTime;
 } Input;
-#define In(b,p) {{b,p},0,1,0,0,0,0,5}
+#define In(b,p,f) {{b,p},0,1,0,0,0,0,f?0:20}
 
 extern Input DROP_TARGET[3][3];
 extern Input FIVE_TARGET[5];
@@ -144,7 +144,7 @@ void setOut(IOPin pin, uint32_t value);
 void setOutDirect(IOPin pin, uint32_t value);
 uint8_t getIn(IOPin pin);
 void initIOs();
-void updateIOs(uint8_t manual=0);
+void updateIOs();
 
 uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms);
 uint8_t fireSolenoid(Solenoid *s);

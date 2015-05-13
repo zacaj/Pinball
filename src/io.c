@@ -64,31 +64,31 @@ Solenoid heldRelays[nHeldRelay] = {
 	Sd(bA,P3,20), //playfield disable
 };
 //left right top
-Input DROP_TARGET[3][3] = { { In(bmA,P0), In(bmA,P3), In(bmA,P2) }, { In(bmA,P4),
-In(bmA, P7), In(bmA,P6) }, { In(bmB,P1), In(bmB,P2), In(bmB,P0) } };
-Input FIVE_TARGET[5] = { In(bmB,P3), In(bmB,P4), In(bmB,P7), In(bmB,P6), In(bmB,P5) };
-Input LEFT_CAPTURE = In(bB,P14);
-Input RIGHT_CAPTURE = In(bmA,P5);
-Input TOP_CAPTURE = In(bmA,P1);
-Input SCORE_ZERO[4] = { In(bmD,P0), In(bmD,P1), In(bmD,P2), In(bmD,P4) };
-Input BONUS_ZERO[4] = { In(bmD,P5), In(bmD,P6), In(bmD,P7), In(bmD,P3) };
-Input BALL_OUT = In(bB,P10);
-Input SHOOT_BUTTON = In(bmC,P3);
-Input BALLS_FULL = In(bB,P12);
-Input LANES[4] = { In(bD,P8), In(bD,P10), In(bD,P12), In(bD,P14) };
-Input LEFT_FLIPPER = In(bmC,P6);
-Input LEFT_BLOCK = In(bmC,P7);
-Input RIGHT_FLIPPER = In(bmC,P4);
-Input RIGHT_BLOCK = In(bmC,P5);
-Input START = In(bmC,P1);
-Input CAB_LEFT = In(bmC,P0);
-Input CAB_RIGHT = In(bmC,P2);
-Input LEFT_POP = In(bB,P11);
-Input RIGHT_POP = In(bB,P13);
-Input BUMPER = In(bC,P7);
-Input ROTATE_ROLLOVER = In(bB,P15);
-Input ACTIVATE_TARGET = In(bD,P9);
-Input RED_TARGET[4] = { In(bD,P11), In(bD,P13), In(bD,P15), In(bC,P6) };
+Input DROP_TARGET[3][3] = { { In(bmA,P0,1), In(bmA,P3,1), In(bmA,P2,1) }, { In(bmA,P4,1),
+In(bmA, P7,1), In(bmA,P6,1) }, { In(bmB,P1,1), In(bmB,P2,1), In(bmB,P0,1) } };
+Input FIVE_TARGET[5] = { In(bmB,P3,1), In(bmB,P4,1), In(bmB,P7,1), In(bmB,P6,1), In(bmB,P5,1) };
+Input LEFT_CAPTURE = In(bB,P14,0);
+Input RIGHT_CAPTURE = In(bmA,P5,0);
+Input TOP_CAPTURE = In(bmA,P1,0);
+Input SCORE_ZERO[4] = { In(bmD,P0,1), In(bmD,P1,1), In(bmD,P2,1), In(bmD,P4,1) };
+Input BONUS_ZERO[4] = { In(bmD,P5,1), In(bmD,P6,1), In(bmD,P7,1), In(bmD,P3,1) };
+Input BALL_OUT = In(bB,P10,0);
+Input SHOOT_BUTTON = In(bmC,P3,0);
+Input BALLS_FULL = In(bB,P12,0);
+Input LANES[4] = { In(bD,P8,1), In(bD,P10,1), In(bD,P12,1), In(bD,P14,1) };
+Input LEFT_FLIPPER = In(bmC,P6,0);
+Input LEFT_BLOCK = In(bmC,P7,0);
+Input RIGHT_FLIPPER = In(bmC,P4,0);
+Input RIGHT_BLOCK = In(bmC,P5,0);
+Input START = In(bmC,P1,0);
+Input CAB_LEFT = In(bmC,P0,0);
+Input CAB_RIGHT = In(bmC,P2,0);
+Input LEFT_POP = In(bB,P11,1);
+Input RIGHT_POP = In(bB,P13,1);
+Input BUMPER = In(bC,P7,0);
+Input ROTATE_ROLLOVER = In(bB,P15,1);
+Input ACTIVATE_TARGET = In(bD,P9,1);
+Input RED_TARGET[4] = { In(bD,P11,1), In(bD,P13,1), In(bD,P15,1), In(bC,P6,1) };
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def) {
 	if (pin.bank == bU)
@@ -247,7 +247,6 @@ void initIOs() {
 	fireSolenoidFor(&HOLD,50);
 }
 int ledi=0;
-uint8_t forceInputCheck=0;
 int nled=0;
 void updateInput(Input* in) {
 	const enum LEDs lowerDebugLights[] = { RED_TARGET_LEFT, LEFT_1, LEFT_2,
@@ -262,10 +261,9 @@ void updateInput(Input* in) {
 		in->rawState=state;
 		in->lastChange=msElapsed;
 	}
-	if (state != in->state && (msElapsed - in->lastChange > in->settleTime || forceInputCheck)) {
-		in->state = state;
+		in->state = in->rawState;
 		in->lastChange = msElapsed;
-		if (state) {
+		if (in->state) {
 			in->pressed = 1;
 			//setLedDebug(ledi,lowerDebugLights);
 			nled++;

@@ -2211,7 +2211,7 @@ LOAD d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
                 0x08000000                g_pfnVectors
                 0x08000188                . = ALIGN (0x4)
 
-.text           0x08000188     0xac1c
+.text           0x08000188     0xac3c
                 0x08000188                . = ALIGN (0x4)
  *(.text)
  .text          0x08000188       0xa4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
@@ -2581,229 +2581,229 @@ LOAD d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
                 0x080081bc       0x84 src/game.o
                 0x080081bc                switchMode
  .text.updateGame
-                0x08008240     0x10c4 src/game.o
+                0x08008240     0x10d4 src/game.o
                 0x08008240                updateGame
- .text._close   0x08009304       0x18 src/newlib_stubs.o
-                0x08009304                _close
- .text._fstat   0x0800931c       0x20 src/newlib_stubs.o
-                0x0800931c                _fstat
- .text._isatty  0x0800933c       0x2c src/newlib_stubs.o
-                0x0800933c                _isatty
- .text._lseek   0x08009368       0x1c src/newlib_stubs.o
-                0x08009368                _lseek
- .text._sbrk    0x08009384       0x70 src/newlib_stubs.o
-                0x08009384                _sbrk
- .text._read    0x080093f4       0x74 src/newlib_stubs.o
-                0x080093f4                _read
- .text._write   0x08009468       0xa0 src/newlib_stubs.o
-                0x08009468                _write
+ .text._close   0x08009314       0x18 src/newlib_stubs.o
+                0x08009314                _close
+ .text._fstat   0x0800932c       0x20 src/newlib_stubs.o
+                0x0800932c                _fstat
+ .text._isatty  0x0800934c       0x2c src/newlib_stubs.o
+                0x0800934c                _isatty
+ .text._lseek   0x08009378       0x1c src/newlib_stubs.o
+                0x08009378                _lseek
+ .text._sbrk    0x08009394       0x70 src/newlib_stubs.o
+                0x08009394                _sbrk
+ .text._read    0x08009404       0x74 src/newlib_stubs.o
+                0x08009404                _read
+ .text._write   0x08009478       0xa0 src/newlib_stubs.o
+                0x08009478                _write
  .text.STM_EVAL_LEDInit
-                0x08009508       0x5c src/stm32f3_discovery.o
-                0x08009508                STM_EVAL_LEDInit
+                0x08009518       0x5c src/stm32f3_discovery.o
+                0x08009518                STM_EVAL_LEDInit
  .text.STM_EVAL_LEDOn
-                0x08009564       0x30 src/stm32f3_discovery.o
-                0x08009564                STM_EVAL_LEDOn
+                0x08009574       0x30 src/stm32f3_discovery.o
+                0x08009574                STM_EVAL_LEDOn
  .text.STM_EVAL_LEDOff
-                0x08009594       0x30 src/stm32f3_discovery.o
-                0x08009594                STM_EVAL_LEDOff
+                0x080095a4       0x30 src/stm32f3_discovery.o
+                0x080095a4                STM_EVAL_LEDOff
  .text.STM_EVAL_PBInit
-                0x080095c4       0x94 src/stm32f3_discovery.o
-                0x080095c4                STM_EVAL_PBInit
+                0x080095d4       0x94 src/stm32f3_discovery.o
+                0x080095d4                STM_EVAL_PBInit
  .text.STM_EVAL_PBGetState
-                0x08009658       0x2c src/stm32f3_discovery.o
-                0x08009658                STM_EVAL_PBGetState
+                0x08009668       0x2c src/stm32f3_discovery.o
+                0x08009668                STM_EVAL_PBGetState
  .text.SysTick_Handler
-                0x08009684       0x28 src/common.o
-                0x08009684                SysTick_Handler
+                0x08009694       0x28 src/common.o
+                0x08009694                SysTick_Handler
  .text.initScores
-                0x080096ac        0xc src/score.o
-                0x080096ac                initScores
+                0x080096bc        0xc src/score.o
+                0x080096bc                initScores
  .text.getDigit
-                0x080096b8       0x54 src/score.o
-                0x080096b8                getDigit
+                0x080096c8       0x54 src/score.o
+                0x080096c8                getDigit
  .text.updateBank
-                0x0800970c      0x180 src/score.o
-                0x0800970c                updateBank
+                0x0800971c      0x180 src/score.o
+                0x0800971c                updateBank
  .text.updateScores
-                0x0800988c       0x98 src/score.o
-                0x0800988c                updateScores
+                0x0800989c       0x98 src/score.o
+                0x0800989c                updateScores
  .text.initInput
-                0x08009924       0x48 src/io.o
-                0x08009924                initInput
+                0x08009934       0x48 src/io.o
+                0x08009934                initInput
  .text.initOutput
-                0x0800996c       0x44 src/io.o
-                0x0800996c                initOutput
+                0x0800997c       0x44 src/io.o
+                0x0800997c                initOutput
  .text.setOutDirect
-                0x080099b0       0x38 src/io.o
-                0x080099b0                setOutDirect
- .text.setOut   0x080099e8       0xcc src/io.o
-                0x080099e8                setOut
+                0x080099c0       0x38 src/io.o
+                0x080099c0                setOutDirect
+ .text.setOut   0x080099f8       0xcc src/io.o
+                0x080099f8                setOut
  .text.getInDirect
-                0x08009ab4       0x38 src/io.o
-                0x08009ab4                getInDirect
- .text.getIn    0x08009aec       0x6c src/io.o
-                0x08009aec                getIn
- .text.initIOs  0x08009b58      0x4cc src/io.o
-                0x08009b58                initIOs
+                0x08009ac4       0x38 src/io.o
+                0x08009ac4                getInDirect
+ .text.getIn    0x08009afc       0x6c src/io.o
+                0x08009afc                getIn
+ .text.initIOs  0x08009b68      0x4cc src/io.o
+                0x08009b68                initIOs
  .text.updateInput
-                0x0800a024       0xb4 src/io.o
-                0x0800a024                updateInput
+                0x0800a034       0xc4 src/io.o
+                0x0800a034                updateInput
  .text.updateIOs
-                0x0800a0d8      0x4a0 src/io.o
-                0x0800a0d8                updateIOs
+                0x0800a0f8      0x4a0 src/io.o
+                0x0800a0f8                updateIOs
  .text.setBoardLed
-                0x0800a578       0x30 src/io.o
-                0x0800a578                setBoardLed
+                0x0800a598       0x30 src/io.o
+                0x0800a598                setBoardLed
  .text.updateSlowInputs
-                0x0800a5a8      0x170 src/io.o
-                0x0800a5a8                updateSlowInputs
+                0x0800a5c8      0x170 src/io.o
+                0x0800a5c8                updateSlowInputs
  .text.turnOffSolenoid
-                0x0800a718       0x2c src/io.o
-                0x0800a718                turnOffSolenoid
+                0x0800a738       0x2c src/io.o
+                0x0800a738                turnOffSolenoid
  .text.fireSolenoidAfter
-                0x0800a744       0x20 src/io.o
-                0x0800a744                fireSolenoidAfter
- .text.fireSolenoid
                 0x0800a764       0x20 src/io.o
-                0x0800a764                fireSolenoid
+                0x0800a764                fireSolenoidAfter
+ .text.fireSolenoid
+                0x0800a784       0x20 src/io.o
+                0x0800a784                fireSolenoid
  .text.fireSolenoidFor
-                0x0800a784       0x50 src/io.o
-                0x0800a784                fireSolenoidFor
+                0x0800a7a4       0x50 src/io.o
+                0x0800a7a4                fireSolenoidFor
  .text.fireSolenoidIn
-                0x0800a7d4       0x30 src/io.o
-                0x0800a7d4                fireSolenoidIn
- .text.setLed   0x0800a804       0x30 src/io.o
-                0x0800a804                setLed
+                0x0800a7f4       0x30 src/io.o
+                0x0800a7f4                fireSolenoidIn
+ .text.setLed   0x0800a824       0x30 src/io.o
+                0x0800a824                setLed
  .text.offsetLed
-                0x0800a834       0x44 src/io.o
-                0x0800a834                offsetLed
+                0x0800a854       0x44 src/io.o
+                0x0800a854                offsetLed
  .text.setFlash
-                0x0800a878       0x54 src/io.o
-                0x0800a878                setFlash
- .text.getLed   0x0800a8cc       0x2c src/io.o
-                0x0800a8cc                getLed
+                0x0800a898       0x54 src/io.o
+                0x0800a898                setFlash
+ .text.getLed   0x0800a8ec       0x2c src/io.o
+                0x0800a8ec                getLed
  .text.updateHeldRelays
-                0x0800a8f8      0x108 src/io.o
-                0x0800a8f8                updateHeldRelays
+                0x0800a918      0x108 src/io.o
+                0x0800a918                updateHeldRelays
  .text.setHeldRelay
-                0x0800aa00       0x74 src/io.o
-                0x0800aa00                setHeldRelay
+                0x0800aa20       0x74 src/io.o
+                0x0800aa20                setHeldRelay
  .text.Reset_Handler
-                0x0800aa74       0x48 src/startup_stm32f30x.o
-                0x0800aa74                Reset_Handler
+                0x0800aa94       0x48 src/startup_stm32f30x.o
+                0x0800aa94                Reset_Handler
  .text.Default_Handler
-                0x0800aabc        0x2 src/startup_stm32f30x.o
-                0x0800aabc                RTC_Alarm_IRQHandler
-                0x0800aabc                DebugMon_Handler
-                0x0800aabc                HardFault_Handler
-                0x0800aabc                USB_HP_IRQHandler
-                0x0800aabc                PVD_IRQHandler
-                0x0800aabc                PendSV_Handler
-                0x0800aabc                NMI_Handler
-                0x0800aabc                EXTI3_IRQHandler
-                0x0800aabc                EXTI0_IRQHandler
-                0x0800aabc                I2C2_EV_IRQHandler
-                0x0800aabc                FPU_IRQHandler
-                0x0800aabc                EXTI2_TS_IRQHandler
-                0x0800aabc                UsageFault_Handler
-                0x0800aabc                ADC1_2_IRQHandler
-                0x0800aabc                SPI1_IRQHandler
-                0x0800aabc                DMA2_Channel2_IRQHandler
-                0x0800aabc                DMA1_Channel4_IRQHandler
-                0x0800aabc                USART3_IRQHandler
-                0x0800aabc                DMA1_Channel7_IRQHandler
-                0x0800aabc                CAN1_RX1_IRQHandler
-                0x0800aabc                UART5_IRQHandler
-                0x0800aabc                ADC3_IRQHandler
-                0x0800aabc                DMA2_Channel1_IRQHandler
-                0x0800aabc                I2C1_EV_IRQHandler
-                0x0800aabc                DMA1_Channel6_IRQHandler
-                0x0800aabc                UART4_IRQHandler
-                0x0800aabc                DMA2_Channel4_IRQHandler
-                0x0800aabc                RCC_IRQHandler
-                0x0800aabc                DMA1_Channel1_IRQHandler
-                0x0800aabc                Default_Handler
-                0x0800aabc                USBWakeUp_RMP_IRQHandler
-                0x0800aabc                EXTI15_10_IRQHandler
-                0x0800aabc                EXTI9_5_IRQHandler
-                0x0800aabc                TAMPER_STAMP_IRQHandler
-                0x0800aabc                RTC_WKUP_IRQHandler
-                0x0800aabc                SPI2_IRQHandler
-                0x0800aabc                MemManage_Handler
-                0x0800aabc                SVC_Handler
-                0x0800aabc                DMA2_Channel5_IRQHandler
-                0x0800aabc                DMA1_Channel5_IRQHandler
-                0x0800aabc                USB_LP_IRQHandler
-                0x0800aabc                EXTI4_IRQHandler
-                0x0800aabc                USB_LP_CAN1_RX0_IRQHandler
-                0x0800aabc                USB_HP_CAN1_TX_IRQHandler
-                0x0800aabc                DMA1_Channel3_IRQHandler
-                0x0800aabc                ADC4_IRQHandler
-                0x0800aabc                WWDG_IRQHandler
-                0x0800aabc                COMP7_IRQHandler
-                0x0800aabc                COMP1_2_3_IRQHandler
-                0x0800aabc                EXTI1_IRQHandler
-                0x0800aabc                USART2_IRQHandler
-                0x0800aabc                COMP4_5_6_IRQHandler
-                0x0800aabc                I2C2_ER_IRQHandler
-                0x0800aabc                DMA1_Channel2_IRQHandler
-                0x0800aabc                CAN1_SCE_IRQHandler
-                0x0800aabc                FLASH_IRQHandler
-                0x0800aabc                BusFault_Handler
-                0x0800aabc                USART1_IRQHandler
-                0x0800aabc                SPI3_IRQHandler
-                0x0800aabc                I2C1_ER_IRQHandler
-                0x0800aabc                USBWakeUp_IRQHandler
-                0x0800aabc                DMA2_Channel3_IRQHandler
+                0x0800aadc        0x2 src/startup_stm32f30x.o
+                0x0800aadc                RTC_Alarm_IRQHandler
+                0x0800aadc                DebugMon_Handler
+                0x0800aadc                HardFault_Handler
+                0x0800aadc                USB_HP_IRQHandler
+                0x0800aadc                PVD_IRQHandler
+                0x0800aadc                PendSV_Handler
+                0x0800aadc                NMI_Handler
+                0x0800aadc                EXTI3_IRQHandler
+                0x0800aadc                EXTI0_IRQHandler
+                0x0800aadc                I2C2_EV_IRQHandler
+                0x0800aadc                FPU_IRQHandler
+                0x0800aadc                EXTI2_TS_IRQHandler
+                0x0800aadc                UsageFault_Handler
+                0x0800aadc                ADC1_2_IRQHandler
+                0x0800aadc                SPI1_IRQHandler
+                0x0800aadc                DMA2_Channel2_IRQHandler
+                0x0800aadc                DMA1_Channel4_IRQHandler
+                0x0800aadc                USART3_IRQHandler
+                0x0800aadc                DMA1_Channel7_IRQHandler
+                0x0800aadc                CAN1_RX1_IRQHandler
+                0x0800aadc                UART5_IRQHandler
+                0x0800aadc                ADC3_IRQHandler
+                0x0800aadc                DMA2_Channel1_IRQHandler
+                0x0800aadc                I2C1_EV_IRQHandler
+                0x0800aadc                DMA1_Channel6_IRQHandler
+                0x0800aadc                UART4_IRQHandler
+                0x0800aadc                DMA2_Channel4_IRQHandler
+                0x0800aadc                RCC_IRQHandler
+                0x0800aadc                DMA1_Channel1_IRQHandler
+                0x0800aadc                Default_Handler
+                0x0800aadc                USBWakeUp_RMP_IRQHandler
+                0x0800aadc                EXTI15_10_IRQHandler
+                0x0800aadc                EXTI9_5_IRQHandler
+                0x0800aadc                TAMPER_STAMP_IRQHandler
+                0x0800aadc                RTC_WKUP_IRQHandler
+                0x0800aadc                SPI2_IRQHandler
+                0x0800aadc                MemManage_Handler
+                0x0800aadc                SVC_Handler
+                0x0800aadc                DMA2_Channel5_IRQHandler
+                0x0800aadc                DMA1_Channel5_IRQHandler
+                0x0800aadc                USB_LP_IRQHandler
+                0x0800aadc                EXTI4_IRQHandler
+                0x0800aadc                USB_LP_CAN1_RX0_IRQHandler
+                0x0800aadc                USB_HP_CAN1_TX_IRQHandler
+                0x0800aadc                DMA1_Channel3_IRQHandler
+                0x0800aadc                ADC4_IRQHandler
+                0x0800aadc                WWDG_IRQHandler
+                0x0800aadc                COMP7_IRQHandler
+                0x0800aadc                COMP1_2_3_IRQHandler
+                0x0800aadc                EXTI1_IRQHandler
+                0x0800aadc                USART2_IRQHandler
+                0x0800aadc                COMP4_5_6_IRQHandler
+                0x0800aadc                I2C2_ER_IRQHandler
+                0x0800aadc                DMA1_Channel2_IRQHandler
+                0x0800aadc                CAN1_SCE_IRQHandler
+                0x0800aadc                FLASH_IRQHandler
+                0x0800aadc                BusFault_Handler
+                0x0800aadc                USART1_IRQHandler
+                0x0800aadc                SPI3_IRQHandler
+                0x0800aadc                I2C1_ER_IRQHandler
+                0x0800aadc                USBWakeUp_IRQHandler
+                0x0800aadc                DMA2_Channel3_IRQHandler
  *(.rodata)
- *fill*         0x0800aabe        0x2 
- .rodata        0x0800aac0       0x1c src/timer.o
- .rodata        0x0800aadc        0xc src/game.o
- .rodata        0x0800aae8       0x24 src/newlib_stubs.o
- .rodata        0x0800ab0c        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
-                0x0800ab0c                _global_impure_ptr
- .rodata        0x0800ab10       0x20 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
- .rodata        0x0800ab30      0x128 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mprec.o)
-                0x0800ab40                __mprec_tens
-                0x0800ac08                __mprec_tinytens
-                0x0800ac30                __mprec_bigtens
- .rodata        0x0800ac58       0x20 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
+ *fill*         0x0800aade        0x2 
+ .rodata        0x0800aae0       0x1c src/timer.o
+ .rodata        0x0800aafc        0xc src/game.o
+ .rodata        0x0800ab08       0x24 src/newlib_stubs.o
+ .rodata        0x0800ab2c        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
+                0x0800ab2c                _global_impure_ptr
+ .rodata        0x0800ab30       0x20 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
+ .rodata        0x0800ab50      0x128 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mprec.o)
+                0x0800ab60                __mprec_tens
+                0x0800ac28                __mprec_tinytens
+                0x0800ac50                __mprec_bigtens
+ .rodata        0x0800ac78       0x20 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
  *(.rodata*)
  .rodata.PLAYER_ENABLE
-                0x0800ac78       0x10 src/game.o
+                0x0800ac98       0x10 src/game.o
  .rodata.GPIO_PIN
-                0x0800ac88       0x10 src/stm32f3_discovery.o
-                0x0800ac88                GPIO_PIN
+                0x0800aca8       0x10 src/stm32f3_discovery.o
+                0x0800aca8                GPIO_PIN
  .rodata.GPIO_CLK
-                0x0800ac98       0x20 src/stm32f3_discovery.o
-                0x0800ac98                GPIO_CLK
+                0x0800acb8       0x20 src/stm32f3_discovery.o
+                0x0800acb8                GPIO_CLK
  .rodata.MULTI_IN_LATCH
-                0x0800acb8        0x8 src/io.o
+                0x0800acd8        0x8 src/io.o
  .rodata.MULTI_IN_CLOCK
-                0x0800acc0        0x8 src/io.o
+                0x0800ace0        0x8 src/io.o
  .rodata.MULTI_IN_DATA
-                0x0800acc8       0x20 src/io.o
+                0x0800ace8       0x20 src/io.o
  .rodata.LED_LATCH
-                0x0800ace8        0x8 src/io.o
+                0x0800ad08        0x8 src/io.o
  .rodata.LED_DATA
-                0x0800acf0        0x8 src/io.o
+                0x0800ad10        0x8 src/io.o
  .rodata.LED_CLOCK
-                0x0800acf8        0x8 src/io.o
+                0x0800ad18        0x8 src/io.o
  .rodata.heldRelayMaxOnTime
-                0x0800ad00       0x28 src/io.o
+                0x0800ad20       0x28 src/io.o
  .rodata.str1.4
-                0x0800ad28        0x2 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
+                0x0800ad48        0x2 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x0800ad2a        0x2 
+ *fill*         0x0800ad4a        0x2 
  .rodata.str1.4
-                0x0800ad2c       0x42 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
+                0x0800ad4c       0x42 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
                                  0x44 (size before relaxing)
- *fill*         0x0800ad6e        0x2 
+ *fill*         0x0800ad8e        0x2 
  .rodata.str1.4
-                0x0800ad70       0x10 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-dtoa.o)
+                0x0800ad90       0x10 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-dtoa.o)
                                  0x14 (size before relaxing)
  .rodata.str1.4
-                0x0800ad80        0xc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-locale.o)
+                0x0800ada0        0xc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-locale.o)
                                  0x14 (size before relaxing)
  .rodata.str1.4
                 0x00000000       0x30 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
@@ -2812,59 +2812,59 @@ LOAD d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800ad8c        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
+ .eh_frame      0x0800adac        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
  *(.init)
- .init          0x0800ad8c        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crti.o
-                0x0800ad8c                _init
- .init          0x0800ad90        0x8 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
+ .init          0x0800adac        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crti.o
+                0x0800adac                _init
+ .init          0x0800adb0        0x8 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
  *(.fini)
- .fini          0x0800ad98        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crti.o
-                0x0800ad98                _fini
- .fini          0x0800ad9c        0x8 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
-                0x0800ada4                . = ALIGN (0x4)
-                0x0800ada4                _etext = .
+ .fini          0x0800adb8        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crti.o
+                0x0800adb8                _fini
+ .fini          0x0800adbc        0x8 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
+                0x0800adc4                . = ALIGN (0x4)
+                0x0800adc4                _etext = .
 
-.vfp11_veneer   0x0800ada4        0x0
+.vfp11_veneer   0x0800adc4        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0800ada4        0x0
+.v4_bx          0x0800adc4        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0800ada4        0x0
+.iplt           0x0800adc4        0x0
  .iplt          0x00000000        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
 
-.rel.dyn        0x0800ada4        0x0
+.rel.dyn        0x0800adc4        0x0
  .rel.iplt      0x00000000        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800ada4        0x0
-                0x0800ada4                __exidx_start = .
+.ARM            0x0800adc4        0x0
+                0x0800adc4                __exidx_start = .
  *(.ARM.exidx*)
-                0x0800ada4                __exidx_end = .
+                0x0800adc4                __exidx_end = .
 
-.preinit_array  0x0800ada4        0x0
-                0x0800ada4                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0800adc4        0x0
+                0x0800adc4                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0800ada4                PROVIDE (__preinit_array_end, .)
+                0x0800adc4                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0800ada4        0x4
-                0x0800ada4                PROVIDE (__init_array_start, .)
+.init_array     0x0800adc4        0x4
+                0x0800adc4                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x0800ada4        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
-                0x0800ada8                PROVIDE (__init_array_end, .)
+ .init_array    0x0800adc4        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
+                0x0800adc8                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0800ada8        0x4
-                0x0800ada8                PROVIDE (__fini_array_start, .)
+.fini_array     0x0800adc8        0x4
+                0x0800adc8                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800ada8        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
-                0x0800adac                PROVIDE (__fini_array_end, .)
-                0x0800adac                _sidata = LOADADDR (.data)
+ .fini_array    0x0800adc8        0x4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
+                0x0800adcc                PROVIDE (__fini_array_end, .)
+                0x0800adcc                _sidata = LOADADDR (.data)
 
-.data           0x20000000     0x10e0 load address 0x0800adac
+.data           0x20000000     0x10e0 load address 0x0800adcc
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -3043,22 +3043,22 @@ LOAD d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtn.o
                 0x20001080                RED_TARGET
                 0x200010e0                . = ALIGN (0x4)
                 0x200010e0                _edata = .
-                0x0800be8c                _siccmram = LOADADDR (.ccmram)
+                0x0800beac                _siccmram = LOADADDR (.ccmram)
 
-.jcr            0x200010e0        0x0 load address 0x0800be8c
+.jcr            0x200010e0        0x0 load address 0x0800beac
  .jcr           0x200010e0        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
 
 .tm_clone_table
-                0x200010e0        0x0 load address 0x0800be8c
+                0x200010e0        0x0 load address 0x0800beac
  .tm_clone_table
                 0x200010e0        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
  .tm_clone_table
                 0x200010e0        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtend.o
 
-.igot.plt       0x200010e0        0x0 load address 0x0800be8c
+.igot.plt       0x200010e0        0x0 load address 0x0800beac
  .igot.plt      0x00000000        0x0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x0800be8c
+.ccmram         0x10000000        0x0 load address 0x0800beac
                 0x10000000                . = ALIGN (0x4)
                 0x10000000                _sccmram = .
  *(.ccmram)
@@ -3409,7 +3409,7 @@ OUTPUT(pinball.elf elf32-littlearm)
  .comment       0x00000000       0x12 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wctomb_r.o)
  .comment       0x00000000       0x12 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4/crtend.o
 
-.debug_info     0x00000000    0x22bff
+.debug_info     0x00000000    0x22c0b
  .debug_info    0x00000000      0x5fe Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_gpio.o
  .debug_info    0x000005fe     0x2188 Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_tim.o
  .debug_info    0x00002786      0x541 Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_misc.o
@@ -3419,58 +3419,58 @@ OUTPUT(pinball.elf elf32-littlearm)
  .debug_info    0x00003ef7      0x9c2 src/timer.o
  .debug_info    0x000048b9      0x49c src/system_stm32f30x.o
  .debug_info    0x00004d55      0xe0d src/main.o
- .debug_info    0x00005b62     0x164e src/game.o
- .debug_info    0x000071b0      0x7db src/newlib_stubs.o
- .debug_info    0x0000798b      0x857 src/stm32f3_discovery.o
- .debug_info    0x000081e2      0x102 src/common.o
- .debug_info    0x000082e4      0x823 src/score.o
- .debug_info    0x00008b07     0x127f src/io.o
- .debug_info    0x00009d86       0x59 src/startup_stm32f30x.o
- .debug_info    0x00009ddf      0x894 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
- .debug_info    0x0000a673      0x105 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-init.o)
- .debug_info    0x0000a778      0x117 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memset.o)
- .debug_info    0x0000a88f      0x9ab d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-printf.o)
- .debug_info    0x0000b23a      0x8c7 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-rand.o)
- .debug_info    0x0000bb01      0x9fb d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reent.o)
- .debug_info    0x0000c4fc     0x1870 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
- .debug_info    0x0000dd6c      0x93b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wsetup.o)
- .debug_info    0x0000e6a7     0x134e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-dtoa.o)
- .debug_info    0x0000f9f5      0xab0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fflush.o)
- .debug_info    0x000104a5      0xd6a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-findfp.o)
- .debug_info    0x0001120f      0xc1c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-freer.o)
- .debug_info    0x00011e2b      0x99e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fwalk.o)
- .debug_info    0x000127c9      0xc24 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-locale.o)
- .debug_info    0x000133ed      0xae6 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-makebuf.o)
- .debug_info    0x00013ed3      0xd8a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mallocr.o)
- .debug_info    0x00014c5d      0x129 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memchr-stub.o)
- .debug_info    0x00014d86      0x103 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memcpy.o)
- .debug_info    0x00014e89      0x8b4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mlock.o)
- .debug_info    0x0001573d     0x1684 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mprec.o)
- .debug_info    0x00016dc1       0xde d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-s_fpclassify.o)
- .debug_info    0x00016e9f      0x8f4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-sbrkr.o)
- .debug_info    0x00017793      0xb8a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-stdio.o)
- .debug_info    0x0001831d       0xfc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strcmp.o)
- .debug_info    0x00018419       0xb5 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strlen.o)
- .debug_info    0x000184ce     0x153c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
- .debug_info    0x00019a0a      0x929 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-writer.o)
- .debug_info    0x0001a333      0x9e0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-callocr.o)
- .debug_info    0x0001ad13      0x8e0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-closer.o)
- .debug_info    0x0001b5f3      0xa29 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fclose.o)
- .debug_info    0x0001c01c      0xac9 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fputwc.o)
- .debug_info    0x0001cae5      0xa5e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fstatr.o)
- .debug_info    0x0001d543      0xc63 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fvwrite.o)
- .debug_info    0x0001e1a6      0x8e0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-isattyr.o)
- .debug_info    0x0001ea86      0x90c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-lseekr.o)
- .debug_info    0x0001f392      0x131 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memmove.o)
- .debug_info    0x0001f4c3      0x922 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-readr.o)
- .debug_info    0x0001fde5      0xcbc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reallocr.o)
- .debug_info    0x00020aa1      0x9cc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wbuf.o)
- .debug_info    0x0002146d      0xa75 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wcrtomb.o)
- .debug_info    0x00021ee2      0x9b5 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wctomb_r.o)
- .debug_info    0x00022897       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_addsubdf3.o)
- .debug_info    0x00022971       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_muldivdf3.o)
- .debug_info    0x00022a4b       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_cmpdf2.o)
- .debug_info    0x00022b25       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_fixdfsi.o)
+ .debug_info    0x00005b62     0x165a src/game.o
+ .debug_info    0x000071bc      0x7db src/newlib_stubs.o
+ .debug_info    0x00007997      0x857 src/stm32f3_discovery.o
+ .debug_info    0x000081ee      0x102 src/common.o
+ .debug_info    0x000082f0      0x823 src/score.o
+ .debug_info    0x00008b13     0x127f src/io.o
+ .debug_info    0x00009d92       0x59 src/startup_stm32f30x.o
+ .debug_info    0x00009deb      0x894 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
+ .debug_info    0x0000a67f      0x105 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-init.o)
+ .debug_info    0x0000a784      0x117 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memset.o)
+ .debug_info    0x0000a89b      0x9ab d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-printf.o)
+ .debug_info    0x0000b246      0x8c7 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-rand.o)
+ .debug_info    0x0000bb0d      0x9fb d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reent.o)
+ .debug_info    0x0000c508     0x1870 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
+ .debug_info    0x0000dd78      0x93b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wsetup.o)
+ .debug_info    0x0000e6b3     0x134e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-dtoa.o)
+ .debug_info    0x0000fa01      0xab0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fflush.o)
+ .debug_info    0x000104b1      0xd6a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-findfp.o)
+ .debug_info    0x0001121b      0xc1c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-freer.o)
+ .debug_info    0x00011e37      0x99e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fwalk.o)
+ .debug_info    0x000127d5      0xc24 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-locale.o)
+ .debug_info    0x000133f9      0xae6 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-makebuf.o)
+ .debug_info    0x00013edf      0xd8a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mallocr.o)
+ .debug_info    0x00014c69      0x129 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memchr-stub.o)
+ .debug_info    0x00014d92      0x103 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memcpy.o)
+ .debug_info    0x00014e95      0x8b4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mlock.o)
+ .debug_info    0x00015749     0x1684 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mprec.o)
+ .debug_info    0x00016dcd       0xde d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-s_fpclassify.o)
+ .debug_info    0x00016eab      0x8f4 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-sbrkr.o)
+ .debug_info    0x0001779f      0xb8a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-stdio.o)
+ .debug_info    0x00018329       0xfc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strcmp.o)
+ .debug_info    0x00018425       0xb5 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strlen.o)
+ .debug_info    0x000184da     0x153c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
+ .debug_info    0x00019a16      0x929 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-writer.o)
+ .debug_info    0x0001a33f      0x9e0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-callocr.o)
+ .debug_info    0x0001ad1f      0x8e0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-closer.o)
+ .debug_info    0x0001b5ff      0xa29 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fclose.o)
+ .debug_info    0x0001c028      0xac9 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fputwc.o)
+ .debug_info    0x0001caf1      0xa5e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fstatr.o)
+ .debug_info    0x0001d54f      0xc63 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fvwrite.o)
+ .debug_info    0x0001e1b2      0x8e0 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-isattyr.o)
+ .debug_info    0x0001ea92      0x90c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-lseekr.o)
+ .debug_info    0x0001f39e      0x131 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memmove.o)
+ .debug_info    0x0001f4cf      0x922 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-readr.o)
+ .debug_info    0x0001fdf1      0xcbc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reallocr.o)
+ .debug_info    0x00020aad      0x9cc d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wbuf.o)
+ .debug_info    0x00021479      0xa75 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wcrtomb.o)
+ .debug_info    0x00021eee      0x9b5 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wctomb_r.o)
+ .debug_info    0x000228a3       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_addsubdf3.o)
+ .debug_info    0x0002297d       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_muldivdf3.o)
+ .debug_info    0x00022a57       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_cmpdf2.o)
+ .debug_info    0x00022b31       0xda d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_fixdfsi.o)
 
 .debug_abbrev   0x00000000     0x6baf
  .debug_abbrev  0x00000000      0x196 Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_gpio.o
@@ -3691,7 +3691,7 @@ OUTPUT(pinball.elf elf32-littlearm)
  .debug_ranges  0x00000f80      0x170 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reallocr.o)
  .debug_ranges  0x000010f0       0x18 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wbuf.o)
 
-.debug_line     0x00000000     0x8ff8
+.debug_line     0x00000000     0x8ffe
  .debug_line    0x00000000      0x2a7 Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_gpio.o
  .debug_line    0x000002a7      0xbdb Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_tim.o
  .debug_line    0x00000e82      0x1d8 Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_misc.o
@@ -3701,58 +3701,58 @@ OUTPUT(pinball.elf elf32-littlearm)
  .debug_line    0x000019ed      0x3b3 src/timer.o
  .debug_line    0x00001da0      0x18d src/system_stm32f30x.o
  .debug_line    0x00001f2d      0x20f src/main.o
- .debug_line    0x0000213c      0x8ab src/game.o
- .debug_line    0x000029e7      0x32d src/newlib_stubs.o
- .debug_line    0x00002d14      0x203 src/stm32f3_discovery.o
- .debug_line    0x00002f17       0xcf src/common.o
- .debug_line    0x00002fe6      0x21b src/score.o
- .debug_line    0x00003201      0x64b src/io.o
- .debug_line    0x0000384c       0x74 src/startup_stm32f30x.o
- .debug_line    0x000038c0       0xe8 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
- .debug_line    0x000039a8       0xc9 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-init.o)
- .debug_line    0x00003a71      0x110 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memset.o)
- .debug_line    0x00003b81      0x15b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-printf.o)
- .debug_line    0x00003cdc      0x13a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-rand.o)
- .debug_line    0x00003e16      0x166 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reent.o)
- .debug_line    0x00003f7c      0x8db d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
- .debug_line    0x00004857      0x197 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wsetup.o)
- .debug_line    0x000049ee      0x675 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-dtoa.o)
- .debug_line    0x00005063      0x219 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fflush.o)
- .debug_line    0x0000527c      0x243 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-findfp.o)
- .debug_line    0x000054bf      0x23c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-freer.o)
- .debug_line    0x000056fb      0x183 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fwalk.o)
- .debug_line    0x0000587e      0x179 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-locale.o)
- .debug_line    0x000059f7      0x1ba d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-makebuf.o)
- .debug_line    0x00005bb1      0x364 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mallocr.o)
- .debug_line    0x00005f15      0x129 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memchr-stub.o)
- .debug_line    0x0000603e       0xcb d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memcpy.o)
- .debug_line    0x00006109       0xfa d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mlock.o)
- .debug_line    0x00006203      0x593 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mprec.o)
- .debug_line    0x00006796      0x122 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-s_fpclassify.o)
- .debug_line    0x000068b8      0x13b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-sbrkr.o)
- .debug_line    0x000069f3      0x174 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-stdio.o)
- .debug_line    0x00006b67       0xd1 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strcmp.o)
- .debug_line    0x00006c38       0xe9 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strlen.o)
- .debug_line    0x00006d21      0x691 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
- .debug_line    0x000073b2      0x13d d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-writer.o)
- .debug_line    0x000074ef      0x128 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-callocr.o)
- .debug_line    0x00007617      0x13c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-closer.o)
- .debug_line    0x00007753      0x17b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fclose.o)
- .debug_line    0x000078ce      0x19a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fputwc.o)
- .debug_line    0x00007a68      0x151 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fstatr.o)
- .debug_line    0x00007bb9      0x2c2 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fvwrite.o)
- .debug_line    0x00007e7b      0x13d d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-isattyr.o)
- .debug_line    0x00007fb8      0x13d d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-lseekr.o)
- .debug_line    0x000080f5      0x116 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memmove.o)
- .debug_line    0x0000820b      0x13c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-readr.o)
- .debug_line    0x00008347      0x291 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reallocr.o)
- .debug_line    0x000085d8      0x1b2 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wbuf.o)
- .debug_line    0x0000878a      0x15e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wcrtomb.o)
- .debug_line    0x000088e8      0x15f d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wctomb_r.o)
- .debug_line    0x00008a47      0x202 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_addsubdf3.o)
- .debug_line    0x00008c49      0x223 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_muldivdf3.o)
- .debug_line    0x00008e6c      0x109 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_cmpdf2.o)
- .debug_line    0x00008f75       0x83 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_fixdfsi.o)
+ .debug_line    0x0000213c      0x8ac src/game.o
+ .debug_line    0x000029e8      0x32d src/newlib_stubs.o
+ .debug_line    0x00002d15      0x203 src/stm32f3_discovery.o
+ .debug_line    0x00002f18       0xcf src/common.o
+ .debug_line    0x00002fe7      0x21b src/score.o
+ .debug_line    0x00003202      0x650 src/io.o
+ .debug_line    0x00003852       0x74 src/startup_stm32f30x.o
+ .debug_line    0x000038c6       0xe8 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
+ .debug_line    0x000039ae       0xc9 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-init.o)
+ .debug_line    0x00003a77      0x110 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memset.o)
+ .debug_line    0x00003b87      0x15b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-printf.o)
+ .debug_line    0x00003ce2      0x13a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-rand.o)
+ .debug_line    0x00003e1c      0x166 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reent.o)
+ .debug_line    0x00003f82      0x8db d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfprintf.o)
+ .debug_line    0x0000485d      0x197 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wsetup.o)
+ .debug_line    0x000049f4      0x675 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-dtoa.o)
+ .debug_line    0x00005069      0x219 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fflush.o)
+ .debug_line    0x00005282      0x243 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-findfp.o)
+ .debug_line    0x000054c5      0x23c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-freer.o)
+ .debug_line    0x00005701      0x183 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fwalk.o)
+ .debug_line    0x00005884      0x179 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-locale.o)
+ .debug_line    0x000059fd      0x1ba d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-makebuf.o)
+ .debug_line    0x00005bb7      0x364 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mallocr.o)
+ .debug_line    0x00005f1b      0x129 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memchr-stub.o)
+ .debug_line    0x00006044       0xcb d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memcpy.o)
+ .debug_line    0x0000610f       0xfa d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mlock.o)
+ .debug_line    0x00006209      0x593 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-mprec.o)
+ .debug_line    0x0000679c      0x122 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-s_fpclassify.o)
+ .debug_line    0x000068be      0x13b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-sbrkr.o)
+ .debug_line    0x000069f9      0x174 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-stdio.o)
+ .debug_line    0x00006b6d       0xd1 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strcmp.o)
+ .debug_line    0x00006c3e       0xe9 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-strlen.o)
+ .debug_line    0x00006d27      0x691 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-vfiprintf.o)
+ .debug_line    0x000073b8      0x13d d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-writer.o)
+ .debug_line    0x000074f5      0x128 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-callocr.o)
+ .debug_line    0x0000761d      0x13c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-closer.o)
+ .debug_line    0x00007759      0x17b d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fclose.o)
+ .debug_line    0x000078d4      0x19a d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fputwc.o)
+ .debug_line    0x00007a6e      0x151 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fstatr.o)
+ .debug_line    0x00007bbf      0x2c2 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-fvwrite.o)
+ .debug_line    0x00007e81      0x13d d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-isattyr.o)
+ .debug_line    0x00007fbe      0x13d d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-lseekr.o)
+ .debug_line    0x000080fb      0x116 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-memmove.o)
+ .debug_line    0x00008211      0x13c d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-readr.o)
+ .debug_line    0x0000834d      0x291 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-reallocr.o)
+ .debug_line    0x000085de      0x1b2 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wbuf.o)
+ .debug_line    0x00008790      0x15e d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wcrtomb.o)
+ .debug_line    0x000088ee      0x15f d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-wctomb_r.o)
+ .debug_line    0x00008a4d      0x202 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_addsubdf3.o)
+ .debug_line    0x00008c4f      0x223 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_muldivdf3.o)
+ .debug_line    0x00008e72      0x109 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_cmpdf2.o)
+ .debug_line    0x00008f7b       0x83 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/thumb/fpu/cortex_m4\libgcc.a(_arm_fixdfsi.o)
 
 .debug_str      0x00000000     0x540f
  .debug_str     0x00000000      0x451 Libraries/STM32F30x_StdPeriph_Driver/src/stm32f30x_gpio.o
@@ -3773,17 +3773,17 @@ OUTPUT(pinball.elf elf32-littlearm)
                                 0x30b (size before relaxing)
  .debug_str     0x0000253f      0x4bf src/main.o
                                 0xbe7 (size before relaxing)
- .debug_str     0x000029fe      0x6df src/game.o
-                                0xd25 (size before relaxing)
- .debug_str     0x000030dd      0x1f7 src/newlib_stubs.o
+ .debug_str     0x000029fe      0x6ea src/game.o
+                                0xd30 (size before relaxing)
+ .debug_str     0x000030e8      0x1f7 src/newlib_stubs.o
                                 0x3f1 (size before relaxing)
- .debug_str     0x000032d4      0x166 src/stm32f3_discovery.o
+ .debug_str     0x000032df      0x166 src/stm32f3_discovery.o
                                 0xa7e (size before relaxing)
- .debug_str     0x0000343a       0x29 src/common.o
+ .debug_str     0x00003445       0x29 src/common.o
                                 0x1b7 (size before relaxing)
- .debug_str     0x00003463       0xb1 src/score.o
+ .debug_str     0x0000346e       0xb1 src/score.o
                                 0x637 (size before relaxing)
- .debug_str     0x00003514      0x1ec src/io.o
+ .debug_str     0x0000351f      0x1e1 src/io.o
                                 0xa91 (size before relaxing)
  .debug_str     0x00003700      0x4a6 d:/arm-eabi/bin/../lib/gcc/arm-eabi/4.9.2/../../../../arm-eabi/lib/thumb/fpu/cortex_m4\libc.a(lib_a-impure.o)
                                 0x5ac (size before relaxing)
