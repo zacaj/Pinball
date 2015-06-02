@@ -109,8 +109,10 @@ typedef struct
 	uint8_t inverse;
 	uint8_t rawState;
 	uint32_t settleTime;
+	uint32_t lastOn,lastOff;
+	uint32_t lastRawOn,lastRawOff;
 } Input;
-#define In(b,p,f) {{b,p},0,1,0,0,0,0,f?0:20}
+#define In(b,p) {{b,p},0,1,0,0,0,0,1,0,0,0,0}
 
 extern Input DROP_TARGET[3][3];
 extern Input FIVE_TARGET[5];
@@ -145,6 +147,7 @@ void setOutDirect(IOPin pin, uint32_t value);
 uint8_t getIn(IOPin pin);
 void initIOs();
 void updateIOs();
+void fireSolenoidAlways(Solenoid *s);
 
 uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms);
 uint8_t fireSolenoid(Solenoid *s);
@@ -190,5 +193,7 @@ uint8_t getLed(enum LEDs index);
 
 void updateSlowInputs();
 void setHeldRelay(int n,uint8_t state);
+
+uint8_t sendCommand(uint8_t cmd);
 
 #endif /* IO_H_ */

@@ -165,8 +165,12 @@ void switchPlayerRelay(int n);
 int main(void)
 {
 
+	int i;
 	/* Example use SysTick timer and read System core clock */
 	SysTick_Config(72000);  /* 1  ms if clock frequency 72 MHz */
+	for(i=0;i<8;i++)
+		//if(i!=4)
+			STM_EVAL_LEDInit(LED3+i);
 	initTimers();
 	initIOs();
 #ifdef SOUND
@@ -179,12 +183,9 @@ int main(void)
 	//setOut(HOLD.pin,1);
 	//fireSolenoid(&HOLD);
 	STM_EVAL_PBInit(BUTTON_USER,BUTTON_MODE_GPIO);
-	int i;
 //9 on p1,p3
 	//0 on p2-1000,p4
 	SystemCoreClockUpdate();
-	for(i=0;i<8;i++)
-		STM_EVAL_LEDInit(LED3+i);
 	//STM_EVAL_LEDToggle(LED3);
 	ii = 0;
 	int iii=0;
@@ -233,6 +234,9 @@ int main(void)
 			//setLed(BLACKOUT,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],0);
 			//switchPlayerRelay(3);
+//			resetScores();
+			//sendCommand('A');
+			//CAB_LEFT.pressed=0;
 		}
 		if(CAB_RIGHT.pressed) {
 
@@ -241,20 +245,24 @@ int main(void)
 			//setLed(EXTRA_BALL,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],1);
 			//switchPlayerRelay(1);
+			//sendCommand('L');
+			//CAB_RIGHT.pressed=0;
 
 		}
 		if(SHOOT_BUTTON.pressed) {
 
+//			sendCommand(0);
 			//setHeldRelay(PLAYFIELD_DISABLE,1);
 			//fireSolenoid(&HOLD);
 			//setLed(START_LOCK,ON);
 			//fireSolenoid(&heldRelays[PLAYER_ENABLE[0]]);
 			//switchPlayerRelay(2);
+		//	fireSolenoidFor(&HOLD,50);
 		}/**/
-		if(BALLS_FULL.state)
+		/*if(!BALLS_FULL.rawState)
 			STM_EVAL_LEDOn(LED7);
 		else
-			STM_EVAL_LEDOff(LED7);
+			STM_EVAL_LEDOff(LED7);*/
 		if(buttonState!=STM_EVAL_PBGetState(BUTTON_USER))
 		{
 			buttonState=!buttonState;
@@ -294,7 +302,7 @@ int main(void)
 #if 0
 void IRQHander()
 {
-	printf("");
+	__asm__("BKPT");
 }
 void WWDG_IRQHandler()
 {IRQHander();
@@ -515,4 +523,17 @@ void FPU_IRQHandler()
 {IRQHander();
 }
                     /* FPU */
+void HardFault_Handler()
+{IRQHander();
+}void MemManage_Handler()
+{IRQHander();
+}void BusFault_Handler()
+{IRQHander();
+}void UsageFault_Handler()
+{IRQHander();
+}void NMI_Handler()
+{IRQHander();
+}
+
+
 #endif

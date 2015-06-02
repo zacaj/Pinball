@@ -42,8 +42,8 @@ LedState ledState[nLED];
 Solenoid HOLD = Sd(bF,P4,20);
 Solenoid SCORE[4] = { Sds(bB,P4,90,150), Sds(bD,P5,90,150), Sds(bC,P10,90,150), Sds(bB,P8,90,150) };
 Solenoid BONUS[4] = { S(bB,P5), S(bB,P9), S(bC,P13), S(bF,P10) };
-Solenoid BALL_SHOOT = Sds(bD,P6,280,500);
-Solenoid BALL_ACK = Sds(bA,P15,200,800);
+Solenoid BALL_SHOOT = Sds(bD,P6,220,500);
+Solenoid BALL_ACK = Sds(bA,P15,250,800);
 Solenoid LEFT_DROP_RESET = Sds(bC,P8,100,700);
 Solenoid RIGHT_DROP_RESET = Sds(bF,P6,100,700);
 Solenoid TOP_DROP_RESET = Sds(bC,P3,100,700);
@@ -64,31 +64,41 @@ Solenoid heldRelays[nHeldRelay] = {
 	Sd(bA,P3,20), //playfield disable
 };
 //left right top
-Input DROP_TARGET[3][3] = { { In(bmA,P0,1), In(bmA,P3,1), In(bmA,P2,1) }, { In(bmA,P4,1),
-In(bmA, P7,1), In(bmA,P6,1) }, { In(bmB,P1,1), In(bmB,P2,1), In(bmB,P0,1) } };
-Input FIVE_TARGET[5] = { In(bmB,P3,1), In(bmB,P4,1), In(bmB,P7,1), In(bmB,P6,1), In(bmB,P5,1) };
-Input LEFT_CAPTURE = In(bB,P14,0);
-Input RIGHT_CAPTURE = In(bmA,P5,0);
-Input TOP_CAPTURE = In(bmA,P1,0);
-Input SCORE_ZERO[4] = { In(bmD,P0,1), In(bmD,P1,1), In(bmD,P2,1), In(bmD,P4,1) };
-Input BONUS_ZERO[4] = { In(bmD,P5,1), In(bmD,P6,1), In(bmD,P7,1), In(bmD,P3,1) };
-Input BALL_OUT = In(bB,P10,0);
-Input SHOOT_BUTTON = In(bmC,P3,0);
-Input BALLS_FULL = In(bB,P12,0);
-Input LANES[4] = { In(bD,P8,1), In(bD,P10,1), In(bD,P12,1), In(bD,P14,1) };
-Input LEFT_FLIPPER = In(bmC,P6,0);
-Input LEFT_BLOCK = In(bmC,P7,0);
-Input RIGHT_FLIPPER = In(bmC,P4,0);
-Input RIGHT_BLOCK = In(bmC,P5,0);
-Input START = In(bmC,P1,0);
-Input CAB_LEFT = In(bmC,P0,0);
-Input CAB_RIGHT = In(bmC,P2,0);
-Input LEFT_POP = In(bB,P11,1);
-Input RIGHT_POP = In(bB,P13,1);
-Input BUMPER = In(bC,P7,0);
-Input ROTATE_ROLLOVER = In(bB,P15,1);
-Input ACTIVATE_TARGET = In(bD,P9,1);
-Input RED_TARGET[4] = { In(bD,P11,1), In(bD,P13,1), In(bD,P15,1), In(bC,P6,1) };
+Input DROP_TARGET[3][3] = { { In(bmA,P0), In(bmA,P3), In(bmA,P2) }, { In(bmA,P4),
+In(bmA, P7), In(bmA,P6) }, { In(bmB,P1), In(bmB,P2), In(bmB,P0) } };
+Input FIVE_TARGET[5] = { In(bmB,P3), In(bmB,P4), In(bmB,P7), In(bmB,P6), In(bmB,P5) };
+Input LEFT_CAPTURE = In(bB,P14);
+Input RIGHT_CAPTURE = In(bmA,P5);
+Input TOP_CAPTURE = In(bmA,P1);
+Input SCORE_ZERO[4] = { In(bmD,P0), In(bmD,P1), In(bmD,P2), In(bmD,P4) };
+Input BONUS_ZERO[4] = { In(bmD,P5), In(bmD,P6), In(bmD,P7), In(bmD,P3) };
+Input BALL_OUT = In(bB,P10);
+Input SHOOT_BUTTON = In(bmC,P3);
+Input BALLS_FULL = In(bB,P12);
+Input LANES[4] = { In(bD,P8), In(bD,P10), In(bD,P12), In(bD,P14) };
+Input LEFT_FLIPPER = In(bmC,P6);
+Input LEFT_BLOCK = In(bmC,P7);
+Input RIGHT_FLIPPER = In(bmC,P4);
+Input RIGHT_BLOCK = In(bmC,P5);
+Input START = In(bmC,P1);
+Input CAB_LEFT = In(bmC,P0);
+Input CAB_RIGHT = In(bmC,P2);
+Input LEFT_POP = In(bB,P11);
+Input RIGHT_POP = In(bB,P13);
+Input BUMPER = In(bC,P7);
+Input ROTATE_ROLLOVER = In(bB,P15);
+Input ACTIVATE_TARGET = In(bD,P9);
+Input RED_TARGET[4] = { In(bD,P11), In(bD,P13), In(bD,P15), In(bC,P6) };
+
+Input COM_ACK = In(bE,P7);
+IOPin COM_DATA = {bE,P6};
+IOPin COM_CLOCK = {bF,P9};
+
+#define MAX_COMMANDS 4
+uint8_t commandQueue[MAX_COMMANDS];
+uint8_t commandAt=0;
+uint8_t nCommand=0;
+uint8_t comClock=1;
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def) {
 	if (pin.bank == bU)
@@ -197,6 +207,21 @@ void initIOs() {
 	setOutDirect(LED_DATA, 0);
 	initOutput(LED_CLOCK);
 	setOutDirect(LED_CLOCK, 0);
+	initOutput(COM_DATA);
+	setOutDirect(COM_DATA,0);
+	initOutput(COM_CLOCK);
+	setOutDirect(COM_CLOCK,1);
+	comClock=1;
+	//initInput(COM_ACK.pin, PULL_UP);
+	GPIO_InitTypeDef init;
+		init.GPIO_Mode = GPIO_Mode_IN;
+		init.GPIO_OType = GPIO_OType_PP;
+		init.GPIO_Pin = COM_ACK.pin.pin;
+		init.GPIO_PuPd = PULL_UP;
+
+		GPIO_Init(COM_ACK.pin.bank, &init);
+	//COM_ACK.inverse=1;
+	//COM_ACK.inverse=1;
 
 	for (int i = 0; i < nMultiInput; i++) {
 		initInput(MULTI_IN_DATA[i], PULL_DOWN);
@@ -208,8 +233,11 @@ void initIOs() {
 		initOutput(SCORE[i].pin);
 		initOutput(BONUS[i].pin);
 		initInput(SCORE_ZERO[i].pin, NO_PULL);
+		SCORE_ZERO[i].settleTime=15;
 		initInput(BONUS_ZERO[i].pin, NO_PULL);
+		BONUS_ZERO[i].settleTime=15;
 		initInput(LANES[i].pin, PULL_DOWN);
+		LANES[i].settleTime=0;
 		initInput(RED_TARGET[i].pin, PULL_DOWN);
 	}
 	for (int i = 0; i < 5; i++)
@@ -219,7 +247,7 @@ void initIOs() {
 	initInput(RIGHT_CAPTURE.pin, NO_PULL);
 	initInput(TOP_CAPTURE.pin, NO_PULL);
 	initInput(BALL_OUT.pin, NO_PULL);
-	BALL_OUT.settleTime=50;
+	BALL_OUT.settleTime=200;
 	initInput(SHOOT_BUTTON.pin, NO_PULL);
 	initInput(START.pin, NO_PULL);
 	initInput(CAB_LEFT.pin, NO_PULL);
@@ -235,7 +263,7 @@ void initIOs() {
 	BUMPER.inverse=1;
 	initInput(ROTATE_ROLLOVER.pin, PULL_DOWN);
 	initInput(BALLS_FULL.pin, PULL_DOWN);
-	BALLS_FULL.settleTime=50;
+	BALLS_FULL.settleTime=70;
 	
 	for (int i = 0; i < nHeldRelay; i++) {
 		physicalHeldRelayState[i] = 0;
@@ -259,19 +287,31 @@ void updateInput(Input* in) {
 	in->released = 0;
 	if(state != in->rawState) {
 		in->rawState=state;
+		if(in->rawState) {
+			in->lastRawOff=in->lastChange;
+			in->lastRawOn=msElapsed;
+		}
+		else {
+			in->lastRawOn=in->lastChange;
+			in->lastRawOff=msElapsed;
+		}
 		in->lastChange=msElapsed;
 	}
+	if (in->rawState != in->state && (msElapsed - in->lastChange >= in->settleTime)) {
 		in->state = in->rawState;
+		if(in->state)
+			in->lastOff=in->lastChange;
+		else
+			in->lastOn=in->lastChange;
 		in->lastChange = msElapsed;
-		if (in->state) {
+		if (in->rawState) {
 			in->pressed = 1;
-			//setLedDebug(ledi,lowerDebugLights);
 			nled++;
 		}
 		else {
 			in->released = 1;
 		//setLedDebug(0,lowerDebugLights);nled--;
-			}
+		}
 		//setLedDebug(nled,upperDebugLights);
 	}
 	ledi++;
@@ -313,6 +353,7 @@ void updateIOs() {
 		updateInput(&BUMPER);//45
 		updateInput(&ROTATE_ROLLOVER);//
 		updateInput(&BALLS_FULL);//
+		updateInput(&COM_ACK);
 	}
 
 	for (int i = 0; i < nLED; i++) {
@@ -373,6 +414,38 @@ void updateIOs() {
 			setHeldRelay(i, 0);
 		}
 	}
+	
+	if(nCommand>0) {
+		if(!COM_ACK.rawState) {
+			if(comClock) {
+				setOutDirect(COM_CLOCK,0);
+				comClock=0;
+				setOutDirect(COM_DATA,commandQueue[0]&1);
+				commandQueue[0]>>=1;
+				commandAt++;
+			}
+			else {
+				
+			}
+		}
+		else {
+			if(comClock) {
+				
+			}
+			else {
+				setOutDirect(COM_CLOCK,1);
+				comClock=1;
+				if(commandAt==sizeof(commandQueue[0])*8) {
+					commandAt=0;
+					for(int i=1;i<nCommand;i++) {
+						commandQueue[i-1]=commandQueue[i];
+					}
+					nCommand--;
+				}
+			}
+		}
+	}
+	
 	ioTicks++;
 }
 
@@ -445,8 +518,8 @@ uint8_t fireSolenoid(Solenoid *s) {
 	return fireSolenoidFor(s, s->onTime);
 }
 
-uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms) {
-	if (s->offTime + s->lastFired > msElapsed)
+uint8_t fireSolenoidForAnd(Solenoid *s, uint32_t ms, uint8_t force) {
+	if (s->offTime + s->lastFired > msElapsed && !force && s->lastFired<msElapsed)
 		return 0;
 	//while(msElapsed<lastSolenoidFiringTime+50);
 	setOut(s->pin, 1);
@@ -456,6 +529,13 @@ uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms) {
 	return 1;
 }
 
+void fireSolenoidAlways(Solenoid *s) {
+	fireSolenoidForAnd(s, s->onTime, 1);
+}
+
+uint8_t fireSolenoidFor(Solenoid *s, uint32_t ms) {
+	return fireSolenoidForAnd(s,ms,0);
+}
 void fireSolenoidIn(Solenoid *s, uint32_t ms) {
 	if(s->waitingToFire)
 		return;
@@ -529,11 +609,15 @@ void updateHeldRelays()
 			setOut(heldRelays[i].pin,1);
 			on=1;
 		}
-		else if(physicalHeldRelayState[i])
-			releaseHold=1;
-	if(releaseHold || 1) {
-		fireSolenoidFor(&HOLD, 20);
-		wait(100);
+		else {	
+			setOut(heldRelays[i].pin,0);
+			if(physicalHeldRelayState[i])
+				releaseHold=1;
+		}
+	//if(releaseHold || 1)
+	{
+		fireSolenoidForAnd(&HOLD, 80,1);
+		wait(150);
 	}
 
 	while(start+20>msElapsed);
@@ -555,4 +639,10 @@ void setHeldRelay(int n, uint8_t state) {
 		_BREAK();
 		updateHeldRelays();
 	}
+}
+
+uint8_t sendCommand(uint8_t cmd) {
+	if(nCommand>=MAX_COMMANDS)
+		return 0;
+	commandQueue[nCommand++]=cmd;
 }

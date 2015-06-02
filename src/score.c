@@ -27,14 +27,6 @@ void initScores()
 
 }
 
-/*uint16_t pow[4]={1,10,100,1000};
-int getDigit(const unsigned int number, const unsigned int digit) {
-    if (digit > 0 && digit <= log10(number)+1) {
-       return (int)(number / pow[(digit-1)]) % 10;
-    }  else {
-        return 0;
-    }
-}*/
 int getDigit(unsigned int number, int digit) {
 	 for(int i=0; i<digit-1; i++) { number /= 10; }
 	 return number % 10;
@@ -53,7 +45,7 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 	{
 		int targetDigit=getDigit(target,i+1);
 		int physicalDigit=getDigit(*physical,i+1);
-		if(targetDigit!=physicalDigit || ((physicalDigit!=0) != (zeros[i].state^invert) && 1))
+		if(targetDigit!=physicalDigit || ((physicalDigit!=0) != (zeros[i].state^invert) && zeros[i].state==zeros[i].rawState))
 		{
 			if(fireSolenoid(&score[i]))
 			{
@@ -79,19 +71,22 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 void resetBank(Solenoid *reel,Input *zero, uint8_t invert) {
 	wait(100);
 	updateIOs();
-	while( (invert^ zero[0].state) ||  (invert^zero[1].state) ||  (invert^ zero[2].state) ||  (invert^ zero[3].state))
+	while( (invert^ zero[0].state) ||  (invert^zero[1].state) ||  (invert^ zero[2].state) ||  (invert^ zero[3].state)
+			|| zero[0].state!=zero[0].rawState || zero[1].state!=zero[1].rawState 
+			|| zero[2].state!=zero[2].rawState || zero[3].state!=zero[3].rawState
+			|| msElapsed-lastScoreFire<200)
 	{
 		if(msElapsed-lastScoreFire>50)
 		{
 			int i=0;
 			for(i=0;i<4;i++)
 			{
-				if( invert^ zero[i].state)
+				if( invert^ zero[i].state && zero[i].state==zero[i].rawState)
 				{
 					if(fireSolenoid(&reel[i]))
 					{
 						_BREAK();
-						wait(200);
+						//wait(100);
 						lastScoreFire=msElapsed;
 						break;
 					}
@@ -110,20 +105,16 @@ void updateScores()
 
 void resetScores()
 {
-
-
 	resetBank(BONUS,BONUS_ZERO,1);
-	for(int i=0;i<4-1;i++)
+	physicalBonus=0;
+	for(int i=0;i<nPlayer;i++)
 	{
 		switchPlayerRelay(i);
-		wait(250);
+		wait(400);
 		resetBank(SCORE,SCORE_ZERO,0);
 		physicalScore[i]=0;
 	}
 	switchPlayerRelay(-1);
 	wait(100);
 	updateIOs();
-
-	physicalScore[1]=0;
-	physicalBonus=0;
 }

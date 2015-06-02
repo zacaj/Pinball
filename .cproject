@@ -33,7 +33,6 @@
 							<builder id="org.eclipse.cdt.cross.arm.gnu.sourcery.linux.builder.base.1073312156" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="ARM Sourcery Linux GNU Make builder"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.2023097482.1368027191" name="raw.c" rcbsApplicability="disable" resourcePath="src/sound.raw" toolsToInvoke=""/>
 					<sourceEntries>
 						<entry excluding="src/raw.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>

@@ -33,7 +33,7 @@ LIBS		= -lm -lc
 # Set Board
 MCU 		= -mthumb -mcpu=cortex-m4
 FPU 		= -mfpu=fpv4-sp-d16 -mfloat-abi=hard
-DEFINES 	= -DSTM32F3XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -DS_OUND
+DEFINES 	= -DSTM32F3XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -DSDOUND
 
 # Set Compilation and Linking Flags
 CFLAGS 		= $(MCU) $(FPU) $(DEFINES) $(INCLUDES) \
