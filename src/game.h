@@ -37,6 +37,7 @@ static const uint32_t blocker_cooldown_time=2000;
 static const uint32_t ball_release_wait_time=500;
 static const uint32_t drop_flash_period=250;
 static const uint32_t initial_pops_count=5;
+static const uint32_t restart_mb_time=12000;
 
 typedef struct
 {

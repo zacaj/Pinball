@@ -55,6 +55,7 @@ uint8_t p_nLock[4];
 uint8_t p_activateStates[4][4];
 uint8_t waitingAcks;
 uint32_t p_popsLeft[4];
+uint32_t multiballEndTime=0;
 uint32_t p_jackpot[4];
 
 void _log(const char *str,int a,int b,int line);
@@ -111,10 +112,10 @@ Target lanes[4]={
 		{LANE_4,0},
 };
 Target activates[4]={
-		{BLACKOUT,0},
-		{START_LOCK,0},
-		{EXTRA_BALL,0},
-		{LOCK,0}
+		{BLACKOUT_LIGHT,0},
+		{START_LOCK_LIGHT,0},
+		{EXTRA_BALL_LIGHT,0},
+		{BONUS_HOLD_INCREMENT,0}
 };
 
 void syncCaptureLights();
@@ -294,7 +295,7 @@ void updateDropBank(DropBank *bank)
 	if(down==bank->nTarget)
 	{
 		log1("try to reset bank [a]",bank);
-		fireSolenoidIn(bank->reset,600);
+		fireSolenoidIn(bank->reset,400);
 		bank->resetting=1;
 	}
 	if(!down)
@@ -304,7 +305,7 @@ void updateDropBank(DropBank *bank)
 }
 void flashLed(enum LEDs led, uint32_t period)
 {
-	setFlash(led,period*5);
+	setFlash(led,period*4);
 }
 uint32_t nPops=0;
 void startGame()
@@ -411,6 +412,7 @@ void startBall()
 	lastRightBlockerOnTime=-1;
 	lastLeftBlockerOffTime=-1;
 	lastRightBlockerOffTime=-1;
+	multiballEndTime=0;
 	waitingAcks=0;
 	setHeldRelay(LEFT_BLOCK_DISABLE,0);
 	setHeldRelay(RIGHT_BLOCK_DISABLE,0);
@@ -690,6 +692,9 @@ void updateGame()
 						if(nBallInPlay-nBallCaptured==1)
 						{
 							log("mb over");
+							multiballEndTime=msElapsed;
+							for(int i=0;i<4;i++) 
+								flashLed(activates[i].led,300);
 							lockMBMax=0;
 						}
 						if(scoreMult!=1 && scoreMult>nBallInPlay)
@@ -703,7 +708,16 @@ void updateGame()
 			if(nMinTargetBallInPlay==0 && nBallInPlay-nBallCaptured==0 && !waitingToAutoFireBall)
 			{
 				log1("ball [a] out", ballNumber);
-				startDrain();
+				if(nBallCaptured>0) {
+					log("ejecting captures");
+					for(int i=0;i<3;i++)
+					{
+						captureState[i]=0;
+					}
+				}
+				else {
+					startDrain();
+				}
 			}
 		}
 	}
@@ -1006,6 +1020,14 @@ void updateGame()
 	setHeldRelay(MAGNET, 1); \
 	callFuncIn(turnOffMagnet, 1000, NULL);
 	
+#define endRestartMb() \
+	multiballEndTime=0; \
+	rotateActivates();	
+
+#define doRestartMb() \
+	endRestartMb(); \
+	addBall();
+	
 #define doActivate(n) \
 	switch (n) { \
 		\
@@ -1024,29 +1046,44 @@ void updateGame()
 	}
 		if(ROTATE_ROLLOVER.pressed)
 		{
-			log2("single activate? [a]",activeActivate,activates[activeActivate].state);
-			if (activeActivate != -1)
-			{
-				doActivate(activeActivate);
-				if(activates[activeActivate].state>0);
-					activates[activeActivate].state--;
-				rotateActivates();
-				addScore(50, 0);
+			if(multiballEndTime) {
+				doRestartMb();
 			}
-			else
-				addScore(5, 0);
+			else {
+				log2("single activate? [a]",activeActivate,activates[activeActivate].state);
+				if (activeActivate != -1)
+				{
+					doActivate(activeActivate);
+					if(activates[activeActivate].state>0);
+						activates[activeActivate].state--;
+					rotateActivates();
+					addScore(50, 0);
+				}
+				else
+					addScore(5, 0);
+			}
 		}
 		if(ACTIVATE_TARGET.pressed)
 		{
-			log("multi activate!");
-			for (int i = 0; i < 4;i++)
-			if (activates[i].state) {
-				doActivate(i);
-				if(activates[i].state>0);
-					activates[i].state--;
+			if(multiballEndTime) {
+				doRestartMb();
 			}
-			rotateActivates();
-			addScore(50, 0);
+			else {
+				log("multi activate!");
+				for (int i = 0; i < 4;i++)
+				if (activates[i].state) {
+					doActivate(i);
+					if(activates[i].state>0);
+						activates[i].state--;
+				}
+				rotateActivates();
+				addScore(50, 0);
+			}
+		}
+	}
+	if(mode==PLAY) {
+		if(msElapsed-multiballEndTime>restart_mb_time) {
+			endRestartMb();
 		}
 	}
 	if(mode==PLAY)//blockers
@@ -1057,17 +1094,19 @@ void updateGame()
 			lastRightBlockerOnTime=msElapsed;
 		if(LEFT_BLOCK.released && lastLeftBlockerOffTime==-1)
 		{
-			if(lastLeftBlockerOnTime!=-1)
+			if(lastLeftBlockerOnTime!=-1 && msElapsed-lastLeftBlockerOnTime>50) {
 				lastLeftBlockerOffTime=msElapsed;
-			lastLeftBlockerOnTime=-1;
-			setHeldRelay(LEFT_BLOCK_DISABLE,1);
+				setHeldRelay(LEFT_BLOCK_DISABLE,1);
+				lastLeftBlockerOnTime=-1;
+			}
 		}
 		if(RIGHT_BLOCK.released && lastRightBlockerOffTime==-1)
 		{
-			if(lastRightBlockerOnTime!=-1)
+			if(lastRightBlockerOnTime!=-1 && msElapsed-lastRightBlockerOnTime>50) {
 				lastRightBlockerOffTime=msElapsed;
-			lastRightBlockerOnTime=-1;
-			setHeldRelay(RIGHT_BLOCK_DISABLE,1);
+				setHeldRelay(RIGHT_BLOCK_DISABLE,1);
+				lastRightBlockerOnTime=-1;
+			}
 		}
 		if(lastLeftBlockerOnTime!=-1 && msElapsed-lastLeftBlockerOnTime>max_blocker_on_time)
 		{

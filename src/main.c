@@ -250,7 +250,14 @@ int main(void)
 
 		}
 		if(SHOOT_BUTTON.pressed) {
-
+			if(CAB_LEFT.state)
+				fireSolenoid(&BALL_SHOOT);
+			if(CAB_RIGHT.state)
+			{
+				fireSolenoid(&LEFT_CAPTURE_EJECT);
+				fireSolenoid(&RIGHT_CAPTURE_EJECT);
+				fireSolenoid(&TOP_CAPTURE_EJECT);
+			}
 //			sendCommand(0);
 			//setHeldRelay(PLAYFIELD_DISABLE,1);
 			//fireSolenoid(&HOLD);
