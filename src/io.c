@@ -410,7 +410,7 @@ void updateIOs() {
 	}
 	for (int i = 0; i < nHeldRelay; i++) {
 		uint32_t offAt=lastHeldRelayOnTime[i] + heldRelayMaxOnTime[i];
-		if (heldRelayState[i] && offAt > msElapsed && offAt!=-1) {
+		if (heldRelayState[i] && offAt > msElapsed && lastHeldRelayOnTime[i]!=-1) {
 			setHeldRelay(i, 0);
 		}
 	}
@@ -564,6 +564,8 @@ void offsetLed(enum LEDs index, uint32_t offset) {
 	ledState[index].flashAt += offset;
 }
 void setFlash(enum LEDs index, uint32_t max) {
+	if(ledState[index].state==FLASHING && ledState[index].flashMax==max)
+		return;
 	ledState[index].state = FLASHING;
 	ledState[index].flashMax = max;
 	ledState[index].flashAt = 0;

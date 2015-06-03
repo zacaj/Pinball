@@ -35,7 +35,7 @@ static const uint16_t jackpot_bonus=10;
 static const uint32_t max_blocker_on_time=750;
 static const uint32_t blocker_cooldown_time=2000;
 static const uint32_t ball_release_wait_time=500;
-static const uint32_t drop_flash_period=250;
+static const uint32_t drop_flash_period=200;
 static const uint32_t initial_pops_count=5;
 static const uint32_t restart_mb_time=12000;
 
@@ -68,10 +68,10 @@ extern uint8_t curPlayer;
 #define curScore playerScore[curPlayer]
 extern signed int ballNumber,nPlayer;
 
-#define BLACKOUT 0
-#define START_JACKPOT 1
-#define EXTRA_BALL 2
-#define LOCK 3
+#define BLACKOUT_ACT 0
+#define JACKPOT_ACT 1
+#define EXTRA_BALL_ACT 2
+#define START_LOCKMB_ACT 3
 
 
 void updateGame();

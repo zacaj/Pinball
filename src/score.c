@@ -41,38 +41,49 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 		return;
 
 	int ten=1000;
-	for(int i=3;i>=0;i--)
-	{
-		int targetDigit=getDigit(target,i+1);
-		int physicalDigit=getDigit(*physical,i+1);
-		if(targetDigit!=physicalDigit || ((physicalDigit!=0) != (zeros[i].state^invert) && zeros[i].state==zeros[i].rawState))
+		for(int i=3;i>=0;i--)
 		{
-			if(fireSolenoid(&score[i]))
+			int targetDigit=getDigit(target,i+1);
+			int physicalDigit=getDigit(*physical,i+1);
+
+			//if this reel has 'settled'
+			if(
+				zeros[i].state==zeros[i].rawState
+				&&
+				msElapsed-score[i].lastFired+10>score[i].offTime+score[i].onTime
+				)
 			{
-				_BREAK();
-				if(targetDigit!=physicalDigit && !((physicalDigit!=0) != (zeros[i].state^invert))) {
-					if(physicalDigit==9)
-						*physical-=ten*9;
-					else
-						*physical+=ten;
+				if(!(zeros[i].state^invert) && physicalDigit!=0) //if the reel is zero
+					*physical-=(physicalDigit-1)*ten; //then we know what the physical digit is
+
+				//if what we think the physical digit is doesn't match what we want it to be
+				//or we know we're wrong about what the physical digit is
+				if(targetDigit!=physicalDigit || (physicalDigit!=0) != (zeros[i].state^invert))
+				{
+					if(fireSolenoid(&score[i]))
+					{
+						_BREAK();
+						//if we didn't think we were wrong about the physical digit
+						if(targetDigit!=physicalDigit) {
+							if(physicalDigit==9)//update what we think the physical digit is
+								*physical-=ten*9;
+							else
+								*physical+=ten;
+						}
+						lastScoreFire=msElapsed;
+						break;
+					}
 				}
-				else {
-					if(!(zeros[i].state^invert)) //if the reel is zero
-						*physical-=(physicalDigit-1)*ten;
-				}
-				lastScoreFire=msElapsed;
-				break;
 			}
+			ten/=10;
 		}
-		ten/=10;
-	}
 }
 
 void resetBank(Solenoid *reel,Input *zero, uint8_t invert) {
 	wait(100);
 	updateIOs();
 	while( (invert^ zero[0].state) ||  (invert^zero[1].state) ||  (invert^ zero[2].state) ||  (invert^ zero[3].state)
-			|| zero[0].state!=zero[0].rawState || zero[1].state!=zero[1].rawState 
+			|| zero[0].state!=zero[0].rawState || zero[1].state!=zero[1].rawState
 			|| zero[2].state!=zero[2].rawState || zero[3].state!=zero[3].rawState
 			|| msElapsed-lastScoreFire<200)
 	{
