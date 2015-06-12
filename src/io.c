@@ -245,6 +245,7 @@ void initIOs() {
 
 	initInput(LEFT_CAPTURE.pin, NO_PULL);
 	initInput(RIGHT_CAPTURE.pin, NO_PULL);
+	RIGHT_CAPTURE.settleTime=50;
 	initInput(TOP_CAPTURE.pin, NO_PULL);
 	initInput(BALL_OUT.pin, NO_PULL);
 	BALL_OUT.settleTime=200;
