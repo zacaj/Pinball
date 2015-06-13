@@ -240,6 +240,7 @@ void initIOs() {
 		LANES[i].settleTime=0;
 		initInput(RED_TARGET[i].pin, PULL_DOWN);
 	}
+	LANES[3].settleTime=2;
 	for (int i = 0; i < 5; i++)
 		initInput(FIVE_TARGET[i].pin, NO_PULL);
 

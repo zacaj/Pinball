@@ -86,9 +86,23 @@ void startBallSave(uint32_t time)
 	updateExtraBall();
 }
 
+uint32_t lastScore=0;
+typedef struct {
+	int line;
+	int total;
+	int hits;
+} ScoreSource;
 
-void addScore(uint16_t score,uint16_t _bonus)
+#define MAX_SCORESOURCE 50
+ScoreSource scoreSources[MAX_SCORESOURCE];
+int nScoreSource=0;
+
+#define addScore(score,bonus) _addScore(score,bonus,__LINE__)
+#define switchHit() lastScore=msElapsed
+
+void _addScore(uint16_t score,uint16_t _bonus, int line)
 {
+	lastScore=msElapsed;
 	if(mode==PLAY)
 	{
 		_BREAK();
@@ -104,6 +118,21 @@ void addScore(uint16_t score,uint16_t _bonus)
 		}
 		
 		updateExtraBall();
+		
+		int i;
+		for(i=0;i<nScoreSource;i++) {
+			if(scoreSources[i].line==line) {
+				scoreSources[i].total+=score*scoreMult;
+				scoreSources[i].hits++;
+				break;
+			}
+		}
+		if(i==nScoreSource) {
+			scoreSources[i].line=line;
+			scoreSources[i].total=score*scoreMult;
+			scoreSources[i].hits=1;
+			nScoreSource++;
+		}
 	}
 }
 
@@ -120,10 +149,10 @@ Target lanes[4]={
 		{LANE_4,0},
 };
 Target activates[4]={
-		{BLACKOUT_LIGHT,0},
-		{START_LOCK_LIGHT,0},
-		{EXTRA_BALL_LIGHT,0},
-		{BONUS_HOLD_INCREMENT,0}
+		{PURPLE_LED,0},
+		{YELLOW_LED,0},
+		{RED_LED,0},
+		{WHITE_LED,0}
 };
 
 void syncCaptureLights();
@@ -443,6 +472,7 @@ void startShoot()
 }
 void resetRedTargets();
 void resetLanes();
+	enum LEDs lockLeds[]={LOCK_1,LOCK_2,LOCK_3,LOCK_4};
 void setLocks(int lock,uint8_t refreshLights)
 {
 	nLock=lock;
@@ -453,7 +483,6 @@ void setLocks(int lock,uint8_t refreshLights)
 		nLock=4;
 		addBall();
 	}
-	enum LEDs lockLeds[]={LOCK_1,LOCK_2,LOCK_3,LOCK_4};
 	for(int i=1;i<=4;i++)
 		setLed(lockLeds[i-1],i<=nLock?ON:OFF);
 	if(refreshLights) {
@@ -599,6 +628,8 @@ void startDrain()
 		setFlash(i,3000);
 		offsetLed(i,3000*(i%2));
 	}
+	for(int i=0;i<4;i++)
+		setLed(lockLeds[i],i<ballNumber?ON:OFF);
 	bonusMult=0;
 }
 
@@ -663,13 +694,14 @@ void switchMode(enum GameMode newMode) {
 			
 				break;
 			case PLAYER_SELECT:
+				setHeldRelay(PLAYFIELD_DISABLE,0);
 			
 				break;
 			case DRAIN:
 				setHeldRelay(PLAYFIELD_DISABLE,0);
 				break;
 		}
-	//leaving
+	//entering
 	if(oldMode!=newMode)
 		switch(newMode) {
 			case SHOOT:
@@ -679,6 +711,7 @@ void switchMode(enum GameMode newMode) {
 
 				break;
 			case PLAYER_SELECT:
+				setHeldRelay(PLAYFIELD_DISABLE,1);
 
 				break;
 			case DRAIN:
@@ -758,7 +791,7 @@ void updateGame()
 				{
 					lockMBMax=0;
 					scoreMult=1;
-					if(getLed(SHOOT_AGAIN)==FLASHING || msElapsed-ballSaveEndTime<ball_save_fuzz)
+					if(getLed(SHOOT_AGAIN)==FLASHING || msElapsed-ballSaveEndTime<ball_save_fuzz || lastScore<ballSaveEndTime)
 					{
 						log("saved");
 						startShoot();
@@ -778,7 +811,7 @@ void updateGame()
 						log("ball lost, shoot from lock");
 						addBalls(1);
 					}
-					else if(getLed(SHOOT_AGAIN)==FLASHING || msElapsed-ballSaveEndTime<mb_save_fuzz)
+					else if(getLed(SHOOT_AGAIN)==FLASHING || msElapsed-ballSaveEndTime<mb_save_fuzz || lastScore<ballSaveEndTime)
 					{
 						log("ball saved mb");
 						addBalls(1);
@@ -1081,9 +1114,9 @@ void updateGame()
 	}
 	if (mode == PLAY)
 	{
-		/*if(ROTATE_ROLLOVER.pressed)
+		if(ROTATE_ROLLOVER.pressed)
 		{
-			if(multiballEndTime) {
+			/*if(multiballEndTime) {
 				doRestartMb();
 				is_restarted_mb=1;
 			}
@@ -1099,8 +1132,9 @@ void updateGame()
 				}
 				else
 					addScore(5, 0);
-			}
-		}*/
+			}*/
+			addScore(50,0);
+		}
 		if(ACTIVATE_TARGET.pressed)
 		{
 			if(multiballEndTime) {
@@ -1191,18 +1225,19 @@ void updateGame()
 			updateHeldRelays();
 		}
 	}/**/
-	/*if(mode==PLAY)
+	if(mode==PLAY)
 	{
 		if(BUMPER.pressed)
 		{
-			captureState[currentCapture]--;
+			/*captureState[currentCapture]--;
 			currentCapture++;
 			if(currentCapture>2)
 				currentCapture=0;
 			captureState[currentCapture]++;
-			syncCaptureLights();
+			syncCaptureLights();*/
+			addScore(0,0);
 		}
-	}*/
+	}
 
 	if(mode==PLAYER_SELECT)
 	{
