@@ -35,15 +35,16 @@ static const uint16_t jackpot_bonus=10;
 static const uint32_t max_blocker_on_time=750;
 static const uint32_t blocker_cooldown_time=2000;
 static const uint32_t ball_release_wait_time=300;
-static const uint32_t ball_fire_wait_time=1000;
+static const uint32_t ball_fire_wait_time=1400;
 static const uint32_t time_between_ball_fire=1300;
 static const uint32_t drop_flash_period=200;
 static const uint32_t initial_pops_count=5;
 static const uint32_t restart_mb_time=9000;
 static const uint32_t ball_save_fuzz=2000;
 static const uint32_t mb_save_fuzz=800;
-static const uint32_t lost_capture_score=50;
+static const uint32_t lost_capture_score=10;
 static const uint32_t ball_in_lane_wait_time=5000;
+static const uint32_t drop_complete_mult=1;
 
 typedef struct
 {

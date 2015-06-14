@@ -64,10 +64,11 @@ typedef struct
 	uint32_t lastFired;
 	uint32_t onTime,offTime;
 	uint8_t waitingToFire;
+	uint8_t state;
 } Solenoid;
-#define S(b,p) {{b,p},-250,90,250,0}
-#define Sd(b,p,on) {{b,p},-250,on,250,0}
-#define Sds(b,p,on,off) {{b,p},-off,on,off,0}
+#define S(b,p) {{b,p},-250,90,250,0,0}
+#define Sd(b,p,on) {{b,p},-250,on,250,0,0}
+#define Sds(b,p,on,off) {{b,p},-off,on,off,0,0}
 
 extern Solenoid HOLD;
 static const int PLAYFIELD_DISABLE=9;
@@ -159,21 +160,6 @@ void fireSolenoidIn(Solenoid *s, uint32_t ms);
 #define PWM 3
 #define nLED 48
 enum LEDs {
-		/*BALL_1=0, BALL_2, BALL_3, BALL_4, BALL_5,
-		LEFT_CAPTURE_LIGHT,RIGHT_CAPTURE_LIGHT,TOP_CAPTURE_LIGHT,
-		RED_TARGET_LEFT,RED_TARGET_RIGHT,RED_TARGET_TOP,RED_TARGET_BOTTOM,
-		LANE_1,LANE_2,LANE_3,LANE_4,
-		LEFT_POP_LIGHT,RIGHT_POP_LIGHT_1,RIGHT_POP_LIGHT_2,RIGHT_POP_LIGHT_3,
-		SHOOT_AGAIN,
-		LOCK_1,LOCK_2,LOCK_3,LOCK_4,
-		HOLD_1,HOLD_2,HOLD_3,HOLD_4,
-		LOCK_BALL,START_LOCK,JACKPOT,WHITE_LED,
-		FIVE_1,FIVE_2,FIVE_3,FIVE_4,FIVE_5,
-		LEFT_1,LEFT_2,LEFT_3,
-		RIGHT_1,RIGHT_2,RIGHT_3,
-		TOP_1,TOP_2,TOP_3,
-		TEMP_BALL_LAUNCH_READY*/
-
 	TOP_1=0, TOP_2, TOP_3, TOP_CAPTURE_LIGHT, RED_TARGET_TOP,
 	FIVE_2, RED_TARGET_BOTTOM, BALL_1, FIVE_1, FIVE_5, FIVE_3,
 	FIVE_4, RIGHT_POP_LIGHT_1, LEFT_CAPTURE_LIGHT, RIGHT_POP_LIGHT_2, RIGHT_POP_LIGHT_3,

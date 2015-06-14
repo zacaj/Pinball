@@ -41,7 +41,7 @@ LedState ledState[nLED];
 
 Solenoid HOLD = Sd(bF,P4,20);
 Solenoid SCORE[4] = { Sds(bB,P4,90,150), Sds(bD,P5,90,150), Sds(bC,P10,90,150), Sds(bB,P8,90,150) };
-Solenoid BONUS[4] = { S(bB,P5), S(bB,P9), S(bC,P13), S(bF,P10) };
+Solenoid BONUS[4] = { Sds(bB,P5,90,150), Sds(bB,P9,90,150), Sds(bC,P13,90,150), Sds(bF,P10,90,150) };
 Solenoid BALL_SHOOT = Sds(bD,P6,220,500);
 Solenoid BALL_ACK = Sds(bA,P15,250,800);
 Solenoid LEFT_DROP_RESET = Sds(bC,P8,100,700);
@@ -504,6 +504,7 @@ void updateSlowInputs()
 
 uint32_t turnOffSolenoid(Solenoid *s) {
 	setOut(s->pin, 0);
+	s->state=0;
 	//STM_EVAL_LEDToggle(LED3);
 	//free(pin);
 	s->lastFired = msElapsed;
@@ -525,6 +526,7 @@ uint8_t fireSolenoidForAnd(Solenoid *s, uint32_t ms, uint8_t force) {
 		return 0;
 	//while(msElapsed<lastSolenoidFiringTime+50);
 	setOut(s->pin, 1);
+	s->state=1;
 	s->lastFired = msElapsed;
 	//STM_EVAL_LEDToggle(LED3);
 	callFuncIn_s(turnOffSolenoid, ms, s);
