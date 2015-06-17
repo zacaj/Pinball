@@ -88,16 +88,17 @@ Input RIGHT_POP = In(bB,P13);
 Input BUMPER = In(bC,P7);
 Input ROTATE_ROLLOVER = In(bB,P15);
 Input ACTIVATE_TARGET = In(bD,P9);
-Input RED_TARGET[4] = { In(bD,P11), In(bD,P13), In(bD,P15), In(bC,P6) };
+Input RED_TARGET[4] = { In(bD,P13), In(bC,P6), In(bD,P15), In(bD,P11) };
 
 Input COM_ACK = In(bE,P7);
 IOPin COM_DATA = {bE,P6};
 IOPin COM_CLOCK = {bF,P9};
 
-#define MAX_COMMANDS 4
+#define MAX_COMMANDS 8
 uint8_t commandQueue[MAX_COMMANDS];
 uint8_t commandAt=0;
 uint8_t nCommand=0;
+uint32_t lastAckTime=0;
 uint8_t comClock=1;
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def) {
@@ -227,8 +228,10 @@ void initIOs() {
 		initInput(MULTI_IN_DATA[i], PULL_DOWN);
 	}
 	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
+		for (int j = 0; j < 3; j++) {
 			initInput(DROP_TARGET[i][j].pin, NO_PULL);
+			DROP_TARGET[i][j].settleTime=50;
+		}
 	for (int i = 0; i < 4; i++) {
 		initOutput(SCORE[i].pin);
 		initOutput(BONUS[i].pin);
@@ -245,9 +248,11 @@ void initIOs() {
 		initInput(FIVE_TARGET[i].pin, NO_PULL);
 
 	initInput(LEFT_CAPTURE.pin, NO_PULL);
+	LEFT_CAPTURE.settleTime=50;
 	initInput(RIGHT_CAPTURE.pin, NO_PULL);
 	RIGHT_CAPTURE.settleTime=50;
 	initInput(TOP_CAPTURE.pin, NO_PULL);
+	TOP_CAPTURE.settleTime=50;
 	initInput(BALL_OUT.pin, NO_PULL);
 	BALL_OUT.settleTime=200;
 	initInput(SHOOT_BUTTON.pin, NO_PULL);
@@ -340,6 +345,7 @@ void updateIOs() {
 		updateInput(&LEFT_CAPTURE);//30
 		updateInput(&RIGHT_CAPTURE);//
 		updateInput(&TOP_CAPTURE);
+		updateInput(&BALLS_FULL);//
 		updateInput(&BALL_OUT);
 		updateInput(&SHOOT_BUTTON);//
 		updateInput(&START);//35
@@ -354,7 +360,6 @@ void updateIOs() {
 		updateInput(&RIGHT_POP);//
 		updateInput(&BUMPER);//45
 		updateInput(&ROTATE_ROLLOVER);//
-		updateInput(&BALLS_FULL);//
 		updateInput(&COM_ACK);
 	}
 
@@ -387,7 +392,7 @@ void updateIOs() {
 		}
 		}
 		if (!newState && oldState) //should be off
-				{
+		{
 			mLEDState[id8] &= ~im8s;
 			LED_Dirty = 1;
 		} else if (newState && !oldState) {
@@ -420,10 +425,10 @@ void updateIOs() {
 	if(nCommand>0) {
 		if(!COM_ACK.rawState) {
 			if(comClock) {
+				lastAckTime=msElapsed;
 				setOutDirect(COM_CLOCK,0);
 				comClock=0;
-				setOutDirect(COM_DATA,commandQueue[0]&1);
-				commandQueue[0]>>=1;
+				setOutDirect(COM_DATA,(commandQueue[0]&(1<<commandAt))? 1:0);
 				commandAt++;
 			}
 			else {
@@ -432,7 +437,9 @@ void updateIOs() {
 		}
 		else {
 			if(comClock) {
-				
+				if(msElapsed-lastAckTime>100 && lastAckTime!=0) {
+					commandAt=0;
+				}
 			}
 			else {
 				setOutDirect(COM_CLOCK,1);
@@ -548,8 +555,11 @@ void fireSolenoidIn(Solenoid *s, uint32_t ms) {
 }
 
 
-void setLed(enum LEDs index, uint8_t state) {
+uint8_t setLed(enum LEDs index, uint8_t state) {
+	if(ledState[index].state==state)
+		return 0;
 	ledState[index].state = state;
+	return 1;
 }
 
 void setPWM(enum LEDs index, uint8_t pwm) {
@@ -567,12 +577,32 @@ void setPWMFunc(enum LEDs index, uint8_t (*pwmFunc)(void*), void *data) {
 void offsetLed(enum LEDs index, uint32_t offset) {
 	ledState[index].flashAt += offset;
 }
-void setFlash(enum LEDs index, uint32_t max) {
+uint8_t setFlash(enum LEDs index, uint32_t max) {
 	if(ledState[index].state==FLASHING && ledState[index].flashMax==max)
-		return;
+		return 0;
 	ledState[index].state = FLASHING;
 	ledState[index].flashMax = max;
 	ledState[index].flashAt = 0;
+	return 1;
+}
+void syncLeds(enum LEDs a, enum LEDs b, enum LEDs c, enum LEDs d) {
+	int flashAvg = ledState[a].flashAt+ledState[b].flashAt;
+	int size=2;
+	if(c!=-1) {
+		flashAvg+=ledState[c].flashAt;
+		size++;
+	}
+	if(d!=-1) {
+		flashAvg+=ledState[d].flashAt;
+		size++;
+	}
+	flashAvg/=size;
+	ledState[a].flashAt=flashAvg;
+	ledState[b].flashAt=flashAvg;
+	if(size>=3)
+		ledState[c].flashAt=flashAvg;
+	if(size>=4)
+		ledState[d].flashAt=flashAvg;
 }
 uint8_t getLed(enum LEDs index) {
 	return ledState[index].state;
@@ -580,32 +610,7 @@ uint8_t getLed(enum LEDs index) {
 
 void updateHeldRelays()
 {
-	/*for (int i = 0; i < nHeldRelay; i++)
-		if (!heldRelayState[i] && physicalHeldRelayState[i])
-		{
-			setOut(heldRelays[i].pin,0);
-		}
-	for(int i=0;i<nHeldRelay;i++)
-		if (heldRelayState[i] && !physicalHeldRelayState[i])
-		{
-			lastHeldRelayOnTime[i]=msElapsed;
-			//fireSolenoidFor(&heldRelays[i], 100);
-			setOut(heldRelays[i].pin,1);
-			//break;
-		}*/
 	uint8_t releaseHold=0;
-	/*for(int i=0;i<nHeldRelay;i++)
-		if(heldRelayState[i])
-		{
-			fireSolenoidFor(&heldRelays[i], 500);
-			lastHeldRelayOnTime[i]=msElapsed;
-			//fireSolenoidFor(&HOLD, 50);
-			//wait(30);
-			//;
-		} else if(physicalHeldRelayState[i])
-			releaseHold=1;
-	if(releaseHold)
-		fireSolenoidFor(&HOLD, 20);*/
 
 	uint32_t start=msElapsed;
 	uint8_t on=0;
@@ -613,14 +618,16 @@ void updateHeldRelays()
 		if(heldRelayState[i]) {
 			lastHeldRelayOnTime[i]=msElapsed;
 			setOut(heldRelays[i].pin,1);
+			heldRelays[i].state=1;
 			on=1;
 		}
 		else {	
 			setOut(heldRelays[i].pin,0);
+			heldRelays[i].state=0;
 			if(physicalHeldRelayState[i])
 				releaseHold=1;
 		}
-	//if(releaseHold || 1)
+	if(releaseHold)
 	{
 		fireSolenoidForAnd(&HOLD, 80,1);
 		wait(150);
@@ -629,16 +636,20 @@ void updateHeldRelays()
 	while(start+20>msElapsed);
 	if(on)
 		for(int i=0;i<nHeldRelay;i++)
-			if(heldRelayState[i])
-				setOut(heldRelays[i].pin,0);
+			if(heldRelayState[i]) {
+				setOut(heldRelays[i].pin,0);			
+				heldRelays[i].state=0;
+			}
 
 	for (int i = 0; i < nHeldRelay; i++)
 		physicalHeldRelayState[i]=heldRelayState[i];
 }
+
 void setHeldRelay(int n, uint8_t state) {
 	if (heldRelays[n].onTime == -1) {
 		lastHeldRelayOnTime[n] = msElapsed;
 		setOut(heldRelays[n].pin, state);
+		heldRelays[n].state=state;
 	}
 	else if(physicalHeldRelayState[n]!=state || 1) {
 		heldRelayState[n] = state;
@@ -648,7 +659,19 @@ void setHeldRelay(int n, uint8_t state) {
 }
 
 uint8_t sendCommand(uint8_t cmd) {
-	if(nCommand>=MAX_COMMANDS)
-		return 0;
-	commandQueue[nCommand++]=cmd;
+	if(nCommand>=MAX_COMMANDS) {
+		uint8_t least=255;
+		int leastAt=-1;
+		for(int i=1;i<nCommand;i++) {
+			if(commandQueue[i]<least) {
+				least=commandQueue[i];
+				leastAt=i;
+			}
+		}
+		if(least>cmd) {
+			commandQueue[leastAt]=cmd;
+		}
+	}
+	else
+		commandQueue[nCommand++]=cmd;
 }

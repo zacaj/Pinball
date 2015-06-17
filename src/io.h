@@ -170,12 +170,44 @@ enum LEDs {
 	LEFT_POP_LIGHT, HOLD_1, LANE_2, LANE_1, YELLOW_LED, HOLD_2,
 	HOLD_3, HOLD_4, TEMP_BALL_LAUNCH_READY
 };
-void setLed(enum LEDs index,uint8_t state);
-void setFlash(enum LEDs index, uint32_t max);
+uint8_t setLed(enum LEDs index,uint8_t state);
+uint8_t setFlash(enum LEDs index, uint32_t max);
 void setPWM(enum LEDs index, uint8_t pwm);
 void setPWMFunc(enum LEDs index, uint8_t (*pwmFunc)(void*), void *data);
 void offsetLed(enum LEDs index,uint32_t offset);
 uint8_t getLed(enum LEDs index);
+void syncLeds(enum LEDs a, enum LEDs b, enum LEDs c, enum LEDs d);
+
+enum Command {
+	START=0,
+	cJACKPOT,
+	cBALL_OUT,
+	cEXTRA_BALL,
+	cLOCK_START,
+	cBALL_CAPTURED_MB,
+	cBALL_CAPTURED_LOCK,
+	cJACKPOT_READY,
+	cEXTRA_BALL_READY,
+	cBALLS_LOCKED,
+	cMB_READY,
+	cLANE_COMPLETE,
+	cSHOOT,
+	cTHREE_COMPLETE,
+	cBALL_CAPTURED_REJECTED,
+	cFIVE_HIT,
+	cSHOOT_CAREFULLY,
+	cRED_HIT,
+	cLANE_HIT,
+	cBALL_CAPTURE_EJECT,
+	cTHREE_HIT,
+	cACTIVATE_MISS,
+	cROLLOVER,
+	cRED_MISS,
+	cFIVE_MISS,
+	cPOP_HIT,
+	cTHREE_MISS,
+	cLANE_MISS
+}
 
 void updateSlowInputs();
 void setHeldRelay(int n,uint8_t state);

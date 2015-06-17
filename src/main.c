@@ -228,24 +228,24 @@ int main(void)
 #endif
 		if(CAB_LEFT.pressed) {
 
-			setHeldRelay(MAGNET,1);
+			//setHeldRelay(MAGNET,1);
 			//switchPlayerRelay(1);
 			//fireSolenoid(&BALL_ACK);
 			//setLed(BLACKOUT,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],0);
 			//switchPlayerRelay(3);
 //			resetScores();
-			//sendCommand('A');
+			sendCommand(1);
 			//CAB_LEFT.pressed=0;
 		}
 		if(CAB_RIGHT.pressed) {
 
-			setHeldRelay(MAGNET,0);
+			//setHeldRelay(MAGNET,0);
 			//fireSolenoid(&LEFT_DROP_RESET);
 			//setLed(EXTRA_BALL,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],1);
 			//switchPlayerRelay(1);
-			//sendCommand('L');
+			sendCommand(0);
 			//CAB_RIGHT.pressed=0;
 
 		}
