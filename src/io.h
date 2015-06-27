@@ -61,14 +61,14 @@ static const IOPin LED_CLOCK={bF,P2};
 typedef struct
 {
 	const IOPin pin;
-	uint32_t lastFired;
-	uint32_t onTime,offTime;
+	uint32_t lastFired, lastLastFired;
+	uint32_t onTime,temp,offTime;
 	uint8_t waitingToFire;
 	uint8_t state;
 } Solenoid;
-#define S(b,p) {{b,p},-250,90,250,0,0}
-#define Sd(b,p,on) {{b,p},-250,on,250,0,0}
-#define Sds(b,p,on,off) {{b,p},-off,on,off,0,0}
+#define S(b,p) {{b,p},-250, -250,90,250,0,0}
+#define Sd(b,p,on) {{b,p},-250, -250,on,250,0,0}
+#define Sds(b,p,on,off) {{b,p},-off, -off,on,0,off,0,0}
 
 extern Solenoid HOLD;
 static const int PLAYFIELD_DISABLE=9;
@@ -104,7 +104,7 @@ typedef struct
 {
 	const IOPin pin;
 	uint8_t state;
-	uint32_t lastChange;
+	uint32_t lastChange,lastRawChange;
 	uint8_t pressed;
 	uint8_t released;
 	uint8_t inverse;
@@ -113,7 +113,7 @@ typedef struct
 	uint32_t lastOn,lastOff;
 	uint32_t lastRawOn,lastRawOff;
 } Input;
-#define In(b,p) {{b,p},0,1,0,0,0,0,1,0,0,0,0}
+#define In(b,p) {{b,p},0,1,1,0,0,0,0,1,0,0,0,0}
 
 extern Input DROP_TARGET[3][3];
 extern Input FIVE_TARGET[5];
@@ -179,15 +179,18 @@ uint8_t getLed(enum LEDs index);
 void syncLeds(enum LEDs a, enum LEDs b, enum LEDs c, enum LEDs d);
 
 enum Command {
-	START=0,
+	cSTART=0,
 	cJACKPOT,
+	cUSE_EXTRA_BALL,
 	cBALL_OUT,
 	cEXTRA_BALL,
+	cCOLLECT_BONUS,
 	cLOCK_START,
 	cBALL_CAPTURED_MB,
 	cBALL_CAPTURED_LOCK,
 	cJACKPOT_READY,
 	cEXTRA_BALL_READY,
+	cCOLLECT_BONUS_READY,
 	cBALLS_LOCKED,
 	cMB_READY,
 	cLANE_COMPLETE,
@@ -207,11 +210,11 @@ enum Command {
 	cPOP_HIT,
 	cTHREE_MISS,
 	cLANE_MISS
-}
+};
 
 void updateSlowInputs();
 void setHeldRelay(int n,uint8_t state);
 
 uint8_t sendCommand(uint8_t cmd);
-
+uint8_t sendCommandElse(uint8_t cmd);
 #endif /* IO_H_ */

@@ -58,7 +58,7 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 
 				//if what we think the physical digit is doesn't match what we want it to be
 				//or we know we're wrong about what the physical digit is
-				if(targetDigit!=physicalDigit || (physicalDigit!=0) != (zeros[i].state^invert) && msElapsed-zeros[i].lastOff>100)
+				if(targetDigit!=physicalDigit || ((physicalDigit!=0) != (zeros[i].state^invert) && msElapsed-zeros[i].lastOff>100))
 				{
 					if(fireSolenoid(&score[i]))
 					{

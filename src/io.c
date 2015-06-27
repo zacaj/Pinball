@@ -43,7 +43,7 @@ Solenoid HOLD = Sd(bF,P4,20);
 Solenoid SCORE[4] = { Sds(bB,P4,90,150), Sds(bD,P5,90,150), Sds(bC,P10,90,150), Sds(bB,P8,90,150) };
 Solenoid BONUS[4] = { Sds(bB,P5,90,150), Sds(bB,P9,90,150), Sds(bC,P13,90,150), Sds(bF,P10,90,150) };
 Solenoid BALL_SHOOT = Sds(bD,P6,220,500);
-Solenoid BALL_ACK = Sds(bA,P15,250,800);
+Solenoid BALL_ACK = Sds(bA,P15,300,800);
 Solenoid LEFT_DROP_RESET = Sds(bC,P8,100,700);
 Solenoid RIGHT_DROP_RESET = Sds(bF,P6,100,700);
 Solenoid TOP_DROP_RESET = Sds(bC,P3,100,700);
@@ -243,7 +243,7 @@ void initIOs() {
 		LANES[i].settleTime=0;
 		initInput(RED_TARGET[i].pin, PULL_DOWN);
 	}
-	LANES[3].settleTime=2;
+	LANES[3].settleTime=0;
 	for (int i = 0; i < 5; i++)
 		initInput(FIVE_TARGET[i].pin, NO_PULL);
 
@@ -302,9 +302,9 @@ void updateInput(Input* in) {
 			in->lastRawOn=in->lastChange;
 			in->lastRawOff=msElapsed;
 		}
-		in->lastChange=msElapsed;
+		in->lastRawChange=msElapsed;
 	}
-	if (in->rawState != in->state && (msElapsed - in->lastChange >= in->settleTime)) {
+	if (in->rawState != in->state && (msElapsed - in->lastRawChange >= in->settleTime)) {
 		in->state = in->rawState;
 		if(in->state)
 			in->lastOff=in->lastChange;
@@ -323,6 +323,8 @@ void updateInput(Input* in) {
 	}
 	ledi++;
 }
+
+void updateCommands();
 
 uint32_t ioTicks = 0;
 
@@ -423,36 +425,10 @@ void updateIOs() {
 	}
 	
 	if(nCommand>0) {
-		if(!COM_ACK.rawState) {
-			if(comClock) {
-				lastAckTime=msElapsed;
-				setOutDirect(COM_CLOCK,0);
-				comClock=0;
-				setOutDirect(COM_DATA,(commandQueue[0]&(1<<commandAt))? 1:0);
-				commandAt++;
-			}
-			else {
-				
-			}
-		}
-		else {
-			if(comClock) {
-				if(msElapsed-lastAckTime>100 && lastAckTime!=0) {
-					commandAt=0;
-				}
-			}
-			else {
-				setOutDirect(COM_CLOCK,1);
-				comClock=1;
-				if(commandAt==sizeof(commandQueue[0])*8) {
-					commandAt=0;
-					for(int i=1;i<nCommand;i++) {
-						commandQueue[i-1]=commandQueue[i];
-					}
-					nCommand--;
-				}
-			}
-		}
+		int oldNCommand = nCommand;
+		uint32_t start = msElapsed;
+		while(oldNCommand == nCommand && msElapsed - start < 1)
+			updateCommands();
 	}
 	
 	ioTicks++;
@@ -496,6 +472,10 @@ void updateSlowInputs()
 	for(int i=0;i<nMultiInput;i++) {
 		mInputState[i]=in[i];
 	}
+	if(in[3]==0) {
+		_BREAK();
+		_BREAK();
+	}
 	setOutDirect(MULTI_IN_LATCH,1);
 	setBoardLed(0,SCORE_ZERO[0].state);//3
 	setBoardLed(1,SCORE_ZERO[1].state);
@@ -534,6 +514,7 @@ uint8_t fireSolenoidForAnd(Solenoid *s, uint32_t ms, uint8_t force) {
 	//while(msElapsed<lastSolenoidFiringTime+50);
 	setOut(s->pin, 1);
 	s->state=1;
+	s->lastLastFired = s->lastFired;
 	s->lastFired = msElapsed;
 	//STM_EVAL_LEDToggle(LED3);
 	callFuncIn_s(turnOffSolenoid, ms, s);
@@ -658,7 +639,12 @@ void setHeldRelay(int n, uint8_t state) {
 	}
 }
 
+uint32_t lastCommandSendTime=0;
+
 uint8_t sendCommand(uint8_t cmd) {
+	uint8_t ret = 0;
+	
+	lastCommandSendTime=msElapsed;
 	if(nCommand>=MAX_COMMANDS) {
 		uint8_t least=255;
 		int leastAt=-1;
@@ -668,10 +654,60 @@ uint8_t sendCommand(uint8_t cmd) {
 				leastAt=i;
 			}
 		}
-		if(least>cmd) {
+		if(least>cmd && leastAt>=0) {
 			commandQueue[leastAt]=cmd;
+			ret = 1;
 		}
 	}
-	else
+	else {
 		commandQueue[nCommand++]=cmd;
+		ret = 2;
+	}
+	
+	if(ret) {
+		int oldNCommand = nCommand;
+		uint32_t start = msElapsed;
+		while(oldNCommand == nCommand && msElapsed - start < 1)
+			updateCommands();
+	}
+	
+	return ret;
+}
+uint8_t sendCommandElse(uint8_t cmd) {
+	if(msElapsed-lastCommandSendTime<1 && lastCommandSendTime!=0)
+		return 0;
+	return sendCommand(cmd);
+}
+
+void updateCommands() {
+	if(!COM_ACK.rawState) {
+		if(comClock) {
+			lastAckTime=msElapsed;
+			setOutDirect(COM_CLOCK,0);
+			comClock=0;
+			setOutDirect(COM_DATA,(commandQueue[0]&(1<<commandAt))? 1:0);
+			commandAt++;
+		}
+		else {
+			
+		}
+	}
+	else {
+		if(comClock) {
+			if(msElapsed-lastAckTime>100 && lastAckTime!=0) {
+				commandAt=0;
+			}
+		}
+		else {
+			setOutDirect(COM_CLOCK,1);
+			comClock=1;
+			if(commandAt==sizeof(commandQueue[0])*8) {
+				commandAt=0;
+				for(int i=1;i<nCommand;i++) {
+					commandQueue[i-1]=commandQueue[i];
+				}
+				nCommand--;
+			}
+		}
+	}
 }

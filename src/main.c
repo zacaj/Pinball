@@ -204,6 +204,7 @@ int main(void)
 	//setLed(0,FLASHING);
 	//callFuncIn(timerFunc,1000,NULL);
 	//switchPlayerRelay(1);
+	//resetScores();
 	LED_Dirty=1;
 	while (1)
 	{
@@ -235,7 +236,7 @@ int main(void)
 			//setHeldRelay(PLAYER_ENABLE[1],0);
 			//switchPlayerRelay(3);
 //			resetScores();
-			sendCommand(1);
+			sendCommand(cLOCK_START);
 			//CAB_LEFT.pressed=0;
 		}
 		if(CAB_RIGHT.pressed) {
@@ -245,7 +246,7 @@ int main(void)
 			//setLed(EXTRA_BALL,ON);
 			//setHeldRelay(PLAYER_ENABLE[1],1);
 			//switchPlayerRelay(1);
-			sendCommand(0);
+			sendCommand(cLANE_COMPLETE);
 			//CAB_RIGHT.pressed=0;
 
 		}

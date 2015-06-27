@@ -40,7 +40,7 @@ static const uint32_t ball_fire_wait_time=1400;
 static const uint32_t time_between_ball_fire=1300;
 static const uint32_t drop_flash_period=200;
 static const uint32_t initial_pops_count=5;
-static const uint32_t restart_mb_time=9000;
+static const uint32_t restart_mb_switches=15;
 static const uint32_t ball_save_fuzz=2000;
 static const uint32_t mb_save_fuzz=800;
 static const uint32_t lost_capture_score=10;
@@ -76,7 +76,7 @@ extern uint8_t curPlayer;
 #define curScore playerScore[curPlayer]
 extern signed int ballNumber,nPlayer;
 
-#define BLACKOUT_ACT 0
+#define COLLECT_BONUS_ACT 0
 #define JACKPOT_ACT 1
 #define EXTRA_BALL_ACT 2
 #define START_LOCKMB_ACT 3
