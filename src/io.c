@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "io.h"
 #include "timer.h"
+#include "game.h"
 #include <string.h>
 #include <stdlib.h>
 void setLedDebug(uint8_t n, enum LEDs leds[8]);
@@ -20,6 +21,10 @@ void setLedDebug(uint8_t n, enum LEDs leds[8]);
 #define _GPIO_WriteBit(b,p,v) \
 	if(!v) ((b))->BRR = ((p)); \
 else ((b))->BSRR = ((p));
+#define _writeHigh(b) \
+		((b)).bank->BSRR = ((b)).pin
+#define _writeLow(b) \
+		((b)).bank->BRR = ((b)).pin
 
 #define _GPIO_ReadInputDataBit(b,p) \
 	(( ( ((b))->IDR & ((p)) ) != 0 ))
@@ -99,6 +104,7 @@ uint8_t commandQueue[MAX_COMMANDS];
 uint8_t commandAt=0;
 uint8_t nCommand=0;
 uint32_t lastAckTime=0;
+uint32_t commandStartSendTime=0;
 uint8_t comClock=1;
 
 void initInput(IOPin pin, GPIOPuPd_TypeDef def) {
@@ -160,9 +166,9 @@ uint8_t getInDirect(IOPin pin) {
 	return _GPIO_ReadInputDataBit(pin.bank, pin.pin);
 }
 
-uint8_t getIn(IOPin pin) {
-	if (pin.bank == bU)
-		return 0;
+inline uint8_t getIn(IOPin pin) {
+	//if (pin.bank == bU)
+		//return 0;
 	if ((int) pin.bank < 11) {
 		if ((int) pin.bank >= 1 && (int) pin.bank <= 4)
 			return (mInputState[(int) pin.bank - 1] & (pin.pin)) ? 1 : 0;
@@ -281,13 +287,11 @@ void initIOs() {
 
 	fireSolenoidFor(&HOLD,50);
 }
-int ledi=0;
+
+uint16_t getLedOverride(enum LEDs led);
 int nled=0;
-void updateInput(Input* in) {
-	const enum LEDs lowerDebugLights[] = { RED_TARGET_LEFT, LEFT_1, LEFT_2,
-				LEFT_3, RIGHT_3, RIGHT_2, RIGHT_1, RED_TARGET_RIGHT };const enum LEDs upperDebugLights[] = { TOP_3, RED_TARGET_TOP, FIVE_1,
-						FIVE_2, FIVE_3, FIVE_4, FIVE_5, RED_TARGET_BOTTOM };
-	uint8_t state = getIn(in->pin);
+
+__attribute__((optimize("O3"))) void updateInput(Input* in, uint8_t state) {
 	if(in->inverse)
 		state=!state;
 	in->pressed = 0;
@@ -306,63 +310,83 @@ void updateInput(Input* in) {
 	}
 	if (in->rawState != in->state && (msElapsed - in->lastRawChange >= in->settleTime)) {
 		in->state = in->rawState;
-		if(in->state)
+		if(in->state) {
 			in->lastOff=in->lastChange;
-		else
-			in->lastOn=in->lastChange;
-		in->lastChange = msElapsed;
-		if (in->rawState) {
 			in->pressed = 1;
 			nled++;
 		}
 		else {
+			in->lastOn=in->lastChange;
 			in->released = 1;
-		//setLedDebug(0,lowerDebugLights);nled--;
 		}
-		//setLedDebug(nled,upperDebugLights);
+		in->lastChange = msElapsed;
 	}
-	ledi++;
 }
+
+#define updateDirectInput(in) \
+	updateInput((in), _GPIO_ReadInputDataBit((in)->pin.bank, (in)->pin.pin))
+	
+#define updateSlowInput(in) \
+	updateInput((in), (mInputState[(int) (in)->pin.bank - 1] & ((in)->pin.pin))?1:0)
 
 void updateCommands();
 
+__attribute__((optimize("O0"))) static void updateLeds() {
+	for (int j = 0; j < 6; j++)
+		for (int i = 0; i < 8; i++) {
+			_writeLow(LED_CLOCK);
+			if(mLEDState[j] & (1 << i))
+				_writeHigh(LED_DATA);
+			else
+				_writeLow(LED_DATA);
+			_writeHigh(LED_CLOCK);
+			asm("nop;nop;");
+			asm("nop;nop;");
+			asm("nop;nop;");
+		}
+	_writeLow(LED_DATA);
+	_writeHigh(LED_LATCH);
+	setOutDirect(LED_LATCH, 0);
+	LED_Dirty = 0;
+}
+
 uint32_t ioTicks = 0;
+uint32_t ioTicksAt = 0;
 
 void updateIOs() {
-	updateSlowInputs();
-	if(1)
+	if(ioTicks%1==0)
 	{
-		ledi=0;
+		updateSlowInputs();
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				updateInput(&DROP_TARGET[i][j]);
+				updateSlowInput(&DROP_TARGET[i][j]);
 		for (int i = 0; i < 5; i++)
-			updateInput(&FIVE_TARGET[i]);
+			updateSlowInput(&FIVE_TARGET[i]);
 		for (int i = 0; i < 4; i++) {
-			updateInput(&SCORE_ZERO[i]);
-			updateInput(&BONUS_ZERO[i]);
-			updateInput(&LANES[i]);
-			updateInput(&RED_TARGET[i]);
+			updateSlowInput(&SCORE_ZERO[i]);
+			updateSlowInput(&BONUS_ZERO[i]);
+			updateDirectInput(&LANES[i]);
+			updateDirectInput(&RED_TARGET[i]);
 		}
-		updateInput(&LEFT_CAPTURE);//30
-		updateInput(&RIGHT_CAPTURE);//
-		updateInput(&TOP_CAPTURE);
-		updateInput(&BALLS_FULL);//
-		updateInput(&BALL_OUT);
-		updateInput(&SHOOT_BUTTON);//
-		updateInput(&START);//35
-		updateInput(&CAB_LEFT);
-		updateInput(&CAB_RIGHT);
-		updateInput(&LEFT_FLIPPER);
-		updateInput(&RIGHT_FLIPPER);//
-		updateInput(&LEFT_BLOCK);//40
-		updateInput(&RIGHT_BLOCK);//
-		updateInput(&ACTIVATE_TARGET);
-		updateInput(&LEFT_POP);
-		updateInput(&RIGHT_POP);//
-		updateInput(&BUMPER);//45
-		updateInput(&ROTATE_ROLLOVER);//
-		updateInput(&COM_ACK);
+		updateDirectInput(&LEFT_CAPTURE);//30
+		updateSlowInput(&RIGHT_CAPTURE);//
+		updateSlowInput(&TOP_CAPTURE);
+		updateDirectInput(&BALLS_FULL);//
+		updateDirectInput(&BALL_OUT);
+		updateSlowInput(&SHOOT_BUTTON);//
+		updateSlowInput(&START);//35
+		updateSlowInput(&CAB_LEFT);
+		updateSlowInput(&CAB_RIGHT);
+		updateSlowInput(&LEFT_FLIPPER);
+		updateSlowInput(&RIGHT_FLIPPER);//
+		updateSlowInput(&LEFT_BLOCK);//40
+		updateSlowInput(&RIGHT_BLOCK);//
+		updateDirectInput(&ACTIVATE_TARGET);
+		updateDirectInput(&LEFT_POP);
+		updateDirectInput(&RIGHT_POP);//
+		updateDirectInput(&BUMPER);//45
+		updateDirectInput(&ROTATE_ROLLOVER);//
+		updateDirectInput(&COM_ACK);
 	}
 
 	for (int i = 0; i < nLED; i++) {
@@ -370,6 +394,13 @@ void updateIOs() {
 		uint8_t im8s = 1 << (i % 8);
 		uint8_t oldState = mLEDState[id8] & im8s;
 		uint8_t newState = oldState;
+		if(mode == PLAYER_SELECT && 0) {
+			uint16_t n = getLedOverride(i);
+			if(n!=256) {
+				newState = (ioTicks & 0xFF) < n;//n>128;//
+				goto done;
+			}
+		}
 		switch (ledState[i].state) {
 		case OFF:
 			newState = 0;
@@ -391,8 +422,9 @@ void updateIOs() {
 				pwm = ledState[i].pwm;
 			newState = (ioTicks & 0xFF) < pwm;
 			break;
+			}
 		}
-		}
+	done:
 		if (!newState && oldState) //should be off
 		{
 			mLEDState[id8] &= ~im8s;
@@ -403,26 +435,15 @@ void updateIOs() {
 		}
 	}
 	if (LED_Dirty) {
-		//STM_EVAL_LEDToggle(LED4);
-		setOutDirect(LED_CLOCK, 0);
-		for (int j = 0; j < 6; j++)
-			for (int i = 0; i < 8; i++) {
-				setOutDirect(LED_DATA, mLEDState[j] & 1 << i); //
-				//setOutDirect(LED_DATA, 1); //
-				setOutDirect(LED_CLOCK, 1);
-				setOutDirect(LED_CLOCK, 0);
+		updateLeds();
+	}
+	if(ioTicks%4==0)
+		for (int i = 0; i < nHeldRelay; i++) {
+			uint32_t offAt=lastHeldRelayOnTime[i] + heldRelayMaxOnTime[i];
+			if (heldRelayState[i] && offAt > msElapsed && lastHeldRelayOnTime[i]!=-1) {
+				setHeldRelay(i, 0);
 			}
-		setOutDirect(LED_DATA, 0);
-		setOutDirect(LED_LATCH, 1);
-		setOutDirect(LED_LATCH, 0);
-		LED_Dirty = 0;
-	}
-	for (int i = 0; i < nHeldRelay; i++) {
-		uint32_t offAt=lastHeldRelayOnTime[i] + heldRelayMaxOnTime[i];
-		if (heldRelayState[i] && offAt > msElapsed && lastHeldRelayOnTime[i]!=-1) {
-			setHeldRelay(i, 0);
 		}
-	}
 	
 	if(nCommand>0) {
 		int oldNCommand = nCommand;
@@ -430,7 +451,11 @@ void updateIOs() {
 		while(oldNCommand == nCommand && msElapsed - start < 1)
 			updateCommands();
 	}
-	
+
+	/*if(msElapsed!=ioTicksAt) {
+		ioTicksAt=msElapsed;
+		ioTicks=0;
+	}*/
 	ioTicks++;
 }
 
@@ -569,11 +594,11 @@ uint8_t setFlash(enum LEDs index, uint32_t max) {
 void syncLeds(enum LEDs a, enum LEDs b, enum LEDs c, enum LEDs d) {
 	int flashAvg = ledState[a].flashAt+ledState[b].flashAt;
 	int size=2;
-	if(c!=-1) {
+	if(c!=nLED) {
 		flashAvg+=ledState[c].flashAt;
 		size++;
 	}
-	if(d!=-1) {
+	if(d!=nLED) {
 		flashAvg+=ledState[d].flashAt;
 		size++;
 	}
@@ -667,8 +692,10 @@ uint8_t sendCommand(uint8_t cmd) {
 	if(ret) {
 		int oldNCommand = nCommand;
 		uint32_t start = msElapsed;
-		while(oldNCommand == nCommand && msElapsed - start < 1)
+		while(oldNCommand == nCommand && msElapsed - start < 10) {
 			updateCommands();
+			updateDirectInput(&COM_ACK);
+		}
 	}
 	
 	return ret;
@@ -678,7 +705,8 @@ uint8_t sendCommandElse(uint8_t cmd) {
 		return 0;
 	return sendCommand(cmd);
 }
-
+uint32_t nCommandsSent=0;
+uint32_t nCommandRollingAverage=0;
 void updateCommands() {
 	if(!COM_ACK.rawState) {
 		if(comClock) {
@@ -686,6 +714,8 @@ void updateCommands() {
 			setOutDirect(COM_CLOCK,0);
 			comClock=0;
 			setOutDirect(COM_DATA,(commandQueue[0]&(1<<commandAt))? 1:0);
+			if(commandAt==0)
+				commandStartSendTime=msElapsed;
 			commandAt++;
 		}
 		else {
@@ -707,7 +737,76 @@ void updateCommands() {
 					commandQueue[i-1]=commandQueue[i];
 				}
 				nCommand--;
+				nCommandsSent++;
+				nCommandRollingAverage+=msElapsed-commandStartSendTime;
+				commandStartSendTime=0;
 			}
 		}
 	}
+}
+
+typedef struct {
+	int x,y;
+} LightPos;
+
+LightPos lightPos[] = {
+	{12655, 25833}, //TOP_1
+	{12333, 26481}, //TOP_2
+	{14910, 27128}, //TOP_3
+	{16198, 30100}, //TOP_CAPTURE_LIGHT
+	{17083, 26549}, //RED_TARGET_TOP
+	{18050, 24812}, //FIVE_2
+	{22880, 21985}, //RED_TARGET_BOTTOM
+	{-1, -1}, //BALL_1
+	{16955, 25528}, //FIVE_1
+	{20948, 22670}, //FIVE_5
+	{18935, 24080}, //FIVE_3
+	{19982, 23356}, //FIVE_4
+	{21833, 28691}, //RIGHT_POP_LEFT
+	{6585, 27128}, //LEFT_CAPTURE_LIGHT
+	{27952, 28538}, //RIGHT_POP_RIGHT
+	{26664, 25757}, //RIGHT_POP_BOTTOM
+	{13058, 15423}, //LEFT_3
+	{24893, 15088}, //RED_TARGET_RIGHT
+	{7922, 15088}, //RED_TARGET_LEFT
+	{21511, 15164}, //RIGHT_2
+	{13461, 6210}, //LOCK_1
+	{16359, 5639}, //SHOOT_AGAIN
+	{17486, 6858}, //LOCK_3
+	{15071, 6858}, //LOCK_2
+	{28757, 10973}, //LANE_3
+	{29965, 13526}, //RIGHT_CAPTURE_LIGHT
+	{31172, 10973}, //LANE_4
+	{19499, 6210}, //LOCK_4
+	{19740, 15431}, //RIGHT_3
+	{9596, 14859}, //LEFT_1
+	{23122, 14859}, //RIGHT_1
+	{11367, 15164}, //LEFT_2
+	{-1, -1}, //BALL_2
+	{-1, -1}, //BALL_3
+	{-1, -1}, //BALL_4
+	{-1, -1}, //BALL_5
+	{4122, 9944}, //RED_LED
+	{6376, 12268}, //WHITE_LED
+	{6376, 13412}, //PURPLE_LED
+	{8952, 18898}, //LEFT_POP_LIGHT
+	{-1, -1}, //HOLD_1
+	{3800, 10973}, //LANE_2
+	{1787, 10973}, //LANE_1
+	{4122, 13412}, //YELLOW_LED
+	{-1, -1}, //HOLD_2
+	{-1, -1}, //HOLD_3
+	{-1, -1}, //HOLD_4
+	{-1, -1}, //TEMP_BALL_LAUNCH_READY
+};
+
+uint16_t getLedOverride(enum LEDs led) {
+	int t = (msElapsed%3000)*32768/3000; //0-1000
+	LightPos pos = lightPos[led];
+	int l = abs((pos.y*1000) - (t*1000));
+	int percent = 10;
+	int cutoff = (((percent * 1000) / 100) * 32768);
+	if(l > cutoff)
+		return 0;
+	return 255- l * 255 / cutoff;
 }

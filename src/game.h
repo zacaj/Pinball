@@ -38,7 +38,7 @@ static const uint32_t blocker_cooldown_time=2000;
 static const uint32_t ball_release_wait_time=300;
 static const uint32_t ball_fire_wait_time=1400;
 static const uint32_t time_between_ball_fire=1300;
-static const uint32_t drop_flash_period=200;
+static const uint32_t drop_flash_period=150;
 static const uint32_t initial_pops_count=5;
 static const uint32_t restart_mb_switches=15;
 static const uint32_t ball_save_fuzz=2000;
@@ -86,5 +86,7 @@ void updateGame();
 void initGame();
 void switchPlayerRelay(int n);//-1 for all off
 
+enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
+extern enum GameMode mode;
 
 #endif /* GAME_H_ */

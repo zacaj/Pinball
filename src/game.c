@@ -47,8 +47,7 @@ uint32_t lastBallFireTime=0;
 uint32_t lastLeftBlockerOnTime=-1,lastRightBlockerOnTime=-1;
 uint32_t lastLeftBlockerOffTime=-1,lastRightBlockerOffTime=-1;
 uint8_t currentCapture=0;
-enum GameMode {PLAYER_SELECT=0,SHOOT,PLAY,DRAIN};
-enum GameMode mode=PLAYER_SELECT;
+enum GameMode mode=PLAYER_SELECT, lastMode=PLAYER_SELECT;
 uint8_t p_captureState[4][3];
 uint8_t p_captureStartCount[4][3];
 uint16_t p_bonus[4];
@@ -58,6 +57,8 @@ uint8_t p_activateStates[4][4];
 uint8_t p_redStates[4][4];
 uint32_t waitingForAcksSince;
 uint32_t p_popsLeft[4];
+uint32_t p_cumulativeBonus[4];
+uint32_t p_cumulativeBonusMultiplier[4];
 uint32_t multiballEndSwitches=0;
 uint32_t p_jackpot[4];
 uint32_t nSwitches=0;
@@ -103,7 +104,7 @@ typedef struct {
 	int total;
 	int hits;
 } ScoreSource;
-
+enum GameMode oldMode = PLAYER_SELECT;
 #define MAX_SCORESOURCE 50
 ScoreSource scoreSources[MAX_SCORESOURCE];
 int nScoreSource=0;
@@ -192,7 +193,7 @@ void doActivate(int n) {
 	switch (n) {
 	case COLLECT_BONUS_ACT:
 		setHeldRelay(MAGNET, 1);
-		addScore(bonus*bonusMult+bonus,10);
+		addScore((p_cumulativeBonus[curPlayer]+bonus)*(p_cumulativeBonusMultiplier[curPlayer]+bonusMult),10);
 		sendCommand(cCOLLECT_BONUS);
 		callFuncIn(turnOffMagnet, 1000, NULL);
 		break;
@@ -302,6 +303,32 @@ void initGame()
 	log("init game");
 }
 
+void startCaptureMultiball(int n) {
+	Input ins[]={TOP_CAPTURE,LEFT_CAPTURE,RIGHT_CAPTURE};
+	sendCommand(cBALL_CAPTURED_MB);
+	if(captureState[n]==1) {
+		p_captureStartCount[curPlayer][n]++;
+	}
+	else {
+		int maxCaptureCount=0;
+		for(int j=0;j<3;j++)
+			if(maxCaptureCount<p_captureStartCount[curPlayer][j])
+				maxCaptureCount=p_captureStartCount[curPlayer][j];
+		for(int j=0;j<3;j++)
+			p_captureStartCount[curPlayer][j]=maxCaptureCount;
+	}
+	log1("start capture mb with [a] locked", lockMBMax);
+	addBalls(1 + (n==0));
+	scoreMult=nBallCaptured+1;
+	for(int j=0;j<3;j++)
+	{
+		if(ins[j].state)
+			captureState[captureNs[j]]=0;
+	}
+	is_restarted_mb=0;
+	syncCaptureLights();
+}
+
 void initDropBank(DropBank *bank) {
 	int down=0;
 	bank->flashing = 0;
@@ -333,6 +360,7 @@ void initDropBank(DropBank *bank) {
 	flashLed(bank->led[bank->flashing],drop_flash_period);
 	log1("init drop bank",(int)(bank-dropBanks));
 }
+uint32_t ballLostAt=0;
 
 void updateDropBank(DropBank *bank)
 {
@@ -384,7 +412,7 @@ void updateDropBank(DropBank *bank)
 				//BREAK();
 
 				addScore(drop_score*(bank->flashing==i?drop_sequence_mult:1)*(n>=0 && captureState[n]>=2? drop_complete_mult:1),bank->flashing==i?drop_sequence_bonus:0);
-				if(bank->flashing==i)//was flashing
+				if(bank->flashing==i && !(n>=0 && captureState[n]>=2))//was flashing
 				{
 					if(bank->nTarget==3)
 						sendCommand(cTHREE_HIT);
@@ -401,7 +429,7 @@ void updateDropBank(DropBank *bank)
 					}
 				}
 				else if (bank->nTarget == 3) {
-					if (bank->flashing == bank->nTarget)
+					if (bank->flashing == bank->nTarget && !(n>=0 && captureState[n]>=2))
 					{
 						sendCommand(cTHREE_COMPLETE);
 						switch (captureState[n])
@@ -414,20 +442,27 @@ void updateDropBank(DropBank *bank)
 							break;
 						case 2:
 						case 3:
-							addScore(drop_complete_score*drop_sequence_mult*(captureState[n]>=2? drop_complete_mult:1),0);
+							addScore(drop_complete_score*drop_sequence_mult*(captureState[n]>=2? drop_complete_mult:1),1);
 							break;
 						}
 						log2("increment capture [a] to [b]",n,captureState[n]);
 						syncCaptureLights();
+						bank->flashing=0;
 					}
 				}
 				if(down==bank->nTarget)//last one
 				{
+					if(bank->nTarget==3 && n>=0 && captureState[n]>=2 && captureIns[n].state) {
+						bank->flashing++;
+						if(bank->flashing>bank->nTarget) {
+							startCaptureMultiball(n);
+						}
+					}
 					bank->down(bank);
 					syncActivates();
 					addScore(drop_complete_score*(bank->flashing==i?drop_sequence_mult:1)*(n>=0 && captureState[n]>=2? drop_complete_mult:1),drop_complete_bonus);
 				}
-				if(bank->flashing>=bank->nTarget)
+				if(bank->flashing>=bank->nTarget && !(n>=0 && captureState[n]>=2))
 				{
 					bank->flashing=0;
 				}
@@ -463,7 +498,10 @@ void updateDropBank(DropBank *bank)
 			break;
 		}
 		if(n>=0 && captureState[n]>=2) {
-			setLed(bank->led[j],ON);
+			if(j<bank->flashing && captureIns[n].state)
+				flashLed(bank->led[j],drop_flash_period);
+			else
+				setLed(bank->led[j],ON);
 			continue;
 		}
 		if(j==bank->flashing)
@@ -473,10 +511,12 @@ void updateDropBank(DropBank *bank)
 		else
 			setLed(bank->led[j],OFF);
 	}
+	if(n>=0 && captureState[n]>=2 && captureIns[n].state && bank->flashing>1)
+		syncLeds(bank->led[0], bank->led[1], bank->flashing>2? bank->led[2] : nLED, nLED);
 }
 uint8_t flashLed(enum LEDs led, uint32_t period)
 {
-	return setFlash(led,period*4);
+	return setFlash(led,period*4/3);
 }
 void startBall();
 void startGame()
@@ -503,6 +543,8 @@ void startGame()
 		playerScore[i]=0;
 		p_popsLeft[i]=initial_pops_count;
 		p_nLock[i]=0;
+		p_cumulativeBonus[i]=0;
+		p_cumulativeBonusMultiplier[i]=1;
 		for(int j=0;j<4;j++) {
 			p_activateStates[i][j]=0;
 			p_redStates[i][j]=0;
@@ -704,12 +746,15 @@ void startDrain()
 	for(int i=0;i<3;i++) {
 		p_captureState[curPlayer][i]=captureState[i]>0?captureState[i]:0;
 		if(captureState[i])
-			addScore(lost_capture_score,0);
+			addScore(lost_capture_score,1);
 		captureState[i]=0;
 	}
+	p_cumulativeBonus[curPlayer]+=bonus;
+	p_cumulativeBonusMultiplier[curPlayer]+=bonusMult;
 	addScore(bonus*bonusMult,0);
 	switchMode(DRAIN);
-	fireSolenoid(&BALL_SHOOT);
+	if(lastMode == PLAYER_SELECT)
+		fireSolenoid(&BALL_SHOOT);
 	ballInLaneUntil=0;//hopefully...
 	//p_bonus[curPlayer]=bonus*hold/4;
 	//p_bonusMult[curPlayer]=bonusMult*hold/4;
@@ -730,7 +775,7 @@ void startDrain()
 void syncActivates() {
 	for(int i=0;i<4;i++)
 	{
-		if(activates[i].state==0)
+		if(activates[i].state==0 && multiballEndSwitches==0)
 			setLed(activates[i].led,OFF);
 		else
 			flashLed(activates[i].led,200);
@@ -751,7 +796,7 @@ void nextPlayer()
 	{
 		curPlayer=0;
 		ballNumber++;
-		if(ballNumber>=5)
+		if(ballNumber>=4)
 		{
 			curPlayer=-1;
 			initGame();
@@ -765,11 +810,11 @@ uint32_t lastModeChange=0;
 void switchMode(enum GameMode newMode) {
 	lastModeChange=msElapsed;
 	log2("Mode switch from [a] to [b]",mode,newMode);
-	enum GameMode oldMode=mode;
+	lastMode=mode;
 	mode=newMode;
 	//leaving
-	if(oldMode!=newMode) 
-		switch(oldMode) {
+	if(lastMode!=newMode)
+		switch(lastMode) {
 			case SHOOT:
 			
 				break;
@@ -785,7 +830,7 @@ void switchMode(enum GameMode newMode) {
 				break;
 		}
 	//entering
-	if(oldMode!=newMode)
+	if(lastMode!=newMode)
 		switch(newMode) {
 			case SHOOT:
 			
@@ -861,13 +906,19 @@ void updateGame()
 	{//ack
 		if(BALL_OUT.state && !BALLS_FULL.state) {
 			ballAckCount++;
+			if(ballLostAt==0)
+				ballLostAt=msElapsed;
 		}
-		else
+		else {
 			ballAckCount=0;
+			ballLostAt=0;
+		}
 		if(ballAckCount>1500) {
 			if((!waitingForAcksSince || msElapsed-waitingForAcksSince>2000) && fireSolenoid(&BALL_ACK)) {
-				if(mode==PLAY && msElapsed-lastModeChange>1000)
+				if(mode==PLAY && msElapsed-lastModeChange>1000) {
+					sendCommand(cBALL_OUT);
 					waitingForAcksSince=msElapsed;
+				}
 				ballAckCount=0;
 			}
 		}
@@ -884,7 +935,7 @@ void updateGame()
 				{
 					lockMBMax=0;
 					scoreMult=1;
-					if(getLed(SHOOT_AGAIN)==FLASHING || msElapsed-ballSaveEndTime<ball_save_fuzz || lastScore<ballSaveEndTime)
+					if(getLed(SHOOT_AGAIN)==FLASHING || ballLostAt-ballSaveEndTime<ball_save_fuzz || lastScore<ballSaveEndTime)
 					{
 						log("saved");
 						sendCommand(cSHOOT_CAREFULLY);
@@ -899,12 +950,11 @@ void updateGame()
 						updateExtraBall();
 						startShoot();
 					}
-					else 
-						sendCommand(cBALL_OUT);
+					//else 
 				}
 				else if(nBallInPlay>0) //in multi-ball
 				{
-					if(getLed(SHOOT_AGAIN)==FLASHING || msElapsed-ballSaveEndTime<mb_save_fuzz || lastScore<ballSaveEndTime)
+					if(getLed(SHOOT_AGAIN)==FLASHING || ballLostAt-ballSaveEndTime<mb_save_fuzz || lastScore<ballSaveEndTime)
 					{
 						log("ball saved mb");
 						addBalls(1);
@@ -977,6 +1027,7 @@ void updateGame()
 		log1("auto fire, [a] balls already",nBallInPlay);
 		lastBallTroughReleaseTime=0;
 		lastBallFireTime=msElapsed;
+		sendCommand(cSHOOT);
 		fireSolenoid(&BALL_SHOOT);
 		lastBallFiredAt = msElapsed;
 		ballInLaneUntil=0;
@@ -998,42 +1049,27 @@ void updateGame()
 				if(in.pressed)
 				{
 					//log2("Ball in capture [a], state [b]",n,captureState[n]);
-					addScore(capture_score,0);
+					addScore(capture_score,1);
 					nBallInPlay--;
 					nBallCaptured++;
-					if(captureState[n]==1 || (captureState[n]>=2 && nBallCaptured==3))
-					{
-						sendCommand(cBALL_CAPTURED_MB);
-						if(captureState[n]==1) {
-							p_captureStartCount[curPlayer][n]++;
+					if(msElapsed-in.lastOff>400) {
+						if(captureState[n]==1 || (captureState[n]>=2 && nBallCaptured==3))
+						{
+							addScore(0, 10);
+							startCaptureMultiball(n);
+						}
+						else if(captureState[n]>=2) {
+							addScore(0, 10);
+							sendCommand(cBALL_CAPTURED_LOCK);
+							is_restarted_mb=0;
+							addBalls(1);
+							log1("captured, want [a] balls", nBallsToFire);
 						}
 						else {
-							int maxCaptureCount=0;
-							for(int j=0;j<3;j++)
-								if(maxCaptureCount<p_captureStartCount[curPlayer][j])
-									maxCaptureCount=p_captureStartCount[curPlayer][j];
-							for(int j=0;j<3;j++)
-								p_captureStartCount[curPlayer][j]=maxCaptureCount;
+							sendCommand(cBALL_CAPTURED_REJECTED);
+							DropBank *bank=&dropBanks[n];
+							//bank->flashing++;
 						}
-						log1("start capture mb with [a] locked", lockMBMax);
-						addBalls(1 + (i==1));
-						scoreMult=nBallCaptured+1;
-						for(int j=0;j<3;j++)
-						{
-							if(ins[j].state)
-								captureState[ns[j]]=0;
-						}
-						is_restarted_mb=0;
-						syncCaptureLights();
-					}
-					else if(captureState[n]>=2) {
-						sendCommand(cBALL_CAPTURED_LOCK);
-						is_restarted_mb=0;
-						addBalls(1 + (i==1));
-						log1("captured, want [a] balls", nBallsToFire);
-					}
-					else {
-						sendCommand(cBALL_CAPTURED_REJECTED);
 					}
 					log2("[a] captured, [b] now in play",nBallCaptured,nBallInPlay);
 				}
@@ -1118,7 +1154,7 @@ void updateGame()
 						setLed(lanes[i].led,ON);
 						sendCommand(cLANE_HIT);
 					}
-					addScore(lane_hit_score,on==4?lane_complete_bonus:0);
+					addScore(lane_hit_score,on==4?lane_complete_bonus:1);
 				}
 				else {
 					addScore(lane_miss_score,0);
@@ -1202,7 +1238,7 @@ void updateGame()
 		if(ROTATE_ROLLOVER.pressed)
 		{
 			sendCommand(cROLLOVER);
-			addScore(10,0);
+			addScore(10,1);
 		}
 		if(ACTIVATE_TARGET.pressed)
 		{
@@ -1220,7 +1256,7 @@ void updateGame()
 							activates[i].state--;
 					}
 					syncActivates();
-					addScore(50, 0);
+					addScore(50, 5);
 				}
 				if(!anyActivate) {
 					sendCommand(cACTIVATE_MISS);

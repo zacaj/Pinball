@@ -2,8 +2,12 @@ PROJ_NAME = pinball
 
 ###################################################
 # Set toolchain
+ifdef SystemRoot
 TC = arm-eabi
-RM = d:\root\rbdevkit\bin\rm.exe -f
+else
+TC = /home/fun/Downloads/gcc-arm-none-eabi-4_9-2015q1/bin/arm-none-eabi
+endif
+RM = rm.exe -f
 
 # Set Tools
 CC			= $(TC)-gcc
@@ -37,7 +41,7 @@ DEFINES 	= -DSTM32F3XX -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT -DSDOUND
 
 # Set Compilation and Linking Flags
 CFLAGS 		= $(MCU) $(FPU) $(DEFINES) $(INCLUDES) \
-			-ggdb -Wall -std=gnu99 -ffunction-sections -fdata-sections -funroll-loops 
+			-ggdb -Wall -std=gnu99 -ffunction-sections -fdata-sections -funroll-loops -O0
 ASFLAGS 	= $(MCU) $(FPU) -g -Wa,--warn -x assembler-with-cpp
 LDFLAGS 	= $(MCU) $(FPU) -g -gdwarf-2 \
 			-Tstm32f30_flash.ld \

@@ -208,7 +208,7 @@ int main(void)
 	LED_Dirty=1;
 	while (1)
 	{
-		for(int i=0;i<nLED;i++)
+		/*for(int i=0;i<nLED;i++)
 			{
 				//setPWMFunc(i,pwmFunc,i);
 				//setPWM(i,255);
@@ -216,11 +216,11 @@ int main(void)
 				//setFlash(i,3000);
 				//offsetLed(i,3000*(i%2));
 				//setLed(i,ON);
-			}
+			}*/
 		//LED_Dirty=1;
 		updateIOs();
 #ifdef SOUND
-		updateDisplay();
+		//updateDisplay();
 #else
 		if(1)
 		{

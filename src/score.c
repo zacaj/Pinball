@@ -50,11 +50,14 @@ void updateBank(Solenoid *score,Input *zeros,uint16_t target,uint16_t *physical,
 			if(
 				zeros[i].state==zeros[i].rawState
 				&&
-				msElapsed-score[i].lastFired+10>score[i].offTime+score[i].onTime
+				(msElapsed-score[i].lastFired+10>score[i].offTime+score[i].onTime
+					|| score[i].lastFired>msElapsed)
 				)
 			{
-				if(!(zeros[i].state^invert) && physicalDigit!=0) //if the reel is zero
-					*physical-=(physicalDigit-1)*ten; //then we know what the physical digit is
+				if(!(zeros[i].state^invert) && physicalDigit!=0) {//if the reel is zero
+					*physical-=(physicalDigit)*ten; //then we know what the physical digit is
+					physicalDigit = 0;
+				}
 
 				//if what we think the physical digit is doesn't match what we want it to be
 				//or we know we're wrong about what the physical digit is
